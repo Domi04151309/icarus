@@ -103,6 +103,8 @@ button:hover {
   display: block;
   padding: 4px 16px;
   border-radius: var(--border-radius-1x);
+  color: var(--secondary-text-color);
+  text-decoration: none;
   cursor: pointer;
 }
 .tab:hover {

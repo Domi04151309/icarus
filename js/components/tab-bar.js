@@ -3,9 +3,9 @@ export default {
   props: ['tabs'],
   template:
   '<footer>\
-    <a class="tab" v-for="tab in tabs">\
+    <router-link class="tab" v-for="tab in tabs" :to="tab.url">\
       <span class="material-icons block">{{ tab.icon }}</span>\
       <span>{{ tab.title }}</span>\
-    </a>\
+    </router-link>\
   </footer>'
 }
