@@ -1,0 +1,26 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Icarus</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/main.min.css" />
+  <meta name="theme-color" content="#fff">
+  <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+  <meta name="description" content="A fitness app." />
+  <meta property="og:image" content="{{ site.baseurl }}/preview.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="app">
+    <app-bar :title="title"></app-bar>
+
+
+    <tab-bar :tabs="mainActivity.tabs"></tab-bar>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/index.js" type="module"></script>
+</body>
