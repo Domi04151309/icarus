@@ -3,9 +3,12 @@ export default {
   props: ['tabs'],
   template:
   '<footer>\
-    <router-link class="tab" v-for="tab in tabs" :to="tab.url">\
-      <span class="material-icons block">{{ tab.icon }}</span>\
-      <span>{{ tab.title }}</span>\
+    <router-link class="tab" v-for="tab in tabs" :key="tab.url" :to="tab.url">\
+      <span class="material-icons-round block" :aria-label="tab.title">{{ tab.icon }}</span>\
     </router-link>\
-  </footer>'
+  </footer>',
+  created() {
+
+  console.info('App currentRoute:', this.$router.currentRoute)
+  }
 }
