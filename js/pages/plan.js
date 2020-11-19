@@ -1,5 +1,7 @@
 export default {
   name: 'plan',
   template:
-  '<h1>plan</h1>'
+  '<div>\
+    <h2>Choose Your Plan</h2>\
+  </div>'
 }

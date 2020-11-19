@@ -17,7 +17,9 @@
   <div id="app">
     <app-bar :title="title"></app-bar>
     <main>
-      <router-view></router-view>
+      <transition name="fade-in">
+          <router-view></router-view>
+      </transition>
     </main>
     <tab-bar :tabs="mainActivity.tabs"></tab-bar>
   </div>

@@ -1,5 +1,9 @@
 export default {
   name: 'training',
   template:
-  '<h1>training</h1>'
+  '<div>\
+    <h2>Daily Goal</h2>\
+    <h2>Weekly Goal</h2>\
+    <h2>Monthly Goal</h2>\
+  </div>'
 }
