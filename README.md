@@ -5,3 +5,5 @@ A simple fitness web app.
 
 ## Sources
 - none
+
+Copyright 2020 Domi04151309
