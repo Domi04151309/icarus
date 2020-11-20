@@ -6,7 +6,7 @@ export default {
   '<page-tab-bar>\
     <h2>Hello $name</h2>\
     <ul>\
-      <li>Preferences</li>\
+      <li><router-link to="/preferences">Preferences</router-link></li>\
       <li>Help</li>\
       <li>About</li>\
     </ul>\

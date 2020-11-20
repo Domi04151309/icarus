@@ -1,4 +1,4 @@
-import AppBar from './app-bar.js'
+import AppBarNoParent from './app-bar-no-parent.js'
 import TabBar from './tab-bar.js'
 
 export default {
@@ -27,8 +27,8 @@ export default {
   },
   template:
   '<div>\
-    <app-bar :title="title"></app-bar>\
-    <main>\
+    <app-bar-no-parent :title="title"></app-bar-no-parent>\
+    <main class="with-tab-bar">\
       <transition name="fade-in">\
         <div>\
           <slot></slot>\
@@ -38,7 +38,7 @@ export default {
     <tab-bar :tabs="tabs"></tab-bar>\
   </div>',
   components: {
-    AppBar,
+    AppBarNoParent,
     TabBar
   }
 }
