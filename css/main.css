@@ -5,6 +5,7 @@
   --secondary-text-color: #666;
   --hover-color: rgba(128, 128, 128, .125);
   --border-radius-1x: 8px;
+  --border-radius-2x: 16px;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -28,6 +29,8 @@ html, body {
   scroll-padding-top: 112px;
   scroll-behavior: smooth;
   font: 16px arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.5;
   padding: 0;
   margin: 0;
 }
@@ -53,11 +56,9 @@ footer {
   box-shadow: 0 0 8px rgba(0,0,0,.5);
 }
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color);
   font-weight: normal;
 }
-p, ul {
-  line-height: 1.5;
+p, .p {
   color: var(--secondary-text-color);
 }
 header h1 {
@@ -115,7 +116,7 @@ button:hover {
   text-decoration: none;
   cursor: pointer;
 }
-.tab:hover {
+.tab:hover, .link-list > *:hover {
   background: var(--hover-color);
 }
 .tab > .material-icons-round, .nav-icon {
@@ -135,4 +136,34 @@ button:hover {
 }
 .router-link-active {
   color: var(--accent-color);
+}
+.card {
+  border-radius: var(--border-radius-2x);
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+.flex {
+  display: flex;
+}
+#profile-icon {
+  color: var(--accent-color);
+  font-size: 72px;
+  align-self: center;
+}
+.no-bullets, .link-list {
+  list-style-type: none;
+}
+.link-list {
+  padding: 0;
+}
+.link-list a {
+  display: block;
+  padding: 16px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+.link-list .material-icons-round {
+  margin-right: 16px;
+  color: var(--accent-color);
+  vertical-align: top;
 }

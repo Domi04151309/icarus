@@ -5,8 +5,11 @@ export default {
   template:
   '<page-tab-bar>\
     <h2>Daily Goal</h2>\
+    <p>Dummy text</p>\
     <h2>Weekly Goal</h2>\
+    <p>Dummy text</p>\
     <h2>Monthly Goal</h2>\
+    <p>Dummy text</p>\
   </page-tab-bar>',
   components: {
       PageTabBar
