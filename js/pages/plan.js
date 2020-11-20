@@ -1,7 +1,12 @@
+import PageTabBar from '../components/page-tab-bar.js'
+
 export default {
   name: 'plan',
   template:
-  '<div>\
+  '<page-tab-bar>\
     <h2>Choose Your Plan</h2>\
-  </div>'
+  </page-tab-bar>',
+  components: {
+      PageTabBar
+  }
 }
