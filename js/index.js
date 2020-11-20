@@ -17,9 +17,13 @@ const routes = [
   { path: '/about', component: About }
 ]
 
-const router = new VueRouter({routes})
+const router = new VueRouter({ routes })
 
 const v = new Vue({
   router,
-  el: '#app'
+  el: '#app',
+  mounted: function () {
+    const loadingScreen = document.getElementById('loading_screen');
+    loadingScreen.parentNode.removeChild(loadingScreen);
+  }
 })

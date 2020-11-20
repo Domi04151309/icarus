@@ -4,7 +4,7 @@ export default {
   name: 'account',
   template:
   '<page-tab-bar>\
-    <div class="flex">\
+    <div class="flex mb-16">\
       <span id="profile-icon" class="material-icons-round">account_circle</span>\
       <ul class="no-bullets">\
         <li>Name</li>\
