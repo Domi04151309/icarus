@@ -28,7 +28,7 @@ export default {
   template:
   '<div>\
     <app-bar-no-parent :title="title"></app-bar-no-parent>\
-    <main class="with-tab-bar">\
+    <main class="with app-bar tab-bar">\
       <transition name="fade-in">\
         <div>\
           <slot></slot>\

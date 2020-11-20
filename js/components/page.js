@@ -6,7 +6,7 @@ export default {
   template:
   '<div>\
     <app-bar :title="title" :parent="parent"></app-bar>\
-    <main>\
+    <main class="with app-bar">\
       <transition name="fade-in">\
         <div>\
           <slot></slot>\
