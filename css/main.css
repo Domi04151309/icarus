@@ -153,6 +153,9 @@ button:hover {
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
 }
+.card {
+  border-radius: var(--border-radius-2x);
+}
 input {
   display: block;
   width: 75%;
@@ -170,17 +173,21 @@ input {
 .mr-16 {
   margin-right: 16px;
 }
+.ignore-page-padding {
+  margin: -16px;
+}
 .no-bullets, .link-list {
   list-style-type: none;
 }
 .link-list {
   padding: 0;
 }
-.link-list a {
+.link-list > li > a, .link-list > li > span {
   display: block;
   padding: 16px;
   color: var(--text-color);
   text-decoration: none;
+  cursor: pointer;
 }
 .link-list .material-icons-round {
   margin-right: 16px;
@@ -212,6 +219,52 @@ input {
   margin: auto;
   margin-top: 50vh;
   text-align: center;
+}
+
+/* modal */
+.modal-background, .modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+.modal-background {
+  background: rgba(0, 0, 0, .5);
+  z-index: 100;
+}
+.modal-content {
+  position: absolute;
+  width: 90%;
+  max-width: 480px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 16px;
+  z-index: 150;
+}
+.modal-input {
+  width: 100%;
+  margin: 0;
+  border-radius: var(--border-radius-1x);
+  text-align: left;
+}
+.modal-content > h2 {
+  margin: 0 0 16px;
+}
+.modal-content > .button-bar {
+  margin-top: 16px;
+  text-align: right;
+}
+.modal-content > .button-bar > button {
+  margin: 0;
+  padding: 0 8px;
+  box-shadow: none;
+  background: none;
+  font-weight: bold;
+  color: var(--accent-color);
 }
 
 /* account */
