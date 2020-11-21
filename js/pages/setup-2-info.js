@@ -8,7 +8,8 @@ export default {
     <page-no-app-bar class="setup-text">\
       <h1>Your Plan</h1>\
       <p>Please enter your data so that we can generate a plan that fits you the best.</p>\
-      <p style="color:red">TODO: Add data inputs</p>\
+      <input ref="name" class="mb-16" type="text" placeholder="Name" autocomplete="off">\
+      <input ref="age" class="mb-16" type="number" placeholder="Age" autocomplete="off">\
       <button type="button" v-on:click="handleClick">Continue</button>\
     </page-no-app-bar>\
   </div>',
@@ -17,6 +18,8 @@ export default {
   },
   methods: {
   	handleClick: function(){
+      localStorage.setItem('info_name', this.$refs.name.value)
+      localStorage.setItem('info_age', this.$refs.age.value)
       this.$router.push('/setup/finish')
     }
   }

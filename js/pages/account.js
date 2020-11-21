@@ -6,10 +6,18 @@ export default {
   '<page-tab-bar>\
     <div class="flex mb-16">\
       <span id="profile-icon" class="material-icons-round">account_circle</span>\
-      <ul class="no-bullets">\
-        <li>Name</li>\
-        <li class="p">Age</li>\
-        <li class="p">Motivation Quota</li>\
+      <ul class="no-bullets p">\
+        <li class="flex mb-8">\
+          <div class="mr-16">\
+            <small class="item-caption">Name</small><span ref="name">...</span>\
+          </div>\
+          <div>\
+            <small class="item-caption">Age</small><span ref="age">...</span>\
+          </div>\
+        </li>\
+        <li>\
+          <small class="item-caption">Motivation Quota</small><span ref="mq">...</span>\
+        </li>\
       </ul>\
     </div>\
     <ul class="link-list card">\
@@ -20,5 +28,10 @@ export default {
   </page-tab-bar>',
   components: {
       PageTabBar
+  },
+  mounted: function () {
+    this.$refs.name.innerHTML = localStorage.getItem('info_name') || 'undefined'
+    this.$refs.age.innerHTML = localStorage.getItem('info_age') || 'undefined'
+    this.$refs.mq.innerHTML = localStorage.getItem('info_mq') || 'undefined'
   }
 }

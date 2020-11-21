@@ -6,6 +6,7 @@
   --hover-color: rgba(128, 128, 128, .125);
   --border-radius-1x: 8px;
   --border-radius-2x: 16px;
+  --border-radius-4x: 32px;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -84,14 +85,15 @@ main {
 img {
   max-width: 100%;
 }
-button {
+button, input {
   margin: 4px 0;
   outline: 0;
   border: 0;
-  border-radius: var(--border-radius-1x);
-  padding: 8px 16px;
+  padding: 12px 24px;
   font-size: 14px;
   text-align: center;
+}
+button {
   background: var(--accent-color);
   color: #fff;
   cursor: pointer;
@@ -146,16 +148,27 @@ button:hover {
 }
 
 /* general elements */
-.card, button {
-  border-radius: var(--border-radius-2x);
+.card, button, input {
+  border-radius: var(--border-radius-4x);
   overflow: hidden;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+input {
+  display: block;
+  width: 75%;
+  margin: auto;
 }
 .flex {
   display: flex;
 }
 .mb-16 {
   margin-bottom: 16px;
+}
+.mb-8 {
+  margin-bottom: 8px;
+}
+.mr-16 {
+  margin-right: 16px;
 }
 .no-bullets, .link-list {
   list-style-type: none;
@@ -206,6 +219,10 @@ button:hover {
   color: var(--accent-color);
   font-size: 72px;
   align-self: center;
+}
+.item-caption {
+  display: block;
+  margin-bottom: -4px;
 }
 
 /* loading screen */

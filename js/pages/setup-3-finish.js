@@ -16,7 +16,7 @@ export default {
   },
   methods: {
   	handleClick: function(){
-      localStorage.setItem('setup_complete', true);
+      localStorage.setItem('setup_complete', true)
       this.$router.push('/training')
     }
   }
