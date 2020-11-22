@@ -40,5 +40,15 @@ export default {
   components: {
     AppBarNoParent,
     TabBar
+  },
+  mounted: function () {
+    const header = document.getElementsByTagName('HEADER')
+    var i
+
+    document.addEventListener('scroll', function () {
+      for (i = 0; i < header.length; i++) {
+        header[i].classList.toggle('header-shadow', window.pageYOffset > 0)
+      }
+    }.bind(this))
   }
 }
