@@ -53,7 +53,7 @@ export default {
         <p>A small info text why this is important.</p>\
       </div>\
       <div class="card mb-16-p-16">\
-        <h2>Workout Execises <span class="material-icons-round c-icon">fitness_center</span></h2>\
+        <h2>Workout Exercises <span class="material-icons-round c-icon">fitness_center</span></h2>\
         <div class="flex my-24 light-green">\
           <button class="progress-control left" type="button">&minus;</button>\
           <progress max="100" value="60"></progress>\
