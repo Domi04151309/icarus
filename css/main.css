@@ -1,13 +1,50 @@
 :root {
   --accent-color: #2979FF;
+  --accent-color-light: #448AFF;
   --accent-color-dark: #2962FF;
+  --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
   --text-color: #212121;
+  --text-color-dark: #fff;
   --secondary-text-color: #666;
   --hover-color: rgba(128, 128, 128, .125);
   --pressed-color: rgba(128, 128, 128, .25);
   --border-radius-1x: 8px;
   --border-radius-2x: 16px;
   --border-radius-4x: 32px;
+}
+.light-blue {
+  --accent-color: #00B0FF;
+  --accent-color-light: #40C4FF;
+  --accent-color-dark: #0091EA;
+}
+.cyan {
+  --accent-color: #00E5FF;
+  --accent-color-light: #18FFFF;
+  --accent-color-dark: #00B8D4;
+}
+.teal {
+  --accent-color: #1DE9B6;
+  --accent-color-light: #64FFDA;
+  --accent-color-dark: #00BFA5;
+}
+.green {
+  --accent-color: #00E676;
+  --accent-color-light: #69F0AE;
+  --accent-color-dark: #00C853;
+}
+.light-green {
+  --accent-color: #76FF03;
+  --accent-color-light: #B2FF59;
+  --accent-color-dark: #64DD17;
+}
+.lime {
+  --accent-color: #C6FF00;
+  --accent-color-light: #EEFF41;
+  --accent-color-dark: #AEEA00;
+}
+.light-blue, .cyan, .teal, .green, .light-green, .lime {
+  --text-color-dark: #000;
+  --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -35,6 +72,7 @@ html, body {
   font: 16px arial, sans-serif;
   color: var(--text-color);
   line-height: 1.5;
+  letter-spacing: .1px;
   padding: 0;
   margin: 0;
 }
@@ -98,7 +136,7 @@ button, input {
 }
 button {
   background: var(--accent-color);
-  color: #fff;
+  color: var(--text-color-dark);
   cursor: pointer;
 }
 button:hover {
@@ -189,8 +227,28 @@ progress::-webkit-progress-bar {
   background: var(--pressed-color);
 }
 progress::-webkit-progress-value {
-  background: var(--accent-color);
+  background: var(--accent-color-gradient);
   border-radius: var(--border-radius-1x);
+}
+.my-24 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.progress-control {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  margin: -8px 0;
+  padding: 0;
+  border-radius: var(--border-radius-2x);
+  box-shadow: none;
+  font-weight: bold;
+}
+.progress-control.left {
+  margin-right: 16px;
+}
+.progress-control.right {
+  margin-left: 16px;
 }
 .flex {
   display: flex;
@@ -300,6 +358,18 @@ progress::-webkit-progress-value {
   background: none;
   font-weight: bold;
   color: var(--accent-color);
+}
+
+/* progress */
+.card.intro {
+  background: var(--accent-color-gradient);
+}
+.card.intro p {
+  color: var(--text-color-dark);
+}
+.card.intro .c-icon {
+  vertical-align: top;
+  margin-right: 16px;
 }
 
 /* account */

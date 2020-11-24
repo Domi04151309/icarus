@@ -1,9 +1,17 @@
 import PageTabBar from '../components/page-tab-bar.js'
 
 export default {
-  name: 'progress',
+  name: 'progress_tab',
+  data () {
+    return {
+      name: ''
+    }
+  },
   template:
   '<page-tab-bar>\
+    <div class="card mb-16-p-16 intro">\
+      <p><span class="material-icons-round c-icon">waves</span>Welcome Back {{ name }}</p>\
+    </div>\
     <router-link to="/progress/today" class="card mb-16-p-16">\
       <h2>Today\'s Goal <span class="material-icons-round c-icon">chevron_right</span></h2>\
       <progress max="100" value="33"></progress>\
@@ -22,5 +30,8 @@ export default {
   </page-tab-bar>',
   components: {
       PageTabBar
+  },
+  mounted () {
+    this.name = localStorage.getItem('info_name')
   }
 }
