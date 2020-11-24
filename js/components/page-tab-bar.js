@@ -9,8 +9,8 @@ export default {
       tabs: [
         {
           icon: "directions_run",
-          title: "Training",
-          url: "/training"
+          title: "Progress",
+          url: "/progress"
         },
         {
           icon: "view_list",

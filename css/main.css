@@ -77,7 +77,7 @@ main {
   max-width: 720px;
   padding: 16px;
   margin: 0 auto;
-  animation: fadeIn .8s;
+  animation: fadeIn .5s;
 }
 .with.app-bar {
   margin-top: 56px;
@@ -107,7 +107,7 @@ button:hover {
 
 /* animation */
 .fade-in-enter-active {
-  animation: fadeIn .8s;
+  animation: fadeIn .5s;
 }
 .fade-in-leave-active {
   display: none;
@@ -160,15 +160,44 @@ button:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
 }
 .card {
+  display: block;
   border-radius: var(--border-radius-2x);
+  text-decoration: inherit;
+  color: inherit;
+}
+.card > h2:first-child {
+  margin: 0 0 8px;
+}
+h2 > .c-icon {
+  color: var(--secondary-text-color);
+  vertical-align: text-top;
 }
 input {
   display: block;
   width: 75%;
   margin: auto;
 }
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  border-radius: var(--border-radius-1x);
+  overflow: hidden;
+}
+progress::-webkit-progress-bar {
+  background: var(--pressed-color);
+}
+progress::-webkit-progress-value {
+  background: var(--accent-color);
+  border-radius: var(--border-radius-1x);
+}
 .flex {
   display: flex;
+}
+.mb-16-p-16 {
+  padding: 16px;
+  margin-bottom: 16px;
 }
 .mb-16 {
   margin-bottom: 16px;

@@ -4,7 +4,7 @@ export default {
   name: 'plan',
   template:
   '<page-tab-bar>\
-    <h2>Choose Your Plan</h2>\
+    <div class="card mb-16-p-16"><p>Nothing to see here</p></div>\
   </page-tab-bar>',
   components: {
       PageTabBar
