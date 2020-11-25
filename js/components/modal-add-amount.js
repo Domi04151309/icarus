@@ -1,6 +1,6 @@
 export default {
   name: 'modal-add-amount',
-  props: ['sKey'],
+  props: ['sKey', 'context'],
   template:
   '<div class="modal-container">\
     <div class="modal-background" v-on:click="negative()"></div>\
@@ -15,7 +15,8 @@ export default {
   </div>',
   methods: {
     positive() {
-      //Add amount to value
+      localStorage.setItem(this.sKey, parseInt(localStorage.getItem(this.sKey) | 0, 10) + parseInt(this.$refs.input.value), 10)
+      this.context.updateProgress()
       this.$el.parentNode.removeChild(this.$el)
     },
     negative() {
