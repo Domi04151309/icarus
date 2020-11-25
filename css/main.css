@@ -156,6 +156,12 @@ button:hover {
     transform: translateY(+25px);
   }
 }
+@keyframes fadeInModal {
+  0%{
+    opacity: 0;
+    transform: translate(-50%, calc(25px - 50%));
+  }
+}
 
 /* navigation */
 .tab {
@@ -337,6 +343,7 @@ progress::-webkit-progress-value {
   background: #fff;
   padding: 16px;
   z-index: 150;
+  animation: fadeInModal .5s;
 }
 .modal-input {
   width: 100%;
