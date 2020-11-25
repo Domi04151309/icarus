@@ -44,5 +44,14 @@ const v = new Vue({
     if (!localStorage.getItem('setup_complete') && !this.$route.fullPath.includes('setup')) {
       this.$router.push('/setup/welcome')
     }
+
+    const header = document.getElementsByTagName('HEADER')
+    var i
+
+    document.addEventListener('scroll', function () {
+      for (i = 0; i < header.length; i++) {
+        header[i].classList.toggle('header-shadow', window.pageYOffset > 0)
+      }
+    }.bind(this))
   }
 })

@@ -2,7 +2,7 @@ export default {
   name: 'app-bar',
   props: ['title', 'parent'],
   template:
-  '<header class="header-shadow">\
+  '<header>\
     <router-link :to="parent">\
       <span class="material-icons-round nav-icon" aria-label="Back">arrow_back</span>\
     </router-link>\
