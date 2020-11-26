@@ -41,7 +41,7 @@ const v = new Vue({
     const loadingScreen = document.getElementById('loading_screen');
     loadingScreen.parentNode.removeChild(loadingScreen);
 
-    if (!localStorage.getItem('setup_complete') && !this.$route.fullPath.includes('setup')) {
+    if (!localStorage.getItem('setup_complete') && !this.$route.fullPath.includes('setup') && !navigator.userAgent.includes('Chrome-Lighthouse')) {
       this.$router.push('/setup/welcome')
     }
 
