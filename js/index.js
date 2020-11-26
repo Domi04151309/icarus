@@ -11,6 +11,7 @@ import Week from './pages/week.js'
 import Month from './pages/month.js'
 
 import Preferences from './pages/preferences.js'
+import Data from './pages/data.js'
 import Help from './pages/help.js'
 import About from './pages/about.js'
 
@@ -28,6 +29,7 @@ const routes = [
   { path: '/plan', component: Plan },
   { path: '/account', component: Account },
   { path: '/preferences', component: Preferences },
+  { path: '/data', component: Data },
   { path: '/help', component: Help },
   { path: '/about', component: About }
 ]
