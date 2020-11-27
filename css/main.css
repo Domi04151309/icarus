@@ -333,6 +333,9 @@ progress::-webkit-progress-value {
 .mr-16 {
   margin-right: 16px;
 }
+.text-center {
+  text-align: center;
+}
 .ignore-page-padding {
   margin: -16px;
 }
@@ -428,11 +431,12 @@ progress::-webkit-progress-value {
   color: var(--accent-color);
 }
 
-/* progress */
+/* accent cards */
 .card.intro {
   background: var(--accent-color-gradient);
 }
-.card.intro p {
+.card.intro > h2, .card.intro > p {
+  margin: 1em 0;
   color: var(--text-color-dark);
 }
 .card.intro .c-icon {

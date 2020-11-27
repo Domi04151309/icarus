@@ -27,6 +27,11 @@ export default {
       <progress max="100" value="33"></progress>\
       <p>Your progress for this month.</p>\
     </router-link>\
+    <router-link to="/progress/calendar" class="card mb-16-p-16">\
+      <h2>Calendar <span class="material-icons-round c-icon">chevron_right</span></h2>\
+      <progress></progress>\
+      <p>View the progress of another day, week, or month</p>\
+    </router-link>\
   </page-tab-bar>',
   components: {
       PageTabBar
