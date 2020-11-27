@@ -40,20 +40,25 @@ const v = new Vue({
   router,
   el: '#app',
   mounted: function () {
-    const loadingScreen = document.getElementById('loading_screen');
-    loadingScreen.parentNode.removeChild(loadingScreen);
+    const loadingScreen = document.getElementById('loading_screen')
+    var headers, modal, i
+
+    loadingScreen.parentNode.removeChild(loadingScreen)
 
     if (!localStorage.getItem('setup_complete') && !this.$route.fullPath.includes('setup') && !navigator.userAgent.includes('Chrome-Lighthouse')) {
       this.$router.push('/setup/welcome')
     }
 
-    const header = document.getElementsByTagName('HEADER')
-    var i
-
     document.addEventListener('scroll', function () {
-      for (i = 0; i < header.length; i++) {
-        header[i].classList.toggle('header-shadow', window.pageYOffset > 0)
+      headers = document.getElementsByTagName('HEADER')
+      for (i = 0; i < headers.length; i++) {
+        headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
       }
+    }.bind(this))
+
+    window.addEventListener('hashchange', function (event) {
+      modal = document.querySelector('.modal-container')
+      if (modal != null) modal.parentNode.removeChild(modal)
     }.bind(this))
   }
 })
