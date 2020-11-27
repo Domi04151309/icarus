@@ -23,11 +23,13 @@ export default {
       Page
   },
   mounted: function () {
+    var array = []
     var keys = Object.keys(localStorage)
-    this.storage = []
 
     for (var i = 0; i < keys.length; i++) {
-      this.storage.push({'key': keys[i], 'value': localStorage.getItem(keys[i])})
+      array.push({'key': keys[i], 'value': localStorage.getItem(keys[i])})
     }
+    array.sort((a,b) => (a.key > b.key) ? 1 : ((b.key > a.key) ? -1 : 0))
+    this.storage = array
   }
 }
