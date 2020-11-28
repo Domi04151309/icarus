@@ -244,6 +244,9 @@ button:hover {
 .card > h2:first-child {
   margin: 0 0 8px;
 }
+.card > h3:last-child {
+  margin-bottom: 0;
+}
 h2 > .c-icon {
   color: var(--secondary-text-color);
   vertical-align: text-top;
@@ -312,7 +315,11 @@ progress::-webkit-progress-value {
 }
 .grid-3 {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 3fr);
+}
+.grid-7 {
+  display: grid;
+  grid-template-columns: repeat(7, 7fr);
 }
 .flex {
   display: flex;
@@ -448,6 +455,24 @@ progress::-webkit-progress-value {
 .card.intro .c-icon {
   vertical-align: top;
   margin-right: 16px;
+}
+
+/* calendar */
+#calendar button {
+  padding: 12px;
+  background: none;
+  box-shadow: none;
+  color: var(--secondary-text-color);
+}
+#calendar button:hover {
+  background: var(--hover-color);
+}
+#calendar button:active {
+  background: var(--pressed-color);
+}
+#prev-month, #next-month, #prev-y, #next-y {
+  margin: 0;
+  padding: 8px 12px;
 }
 
 /* account */

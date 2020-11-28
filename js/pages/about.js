@@ -15,8 +15,8 @@ export default {
     <p>{{ version }}</p>\
     <p>\
       A simple fitness web app.<br>\
-      Copyright 2020 Domi04151309\
     </p>\
+    <p>Copyright 2020<br>Domi04151309 \& Nils Döhring\</p>\
   </page>',
   components: {
       Page
