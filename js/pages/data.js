@@ -2,7 +2,7 @@ import Page from '../components/page.js'
 
 export default {
   name: 'data',
-  data: function() {
+  data: () => {
     return {
       title: 'Your Data',
       storage: []

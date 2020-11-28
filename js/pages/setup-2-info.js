@@ -17,7 +17,7 @@ export default {
       PageNoAppBar
   },
   methods: {
-  	handleClick: function(){
+  	handleClick: () => {
       localStorage.setItem('info_name', this.$refs.name.value)
       localStorage.setItem('info_age', this.$refs.age.value)
       this.$router.push('/setup/finish')

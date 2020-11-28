@@ -53,16 +53,16 @@ const v = new Vue({
       this.$router.push('/setup/welcome')
     }
 
-    document.addEventListener('scroll', function () {
+    document.addEventListener('scroll', () => {
       headers = document.getElementsByTagName('HEADER')
       for (i = 0; i < headers.length; i++) {
         headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
       }
-    }.bind(this))
+    })
 
-    window.addEventListener('hashchange', function (event) {
+    window.addEventListener('hashchange', () => {
       modal = document.querySelector('.modal-container')
       if (modal != null) modal.parentNode.removeChild(modal)
-    }.bind(this))
+    })
   }
 })

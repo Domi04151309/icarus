@@ -4,7 +4,7 @@ import ModalRemoveAmount from '../components/modal-remove-amount.js'
 
 export default {
   name: 'today',
-  data: function() {
+  data: () => {
     return {
       title: 'Today\'s Progress',
       dateId: '',

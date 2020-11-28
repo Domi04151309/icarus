@@ -2,9 +2,9 @@ import Page from '../components/page.js'
 
 export default {
   name: 'about',
-  data: function() {
+  data: () => {
     return {
-      title: "This Month\'s Progress"
+      title: 'This Month\'s Progress'
     }
   },
   template:

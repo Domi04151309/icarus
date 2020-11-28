@@ -3,29 +3,29 @@ import TabBar from './tab-bar.js'
 
 export default {
   name: 'page-tab-bar',
-  data: function() {
+  data: () => {
     return {
       title: 'Icarus',
       tabs: [
         {
-          icon: "view_list",
-          title: "Progress",
-          url: "/progress"
+          icon: 'view_list',
+          title: 'Progress',
+          url: '/progress'
         },
         {
-          icon: "directions_run",
-          title: "Exercises",
-          url: "/exercises"
+          icon: 'directions_run',
+          title: 'Exercises',
+          url: '/exercises'
         },
         {
-          icon: "local_dining",
-          title: "Experience",
-          url: "/experience"
+          icon: 'local_dining',
+          title: 'Experience',
+          url: '/experience'
         },
         {
-          icon: "account_circle",
-          title: "Account",
-          url: "/account"
+          icon: 'account_circle',
+          title: 'Account',
+          url: '/account'
         }
       ]
     }

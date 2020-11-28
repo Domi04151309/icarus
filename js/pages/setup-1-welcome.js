@@ -15,7 +15,7 @@ export default {
       PageNoAppBar
   },
   methods: {
-  	handleClick: function(){
+  	handleClick: () => {
       this.$router.push('/setup/info')
     }
   }

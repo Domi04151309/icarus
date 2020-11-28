@@ -4,9 +4,9 @@ import ModalDeleteData from '../components/modal-delete-data.js'
 
 export default {
   name: 'preferences',
-  data: function() {
+  data: () => {
     return {
-      title: "Preferences"
+      title: 'Preferences'
     }
   },
   template:

@@ -15,7 +15,7 @@ export default {
       PageNoAppBar
   },
   methods: {
-  	handleClick: function(){
+  	handleClick: () => {
       localStorage.setItem('setup_complete', true)
       this.$router.push('/progress')
     }

@@ -2,9 +2,9 @@ import Page from '../components/page.js'
 
 export default {
   name: 'week',
-  data: function() {
+  data: () => {
     return {
-      title: "This Week\'s Progress"
+      title: 'This Week\'s Progress'
     }
   },
   template:

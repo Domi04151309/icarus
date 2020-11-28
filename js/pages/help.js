@@ -2,9 +2,9 @@ import Page from '../components/page.js'
 
 export default {
   name: 'help',
-  data: function() {
+  data: () => {
     return {
-      title: "Help"
+      title: 'Help'
     }
   },
   template:
