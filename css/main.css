@@ -357,6 +357,9 @@ progress::-webkit-progress-value {
   color: var(--accent-color);
   vertical-align: top;
 }
+.material-icons-round.big {
+  font-size: 32px;
+}
 
 /* setup */
 .setup-image {
@@ -438,6 +441,9 @@ progress::-webkit-progress-value {
 .card.intro > h2, .card.intro > p {
   margin: 1em 0;
   color: var(--text-color-dark);
+}
+.card.intro.big > * {
+  margin: 1.5em 0;
 }
 .card.intro .c-icon {
   vertical-align: top;

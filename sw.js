@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-var CACHE_NAME = 'icarus-cache-{{ site.time | date: "%Y-%m-%d-%H:%M" }}';
+var CACHE_NAME = 'icarus-{{ site.time | date: "%Y-%m-%d-%H:%M" }}';
 var urlsToCache = [
   {% for file in site.static_files %}'{{ site.baseurl }}{{ file.path }}',
   {% endfor %}

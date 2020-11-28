@@ -15,7 +15,7 @@ export default {
   </div>',
   methods: {
     positive() {
-      localStorage.setItem(this.sKey, parseInt(localStorage.getItem(this.sKey) | 0, 10) + parseInt(this.$refs.input.value), 10)
+      localStorage.setItem(this.sKey, parseInt(localStorage.getItem(this.sKey) | 0, 10) + parseInt(this.$refs.input.value, 10))
       this.context.updateProgress()
       this.$el.parentNode.removeChild(this.$el)
     },

@@ -9,7 +9,9 @@ export default {
   },
   template:
   '<page :title="title" parent="/account">\
-    <h2>Dummy Content</h2>\
+    <div class="card mb-16-p-16 intro text-center">\
+      <h2>Coming soon...</h2>\
+    </div>\
   </page>',
   components: {
       Page
