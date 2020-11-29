@@ -58,6 +58,7 @@ export default {
       pickerContainer.appendChild(dayHeader)
 
       var firstDay = new Date(this.year, this.month, 1)
+      var today = new Date()
       var lastDay = new Date(this.year, this.month + 1, 0)
       var offset = firstDay.getDay()
       var dayCount = 1
@@ -74,6 +75,11 @@ export default {
               this.printSelected(event.target.innerHTML)
             })
             dayNode.appendChild(document.createTextNode(dayCount))
+            if (
+              dayCount == today.getDate()
+              && this.month == today.getMonth()
+              && this.year == today.getFullYear()
+            ) dayNode.classList.add('today')
             weekNode.appendChild(dayNode)
             dayCount++
           } else {

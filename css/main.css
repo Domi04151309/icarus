@@ -1,5 +1,6 @@
 :root {
   --accent-color: #2979FF;
+  --accent-color-alpha: #2979FF20;
   --accent-color-light: #448AFF;
   --accent-color-dark: #2962FF;
   --text-color: #212121;
@@ -476,6 +477,10 @@ progress::-webkit-progress-value {
 #calendar .controls button {
   margin: 0;
   padding: 8px 12px;
+}
+#calendar .today {
+  background: var(--accent-color-alpha);
+  color: var(--accent-color);
 }
 
 /* account */
