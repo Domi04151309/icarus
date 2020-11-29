@@ -42,5 +42,27 @@ layout: null
   "display": "standalone",
   "orientation": "portrait",
   "scope": "{{ site.baseurl }}/",
-  "theme_color": "#fff"
+  "theme_color": "#fff",
+  "shortcuts": [
+    {
+      "name": "Progress",
+      "url": "{{ site.baseurl }}/#/progress",
+      "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Exercises",
+      "url": "{{ site.baseurl }}/#/exercises",
+      "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Experience",
+      "url": "{{ site.baseurl }}/#/experience",
+      "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Account",
+      "url": "{{ site.baseurl }}/#/account",
+      "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
+    }
+  ]
 }
