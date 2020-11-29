@@ -61,12 +61,13 @@ export default {
       var lastDay = new Date(this.year, this.month + 1, 0)
       var offset = firstDay.getDay()
       var dayCount = 1
-      for (i = 0; i < 5; i++) {
+      for (i = 0; i < 6; i++) {
         weekNode = document.createElement('div')
         weekNode.classList.add('grid-7')
         pickerContainer.appendChild(weekNode)
         for (j = 0; j < 7; j++) {
           if (offset == 0) {
+            if (dayCount > lastDay.getDate()) break
             dayNode = document.createElement('button')
             dayNode.type = 'button'
             dayNode.addEventListener('click', (event) => {
@@ -74,8 +75,7 @@ export default {
             })
             dayNode.appendChild(document.createTextNode(dayCount))
             weekNode.appendChild(dayNode)
-            if (dayCount >= lastDay.getDate()) break
-            else dayCount++
+            dayCount++
           } else {
             dayNode = document.createElement('div')
             weekNode.appendChild(dayNode)

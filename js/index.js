@@ -1,3 +1,5 @@
+/*global Vue, VueRouter*/
+
 import SetupWelcome from './pages/setup-1-welcome.js'
 import SetupInfo from './pages/setup-2-info.js'
 import SetupFinish from './pages/setup-3-finish.js'
