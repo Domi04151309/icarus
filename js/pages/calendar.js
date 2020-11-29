@@ -1,7 +1,5 @@
 import Page from '../components/page.js'
 
-//TODO: Add viewing of previous days
-
 export default {
   name: 'calendar',
   data: () => {
@@ -39,8 +37,8 @@ export default {
       Page
   },
   methods: {
-    printSelected(day) {
-      console.log(this.year + '/' +  (this.month + 1) + '/' + day)
+    openSelected(day) {
+      this.$router.push('/progress/day?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
     },
     getDays() {
       var pickerContainer, dayHeader, dayNode, weekNode, i, j
@@ -74,7 +72,7 @@ export default {
             dayNode = document.createElement('button')
             dayNode.type = 'button'
             dayNode.addEventListener('click', (event) => {
-              this.printSelected(event.target.innerHTML)
+              this.openSelected(event.target.innerHTML)
             })
             dayNode.appendChild(document.createTextNode(dayCount))
             if (

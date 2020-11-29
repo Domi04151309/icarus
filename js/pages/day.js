@@ -1,13 +1,15 @@
+/*global Vue*/
+
 import Page from '../components/page.js'
 import ModalAddAmount from '../components/modal-add-amount.js'
 import ModalRemoveAmount from '../components/modal-remove-amount.js'
 
 export default {
-  name: 'today',
+  name: 'day',
   data: () => {
     return {
-      title: 'Today\'s Progress',
       dateId: '',
+      readableDate: '',
       water: '0',
       maxWater: '12',
       calories: '0',
@@ -24,12 +26,20 @@ export default {
       maxSleep: '100'
     }
   },
+  computed: {
+    title: function () {
+      if (this.readableDate == 't')
+        return 'Today\'s Progress'
+      else
+        return 'Progress of ' + this.readableDate
+    }
+  },
   template:
     '<page :title="title" parent="/progress">\
       <div class="card mb-16-p-16">\
         <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>\
         <progress max="100" value="65"></progress>\
-        <p>This is your general progress for today. It combines your progress of the sections below.</p>\
+        <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>\
       </div>\
       <div class="card mb-16-p-16">\
         <h2>Nutrition <span class="material-icons-round c-icon">restaurant_menu</span></h2>\
@@ -93,8 +103,6 @@ export default {
   },
   methods: {
     updateProgress() {
-      var today = new Date()
-      this.dateId = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0')
       this.water = localStorage.getItem(this.dateId + '_water') | 0
       this.calories = localStorage.getItem(this.dateId + '_calories') | 0
       this.carbs = localStorage.getItem(this.dateId + '_carbs') | 0
@@ -135,6 +143,15 @@ export default {
     }
   },
   mounted: function () {
+    var dateString = this.$route.query.date
+    if (dateString == null) {
+      var today = new Date()
+      this.dateId = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0')
+      this.readableDate = 't'
+    } else {
+      this.dateId = dateString
+      this.readableDate = dateString.substring(6, 8) + '/' + dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
+    }
     this.updateProgress()
   }
 }

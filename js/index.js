@@ -9,7 +9,7 @@ import Exercises from './pages/exercises.js'
 import Experience from './pages/experience.js'
 import Account from './pages/account.js'
 
-import Today from './pages/today.js'
+import Day from './pages/day.js'
 import Week from './pages/week.js'
 import Month from './pages/month.js'
 import Calendar from './pages/calendar.js'
@@ -30,7 +30,7 @@ const routes = [
   { path: '/setup/info', component: SetupInfo },
   { path: '/setup/finish', component: SetupFinish },
   { path: '/progress', component: Progress },
-  { path: '/progress/today', component: Today },
+  { path: '/progress/day', component: Day },
   { path: '/progress/week', component: Week },
   { path: '/progress/month', component: Month },
   { path: '/progress/calendar', component: Calendar },
