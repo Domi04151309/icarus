@@ -1,5 +1,7 @@
 import Page from '../components/page.js'
 
+//TODO: Add viewing of previous days
+
 export default {
   name: 'calendar',
   data: () => {

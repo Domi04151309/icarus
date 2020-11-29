@@ -72,7 +72,6 @@
   --accent-color-light: #EEFF41;
   --accent-color-dark: #AEEA00;
 }
-
 .light-blue, .cyan, .teal, .green, .light-green, .lime {
   --text-color-dark: #000;
 }
@@ -135,6 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 p, .p {
   color: var(--secondary-text-color);
+  margin: 8px 0;
 }
 header h1 {
   height: 100%;
@@ -314,13 +314,20 @@ progress::-webkit-progress-value {
 .progress-control.right {
   margin-left: 16px;
 }
-.grid-3 {
+.grid-2, .grid-3, .grid-7 {
   display: grid;
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 2fr);
+}
+.grid-3 {
   grid-template-columns: repeat(3, 3fr);
 }
 .grid-7 {
-  display: grid;
   grid-template-columns: repeat(7, 7fr);
+}
+.gap-16 {
+  grid-gap: 16px;
 }
 .flex {
   display: flex;
@@ -340,6 +347,9 @@ progress::-webkit-progress-value {
 }
 .mr-16 {
   margin-right: 16px;
+}
+.p-16 {
+  padding: 16px;
 }
 .text-center {
   text-align: center;
@@ -367,6 +377,9 @@ progress::-webkit-progress-value {
 }
 .material-icons-round.big {
   font-size: 32px;
+}
+.material-icons-round.accent {
+  color: var(--accent-color);
 }
 
 /* setup */

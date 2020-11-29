@@ -1,5 +1,7 @@
 import PageTabBar from '../components/page-tab-bar.js'
 
+//TODO: Add content
+
 export default {
   name: 'exercises',
   template:

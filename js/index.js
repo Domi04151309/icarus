@@ -14,6 +14,9 @@ import Week from './pages/week.js'
 import Month from './pages/month.js'
 import Calendar from './pages/calendar.js'
 
+import Healthy from './pages/healthy.js'
+import NotSoHealthy from './pages/not-so-healthy.js'
+
 import Preferences from './pages/preferences.js'
 import Data from './pages/data.js'
 import Help from './pages/help.js'
@@ -33,6 +36,8 @@ const routes = [
   { path: '/progress/calendar', component: Calendar },
   { path: '/exercises', component: Exercises },
   { path: '/experience', component: Experience },
+  { path: '/experience/healthy', component: Healthy },
+  { path: '/experience/not-so-healthy', component: NotSoHealthy },
   { path: '/account', component: Account },
   { path: '/preferences', component: Preferences },
   { path: '/data', component: Data },

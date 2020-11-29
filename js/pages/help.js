@@ -1,5 +1,7 @@
 import Page from '../components/page.js'
 
+//TODO: Add content
+
 export default {
   name: 'help',
   data: () => {
