@@ -1,0 +1,25 @@
+{
+  "name": "icarus",
+  "version": "1.0.0",
+  "description": "A simple fitness web app.",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-vue": "^7.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Domi04151309/icarus.git"
+  },
+  "author": "Domi04151309 & Nils Döhring",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Domi04151309/icarus/issues"
+  },
+  "homepage": "https://github.com/Domi04151309/icarus#readme"
+}
