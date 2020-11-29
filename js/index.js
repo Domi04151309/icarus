@@ -40,7 +40,7 @@ const routes = [
 
 const router = new VueRouter({ routes })
 
-const v = new Vue({
+new Vue({
   router,
   el: '#app',
   mounted: function () {

@@ -8,14 +8,14 @@ export default {
     <page-no-app-bar class="setup-text">\
       <h1>That\'s it</h1>\
       <p>Thanks for entering your data. We will now generte a unique plan for you.</p>\
-      <button type="button" v-on:click="handleClick">Finish</button>\
+      <button type="button" v-on:click="handleClick()">Finish</button>\
     </page-no-app-bar>\
   </div>',
   components: {
       PageNoAppBar
   },
   methods: {
-  	handleClick: () => {
+    handleClick() {
       localStorage.setItem('setup_complete', true)
       this.$router.push('/progress')
     }

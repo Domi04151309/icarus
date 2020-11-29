@@ -16,7 +16,7 @@ export default {
     <p>\
       A simple fitness web app.<br>\
     </p>\
-    <p>Copyright 2020<br>Domi04151309 \& Nils Döhring\</p>\
+    <p>Copyright 2020<br>Domi04151309 & Nils Döhring</p>\
   </page>',
   components: {
       Page
