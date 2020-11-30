@@ -186,13 +186,13 @@ button:hover {
 @keyframes fadeIn {
   0%{
     opacity: 0;
-    transform: translateY(+25px);
+    transform: translateY(+16px);
   }
 }
 @keyframes fadeInModal {
   0%{
     opacity: 0;
-    transform: translate(-50%, calc(25px - 50%));
+    transform: translate(-50%, calc(16px - 50%));
   }
 }
 
@@ -238,6 +238,7 @@ button:hover {
 }
 .card {
   display: block;
+  border: 1px solid var(--hover-color);
   border-radius: var(--border-radius-2x);
   text-decoration: inherit;
   color: inherit;
