@@ -558,3 +558,10 @@ progress::-webkit-progress-value {
   from {transform: translateY(-100%);}
   to {transform: translateY(100%);}
 }
+
+/* radial progress bar */
+circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}

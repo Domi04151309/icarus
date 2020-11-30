@@ -1,4 +1,5 @@
 import Page from '../components/page.js'
+import ProgressRing from '../components/progress-ring.js'
 import FoodListItem from '../components/food-list-item.js'
 
 //TODO: Dynamically generate content
@@ -8,6 +9,7 @@ export default {
   data: () => {
     return {
       title: 'The Healthy',
+      progress: 66,
       items: ['Apple', 'Banana', 'Salad'],
       generalSuggestions: ['Breakfast', 'Lunch', 'Dinner'],
       suggestions: ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
@@ -16,7 +18,7 @@ export default {
   template:
   '<page :title="title" parent="/experience">\
     <div class="text-center">\
-      <img src="https://via.placeholder.com/256" alt="TODO: Add diagram">\
+      <progress-ring radius="64" :progress="progress" stroke="8"></progress-ring>\
       <h2>Healthy Food</h2>\
     </div>\
     <div class="grid-2 gap-16">\
@@ -34,6 +36,7 @@ export default {
   </page>',
   components: {
       Page,
+      ProgressRing,
       FoodListItem
   }
 }
