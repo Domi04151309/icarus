@@ -132,8 +132,10 @@ footer {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
-p, .p {
+label, p, .p {
   color: var(--secondary-text-color);
+}
+p {
   margin: 8px 0;
 }
 header h1 {
@@ -174,6 +176,38 @@ button {
 }
 button:hover {
   background: var(--accent-color-dark);
+}
+.button-bar button {
+  background: #fff;
+  color: var(--accent-color);
+  font-weight: bold;
+  box-shadow: none;
+}
+.button-bar button:hover {
+  background: var(--hover-color);
+  color: var(--accent-color-dark);
+}
+.button-bar button:active {
+  background: var(--pressed-color);
+}
+input[type=range] {
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--pressed-color);
+  border-radius: var(--border-radius-1x);
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: var(--accent-color);
+  border-radius: var(--border-radius-1x);
+  margin-top: -6px;
 }
 
 /* animation */
@@ -406,6 +440,7 @@ progress::-webkit-progress-value {
 .setup-text {
   margin: auto;
   margin-top: 50vh;
+  margin-bottom: 32px;
   text-align: center;
 }
 

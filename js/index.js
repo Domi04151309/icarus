@@ -2,7 +2,9 @@
 
 import SetupWelcome from './pages/setup-1-welcome.js'
 import SetupInfo from './pages/setup-2-info.js'
-import SetupFinish from './pages/setup-3-finish.js'
+import SetupNutrition from './pages/setup-3-nutrition.js'
+import SetupFitness from './pages/setup-4-fitness.js'
+import SetupFinish from './pages/setup-5-finish.js'
 
 import Progress from './pages/progress.js'
 import Exercises from './pages/exercises.js'
@@ -28,6 +30,8 @@ const routes = [
   { path: '*', redirect: '/progress' },
   { path: '/setup/welcome', component: SetupWelcome },
   { path: '/setup/info', component: SetupInfo },
+  { path: '/setup/nutrition', component: SetupNutrition },
+  { path: '/setup/fitness', component: SetupFitness },
   { path: '/setup/finish', component: SetupFinish },
   { path: '/progress', component: Progress },
   { path: '/progress/day', component: Day },
