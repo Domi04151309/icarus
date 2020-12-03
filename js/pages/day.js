@@ -1,8 +1,7 @@
 /*global Vue*/
 
 import Page from '../components/page.js'
-import ModalAddAmount from '../components/modal-add-amount.js'
-import ModalRemoveAmount from '../components/modal-remove-amount.js'
+import ModalInput from '../components/modal-input.js'
 
 export default {
   name: 'day',
@@ -112,31 +111,53 @@ export default {
       this.sleep = localStorage.getItem(this.dateId + '_sleep') | 0
     },
     addOne(storageKey) {
-      localStorage.setItem(this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) + 1)
+      localStorage.setItem(
+        this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) + 1
+      )
       this.updateProgress()
     },
     removeOne(storageKey) {
-      localStorage.setItem(this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) -1)
+      localStorage.setItem(
+        this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) - 1
+      )
       this.updateProgress()
     },
     addAmount(storageKey) {
-      var ComponentClass = Vue.extend(ModalAddAmount)
+      var sKey = this.dateId + storageKey
+      var ComponentClass = Vue.extend(ModalInput)
       var instance = new ComponentClass({
         propsData: {
-          sKey: this.dateId + storageKey,
-          context: this
+          title: 'Add Amount',
+          inputType: 'number',
+          initialValue: '1',
+          positiveText: 'Add',
+          positiveFunction: () => {
+            localStorage.setItem(
+              sKey, parseInt(localStorage.getItem(sKey) | 0, 10) + parseInt(instance.$refs.input.value, 10)
+            )
+            this.updateProgress()
+          }
         }
       })
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },
     removeAmount(storageKey) {
-      var ComponentClass = Vue.extend(ModalRemoveAmount)
+      var sKey = this.dateId + storageKey
+      var ComponentClass = Vue.extend(ModalInput)
       var instance = new ComponentClass({
         propsData: {
-          sKey: this.dateId + storageKey,
-          context: this
-      }
+          title: 'Remove Amount',
+          inputType: 'number',
+          initialValue: '1',
+          positiveText: 'Remove',
+          positiveFunction: () => {
+            localStorage.setItem(
+              sKey, parseInt(localStorage.getItem(sKey) | 0, 10) - parseInt(instance.$refs.input.value, 10)
+            )
+            this.updateProgress()
+          }
+        }
       })
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)

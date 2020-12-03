@@ -1,6 +1,8 @@
+/*global Vue*/
+
 import Page from '../components/page.js'
-import ModalEditData from '../components/modal-edit-data.js'
-import ModalDeleteData from '../components/modal-delete-data.js'
+import Modal from '../components/modal.js'
+import ModalInput from '../components/modal-input.js'
 
 export default {
   name: 'preferences',
@@ -22,20 +24,33 @@ export default {
   },
   methods: {
     edit(modalTitle, storageKey, storageType) {
-      var ComponentClass = Vue.extend(ModalEditData)
+      var ComponentClass = Vue.extend(ModalInput)
       var instance = new ComponentClass({
         propsData: {
           title: modalTitle,
-          sKey: storageKey,
-          sType: storageType
+          inputType: storageType,
+          initialValue: localStorage.getItem(storageKey),
+          positiveFunction: () => {
+            localStorage.setItem(storageKey, instance.$refs.input.value)
+          }
         }
       })
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },
     deleteData() {
-      var ComponentClass = Vue.extend(ModalDeleteData)
-      var instance = new ComponentClass()
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Delete Data',
+          message: 'Are you sure you want to delete your data? This cannot be undone.',
+          positiveText: 'Delete',
+          positiveFunction: () => {
+            localStorage.clear()
+            location.reload()
+          }
+        }
+      })
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     }
