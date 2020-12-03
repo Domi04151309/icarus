@@ -5,7 +5,7 @@ import ModalInput from '../components/modal-input.js'
 
 export default {
   name: 'day',
-  data: () => {
+  data() {
     return {
       dateId: '',
       readableDate: '',
@@ -112,13 +112,15 @@ export default {
     },
     addOne(storageKey) {
       localStorage.setItem(
-        this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) + 1
+        this.dateId + storageKey,
+        parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) + 1
       )
       this.updateProgress()
     },
     removeOne(storageKey) {
       localStorage.setItem(
-        this.dateId + storageKey, parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) - 1
+        this.dateId + storageKey,
+        parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) - 1
       )
       this.updateProgress()
     },
@@ -133,7 +135,8 @@ export default {
           positiveText: 'Add',
           positiveFunction: () => {
             localStorage.setItem(
-              sKey, parseInt(localStorage.getItem(sKey) | 0, 10) + parseInt(instance.$refs.input.value, 10)
+              sKey,
+              parseInt(localStorage.getItem(sKey) | 0, 10) + parseInt(instance.$refs.input.value, 10)
             )
             this.updateProgress()
           }
@@ -153,7 +156,8 @@ export default {
           positiveText: 'Remove',
           positiveFunction: () => {
             localStorage.setItem(
-              sKey, parseInt(localStorage.getItem(sKey) | 0, 10) - parseInt(instance.$refs.input.value, 10)
+              sKey,
+              parseInt(localStorage.getItem(sKey) | 0, 10) - parseInt(instance.$refs.input.value, 10)
             )
             this.updateProgress()
           }

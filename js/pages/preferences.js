@@ -6,7 +6,7 @@ import ModalInput from '../components/modal-input.js'
 
 export default {
   name: 'preferences',
-  data: () => {
+  data() {
     return {
       title: 'Preferences'
     }

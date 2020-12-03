@@ -1,5 +1,4 @@
 import PageNoAppBar from '../components/page-no-app-bar.js'
-import SimpleQuestion from '../components/simple-question.js'
 
 export default {
   name: 'setup-nutrition',
@@ -33,8 +32,7 @@ export default {
     </page-no-app-bar>\
   </div>',
   components: {
-      PageNoAppBar,
-      SimpleQuestion
+      PageNoAppBar
   },
   methods: {
     handleClick() {

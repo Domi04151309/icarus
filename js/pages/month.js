@@ -2,7 +2,7 @@ import Page from '../components/page.js'
 
 export default {
   name: 'about',
-  data: () => {
+  data() {
     return {
       title: 'This Month\'s Progress'
     }

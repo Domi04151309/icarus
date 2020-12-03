@@ -2,7 +2,7 @@ import Page from '../components/page.js'
 
 export default {
   name: 'week',
-  data: () => {
+  data() {
     return {
       title: 'This Week\'s Progress'
     }

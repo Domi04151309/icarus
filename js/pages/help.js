@@ -4,7 +4,7 @@ import Page from '../components/page.js'
 
 export default {
   name: 'help',
-  data: () => {
+  data() {
     return {
       title: 'Help'
     }

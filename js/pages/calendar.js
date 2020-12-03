@@ -2,7 +2,7 @@ import Page from '../components/page.js'
 
 export default {
   name: 'calendar',
-  data: () => {
+  data() {
     return {
       title: 'Calendar',
       month: 0,

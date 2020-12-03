@@ -190,6 +190,13 @@ button:hover {
 .button-bar button:active {
   background: var(--pressed-color);
 }
+.question button {
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-1x);
+}
+.question button.selected {
+  border: 2px solid var(--accent-color);
+}
 input[type=range] {
   box-shadow: none;
   -webkit-appearance: none;

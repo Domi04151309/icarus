@@ -3,7 +3,7 @@ import TabBar from './tab-bar.js'
 
 export default {
   name: 'page-tab-bar',
-  data: () => {
+  data() {
     return {
       title: 'Icarus',
       tabs: [

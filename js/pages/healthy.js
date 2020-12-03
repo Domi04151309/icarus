@@ -6,7 +6,7 @@ import FoodListItem from '../components/food-list-item.js'
 
 export default {
   name: 'healthy',
-  data: () => {
+  data() {
     return {
       title: 'The Healthy',
       progress: 66,
