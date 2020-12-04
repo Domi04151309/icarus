@@ -1,28 +1,28 @@
 /*global Vue, VueRouter*/
 
-import SetupWelcome from './pages/setup-1-welcome.js'
-import SetupInfo from './pages/setup-2-info.js'
-import SetupNutrition from './pages/setup-3-nutrition.js'
-import SetupFitness from './pages/setup-4-fitness.js'
-import SetupFinish from './pages/setup-5-finish.js'
+const SetupWelcome = () => import('./pages/setup-1-welcome.js')
+const SetupInfo = () => import('./pages/setup-2-info.js')
+const SetupNutrition = () => import('./pages/setup-3-nutrition.js')
+const SetupFitness = () => import('./pages/setup-4-fitness.js')
+const SetupFinish = () => import('./pages/setup-5-finish.js')
 
-import Progress from './pages/progress.js'
-import Exercises from './pages/exercises.js'
-import Experience from './pages/experience.js'
-import Account from './pages/account.js'
+const Progress = () => import('./pages/progress.js')
+const Exercises = () => import('./pages/exercises.js')
+const Experience = () => import('./pages/experience.js')
+const Account = () => import('./pages/account.js')
 
-import Day from './pages/day.js'
-import Week from './pages/week.js'
-import Month from './pages/month.js'
-import Calendar from './pages/calendar.js'
+const Day = () => import('./pages/day.js')
+const Week = () => import('./pages/week.js')
+const Month = () => import('./pages/month.js')
+const Calendar = () => import('./pages/calendar.js')
 
-import Healthy from './pages/healthy.js'
-import NotSoHealthy from './pages/not-so-healthy.js'
+const Healthy = () => import('./pages/healthy.js')
+const NotSoHealthy = () => import('./pages/not-so-healthy.js')
 
-import Preferences from './pages/preferences.js'
-import Data from './pages/data.js'
-import Help from './pages/help.js'
-import About from './pages/about.js'
+const Preferences = () => import('./pages/preferences.js')
+const Data = () => import('./pages/data.js')
+const Help = () => import('./pages/help.js')
+const About = () => import('./pages/about.js')
 
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
