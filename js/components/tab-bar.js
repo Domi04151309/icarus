@@ -1,6 +1,8 @@
 export default {
   name: 'tab-bar',
-  props: ['tabs'],
+  props: {
+    tabs: Array
+  },
   template:
   '<footer>\
     <router-link class="tab" v-for="tab in tabs" :key="tab.url" :to="tab.url">\

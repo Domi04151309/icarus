@@ -1,6 +1,9 @@
 export default {
   name: 'app-bar',
-  props: ['title', 'parent'],
+  props: {
+    title: String,
+    parent: String
+  },
   template:
   '<header>\
     <router-link :to="parent">\

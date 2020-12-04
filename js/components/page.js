@@ -2,7 +2,10 @@ import AppBar from './app-bar.js'
 
 export default {
   name: 'page',
-  props: ['title', 'parent'],
+  props: {
+    title: String,
+    parent: String
+  },
   template:
   '<div>\
     <app-bar :title="title" :parent="parent"></app-bar>\
