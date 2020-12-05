@@ -360,9 +360,9 @@ progress::-webkit-progress-value {
   position: fixed;
   bottom: 16px;
   right: 16px;
-  height: 48px;
-  width: 48px;
-  line-height: 48px;
+  height: 56px;
+  width: 56px;
+  line-height: 56px;
   text-align: center;
   border-radius: 50%;
   background: var(--accent-color);
