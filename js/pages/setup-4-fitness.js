@@ -1,7 +1,7 @@
 import PageNoAppBar from '../components/page-no-app-bar.js'
 
 export default {
-  name: 'setup-nutrition',
+  name: 'setup-fitness',
   template:
   '<div>\
     <div class="setup-image info"></div>\

@@ -22,8 +22,8 @@ export default {
       <h2>Healthy Food</h2>\
     </div>\
     <div class="grid-2 gap-16">\
-      <food-list-item v-for="item in items" :key="item" :title="item" icon="restaurant_menu"></food-list-item>\
-      <food-list-item title="Add Item" icon="add"></food-list-item>\
+      <food-list-item v-for="item in items" :key="item" :link="\'/experience/add-food?healthy=1&item=\' + item" :title="item" icon="restaurant_menu"></food-list-item>\
+      <food-list-item link="/experience/add-food?healthy=1" title="Add Item" icon="add"></food-list-item>\
     </div>\
     <h2 class="text-center">What You Could Eat</h2>\
     <div class="grid-3 gap-16">\

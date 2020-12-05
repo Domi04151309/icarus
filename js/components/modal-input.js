@@ -29,7 +29,7 @@ export default {
     <div class="modal-background" v-on:click="negative()"></div>\
     <div class="modal-content card">\
       <h2>{{ title }}</h2>\
-      <input ref="input" class="modal-input" :type="inputType" :value="initialValue"></input>\
+      <input ref="input" class="simple-input" :type="inputType" :value="initialValue"></input>\
       <div class="button-bar">\
         <button v-on:click="negative()" type="button">{{ negativeText }}</button>\
         <button v-on:click="positive()" type="button">{{ positiveText }}</button>\

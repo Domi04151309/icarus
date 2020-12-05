@@ -25,14 +25,24 @@ export default {
       :width="radius * 2"
      >
        <circle
-         stroke="var(--accent-color)"
+         stroke="var(--pressed-color)"
          :stroke-dasharray="circumference + ' ' + circumference"
-         :style="{ strokeDashoffset: strokeDashoffset }"
          :stroke-width="stroke"
          fill="transparent"
          :r="normalizedRadius"
          :cx="radius"
          :cy="radius"
+      />
+      <circle
+        stroke="var(--accent-color)"
+        :stroke-dasharray="circumference + ' ' + circumference"
+        :style="{ strokeDashoffset: strokeDashoffset }"
+        :stroke-width="stroke"
+        fill="transparent"
+        stroke-linecap="round"
+        :r="normalizedRadius"
+        :cx="radius"
+        :cy="radius"
       />
     </svg>
   `

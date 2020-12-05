@@ -19,6 +19,8 @@ const Calendar = () => import('./pages/calendar.js')
 const Healthy = () => import('./pages/healthy.js')
 const NotSoHealthy = () => import('./pages/not-so-healthy.js')
 
+const AddFood = () => import('./pages/add-food.js')
+
 const Preferences = () => import('./pages/preferences.js')
 const Data = () => import('./pages/data.js')
 const Help = () => import('./pages/help.js')
@@ -42,6 +44,7 @@ const routes = [
   { path: '/experience', component: Experience },
   { path: '/experience/healthy', component: Healthy },
   { path: '/experience/not-so-healthy', component: NotSoHealthy },
+  { path: '/experience/add-food', component: AddFood },
   { path: '/account', component: Account },
   { path: '/preferences', component: Preferences },
   { path: '/data', component: Data },
