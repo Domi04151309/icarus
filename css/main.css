@@ -368,6 +368,10 @@ progress::-webkit-progress-value {
   background: var(--accent-color);
   color: var(--text-color-dark);
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  cursor: pointer;
+}
+.fab:hover {
+  background: var(--accent-color-dark);
 }
 .grid-2, .grid-3, .grid-7 {
   display: grid;
