@@ -10,7 +10,7 @@ export default {
     }
   },
   computed: {
-    title: () => 'Select Food',
+    title: () => 'Add Food',
     parent: function () {
       if (this.$route.query.healthy == '1')
         return '/experience/healthy'
@@ -59,7 +59,7 @@ export default {
         <label for="fat">Fat</label>\
         <input id="fat" ref="fat" class="simple-input" type="number" value="0"></input>\
       </div>\
-      <button ref="edit" type="button" v-on:click="">Edit</button>\
+      <button ref="rename" type="button" v-on:click="">Rename</button>\
       <button ref="delete" type="button" v-on:click="">Delete</button>\
     </div>\
     <div ref="fab" class="material-icons-round fab hidden">done</div>\
@@ -69,7 +69,7 @@ export default {
       this.foodTitle = this.$route.query.item
       this.$refs.title.classList.add('hidden')
     } else {
-      this.$refs.edit.classList.add('hidden')
+      this.$refs.rename.classList.add('hidden')
       this.$refs.delete.classList.add('hidden')
     }
     setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
