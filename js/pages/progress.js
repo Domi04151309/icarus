@@ -8,7 +8,10 @@ export default {
   template:
   '<page-tab-bar>\
     <div class="card mb-16-p-16 intro">\
-      <p><span class="material-icons-round c-icon">waves</span>Welcome Back {{ name }}</p>\
+      <div class="flex center">\
+        <div class="material-icons-round c-icon">waves</div>\
+        <div>Welcome Back {{ name }}</div>\
+      </div>\
     </div>\
     <router-link to="/progress/day" class="card mb-16-p-16">\
       <h2>Today\'s Goal <span class="material-icons-round c-icon">chevron_right</span></h2>\

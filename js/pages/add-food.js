@@ -39,9 +39,9 @@ export default {
   },
   template:
   '<page :title="title" :parent="parent">\
-    <h2 class="mt-0">\
-      <span class="material-icons-round accent img">{{ icon }}</span>\
-      <span>{{ foodItem.title }}</span>\
+    <h2 class="flex center mt-0">\
+      <div class="material-icons-round accent img">{{ icon }}</div>\
+      <div>{{ foodItem.title }}</div>\
     </h2>\
     <p class="mb-16">\
       Below you can see the values of this item.\

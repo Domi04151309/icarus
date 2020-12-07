@@ -328,9 +328,6 @@ progress::-webkit-progress-value {
 .reverse {
   transform: rotate(180deg);
 }
-.flex.space {
-  justify-content: space-around;
-}
 .my-24 {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -390,6 +387,12 @@ progress::-webkit-progress-value {
 }
 .flex {
   display: flex;
+}
+.flex.space {
+  justify-content: space-around;
+}
+.flex.center {
+  align-items: center;
 }
 .hidden {
   display: none;
@@ -451,7 +454,6 @@ progress::-webkit-progress-value {
   margin-right: 16px;
   padding: 16px;
   border-radius: var(--border-radius-1x);
-  vertical-align: middle;
 }
 
 /* setup */
@@ -527,7 +529,7 @@ progress::-webkit-progress-value {
 .card.intro {
   background: var(--accent-color-gradient);
 }
-.card.intro > h2, .card.intro > p {
+.card.intro > * {
   margin: 1em 0;
   color: var(--text-color-dark);
 }
