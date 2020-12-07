@@ -30,7 +30,7 @@ export default {
   components: {
       PageTabBar
   },
-  mounted: function () {
+  mounted() {
     this.$refs.name.innerHTML = localStorage.getItem('info_name') || 'undefined'
     this.$refs.age.innerHTML = localStorage.getItem('info_age') || 'undefined'
     this.$refs.mq.innerHTML = localStorage.getItem('info_mq') || 'undefined'

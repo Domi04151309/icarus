@@ -10,8 +10,8 @@ export default {
     }
   },
   computed: {
-    months: () => { return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'Decemeber'] },
-    days: () => { return ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']}
+    months: () => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'Decemeber'],
+    days: () => ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']
   },
   template:
   '<page :title="title" parent="/progress" id="calendar">\
@@ -91,7 +91,7 @@ export default {
       }
     }
   },
-  mounted: function () {
+  mounted() {
     var date = new Date()
     this.year = date.getFullYear()
     this.month = date.getMonth()

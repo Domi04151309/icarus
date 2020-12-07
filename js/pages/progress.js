@@ -2,10 +2,8 @@ import PageTabBar from '../components/page-tab-bar.js'
 
 export default {
   name: 'progress_tab',
-  data () {
-    return {
-      name: ''
-    }
+  computed: {
+    name: () => localStorage.getItem('info_name')
   },
   template:
   '<page-tab-bar>\
@@ -35,8 +33,5 @@ export default {
   </page-tab-bar>',
   components: {
       PageTabBar
-  },
-  mounted () {
-    this.name = localStorage.getItem('info_name')
   }
 }

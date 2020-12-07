@@ -8,28 +8,20 @@ export default {
       value: undefined
     }
   },
+  watch: {
+    value: function () {
+      this.$refs.no.classList.remove('selected')
+      this.$refs.yes.classList.remove('selected')
+      if (this.value === true) this.$refs.yes.classList.add('selected')
+      else if (this.value === false) this.$refs.no.classList.add('selected')
+    }
+  },
   template:
   '<div>\
     <p>{{ question }}</p>\
     <div class="question button-bar">\
-      <button ref="no" type="button" v-on:click="onNoClick()">No</button>\
-      <button ref="yes" type="button" v-on:click="onYesClick()">Yes</button>\
+      <button ref="no" type="button" v-on:click="value = false">No</button>\
+      <button ref="yes" type="button" v-on:click="value = true">Yes</button>\
     </div>\
-  </div>',
-  methods: {
-    unselectButtons() {
-      this.$refs.no.classList.remove('selected')
-      this.$refs.yes.classList.remove('selected')
-    },
-    onNoClick() {
-      this.unselectButtons()
-      this.$refs.no.classList.add('selected')
-      this.value = false
-    },
-    onYesClick() {
-      this.unselectButtons()
-      this.$refs.yes.classList.add('selected')
-      this.value = true
-    }
-  }
+  </div>'
 }

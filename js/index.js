@@ -57,7 +57,7 @@ const router = new VueRouter({ routes })
 new Vue({
   router,
   el: '#app',
-  mounted: function () {
+  mounted() {
     const loadingScreen = document.getElementById('loading_screen')
     var headers, modal, i
 

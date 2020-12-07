@@ -22,7 +22,7 @@ export default {
   components: {
       Page
   },
-  mounted: function () {
+  mounted() {
     var array = []
     var keys = Object.keys(localStorage)
 

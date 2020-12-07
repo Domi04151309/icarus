@@ -22,5 +22,9 @@ export default {
       localStorage.setItem('info_age', this.$refs.age.value)
       this.$router.push('/setup/nutrition')
     }
+  },
+  mounted() {
+    this.$refs.name.value = localStorage.getItem('info_name')
+    this.$refs.age.value = localStorage.getItem('info_age')
   }
 }

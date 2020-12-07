@@ -1,6 +1,8 @@
 import PageNoAppBar from '../components/page-no-app-bar.js'
 import SimpleQuestion from '../components/simple-question.js'
 
+import Boolean from '../helpers/boolean.js'
+
 export default {
   name: 'setup-nutrition',
   template:
@@ -31,5 +33,12 @@ export default {
       localStorage.setItem('info_vegan',this.$refs.vegan.value)
       this.$router.push('/setup/fitness')
     }
+  },
+  mounted() {
+    this.$refs.fat_loss.value = parseInt(localStorage.getItem('info_fat_loss'), 10) || 50
+    this.$refs.less_sweets.value = Boolean.stringToBoolean(localStorage.getItem('info_less_sweets'))
+    this.$refs.more_water.value = Boolean.stringToBoolean(localStorage.getItem('info_more_water'))
+    this.$refs.vegetarian.value = Boolean.stringToBoolean(localStorage.getItem('info_vegetarian'))
+    this.$refs.vegan.value = Boolean.stringToBoolean(localStorage.getItem('info_vegan'))
   }
 }

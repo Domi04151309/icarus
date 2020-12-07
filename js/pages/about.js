@@ -26,7 +26,7 @@ export default {
       this.version = (await window.caches.keys())[0]
     }
   },
-  mounted: function () {
+  mounted() {
     this.getVersion()
   }
 }

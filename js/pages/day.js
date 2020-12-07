@@ -102,25 +102,25 @@ export default {
   },
   methods: {
     updateProgress() {
-      this.water = localStorage.getItem(this.dateId + '_water') | 0
-      this.calories = localStorage.getItem(this.dateId + '_calories') | 0
-      this.carbs = localStorage.getItem(this.dateId + '_carbs') | 0
-      this.proteins = localStorage.getItem(this.dateId + '_proteins') | 0
-      this.fat = localStorage.getItem(this.dateId + '_fat') | 0
-      this.exercises = localStorage.getItem(this.dateId + '_exercises') | 0
-      this.sleep = localStorage.getItem(this.dateId + '_sleep') | 0
+      this.water = localStorage.getItem(this.dateId + '_water') || 0
+      this.calories = localStorage.getItem(this.dateId + '_calories') || 0
+      this.carbs = localStorage.getItem(this.dateId + '_carbs') || 0
+      this.proteins = localStorage.getItem(this.dateId + '_proteins') || 0
+      this.fat = localStorage.getItem(this.dateId + '_fat') || 0
+      this.exercises = localStorage.getItem(this.dateId + '_exercises') || 0
+      this.sleep = localStorage.getItem(this.dateId + '_sleep') || 0
     },
     addOne(storageKey) {
       localStorage.setItem(
         this.dateId + storageKey,
-        parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) + 1
+        (parseInt(localStorage.getItem(this.dateId + storageKey), 10) || 0) + 1
       )
       this.updateProgress()
     },
     removeOne(storageKey) {
       localStorage.setItem(
         this.dateId + storageKey,
-        parseInt(localStorage.getItem(this.dateId + storageKey) | 0, 10) - 1
+        (parseInt(localStorage.getItem(this.dateId + storageKey), 10) || 0) - 1
       )
       this.updateProgress()
     },
@@ -136,7 +136,7 @@ export default {
           positiveFunction: () => {
             localStorage.setItem(
               sKey,
-              parseInt(localStorage.getItem(sKey) | 0, 10) + parseInt(instance.$refs.input.value, 10)
+              (parseInt(localStorage.getItem(sKey), 10) || 0) + instance.$refs.input.value
             )
             this.updateProgress()
           }
@@ -157,7 +157,7 @@ export default {
           positiveFunction: () => {
             localStorage.setItem(
               sKey,
-              parseInt(localStorage.getItem(sKey) | 0, 10) - parseInt(instance.$refs.input.value, 10)
+              (parseInt(localStorage.getItem(sKey), 10) || 0) - instance.$refs.input.value
             )
             this.updateProgress()
           }
@@ -167,7 +167,7 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     }
   },
-  mounted: function () {
+  mounted() {
     var dateString = this.$route.query.date
     if (dateString == null) {
       var today = new Date()

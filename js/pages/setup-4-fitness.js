@@ -48,5 +48,17 @@ export default {
       localStorage.setItem('info_legs', this.$refs.legs.value)
       this.$router.push('/setup/finish')
     }
+  },
+  mounted() {
+    this.$refs.muscle_gain.value = parseInt(localStorage.getItem('info_muscle_gain'), 10) || 50
+    this.$refs.cardio.value = parseInt(localStorage.getItem('info_cardio'), 10) || 50
+    this.$refs.endurance.value = parseInt(localStorage.getItem('info_endurance'), 10) || 50
+    this.$refs.arms.value = parseInt(localStorage.getItem('info_arms'), 10) || 50
+    this.$refs.shoulders.value = parseInt(localStorage.getItem('info_shoulders'), 10) || 50
+    this.$refs.back.value = parseInt(localStorage.getItem('info_back'), 10) || 50
+    this.$refs.chest.value = parseInt(localStorage.getItem('info_chest'), 10) || 50
+    this.$refs.abs.value = parseInt(localStorage.getItem('info_abs'), 10) || 50
+    this.$refs.booty.value = parseInt(localStorage.getItem('info_booty'), 10) || 50
+    this.$refs.legs.value = parseInt(localStorage.getItem('info_legs'), 10) || 50
   }
 }

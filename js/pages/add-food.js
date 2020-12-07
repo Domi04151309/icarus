@@ -128,7 +128,7 @@ export default {
       this.$router.push(this.parent)
     }
   },
-  mounted: function () {
+  mounted() {
     if (this.$route.query.item != undefined) {
       if (this.healthy)
         this.foodItem = FoodHelper.getHealthyFood()[this.$route.query.item]
