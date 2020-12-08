@@ -33,12 +33,10 @@ export default {
   template:
   '<div>\
     <app-bar-no-parent :title="title"></app-bar-no-parent>\
-    <main class="with app-bar tab-bar">\
-      <transition name="fade-in">\
-        <div>\
-          <slot></slot>\
-        </div>\
-      </transition>\
+    <main class="with app-bar tab-bar fade-in-animation">\
+      <div>\
+        <slot></slot>\
+      </div>\
     </main>\
     <tab-bar :tabs="tabs"></tab-bar>\
   </div>',

@@ -150,7 +150,6 @@ main {
   max-width: 720px;
   padding: 16px;
   margin: 0 auto;
-  animation: fadeIn .5s;
 }
 .with.app-bar {
   margin-top: 56px;
@@ -218,11 +217,16 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 /* animation */
-.fade-in-enter-active {
+.zoom-animation {
+  animation: zoom .3s;
+}
+.fade-in-animation {
   animation: fadeIn .5s;
 }
-.fade-in-leave-active {
-  display: none;
+@keyframes zoom {
+  0% {
+    transform: scale3d(.95, .95, .95);
+  }
 }
 @keyframes fadeIn {
   0%{
