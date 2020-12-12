@@ -9,7 +9,7 @@ export default {
   template:
   '<div>\
     <app-bar :title="title" :parent="parent"></app-bar>\
-    <main class="with app-bar zoom-animation">\
+    <main class="with app-bar zoom-in-animation">\
       <div>\
         <slot></slot>\
       </div>\
