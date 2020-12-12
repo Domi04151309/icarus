@@ -138,7 +138,7 @@ export default {
           positiveFunction: () => {
             localStorage.setItem(
               sKey,
-              (parseInt(localStorage.getItem(sKey), 10) || 0) + instance.$refs.input.value
+              (parseInt(localStorage.getItem(sKey), 10) || 0) + parseInt(instance.$refs.input.value, 10)
             )
             this.updateProgress()
           }
@@ -159,7 +159,7 @@ export default {
           positiveFunction: () => {
             localStorage.setItem(
               sKey,
-              (parseInt(localStorage.getItem(sKey), 10) || 0) - instance.$refs.input.value
+              (parseInt(localStorage.getItem(sKey), 10) || 0) - parseInt(instance.$refs.input.value, 10)
             )
             this.updateProgress()
           }
