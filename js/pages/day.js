@@ -23,7 +23,7 @@ export default {
     }
   },
   computed: {
-    title: function () {
+    title() {
       if (this.readableDate == 't')
         return 'Today\'s Progress'
       else

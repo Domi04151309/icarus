@@ -9,7 +9,7 @@ export default {
     }
   },
   watch: {
-    value: function () {
+    value() {
       this.$refs.no.classList.remove('selected')
       this.$refs.yes.classList.remove('selected')
       if (this.value === true) this.$refs.yes.classList.add('selected')

@@ -16,8 +16,7 @@ const Week = () => import('./pages/week.js')
 const Month = () => import('./pages/month.js')
 const Calendar = () => import('./pages/calendar.js')
 
-const Healthy = () => import('./pages/healthy.js')
-const NotSoHealthy = () => import('./pages/not-so-healthy.js')
+const Food = () => import('./pages/food.js')
 
 const AddFood = () => import('./pages/add-food.js')
 
@@ -42,8 +41,8 @@ const routes = [
   { path: '/progress/calendar', component: Calendar },
   { path: '/exercises', component: Exercises },
   { path: '/experience', component: Experience },
-  { path: '/experience/healthy', component: Healthy },
-  { path: '/experience/not-so-healthy', component: NotSoHealthy },
+  { path: '/experience/healthy', component: Food, props: { healthy: true } },
+  { path: '/experience/not-so-healthy', component: Food, props: { healthy: false } },
   { path: '/experience/add-food', component: AddFood },
   { path: '/account', component: Account },
   { path: '/preferences', component: Preferences },
