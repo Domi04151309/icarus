@@ -10,7 +10,7 @@ export default {
   },
   template:
   '<page :title="title" parent="/account" class="text-center">\
-    <img src="./pwa/mipmap-hdpi/ic_launcher.png" alt="Icon">\
+    <img src="./images/about/logo.svg" alt="Icon">\
     <h2>Icarus</h2>\
     <p>{{ version }}</p>\
     <p>\
