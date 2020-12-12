@@ -5,11 +5,12 @@ import Modal from '../components/modal.js'
 import ModalInput from '../components/modal-input.js'
 
 import FoodHelper from '../helpers/food.js'
+import Identifiers from '../helpers/identifiers.js'
 
-//TODO: Save items
+//TODO: Dynamic suggestions
 
 export default {
-  name: 'select-food',
+  name: 'add-food',
   data() {
     return {
       foodItem: {
@@ -82,7 +83,15 @@ export default {
           inputType: 'text',
           initialValue: this.foodItem.title,
           positiveFunction: () => {
-            this.foodItem.title = instance.$refs.input.value
+            var foodArray = []
+            if (this.healthy) foodArray = FoodHelper.getHealthyFood()
+            else foodArray = FoodHelper.getNotSoHealthyFood()
+            if (this.$route.query.item != undefined) {
+              this.foodItem.title = instance.$refs.input.value
+              foodArray[this.$route.query.item].title = instance.$refs.input.value
+              if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
+              else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+            }
           }
         }
       })
@@ -116,14 +125,34 @@ export default {
       var foodArray = []
       if (this.healthy) foodArray = FoodHelper.getHealthyFood()
       else foodArray = FoodHelper.getNotSoHealthyFood()
-      if (this.$route.query.item != undefined) {
-        foodArray[this.$route.query.item] = this.foodItem
-        if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
-        else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
-      } else {
+      if (this.$route.query.item == undefined) {
         foodArray.push(this.foodItem)
         if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
         else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+      } else {
+        foodArray[this.$route.query.item] = this.foodItem
+        if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
+        else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+
+        var dateId = Identifiers.getDateId()
+        localStorage.setItem(
+          dateId + '_calories',
+          (parseInt(localStorage.getItem(dateId + '_calories'), 10) || 0) + this.foodItem.calories
+        )
+        localStorage.setItem(
+          dateId + '_carbs',
+          (parseInt(localStorage.getItem(dateId + '_carbs'), 10) || 0) + this.foodItem.carbs
+        )
+        localStorage.setItem(
+          dateId + '_proteins',
+          (parseInt(localStorage.getItem(dateId + '_proteins'), 10) || 0) + this.foodItem.proteins
+        )
+        localStorage.setItem(
+          dateId + '_fat',
+          (parseInt(localStorage.getItem(dateId + '_fat'), 10) || 0) + this.foodItem.fat
+        )
+        if (this.healthy) FoodHelper.addOneHealthyFoodToStatistics()
+        else FoodHelper.addOneNotSoHealthyFoodToStatistics()
       }
       this.$router.push(this.parent)
     }

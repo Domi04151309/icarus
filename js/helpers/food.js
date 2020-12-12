@@ -1,5 +1,5 @@
 export default {
-  healthy: [
+  defaultHealthyFood: [
     {
       title: 'Apple',
       calories: 50,
@@ -22,7 +22,7 @@ export default {
       fat: 50
     }
   ],
-  notSoHealthy: [
+  defaultNotSoHealthyFood: [
     {
       title: 'Hamburger',
       calories: 50,
@@ -53,7 +53,7 @@ export default {
       console.warn(e)
       array = undefined
     }
-    return array || this.healthy
+    return array || this.defaultHealthyFood
   },
   getNotSoHealthyFood() {
     var array = []
@@ -63,6 +63,40 @@ export default {
       console.warn(e)
       array = undefined
     }
-    return array || this.notSoHealthy
+    return array || this.defaultNotSoHealthyFood
+  },
+  defaultFoodStatistics: {
+    healthy: 0,
+    notSoHealthy: 0
+  },
+  getFoodStatistics() {
+    var object = {}
+    try {
+      object = JSON.parse(localStorage.getItem('food-statistics'))
+    } catch (e) {
+      console.warn(e)
+      object = this.defaultFoodStatistics
+    }
+    return object || this.defaultFoodStatistics
+  },
+  addOneHealthyFoodToStatistics() {
+    var object = {}
+    try {
+      object = this.getFoodStatistics()
+      object.healthy += 1
+      localStorage.setItem('food-statistics', JSON.stringify(object))
+    } catch (e) {
+      console.warn(e)
+    }
+  },
+  addOneNotSoHealthyFoodToStatistics() {
+    var object = {}
+    try {
+      object = this.getFoodStatistics()
+      object.notSoHealthy += 1
+      localStorage.setItem('food-statistics', JSON.stringify(object))
+    } catch (e) {
+      console.warn(e)
+    }
   }
 }

@@ -3,6 +3,8 @@
 import Page from '../components/page.js'
 import ModalInput from '../components/modal-input.js'
 
+import Identifiers from '../helpers/identifiers.js'
+
 export default {
   name: 'day',
   data() {
@@ -170,8 +172,7 @@ export default {
   mounted() {
     var dateString = this.$route.query.date
     if (dateString == null) {
-      var today = new Date()
-      this.dateId = today.getFullYear() + String(today.getMonth() + 1).padStart(2, '0') + String(today.getDate()).padStart(2, '0')
+      this.dateId = Identifiers.getDateId()
       this.readableDate = 't'
     } else {
       this.dateId = dateString

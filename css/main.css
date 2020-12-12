@@ -218,7 +218,7 @@ input[type=range]::-webkit-slider-thumb {
 
 /* animation */
 .zoom-in-animation {
-  animation: zoomIn .3s;
+  animation: zoomIn .5s;
 }
 .fade-in-animation {
   animation: fadeIn .5s;
@@ -228,7 +228,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 @keyframes zoomIn {
   0% {
-    transform: scale3d(.95, .95, .95);
+    transform: scale3d(.98, .98, .98);
   }
 }
 @keyframes fadeIn {

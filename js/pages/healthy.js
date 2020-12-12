@@ -11,13 +11,16 @@ export default {
   data() {
     return {
       title: 'The Healthy',
-      progress: 66,
       generalSuggestions: ['Breakfast', 'Lunch', 'Dinner'],
       suggestions: ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
     }
   },
   computed: {
-    items: () => FoodHelper.getHealthyFood()
+    items: () => FoodHelper.getHealthyFood(),
+    progress: () => {
+      var statistics = FoodHelper.getFoodStatistics()
+      return (statistics.healthy * 100) / (statistics.healthy + statistics.notSoHealthy)
+    }
   },
   template:
   '<page :title="title" parent="/experience">\
