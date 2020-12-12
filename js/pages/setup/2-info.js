@@ -1,4 +1,4 @@
-import PageNoAppBar from '../components/page-no-app-bar.js'
+import PageNoAppBar from '../../components/page-no-app-bar.js'
 
 export default {
   name: 'setup-info',

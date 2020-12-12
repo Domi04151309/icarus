@@ -1,15 +1,15 @@
 /*global Vue, VueRouter*/
 
-const SetupWelcome = () => import('./pages/setup-1-welcome.js')
-const SetupInfo = () => import('./pages/setup-2-info.js')
-const SetupNutrition = () => import('./pages/setup-3-nutrition.js')
-const SetupFitness = () => import('./pages/setup-4-fitness.js')
-const SetupFinish = () => import('./pages/setup-5-finish.js')
+const SetupWelcome = () => import('./pages/setup/1-welcome.js')
+const SetupInfo = () => import('./pages/setup/2-info.js')
+const SetupNutrition = () => import('./pages/setup/3-nutrition.js')
+const SetupFitness = () => import('./pages/setup/4-fitness.js')
+const SetupFinish = () => import('./pages/setup/5-finish.js')
 
-const Progress = () => import('./pages/progress.js')
-const Exercises = () => import('./pages/exercises.js')
-const Experience = () => import('./pages/experience.js')
-const Account = () => import('./pages/account.js')
+const Progress = () => import('./pages/main/progress.js')
+const Exercises = () => import('./pages/main/exercises.js')
+const Experience = () => import('./pages/main/experience.js')
+const Account = () => import('./pages/main/account.js')
 
 const Day = () => import('./pages/day.js')
 const Week = () => import('./pages/week.js')

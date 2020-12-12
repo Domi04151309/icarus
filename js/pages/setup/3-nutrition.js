@@ -1,7 +1,7 @@
-import PageNoAppBar from '../components/page-no-app-bar.js'
-import SimpleQuestion from '../components/simple-question.js'
+import PageNoAppBar from '../../components/page-no-app-bar.js'
+import SimpleQuestion from '../../components/simple-question.js'
 
-import Boolean from '../helpers/boolean.js'
+import Boolean from '../../helpers/boolean.js'
 
 export default {
   name: 'setup-nutrition',

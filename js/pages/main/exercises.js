@@ -1,4 +1,4 @@
-import PageTabBar from '../components/page-tab-bar.js'
+import PageTabBar from '../../components/page-tab-bar.js'
 
 //TODO: Add content
 

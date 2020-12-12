@@ -1,7 +1,7 @@
-import PageTabBar from '../components/page-tab-bar.js'
+import PageTabBar from '../../components/page-tab-bar.js'
 
-import Identifiers from '../helpers/identifiers.js'
-import ProgressHelper from '../helpers/progress.js'
+import Identifiers from '../../helpers/identifiers.js'
+import ProgressHelper from '../../helpers/progress.js'
 
 export default {
   name: 'progress_tab',
