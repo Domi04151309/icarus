@@ -46,20 +46,53 @@ const routes = [
   { path: '/experience/healthy/add-food', component: AddFood, props: { healthy: true } },
   { path: '/experience/not-so-healthy/add-food', component: AddFood, props: { healthy: false } },
   { path: '/account', component: Account },
-  { path: '/preferences', component: Preferences },
-  { path: '/data', component: Data },
-  { path: '/help', component: Help },
-  { path: '/about', component: About }
+  { path: '/account/preferences', component: Preferences },
+  { path: '/account/data', component: Data },
+  { path: '/account/help', component: Help },
+  { path: '/account/about', component: About }
 ]
 
+var modal
 const router = new VueRouter({ routes })
+
+window.backButtonPress = false
+window.addEventListener('popstate', () => {
+  window.backButtonPress = true
+})
+
+router.beforeEach((to, from, next) => {
+  modal = document.querySelector('.modal-container')
+  if (modal != null) {
+    modal.parentNode.removeChild(modal)
+    next(false)
+  }
+  else {
+    if (window.backButtonPress) {
+      window.backButtonPress = false
+      if (
+        from.path == '/progress'
+        || from.path == '/exercises'
+        || from.path == '/experience'
+        || from.path == '/account'
+      ) next(false)
+      else if (
+        from.path.includes('progress')
+        || from.path.includes('exercises')
+        || from.path.includes('experience')
+        || from.path.includes('account')
+      ) next(from.path.substring(0, from.path.lastIndexOf('/')))
+      else next()
+    }
+    else next()
+  }
+})
 
 new Vue({
   router,
   el: '#app',
   mounted() {
     const loadingScreen = document.getElementById('loading_screen')
-    var headers, modal, i
+    var headers, i
 
     loadingScreen.parentNode.removeChild(loadingScreen)
 
@@ -72,11 +105,6 @@ new Vue({
       for (i = 0; i < headers.length; i++) {
         headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
       }
-    })
-
-    window.addEventListener('hashchange', () => {
-      modal = document.querySelector('.modal-container')
-      if (modal != null) modal.parentNode.removeChild(modal)
     })
   }
 })

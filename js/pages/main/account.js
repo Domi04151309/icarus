@@ -21,10 +21,10 @@ export default {
       </ul>\
     </div>\
     <ul class="link-list card">\
-      <li><router-link to="/preferences"><span class="material-icons-round">settings</span>Preferences</router-link></li>\
-      <li><router-link to="/data"><span class="material-icons-round">data_usage</span>Your Data</router-link></li>\
-      <li><router-link to="/help"><span class="material-icons-round">help</span>Help</router-link></li>\
-      <li><router-link to="/about"><span class="material-icons-round">info</span>About</router-link></li>\
+      <li><router-link to="/account/preferences"><span class="material-icons-round">settings</span>Preferences</router-link></li>\
+      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Your Data</router-link></li>\
+      <li><router-link to="/account/help"><span class="material-icons-round">help</span>Help</router-link></li>\
+      <li><router-link to="/account/about"><span class="material-icons-round">info</span>About</router-link></li>\
     </ul>\
   </page-tab-bar>',
   components: {

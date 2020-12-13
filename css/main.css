@@ -99,8 +99,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 html, body {
-  scroll-padding-top: 112px;
-  scroll-behavior: smooth;
   font: 16px arial, sans-serif;
   color: var(--text-color);
   line-height: 1.5;
