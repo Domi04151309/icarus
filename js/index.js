@@ -66,25 +66,23 @@ router.beforeEach((to, from, next) => {
     modal.parentNode.removeChild(modal)
     next(false)
   }
-  else {
-    if (window.backButtonPress) {
-      window.backButtonPress = false
-      if (
-        from.path == '/progress'
-        || from.path == '/exercises'
-        || from.path == '/experience'
-        || from.path == '/account'
-      ) next(false)
-      else if (
-        from.path.includes('progress')
-        || from.path.includes('exercises')
-        || from.path.includes('experience')
-        || from.path.includes('account')
-      ) next(from.path.substring(0, from.path.lastIndexOf('/')))
-      else next()
-    }
+  else if (window.backButtonPress) {
+    window.backButtonPress = false
+    if (
+      from.path == '/progress'
+      || from.path == '/exercises'
+      || from.path == '/experience'
+      || from.path == '/account'
+    ) next(false)
+    else if (
+      from.path.includes('progress')
+      || from.path.includes('exercises')
+      || from.path.includes('experience')
+      || from.path.includes('account')
+    ) next(from.path.substring(0, from.path.lastIndexOf('/')))
     else next()
   }
+  else next()
 })
 
 new Vue({
