@@ -14,7 +14,7 @@ export default {
   computed: {
     writtenType() {
       if (this.healthy) return 'healthy'
-      else return 'not_so_healthy'
+      else return 'not-so-healthy'
     },
     title() {
       if (this.healthy) return 'The Healthy'
@@ -49,8 +49,8 @@ export default {
       <h2>{{ secondaryTitle }}</h2>\
     </div>\
     <div class="grid-2 gap-16">\
-      <food-list-item v-for="(item, index) in items" :key="index" :link="\'/experience/add-food?\' + writtenType + \'=1&item=\' + index" :title="item.title" :icon="icon"></food-list-item>\
-      <food-list-item :link="\'/experience/add-food?\' + writtenType + \'=1\'" title="Add Item" icon="add"></food-list-item>\
+      <food-list-item v-for="(item, index) in items" :key="index" :link="\'/experience/\' + writtenType + \'/add-food?item=\' + index" :title="item.title" :icon="icon"></food-list-item>\
+      <food-list-item :link="\'/experience/\' + writtenType + \'/add-food\'" title="Add Item" icon="add"></food-list-item>\
     </div>\
     <h2 class="text-center">What You Could Eat</h2>\
     <div class="grid-3 gap-16">\

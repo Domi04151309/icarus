@@ -11,6 +11,9 @@ import Identifiers from '../helpers/identifiers.js'
 
 export default {
   name: 'add-food',
+  props: {
+    healthy: Boolean
+  },
   data() {
     return {
       foodItem: {
@@ -24,11 +27,6 @@ export default {
   },
   computed: {
     title: () => 'Add Food',
-    healthy() {
-      if (this.$route.query.healthy == '1') return true
-      else if (this.$route.query.not_so_healthy == '1') return false
-      else return true
-    },
     parent() {
       if (this.healthy) return '/experience/healthy'
       else return '/experience/not-so-healthy'
