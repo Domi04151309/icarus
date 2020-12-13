@@ -94,9 +94,11 @@ new Vue({
 
     loadingScreen.parentNode.removeChild(loadingScreen)
 
-    if (!localStorage.getItem('setup_complete') && !this.$route.fullPath.includes('setup') && !navigator.userAgent.includes('Chrome-Lighthouse')) {
-      this.$router.push('/setup/welcome')
-    }
+    if (
+      !localStorage.getItem('setup_complete')
+      && !this.$route.path.includes('setup')
+      && !navigator.userAgent.includes('Chrome-Lighthouse')
+    ) this.$router.push('/setup/welcome')
 
     document.addEventListener('scroll', () => {
       headers = document.getElementsByTagName('HEADER')
