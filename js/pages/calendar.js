@@ -34,6 +34,10 @@ export default {
       </h3>\
     </div>\
     <div id="picker-container" class="card mb-16-p-16 text-center"></div>\
+    <div class="card mb-16-p-16">\
+      <button class="w-100" type="button">Whole Month</button>\
+      <div id="weeks" class="flex space"></div>\
+    </div>\
   </page>',
   components: {
       Page
@@ -43,10 +47,12 @@ export default {
       this.$router.push('/progress/day?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
     },
     getDays() {
-      var pickerContainer, dayHeader, dayNode, weekNode, i, j
+      var pickerContainer, weekContainer, dayHeader, dayNode, weekNode, weekButton, i, j
 
       pickerContainer = document.getElementById('picker-container')
       pickerContainer.innerHTML = ''
+      weekContainer = document.getElementById('weeks')
+      weekContainer.innerHTML = ''
       document.getElementById('month-title').innerHTML = this.months[this.month]
       document.getElementById('year').innerHTML = this.year
 
@@ -88,6 +94,12 @@ export default {
             dayNode = document.createElement('div')
             weekNode.appendChild(dayNode)
             offset--
+          }
+          if (j == 0) {
+            weekButton = document.createElement('button')
+            weekButton.type = 'button'
+            weekButton.appendChild(document.createTextNode(i + 1))
+            weekContainer.append(weekButton)
           }
         }
       }

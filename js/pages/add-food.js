@@ -7,8 +7,6 @@ import ModalInput from '../components/modal-input.js'
 import FoodHelper from '../helpers/food.js'
 import Identifiers from '../helpers/identifiers.js'
 
-//TODO: Dynamic suggestions
-
 export default {
   name: 'add-food',
   props: {

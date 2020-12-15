@@ -1,22 +1,30 @@
 import Page from '../components/page.js'
 
+import Identifiers from '../helpers/identifiers.js'
+import ProgressHelper from '../helpers/progress.js'
+
+//TODO: Dynamically generate content
+
 export default {
   name: 'about',
   data() {
     return {
-      title: 'This Month\'s Progress'
+      title: 'This Month\'s Progress',
+      dateId: '',
+      total: 0,
     }
   },
   template:
   '<page :title="title" parent="/progress">\
     <div class="card mb-16-p-16">\
       <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>\
-      <progress max="100" value="65"></progress>\
+      <progress max="100" :value="total"></progress>\
       <p>This is your general progress for this month. It combines your progress of the sections below.</p>\
     </div>\
     <div class="card mb-16-p-16">\
       <h2>Weekly View <span class="material-icons-round c-icon">pending_actions</span></h2>\
       <div class="flex vertical-container">\
+        <progress class="vertical" max="100" value="33"></progress>\
         <progress class="vertical" max="100" value="33"></progress>\
         <progress class="vertical" max="100" value="33"></progress>\
         <progress class="vertical" max="100" value="33"></progress>\
@@ -27,6 +35,7 @@ export default {
         <p>2</p>\
         <p>3</p>\
         <p>4</p>\
+        <p>5</p>\
       </div>\
     </div>\
     <div class="card mb-16-p-16">\
@@ -52,5 +61,14 @@ export default {
   </page>',
   components: {
       Page
+  },
+  mounted() {
+    var dateString = this.$route.query.date
+    if (dateString == null) {
+      this.dateId = Identifiers.getDateId()
+    } else {
+      this.dateId = dateString
+    }
+    this.total = ProgressHelper.calculateWeekProgress(this.dateId) * 100
   }
 }
