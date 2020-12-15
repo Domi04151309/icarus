@@ -7,7 +7,7 @@ export default {
     <div class="setup-image info"></div>\
     <page-no-app-bar class="setup-text">\
       <h1>Personal Data</h1>\
-      <p>Please enter your data so that we can generate a plan that fits you the best.</p>\
+      <p class="mb-32">Please tell us a little bit about yourself.</p>\
       <input ref="name" class="mb-16" type="text" placeholder="Name" autocomplete="off">\
       <input ref="age" class="mb-16" type="number" placeholder="Age" autocomplete="off">\
       <button type="button" v-on:click="handleClick()">Continue</button>\

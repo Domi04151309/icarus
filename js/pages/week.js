@@ -26,12 +26,12 @@ export default {
           <progress class="vertical" max="100" value="33"></progress>\
         </div>\
         <div class="flex space">\
+          <p>S</p>\
           <p>M</p>\
           <p>T</p>\
           <p>W</p>\
           <p>T</p>\
           <p>F</p>\
-          <p>S</p>\
           <p>S</p>\
         </div>\
       </div>\

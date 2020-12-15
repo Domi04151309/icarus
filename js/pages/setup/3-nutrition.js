@@ -10,7 +10,7 @@ export default {
     <div class="setup-image info"></div>\
     <page-no-app-bar class="setup-text">\
       <h1>Nutrition</h1>\
-      <p>Please enter your data so that we can generate a plan that fits you the best.</p>\
+      <p class="mb-32">Please answer the questions below so that we know your goals.</p>\
       <label for="fat_loss">Fat loss</label>\
       <input id="fat_loss" ref="fat_loss" class="mb-16" type="range" max="100">\
       <simple-question ref="less_sweets" question="Do you want to eat less sweets?" class="mb-16"></simple-question>\

@@ -7,7 +7,10 @@ export default {
     <div class="setup-image info"></div>\
     <page-no-app-bar class="setup-text">\
       <h1>Fitness Goals</h1>\
-      <p>Please enter your data so that we can generate a plan that fits you the best.</p>\
+      <p class="mb-32">\
+        Below you can set the importance of some factors.\
+        Leave this as-is if you want a balanced workout.\
+      </p>\
       <label for="muscle_gain">Muscle gain</label>\
       <input id="muscle_gain" ref="muscle_gain" class="mb-16" type="range" max="100">\
       <label for="cardio">Cardio</label>\
