@@ -69,6 +69,6 @@ export default {
     } else {
       this.dateId = dateString
     }
-    this.total = ProgressHelper.calculateWeekProgress(this.dateId) * 100
+    this.total = ProgressHelper.calculateMonthProgress(this.dateId) * 100
   }
 }
