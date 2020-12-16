@@ -1,15 +1,24 @@
 import PageTabBar from '../../components/page-tab-bar.js'
 
 import Identifiers from '../../helpers/identifiers.js'
-import ProgressHelper from '../../helpers/progress.js'
+import { DayHelper, WeekHelper, MonthHelper } from '../../helpers/progress.js'
 
 export default {
   name: 'progress_tab',
   computed: {
     name: () => localStorage.getItem('info_name'),
-    dayProgress: () => ProgressHelper.calculateDayProgress(Identifiers.getDateId()) * 100,
-    weekProgress: () => ProgressHelper.calculateWeekProgress(Identifiers.getDateId()) * 100,
-    monthProgress: () => ProgressHelper.calculateMonthProgress(Identifiers.getDateId()) * 100
+    dayProgress: () => {
+      var helper = new DayHelper(Identifiers.getDateId())
+      return helper.getProgress() * 100
+    },
+    weekProgress: () => {
+      var helper = new WeekHelper(Identifiers.getDateId())
+      return helper.getProgress() * 100
+    },
+    monthProgress: () => {
+      var helper = new MonthHelper(Identifiers.getDateId())
+      return helper.getProgress() * 100
+    }
   },
   template:
   '<page-tab-bar>\

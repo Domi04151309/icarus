@@ -1,7 +1,7 @@
 import Page from '../components/page.js'
 
 import Identifiers from '../helpers/identifiers.js'
-import ProgressHelper from '../helpers/progress.js'
+import { MonthHelper } from '../helpers/progress.js'
 
 //TODO: Dynamically generate content
 
@@ -69,6 +69,8 @@ export default {
     } else {
       this.dateId = dateString
     }
-    this.total = ProgressHelper.calculateMonthProgress(this.dateId) * 100
+
+    var monthHelper = new MonthHelper(this.dateId)
+    this.total = monthHelper.getProgress() * 100
   }
 }

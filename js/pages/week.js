@@ -1,7 +1,7 @@
 import Page from '../components/page.js'
 
 import Identifiers from '../helpers/identifiers.js'
-import ProgressHelper from '../helpers/progress.js'
+import { DayHelper, WeekHelper } from '../helpers/progress.js'
 
 export default {
   name: 'week',
@@ -80,27 +80,30 @@ export default {
     } else {
       this.dateId = dateString
     }
-    this.total = ProgressHelper.calculateWeekProgress(this.dateId) * 100
 
-    var date = Identifiers.dateIdToDate(this.dateId)
-    date.setDate((date.getDate() - date.getDay()))
-    for (var i = 0; i < 7; i++) {
-      this.week[i] = ProgressHelper.calculateDayProgress(Identifiers.getDateId(date)) * 100
-      date.setDate(date.getDate() + 1)
-    }
+    var weekHelper = new WeekHelper(this.dateId)
+    this.total = weekHelper.getProgress() * 100
 
-    this.water = ProgressHelper.calculateWeekWaterProgress(this.dateId) * 100
-    this.food = ProgressHelper.calculateWeekFoodProgress(this.dateId) * 100
-    this.exercises = ProgressHelper.calculateWeekExercisesProgress(this.dateId) * 100
-    this.sleep = ProgressHelper.calculateWeekSleepProgress(this.dateId) * 100
+    var dayHelper = null
+    var i = 0
+    weekHelper.forDayInWeek(date => {
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      this.week[i] = dayHelper.getProgress() * 100
+      i++
+    })
+
+    this.water = weekHelper.getWaterProgress() * 100
+    this.food = weekHelper.getFoodProgress() * 100
+    this.exercises = weekHelper.getExercisesProgress() * 100
+    this.sleep = weekHelper.getSleepProgress() * 100
 
     var lastWeek = Identifiers.dateIdToDate(this.dateId)
     lastWeek.setDate(lastWeek.getDate() - 7)
-    lastWeek = Identifiers.getDateId(lastWeek)
+    weekHelper = new WeekHelper(Identifiers.getDateId(lastWeek))
 
-    this.lastWater = ProgressHelper.calculateWeekWaterProgress(lastWeek) * 100
-    this.lastFood = ProgressHelper.calculateWeekFoodProgress(lastWeek) * 100
-    this.lastExercises = ProgressHelper.calculateWeekExercisesProgress(lastWeek) * 100
-    this.lastSleep = ProgressHelper.calculateWeekSleepProgress(lastWeek) * 100
+    this.lastWater = weekHelper.getWaterProgress() * 100
+    this.lastFood = weekHelper.getFoodProgress() * 100
+    this.lastExercises = weekHelper.getExercisesProgress() * 100
+    this.lastSleep = weekHelper.getSleepProgress() * 100
   }
 }
