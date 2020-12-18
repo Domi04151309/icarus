@@ -12,6 +12,14 @@ export default {
       title: 'This Month\'s Progress',
       dateId: '',
       total: 0,
+      water: 0,
+      food: 0,
+      exercises: 0,
+      sleep: 0,
+      lastWater: 0,
+      lastFood: 0,
+      lastExercises: 0,
+      lastSleep: 0
     }
   },
   template:
@@ -44,18 +52,18 @@ export default {
         <p class="progress-text mt-8 mb-16">Last Month</p>
         <span></span>
         <p class="progress-text mt-8 mb-16">This Month</p>
-        <progress class="reverse mb-16" max="100" value="33"></progress>
+        <progress class="reverse mb-16" max="100" :value="lastWater"></progress>
         <p class="progress-text">Water</p>
-        <progress class="mb-16" max="100" value="33"></progress>
-        <progress class="reverse mb-16 indigo" max="100" value="33"></progress>
+        <progress class="mb-16" max="100" :value="water"></progress>
+        <progress class="reverse mb-16 indigo" max="100" :value="lastFood"></progress>
         <p class="progress-text">Food</p>
-        <progress class="mb-16 indigo" max="100" value="33"></progress>
-        <progress class="reverse mb-16 red" max="100" value="33"></progress>
+        <progress class="mb-16 indigo" max="100" :value="food"></progress>
+        <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
         <p class="progress-text">Exercices</p>
-        <progress class="mb-16 red" max="100" value="33"></progress>
-        <progress class="reverse mb-16 deep-orange" max="100" value="33"></progress>
+        <progress class="mb-16 red" max="100" :value="exercises"></progress>
+        <progress class="reverse mb-16 deep-orange" max="100" :value="lastSleep"></progress>
         <p class="progress-text">Sleep</p>
-        <progress class="mb-16 deep-orange" max="100" value="33"></progress>
+        <progress class="mb-16 deep-orange" max="100" :value="sleep"></progress>
       </div>
     </div>
   </page>`,
@@ -72,5 +80,19 @@ export default {
 
     var monthHelper = new MonthHelper(this.dateId)
     this.total = monthHelper.getProgress() * 100
+
+    this.water = monthHelper.getWaterProgress() * 100
+    this.food = monthHelper.getFoodProgress() * 100
+    this.exercises = monthHelper.getExercisesProgress() * 100
+    this.sleep = monthHelper.getSleepProgress() * 100
+
+    var lastMonth = Identifiers.dateIdToDate(this.dateId)
+    lastMonth.setTime(lastMonth.getTime() - (28 * 24 * 3600000))
+    monthHelper = new MonthHelper(Identifiers.getDateId(lastMonth))
+
+    this.lastWater = monthHelper.getWaterProgress() * 100
+    this.lastFood = monthHelper.getFoodProgress() * 100
+    this.lastExercises = monthHelper.getExercisesProgress() * 100
+    this.lastSleep = monthHelper.getSleepProgress() * 100
   }
 }

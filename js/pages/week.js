@@ -98,7 +98,7 @@ export default {
     this.sleep = weekHelper.getSleepProgress() * 100
 
     var lastWeek = Identifiers.dateIdToDate(this.dateId)
-    lastWeek.setDate(lastWeek.getDate() - 7)
+    lastWeek.setTime(lastWeek.getTime() - (7 * 24 * 3600000))
     weekHelper = new WeekHelper(Identifiers.getDateId(lastWeek))
 
     this.lastWater = weekHelper.getWaterProgress() * 100
