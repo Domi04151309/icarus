@@ -43,24 +43,24 @@ export default {
     suggestions: () => ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
   },
   template:
-  '<page :title="title" parent="/experience">\
-    <div class="text-center">\
-      <progress-ring radius="64" :progress="progress" stroke="8"></progress-ring>\
-      <h2>{{ secondaryTitle }}</h2>\
-    </div>\
-    <div class="grid-2 gap-16">\
-      <food-list-item v-for="(item, index) in items" :key="index" :link="\'/experience/\' + writtenType + \'/add-food?item=\' + index" :title="item.title" :icon="icon"></food-list-item>\
-      <food-list-item :link="\'/experience/\' + writtenType + \'/add-food\'" title="Add Item" icon="add"></food-list-item>\
-    </div>\
-    <h2 class="text-center">What You Could Eat</h2>\
-    <div class="grid-3 gap-16">\
-      <food-list-item v-for="item in generalSuggestions" :key="item" :title="item" :icon="icon"></food-list-item>\
-    </div>\
-    <h2 class="text-center">Our Suggestions</h2>\
-    <div class="grid-2 gap-16">\
-      <food-list-item v-for="item in suggestions" :key="item" :title="item" :icon="icon"></food-list-item>\
-    </div>\
-  </page>',
+  `<page :title="title" parent="/experience">
+    <div class="text-center">
+      <progress-ring radius="64" :progress="progress" stroke="8"></progress-ring>
+      <h2>{{ secondaryTitle }}</h2>
+    </div>
+    <div class="grid-2 gap-16">
+      <food-list-item v-for="(item, index) in items" :key="index" :link="'/experience/' + writtenType + '/add-food?item=' + index" :title="item.title" :icon="icon"></food-list-item>
+      <food-list-item :link="'/experience/' + writtenType + '/add-food'" title="Add Item" icon="add"></food-list-item>
+    </div>
+    <h2 class="text-center">What You Could Eat</h2>
+    <div class="grid-3 gap-16">
+      <food-list-item v-for="item in generalSuggestions" :key="item" :title="item" :icon="icon"></food-list-item>
+    </div>
+    <h2 class="text-center">Our Suggestions</h2>
+    <div class="grid-2 gap-16">
+      <food-list-item v-for="item in suggestions" :key="item" :title="item" :icon="icon"></food-list-item>
+    </div>
+  </page>`,
   components: {
       Page,
       ProgressRing,

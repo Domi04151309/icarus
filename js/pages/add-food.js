@@ -35,41 +35,41 @@ export default {
     }
   },
   template:
-  '<page :title="title" :parent="parent">\
-    <h2 class="flex center mt-0">\
-      <div class="material-icons-round accent img">{{ icon }}</div>\
-      <div>{{ foodItem.title }}</div>\
-    </h2>\
-    <p class="mb-16">\
-      Below you can see the values of this item.\
-      Use the button in the bottom right corner to complete the action.\
-    </p>\
-    <div ref="title">\
-      <label for="foodTitle">Title</label>\
-      <input id="foodTitle" v-model="foodItem.title" class="simple-input mb-16" type="text" autocomplete="off"></input>\
-    </div>\
-    <div class="grid-2 gap-16 mb-16">\
-      <div>\
-        <label for="calories">Calories</label>\
-        <input id="calories" v-model="foodItem.calories" class="simple-input" type="number" value="0"></input>\
-      </div>\
-      <div>\
-        <label for="carbs">Carbs</label>\
-        <input id="carbs" v-model="foodItem.carbs" class="simple-input" type="number" value="0"></input>\
-      </div>\
-      <div class="mb-16">\
-        <label for="proteins">Proteins</label>\
-        <input id="proteins" v-model="foodItem.proteins" class="simple-input" type="number" value="0"></input>\
-      </div>\
-      <div class="mb-16">\
-        <label for="fat">Fat</label>\
-        <input id="fat" v-model="foodItem.fat" class="simple-input" type="number" value="0"></input>\
-      </div>\
-      <button ref="rename" type="button" v-on:click="onRenameClicked()">Rename</button>\
-      <button ref="delete" type="button" v-on:click="onDeleteClicked()">Delete</button>\
-    </div>\
-    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>\
-  </page>',
+  `<page :title="title" :parent="parent">
+    <h2 class="flex center mt-0">
+      <div class="material-icons-round accent img">{{ icon }}</div>
+      <div>{{ foodItem.title }}</div>
+    </h2>
+    <p class="mb-16">
+      Below you can see the values of this item.
+      Use the button in the bottom right corner to complete the action.
+    </p>
+    <div ref="title">
+      <label for="foodTitle">Title</label>
+      <input id="foodTitle" v-model="foodItem.title" class="simple-input mb-16" type="text" autocomplete="off"></input>
+    </div>
+    <div class="grid-2 gap-16 mb-16">
+      <div>
+        <label for="calories">Calories</label>
+        <input id="calories" v-model="foodItem.calories" class="simple-input" type="number" value="0"></input>
+      </div>
+      <div>
+        <label for="carbs">Carbs</label>
+        <input id="carbs" v-model="foodItem.carbs" class="simple-input" type="number" value="0"></input>
+      </div>
+      <div class="mb-16">
+        <label for="proteins">Proteins</label>
+        <input id="proteins" v-model="foodItem.proteins" class="simple-input" type="number" value="0"></input>
+      </div>
+      <div class="mb-16">
+        <label for="fat">Fat</label>
+        <input id="fat" v-model="foodItem.fat" class="simple-input" type="number" value="0"></input>
+      </div>
+      <button ref="rename" type="button" v-on:click="onRenameClicked()">Rename</button>
+      <button ref="delete" type="button" v-on:click="onDeleteClicked()">Delete</button>
+    </div>
+    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
+  </page>`,
   methods: {
     onRenameClicked() {
       var ComponentClass = Vue.extend(ModalInput)

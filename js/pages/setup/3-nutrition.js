@@ -6,20 +6,20 @@ import Boolean from '../../helpers/boolean.js'
 export default {
   name: 'setup-nutrition',
   template:
-  '<div>\
-    <div class="setup-image info"></div>\
-    <page-no-app-bar class="setup-text">\
-      <h1>Nutrition</h1>\
-      <p class="mb-32">Please answer the questions below so that we know your goals.</p>\
-      <label for="fat_loss">Fat loss</label>\
-      <input id="fat_loss" ref="fat_loss" class="mb-16" type="range" max="100">\
-      <simple-question ref="less_sweets" question="Do you want to eat less sweets?" class="mb-16"></simple-question>\
-      <simple-question ref="more_water" question="Do you want to drink more water?" class="mb-16"></simple-question>\
-      <simple-question ref="vegetarian" question="Are you vegetarian?" class="mb-16"></simple-question>\
-      <simple-question ref="vegan" question="Are you vegan?" class="mb-16"></simple-question>\
-      <button type="button" v-on:click="handleClick()">Continue</button>\
-    </page-no-app-bar>\
-  </div>',
+  `<div>
+    <div class="setup-image info"></div>
+    <page-no-app-bar class="setup-text">
+      <h1>Nutrition</h1>
+      <p class="mb-32">Please answer the questions below so that we know your goals.</p>
+      <label for="fat_loss">Fat loss</label>
+      <input id="fat_loss" ref="fat_loss" class="mb-16" type="range" max="100">
+      <simple-question ref="less_sweets" question="Do you want to eat less sweets?" class="mb-16"></simple-question>
+      <simple-question ref="more_water" question="Do you want to drink more water?" class="mb-16"></simple-question>
+      <simple-question ref="vegetarian" question="Are you vegetarian?" class="mb-16"></simple-question>
+      <simple-question ref="vegan" question="Are you vegan?" class="mb-16"></simple-question>
+      <button type="button" v-on:click="handleClick()">Continue</button>
+    </page-no-app-bar>
+  </div>`,
   components: {
       PageNoAppBar,
       SimpleQuestion

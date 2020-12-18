@@ -17,11 +17,11 @@ export default {
     }
   },
   template:
-  '<div>\
-    <p>{{ question }}</p>\
-    <div class="question button-bar">\
-      <button ref="no" type="button" v-on:click="value = false">No</button>\
-      <button ref="yes" type="button" v-on:click="value = true">Yes</button>\
-    </div>\
-  </div>'
+  `<div>
+    <p>{{ question }}</p>
+    <div class="question button-bar">
+      <button ref="no" type="button" v-on:click="value = false">No</button>
+      <button ref="yes" type="button" v-on:click="value = true">Yes</button>
+    </div>
+  </div>`
 }

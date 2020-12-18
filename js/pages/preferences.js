@@ -12,13 +12,13 @@ export default {
     }
   },
   template:
-  '<page :title="title" parent="/account">\
-    <ul class="link-list ignore-page-padding">\
-      <li v-on:click="edit(\'Change Name\', \'info_name\', \'text\')"><span><span class="material-icons-round">edit</span>Change name</span></li>\
-      <li v-on:click="edit(\'Change Age\', \'info_age\', \'number\')"><span><span class="material-icons-round">edit</span>Change age</span></li>\
-      <li v-on:click="deleteData()"><span><span class="material-icons-round">delete</span>Delete data</span></li>\
-    </ul>\
-  </page>',
+  `<page :title="title" parent="/account">
+    <ul class="link-list ignore-page-padding">
+      <li v-on:click="edit('Change Name', 'info_name', 'text')"><span><span class="material-icons-round">edit</span>Change name</span></li>
+      <li v-on:click="edit('Change Age', 'info_age', 'number')"><span><span class="material-icons-round">edit</span>Change age</span></li>
+      <li v-on:click="deleteData()"><span><span class="material-icons-round">delete</span>Delete data</span></li>
+    </ul>
+  </page>`,
   components: {
       Page
   },

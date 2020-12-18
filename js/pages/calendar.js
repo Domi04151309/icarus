@@ -16,29 +16,29 @@ export default {
     days: () => ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']
   },
   template:
-  '<page :title="title" parent="/progress" id="calendar">\
-    <div class="card mb-16-p-16">\
-      <h2>\
-        <span id="month-title"></span>\
-        <div class="controls">\
-          <button type="button" id="prev-month">Previous</button>\
-          <button type="button" id="next-month">Next</button>\
-        </div>\
-      </h2>\
-      <h3>\
-        <span id="year"></span>\
-        <div class="controls">\
-          <button type="button" id="prev-y">Previous</button>\
-          <button type="button" id="next-y">Next</button>\
-        </div>\
-      </h3>\
-    </div>\
-    <div id="picker-container" class="card mb-16-p-16 text-center"></div>\
-    <div class="card mb-16-p-16">\
-      <button class="w-100" type="button">Whole Month</button>\
-      <div id="weeks" class="flex space"></div>\
-    </div>\
-  </page>',
+  `<page :title="title" parent="/progress" id="calendar">
+    <div class="card mb-16-p-16">
+      <h2>
+        <span id="month-title"></span>
+        <div class="controls">
+          <button type="button" id="prev-month">Previous</button>
+          <button type="button" id="next-month">Next</button>
+        </div>
+      </h2>
+      <h3>
+        <span id="year"></span>
+        <div class="controls">
+          <button type="button" id="prev-y">Previous</button>
+          <button type="button" id="next-y">Next</button>
+        </div>
+      </h3>
+    </div>
+    <div id="picker-container" class="card mb-16-p-16 text-center"></div>
+    <div class="card mb-16-p-16">
+      <button class="w-100" type="button">Whole Month</button>
+      <div id="weeks" class="flex space"></div>
+    </div>
+  </page>`,
   components: {
       Page
   },
