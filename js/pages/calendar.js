@@ -35,7 +35,7 @@ export default {
     </div>
     <div id="picker-container" class="card mb-16-p-16 text-center"></div>
     <div class="card mb-16-p-16">
-      <button class="w-100" type="button">Whole Month</button>
+      <button class="w-100" type="button" v-on:click="openMonth()">Whole Month</button>
       <div id="weeks" class="flex space"></div>
     </div>
   </page>`,
@@ -43,8 +43,14 @@ export default {
       Page
   },
   methods: {
-    openSelected(day) {
+    openDay(day) {
       this.$router.push('/progress/day?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
+    },
+    openWeek(day) {
+      this.$router.push('/progress/week?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
+    },
+    openMonth() {
+      this.$router.push('/progress/month?date=' + this.year + String(this.month + 1).padStart(2, '0') + '01')
     },
     getDays() {
       var pickerContainer, weekContainer, dayHeader, dayNode, weekNode, weekButton, i, j
@@ -79,8 +85,8 @@ export default {
             if (dayCount > lastDay.getDate()) break
             dayNode = document.createElement('button')
             dayNode.type = 'button'
-            dayNode.addEventListener('click', (event) => {
-              this.openSelected(event.target.innerHTML)
+            dayNode.addEventListener('click', event => {
+              this.openDay(event.target.innerHTML)
             })
             dayNode.appendChild(document.createTextNode(dayCount))
             if (
@@ -98,6 +104,10 @@ export default {
           if (j == 0) {
             weekButton = document.createElement('button')
             weekButton.type = 'button'
+            weekButton.dataset.day = dayCount
+            weekButton.addEventListener('click', event => {
+              this.openWeek(event.target.dataset.day)
+            })
             weekButton.appendChild(document.createTextNode(i + 1))
             weekContainer.append(weekButton)
           }

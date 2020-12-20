@@ -3,14 +3,12 @@ import Page from '../components/page.js'
 import Identifiers from '../helpers/identifiers.js'
 import { WeekHelper, MonthHelper } from '../helpers/progress.js'
 
-//TODO: Dynamically generate content
-
 export default {
   name: 'about',
   data() {
     return {
-      title: 'This Month\'s Progress',
       dateId: '',
+      readableDate: '',
       total: 0,
       month: [],
       water: 0,
@@ -23,12 +21,20 @@ export default {
       lastSleep: 0
     }
   },
+  computed: {
+    title() {
+      if (this.readableDate == 'this month')
+        return 'This Month\'s Progress'
+      else
+        return 'Progress of ' + this.readableDate
+    }
+  },
   template:
   `<page :title="title" parent="/progress">
     <div class="card mb-16-p-16">
       <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
       <progress max="100" :value="total"></progress>
-      <p>This is your general progress for this month. It combines your progress of the sections below.</p>
+      <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>
     </div>
     <div class="card mb-16-p-16">
       <h2>Weekly View <span class="material-icons-round c-icon">pending_actions</span></h2>
@@ -67,8 +73,10 @@ export default {
     var dateString = this.$route.query.date
     if (dateString == null) {
       this.dateId = Identifiers.getDateId()
+      this.readableDate = 'this month'
     } else {
       this.dateId = dateString
+      this.readableDate = dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
     var monthHelper = new MonthHelper(this.dateId)
