@@ -31,13 +31,7 @@ export default {
       <div class="card mb-16-p-16">
         <h2>Daily View <span class="material-icons-round c-icon">pending_actions</span></h2>
         <div class="flex vertical-container">
-          <progress class="vertical" max="100" :value="week[0]"></progress>
-          <progress class="vertical" max="100" :value="week[1]"></progress>
-          <progress class="vertical" max="100" :value="week[2]"></progress>
-          <progress class="vertical" max="100" :value="week[3]"></progress>
-          <progress class="vertical" max="100" :value="week[4]"></progress>
-          <progress class="vertical" max="100" :value="week[5]"></progress>
-          <progress class="vertical" max="100" :value="week[6]"></progress>
+          <progress v-for="(item, index) in week" :key="index" class="vertical" max="100" :value="item"></progress>
         </div>
         <div class="flex space">
           <p>S</p>

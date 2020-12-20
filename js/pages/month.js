@@ -1,7 +1,7 @@
 import Page from '../components/page.js'
 
 import Identifiers from '../helpers/identifiers.js'
-import { MonthHelper } from '../helpers/progress.js'
+import { WeekHelper, MonthHelper } from '../helpers/progress.js'
 
 //TODO: Dynamically generate content
 
@@ -12,6 +12,7 @@ export default {
       title: 'This Month\'s Progress',
       dateId: '',
       total: 0,
+      month: [],
       water: 0,
       food: 0,
       exercises: 0,
@@ -32,18 +33,10 @@ export default {
     <div class="card mb-16-p-16">
       <h2>Weekly View <span class="material-icons-round c-icon">pending_actions</span></h2>
       <div class="flex vertical-container">
-        <progress class="vertical" max="100" value="33"></progress>
-        <progress class="vertical" max="100" value="33"></progress>
-        <progress class="vertical" max="100" value="33"></progress>
-        <progress class="vertical" max="100" value="33"></progress>
-        <progress class="vertical" max="100" value="33"></progress>
+        <progress v-for="(item, index) in month" :key="index" class="vertical" max="100" :value="item"></progress>
       </div>
       <div class="flex space">
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
+        <p v-for="(item, index) in month" :key="index">{{ index + 1 }}</p>
       </div>
     </div>
     <div class="card mb-16-p-16">
@@ -81,13 +74,28 @@ export default {
     var monthHelper = new MonthHelper(this.dateId)
     this.total = monthHelper.getProgress() * 100
 
+    var weekHelper = null
+    var i = 7
+    monthHelper.forDayInMonth(date => {
+      if (i == 7) {
+        weekHelper = new WeekHelper(Identifiers.getDateId(date))
+        this.month.push(weekHelper.getProgress() * 100)
+        i = 0
+      }
+      i++
+    })
+
     this.water = monthHelper.getWaterProgress() * 100
     this.food = monthHelper.getFoodProgress() * 100
     this.exercises = monthHelper.getExercisesProgress() * 100
     this.sleep = monthHelper.getSleepProgress() * 100
 
     var lastMonth = Identifiers.dateIdToDate(this.dateId)
-    lastMonth.setTime(lastMonth.getTime() - (28 * 24 * 3600000))
+    if (lastMonth.getMonth() == 0) {
+      lastMonth.setYear(lastMonth.getYear() - 1)
+      lastMonth.setMonth(11)
+    }
+    else lastMonth.setMonth(lastMonth.getMonth() - 1)
     monthHelper = new MonthHelper(Identifiers.getDateId(lastMonth))
 
     this.lastWater = monthHelper.getWaterProgress() * 100
