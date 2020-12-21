@@ -1,16 +1,21 @@
 import PageTabBar from '../../components/page-tab-bar.js'
+import ExerciseItem from '../../components/exercise-item.js'
 
-//TODO: Add content
+//TODO: Add functionality
 
 export default {
   name: 'exercises',
   template:
   `<page-tab-bar>
-    <div class="card mb-16-p-16 intro text-center">
-      <h2>Coming soon...</h2>
+    <div class="grid-2 gap-16">
+      <exercise-item link="" title="Exercise 1" image="./images/exercises/cycling.jpg"></exercise-item>
+      <exercise-item link="" title="Exercise 2" image="./images/setup/welcome.jpg"></exercise-item>
+      <exercise-item link="" title="Exercise 3" image="./images/setup/info.jpg"></exercise-item>
+      <exercise-item link="" title="Exercise 4" image="./images/setup/finish.jpg"></exercise-item>
     </div>
   </page-tab-bar>`,
   components: {
-      PageTabBar
+      PageTabBar,
+      ExerciseItem
   }
 }

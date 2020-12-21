@@ -13,5 +13,6 @@ A simple fitness web app.
 - https://unsplash.com/photos/F1oeYBKJsdw
 - https://unsplash.com/photos/duvq92-VCZ4
 - https://unsplash.com/photos/pHANr-CpbYM
+- https://unsplash.com/photos/VfUN94cUy4o
 
 Copyright 2020 Domi04151309 & Nils Döhring
