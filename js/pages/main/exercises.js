@@ -8,10 +8,10 @@ export default {
   template:
   `<page-tab-bar>
     <div class="grid-2 gap-16">
-      <exercise-item link="" title="Exercise 1" image="./images/exercises/cycling.jpg"></exercise-item>
-      <exercise-item link="" title="Exercise 2" image="./images/setup/welcome.jpg"></exercise-item>
-      <exercise-item link="" title="Exercise 3" image="./images/setup/info.jpg"></exercise-item>
-      <exercise-item link="" title="Exercise 4" image="./images/setup/finish.jpg"></exercise-item>
+      <exercise-item link="/exercises/new-exercise" title="Exercise 1" image="./images/exercises/cycling.jpg"></exercise-item>
+      <exercise-item link="/exercises/new-exercise" title="Exercise 2" image="./images/setup/welcome.jpg"></exercise-item>
+      <exercise-item link="/exercises/new-exercise" title="Exercise 3" image="./images/setup/info.jpg"></exercise-item>
+      <exercise-item link="/exercises/new-exercise" title="Exercise 4" image="./images/setup/finish.jpg"></exercise-item>
     </div>
   </page-tab-bar>`,
   components: {
