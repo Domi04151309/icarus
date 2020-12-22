@@ -454,26 +454,6 @@ progress::-webkit-progress-value {
 .text-center {
   text-align: center;
 }
-div.large-app-bar {
-  background: #000;
-}
-h2.large-app-bar {
-  position: relative;
-  margin: 0;
-  padding: 128px 16px;
-  background: url('../images/exercises/cycling.jpg') center/cover no-repeat, linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
-  text-shadow: 0 0 6px rgba(0,0,0,.5);
-  color: var(--text-color-dark);
-  text-align: center;
-  z-index: 0;
-}
-main.large-app-bar {
-  position: relative;
-  margin-top: -32px;
-  border-radius: var(--border-radius-4x);
-  background: #fff;
-  z-index: 1;
-}
 .ignore-page-padding {
   margin: -16px;
 }
@@ -616,6 +596,44 @@ main.large-app-bar {
 #calendar .today {
   background: var(--accent-color-alpha);
   color: var(--accent-color);
+}
+
+/* exercises */
+div.large-app-bar {
+  background: #000;
+}
+h2.large-app-bar {
+  position: relative;
+  margin: 0;
+  padding: 128px 16px;
+  background: url('../images/exercises/cycling.jpg') center/cover no-repeat, linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
+  text-shadow: 0 0 6px rgba(0,0,0,.5);
+  color: var(--text-color-dark);
+  text-align: center;
+  z-index: 0;
+}
+main.large-app-bar {
+  position: relative;
+  margin-top: -32px;
+  border-radius: var(--border-radius-4x);
+  background: #fff;
+  z-index: 1;
+}
+@media (min-width: 720px) {
+  div.large-app-bar {
+    background: #fff;
+  }
+  h2.large-app-bar {
+    border-radius: var(--border-radius-2x);
+    margin: 16px auto;
+    max-width: 684px;
+  }
+  main.large-app-bar {
+    margin-top: 0px;
+  }
+  .nav-icon.transparent {
+    color: var(--secondary-text-color);
+  }
 }
 
 /* account */
