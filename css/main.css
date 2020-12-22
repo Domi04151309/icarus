@@ -110,7 +110,6 @@ header, footer {
   position: fixed;
   height: 56px;
   width: 100%;
-  background: #fff;
   overflow: hidden;
   text-align: center;
   z-index: 50;
@@ -126,6 +125,10 @@ footer {
 }
 .header-shadow, footer {
   box-shadow: 0 0 6px rgba(0,0,0,.5);
+  background: #fff;
+}
+.header-shadow .nav-icon.transparent {
+  color: var(--secondary-text-color)
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
@@ -273,6 +276,9 @@ input[type=range]::-webkit-slider-thumb {
   float: left;
   margin: 4px;
   color: var(--secondary-text-color);
+}
+.nav-icon.transparent {
+  color: var(--text-color-dark)
 }
 .with-nav-icon {
   padding-right: 56px;
@@ -447,6 +453,26 @@ progress::-webkit-progress-value {
 }
 .text-center {
   text-align: center;
+}
+div.large-app-bar {
+  background: #000;
+}
+h2.large-app-bar {
+  position: relative;
+  margin: 0;
+  padding: 128px 16px;
+  background: url('../images/exercises/cycling.jpg') center/cover no-repeat, linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
+  text-shadow: 0 0 6px rgba(0,0,0,.5);
+  color: var(--text-color-dark);
+  text-align: center;
+  z-index: 0;
+}
+main.large-app-bar {
+  position: relative;
+  margin-top: -32px;
+  border-radius: var(--border-radius-4x);
+  background: #fff;
+  z-index: 1;
 }
 .ignore-page-padding {
   margin: -16px;

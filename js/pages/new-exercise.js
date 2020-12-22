@@ -1,14 +1,13 @@
-import Page from '../components/page.js'
+import Page from '../components/page-large-app-bar.js'
 import ProgressRing from '../components/progress-ring.js'
 
 export default {
   name: 'new-exercise',
   computed: {
-    title: () => 'Exercise'
+    title: () => 'New Exercise'
   },
   template:
   `<page :title="title" parent="/exercises">
-    <h2 class="text-center mb-32">Exercise Title</h2>
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <p>
