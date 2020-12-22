@@ -615,7 +615,7 @@ h2.large-app-bar {
 main.large-app-bar {
   position: relative;
   margin-top: -32px;
-  border-radius: var(--border-radius-4x);
+  border-radius: var(--border-radius-4x) var(--border-radius-4x) 0 0;
   background: #fff;
   z-index: 1;
 }
