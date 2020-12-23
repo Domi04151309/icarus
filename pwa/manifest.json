@@ -38,11 +38,11 @@ layout: null
     }
   ],
   "start_url": "{{ site.baseurl }}/",
-  "background_color": "#fff",
+  "background_color": "#000",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "{{ site.baseurl }}/",
-  "theme_color": "#fff",
+  "theme_color": "#000",
   "shortcuts": [
     {
       "name": "Progress",

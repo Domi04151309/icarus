@@ -8,8 +8,8 @@ export default {
     <page-no-app-bar class="setup-text">
       <h1>Personal Data</h1>
       <p class="mb-32">Please tell us a little bit about yourself.</p>
-      <input ref="name" class="mb-16" type="text" placeholder="Name" autocomplete="off">
-      <input ref="age" class="mb-16" type="number" placeholder="Age" autocomplete="off">
+      <input ref="name" class="setup-input mb-16" type="text" placeholder="Name" autocomplete="off">
+      <input ref="age" class="setup-input mb-16" type="number" placeholder="Age" autocomplete="off">
       <button type="button" v-on:click="handleClick()">Continue</button>
     </page-no-app-bar>
   </div>`,

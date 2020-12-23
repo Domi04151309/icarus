@@ -46,24 +46,24 @@ export default {
     </p>
     <div ref="title">
       <label for="foodTitle">Title</label>
-      <input id="foodTitle" v-model="foodItem.title" class="simple-input mb-16" type="text" autocomplete="off"></input>
+      <input id="foodTitle" v-model="foodItem.title" class="mb-16" type="text" autocomplete="off"></input>
     </div>
     <div class="grid-2 gap-16 mb-16">
       <div>
         <label for="calories">Calories</label>
-        <input id="calories" v-model="foodItem.calories" class="simple-input" type="number" value="0"></input>
+        <input id="calories" v-model="foodItem.calories" type="number" value="0"></input>
       </div>
       <div>
         <label for="carbs">Carbs</label>
-        <input id="carbs" v-model="foodItem.carbs" class="simple-input" type="number" value="0"></input>
+        <input id="carbs" v-model="foodItem.carbs" type="number" value="0"></input>
       </div>
       <div class="mb-16">
         <label for="proteins">Proteins</label>
-        <input id="proteins" v-model="foodItem.proteins" class="simple-input" type="number" value="0"></input>
+        <input id="proteins" v-model="foodItem.proteins" type="number" value="0"></input>
       </div>
       <div class="mb-16">
         <label for="fat">Fat</label>
-        <input id="fat" v-model="foodItem.fat" class="simple-input" type="number" value="0"></input>
+        <input id="fat" v-model="foodItem.fat" type="number" value="0"></input>
       </div>
       <button ref="rename" type="button" v-on:click="onRenameClicked()">Rename</button>
       <button ref="delete" type="button" v-on:click="onDeleteClicked()">Delete</button>

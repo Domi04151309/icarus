@@ -30,7 +30,7 @@ export default {
     </div>
     <div class="card mb-16-p-16">
       <h2>Repetitions</h2>
-      <input class="simple-input" type="number" value="4" autocomplete="off"></input>
+      <input type="number" value="4" autocomplete="off"></input>
     </div>
     <div class="card mb-16-p-16">
       <h2>Information</h2>
