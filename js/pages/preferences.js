@@ -3,6 +3,7 @@
 import Page from '../components/page.js'
 import Modal from '../components/modal.js'
 import ModalInput from '../components/modal-input.js'
+import ModalTheme from '../components/modal-theme.js'
 
 export default {
   name: 'preferences',
@@ -14,6 +15,7 @@ export default {
   template:
   `<page :title="title" parent="/account">
     <ul class="link-list ignore-page-padding">
+      <li v-on:click="changeTheme()"><span><span class="material-icons-round">palette</span>Change theme</span></li>
       <li v-on:click="edit('Change Name', 'info_name', 'text')"><span><span class="material-icons-round">edit</span>Change name</span></li>
       <li v-on:click="edit('Change Age', 'info_age', 'number')"><span><span class="material-icons-round">edit</span>Change age</span></li>
       <li v-on:click="deleteData()"><span><span class="material-icons-round">delete</span>Delete data</span></li>
@@ -23,6 +25,12 @@ export default {
       Page
   },
   methods: {
+    changeTheme() {
+      var ComponentClass = Vue.extend(ModalTheme)
+      var instance = new ComponentClass()
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    },
     edit(modalTitle, storageKey, storageType) {
       var ComponentClass = Vue.extend(ModalInput)
       var instance = new ComponentClass({

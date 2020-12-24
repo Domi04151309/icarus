@@ -26,7 +26,6 @@ export default {
     <div class="modal-content card">
       <h2>{{ title }}</h2>
       <p>{{ message }}</p>
-      <slot></slot>
       <div class="button-bar">
         <button v-on:click="negative()" type="button">{{ negativeText }}</button>
         <button v-on:click="positive()" type="button">{{ positiveText }}</button>

@@ -103,6 +103,20 @@ new Vue({
       && !navigator.userAgent.includes('Chrome-Lighthouse')
     ) this.$router.push('/setup/welcome')
 
+    var darkTheme = undefined
+    switch (localStorage.getItem('theme') || 'auto') {
+      case 'auto':
+        darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        break
+      case 'light':
+        darkTheme = false
+        break
+      case 'dark':
+        darkTheme = true
+        break
+    }
+    document.documentElement.classList.toggle('dark-theme', darkTheme)
+
     document.addEventListener('scroll', () => {
       headers = document.getElementsByTagName('HEADER')
       for (i = 0; i < headers.length; i++) {
