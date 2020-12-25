@@ -33,7 +33,7 @@ export default {
         </div>
       </h3>
     </div>
-    <div id="picker-container" class="card mb-16-p-16 text-center"></div>
+    <div id="picker-container" class="card mb-16-p-16 text-center grid-7"></div>
     <div class="card mb-16-p-16">
       <button class="w-100" type="button" v-on:click="openMonth()">Whole Month</button>
       <div id="weeks" class="flex space"></div>
@@ -53,7 +53,7 @@ export default {
       this.$router.push('/progress/month?date=' + this.year + String(this.month + 1).padStart(2, '0') + '01')
     },
     getDays() {
-      var pickerContainer, weekContainer, dayHeader, dayNode, weekNode, weekButton, i, j
+      var pickerContainer, weekContainer, dayNode, weekButton, i, j
 
       pickerContainer = document.getElementById('picker-container')
       pickerContainer.innerHTML = ''
@@ -62,14 +62,11 @@ export default {
       document.getElementById('month-title').innerHTML = this.months[this.month]
       document.getElementById('year').innerHTML = this.year
 
-      dayHeader = document.createElement('div')
-      dayHeader.classList.add('grid-7')
       for (i = 0; i < 7; i++) {
         dayNode = document.createElement('div')
         dayNode.appendChild(document.createTextNode(this.days[i]))
-        dayHeader.appendChild(dayNode)
+        pickerContainer.appendChild(dayNode)
       }
-      pickerContainer.appendChild(dayHeader)
 
       var firstDay = new Date(this.year, this.month, 1)
       var today = new Date()
@@ -77,9 +74,6 @@ export default {
       var offset = firstDay.getDay()
       var dayCount = 1
       for (i = 0; i < 6; i++) {
-        weekNode = document.createElement('div')
-        weekNode.classList.add('grid-7')
-        pickerContainer.appendChild(weekNode)
         for (j = 0; j < 7; j++) {
           if (offset == 0) {
             if (dayCount > lastDay.getDate()) break
@@ -94,11 +88,11 @@ export default {
               && this.month == today.getMonth()
               && this.year == today.getFullYear()
             ) dayNode.classList.add('today')
-            weekNode.appendChild(dayNode)
+            pickerContainer.appendChild(dayNode)
             dayCount++
           } else {
             dayNode = document.createElement('div')
-            weekNode.appendChild(dayNode)
+            pickerContainer.appendChild(dayNode)
             offset--
           }
           if (j == 0) {
