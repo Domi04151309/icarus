@@ -389,8 +389,11 @@ h2 > .c-icon {
 }
 
 /* alignment */
-.grid-2, .grid-3, .grid-7 {
+.grid-1-3, .grid-2, .grid-3, .grid-7 {
   display: grid;
+}
+.grid-1-3 {
+  grid-template-columns: repeat(1, 1fr);
 }
 .grid-2 {
   grid-template-columns: repeat(2, 2fr);
@@ -660,21 +663,10 @@ main.large-app-bar {
   background: var(--window-background);
   z-index: 1;
 }
-@media (min-width: 720px) {
-  div.large-app-bar {
-    background: var(--window-background);
-  }
-  h2.large-app-bar {
-    border-radius: var(--border-radius-2x);
-    margin: 16px auto;
-    max-width: 684px;
-  }
-  main.large-app-bar {
-    margin-top: 0px;
-  }
-  .nav-icon.transparent {
-    color: var(--text-color-secondary);
-  }
+
+/* food */
+.card.food {
+  height: 96px;
 }
 
 /* account */
@@ -744,4 +736,28 @@ circle {
   transition: stroke-dashoffset 0.35s;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
+}
+
+/* media query */
+@media (min-width: 720px) {
+  /* alignment */
+  .grid-1-3 {
+    grid-template-columns: repeat(3, 3fr);
+  }
+
+  /* exercises */
+  div.large-app-bar {
+    background: var(--window-background);
+  }
+  h2.large-app-bar {
+    border-radius: var(--border-radius-2x);
+    margin: 16px auto;
+    max-width: 684px;
+  }
+  main.large-app-bar {
+    margin-top: 0px;
+  }
+  .nav-icon.transparent {
+    color: var(--text-color-secondary);
+  }
 }

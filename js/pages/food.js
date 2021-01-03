@@ -1,6 +1,7 @@
 import Page from '../components/page.js'
 import ProgressRing from '../components/progress-ring.js'
 import FoodListItem from '../components/food-list-item.js'
+import FoodListItemImage from '../components/food-list-item-image.js'
 
 import FoodHelper from '../helpers/food.js'
 
@@ -39,7 +40,11 @@ export default {
       else
         return (statistics.notSoHealthy * 100) / (statistics.healthy + statistics.notSoHealthy)
     },
-    generalSuggestions: () => ['Breakfast', 'Lunch', 'Dinner'],
+    generalSuggestions: () => [
+      { title: "Breakfast", img: './images/food/breakfast.jpg' },
+      { title: 'Lunch', img: './images/food/lunch.jpg' },
+      { title: 'Dinner', img: './images/food/dinner.jpg' }
+    ],
     suggestions: () => ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
   },
   template:
@@ -53,8 +58,8 @@ export default {
       <food-list-item :link="'/experience/' + writtenType + '/add-food'" title="Add Item" icon="add"></food-list-item>
     </div>
     <h2 class="text-center">What You Could Eat</h2>
-    <div class="grid-3 gap-16">
-      <food-list-item v-for="item in generalSuggestions" :key="item" :title="item" :icon="icon"></food-list-item>
+    <div class="grid-1-3 gap-16">
+      <food-list-item-image v-for="item in generalSuggestions" :key="item.title" :title="item.title" :image="item.img"></food-list-item-image>
     </div>
     <h2 class="text-center">Our Suggestions</h2>
     <div class="grid-2 gap-16">
@@ -64,6 +69,7 @@ export default {
   components: {
       Page,
       ProgressRing,
-      FoodListItem
+      FoodListItem,
+      FoodListItemImage
   }
 }

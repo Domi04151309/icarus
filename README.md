@@ -10,9 +10,13 @@ A simple fitness web app.
 - https://fonts.gstatic.com/s/materialiconsround/v26/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2
 
 ## Images
+Saved with the width set to 1920px and the quality set to 60%
 - https://unsplash.com/photos/F1oeYBKJsdw
 - https://unsplash.com/photos/duvq92-VCZ4
 - https://unsplash.com/photos/pHANr-CpbYM
 - https://unsplash.com/photos/VfUN94cUy4o
+- https://unsplash.com/photos/HlNcigvUi4Q
+- https://unsplash.com/photos/dsT5LGzEuzE
+- https://unsplash.com/photos/N_Y88TWmGwA
 
 Copyright 2020 Domi04151309 & Nils Döhring
