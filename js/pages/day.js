@@ -46,35 +46,45 @@ export default {
           <progress :max="ProgressCompanion.maxWater" :value="water"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('_water')">+</button>
         </div>
-        <p>It's healthy to drink about 3.7 litres per day. Thats about 11 and a half cups of water.</p>
+        <p>
+          It's healthy to drink about 3.7 litres per day. Thats about 11 and a half cups of water.
+        </p>
         <h3>Calories <span class="p">{{ calories }}/{{ ProgressCompanion.maxCalories }}</span></h3>
         <div class="flex my-24 indigo">
           <button class="progress-control left" type="button" v-on:click="removeAmount('_calories')">&minus;</button>
           <progress :max="ProgressCompanion.maxCalories" :value="calories"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('_calories')">+</button>
         </div>
-        <p>The calorie is a unit of energy defined as the amount of heat needed to raise a quantity of water by one degree of temperature.</p>
+        <p>
+          *missing text*
+        </p>
         <h3>Carbs <span class="p">{{ carbs }}/{{ ProgressCompanion.maxCarbs }}</span></h3>
         <div class="flex my-24 deep-purple">
           <button class="progress-control left" type="button" v-on:click="removeAmount('_carbs')">&minus;</button>
           <progress :max="ProgressCompanion.maxCarbs" :value="carbs"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('_carbs')">+</button>
         </div>
-        <p>A carbohydrate is a biomolecule consisting of carbon, hydrogen and oxygen atoms, usually with a hydrogen–oxygen atom ratio of 2:1 and thus with the empirical formula Cₘₙ</p>
+        <p>
+          *missing text*
+        </p>
         <h3>Proteins <span class="p">{{ proteins }}/{{ ProgressCompanion.maxProteins }}</span></h3>
         <div class="flex my-24 purple">
           <button class="progress-control left" type="button" v-on:click="removeAmount('_proteins')">&minus;</button>
           <progress :max="ProgressCompanion.maxProteins" :value="proteins"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('_proteins')">+</button>
         </div>
-        <p>Another smart text.</p>
+        <p>
+          Proteins are important for building muscle mass.
+        </p>
         <h3>Fat <span class="p">{{ fat }}/{{ ProgressCompanion.maxFat }}</span></h3>
         <div class="flex my-24 pink">
           <button class="progress-control left" type="button" v-on:click="removeAmount('_fat')">&minus;</button>
           <progress :max="ProgressCompanion.maxFat" :value="fat"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('_fat')">+</button>
         </div>
-        <p>A small info text why this is important.</p>
+        <p>
+          Your body needs fats to use vitamins and keep your skin healthy. They are the main energy storage of your body.
+        </p>
       </div>
       <div class="card mb-16-p-16">
         <h2>Workout Exercises <span class="material-icons-round c-icon">fitness_center</span></h2>
@@ -83,7 +93,9 @@ export default {
           <progress :max="ProgressCompanion.maxExercises" :value="exercises"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('_exercises')">+</button>
         </div>
-        <p>A workout a day keeps the doctor away.</p>
+        <p>
+          An exercise is great for testing and improving your abilites and performance.
+        </p>
       </div>
       <div class="card mb-16-p-16">
         <h2>Sleep <span class="material-icons-round c-icon">hotel</span></h2>
@@ -92,7 +104,9 @@ export default {
           <progress :max="ProgressCompanion.maxSleep" :value="sleep"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('_sleep')">+</button>
         </div>
-        <p>A small info text why this is important.</p>
+        <p>
+          Getting enough quality sleep at the right times can improve your mental and physical health.
+        </p>
       </div>
     </page>`,
   components: {

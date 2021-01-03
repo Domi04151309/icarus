@@ -9,8 +9,9 @@ export default {
     }
   },
   template:
-  `<router-link :to="link" class="card">
-    <img class="header-image" :src="image" alt="preview image">
-    <h3 class="m-0 p-16">{{ title }}</h3>
+  `<router-link :to="link" class="card exercise img-card">
+    <img class="" :src="image" alt="preview image">
+    <div class="overlay"></div>
+    <h2 class="m-0 p-16">{{ title }}</h2>
   </router-link>`
 }

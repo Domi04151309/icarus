@@ -253,13 +253,6 @@ progress::-webkit-progress-value {
 .card > h3:last-child {
   margin-bottom: 0;
 }
-.header-image {
-  height: 24vh;
-  width: 100%;
-  background: #000;
-  border-radius: var(--border-radius-2x);
-  object-fit: cover;
-}
 h2 > .c-icon {
   color: var(--text-color-secondary);
   vertical-align: text-top;
@@ -367,6 +360,32 @@ h2 > .c-icon {
 .card.intro .c-icon {
   vertical-align: top;
   margin-right: 16px;
+}
+
+/* image cards */
+.img-card {
+  position: relative;
+  background: #000;
+  border: 0;
+}
+.img-card > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.img-card > .overlay {
+  background: rgba(0, 0, 0, .16);
+}
+.img-card > h2 {
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-dark);
+  text-shadow: 0 0 6px rgba(0,0,0,.5);
+  text-align: center;
 }
 
 /* alignment */
@@ -617,6 +636,9 @@ footer .router-link-active {
 }
 
 /* exercises */
+.card.exercise {
+  height: calc(50vh - 80px);
+}
 div.large-app-bar {
   background: #000;
 }
@@ -624,7 +646,8 @@ h2.large-app-bar {
   position: relative;
   margin: 0;
   padding: 128px 16px;
-  background: url('../images/exercises/cycling.jpg') center/cover no-repeat, linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
+  background:  linear-gradient(rgba(0, 0, 0, .16), rgba(0, 0, 0, .16)) no-repeat center center, url('../images/exercises/cycling.jpg') no-repeat center center;
+  background-size: cover, cover;
   text-shadow: 0 0 6px rgba(0,0,0,.5);
   color: var(--text-color-dark);
   text-align: center;
