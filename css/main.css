@@ -641,6 +641,7 @@ footer .router-link-active {
 /* exercises */
 .card.exercise {
   height: calc(50vh - 80px);
+  max-height: 256px;
 }
 div.large-app-bar {
   background: #000;
