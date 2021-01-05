@@ -56,7 +56,7 @@ export default {
           <button class="progress-control right" type="button" v-on:click="addAmount('_calories')">+</button>
         </div>
         <p>
-          *missing text*
+          Calories tell you about the general energy in your food.
         </p>
         <h3>Carbs <span class="p">{{ carbs }}/{{ ProgressCompanion.maxCarbs }}</span></h3>
         <div class="flex my-24 deep-purple">
@@ -65,7 +65,7 @@ export default {
           <button class="progress-control right" type="button" v-on:click="addAmount('_carbs')">+</button>
         </div>
         <p>
-          *missing text*
+          Carbohydrates are the main source of energy for your body.
         </p>
         <h3>Proteins <span class="p">{{ proteins }}/{{ ProgressCompanion.maxProteins }}</span></h3>
         <div class="flex my-24 purple">
