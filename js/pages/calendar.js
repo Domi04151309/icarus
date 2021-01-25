@@ -1,7 +1,5 @@
 import Page from '../components/page.js'
 
-//TODO: Add week and month viewing
-
 export default {
   name: 'calendar',
   data() {

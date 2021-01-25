@@ -1,5 +1,6 @@
 /*global Vue, VueRouter*/
 
+const SetupVerification = () => import('./pages/setup/0-verification.js')
 const SetupWelcome = () => import('./pages/setup/1-welcome.js')
 const SetupInfo = () => import('./pages/setup/2-info.js')
 const SetupNutrition = () => import('./pages/setup/3-nutrition.js')
@@ -31,6 +32,7 @@ Vue.config.devtools = location.hostname === 'localhost' || location.hostname ===
 
 const routes = [
   { path: '*', redirect: '/progress' },
+  { path: '/setup/verification', component: SetupVerification },
   { path: '/setup/welcome', component: SetupWelcome },
   { path: '/setup/info', component: SetupInfo },
   { path: '/setup/nutrition', component: SetupNutrition },
@@ -63,6 +65,16 @@ window.addEventListener('popstate', () => {
   window.backButtonPress = true
 })
 
+window.checkVerification = async code => {
+  return Array.from(
+    new Uint8Array(
+      await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code))
+    )
+  ).map(
+    b => b.toString(16).padStart(2, '0')
+  ).join('') == '86a23973ebb571680483f592b7b87325cba446ee35e9dcd4b1459a56964e6835'
+}
+
 router.beforeEach((to, from, next) => {
   modal = document.querySelector('.modal-container')
   if (modal != null) {
@@ -91,17 +103,21 @@ router.beforeEach((to, from, next) => {
 new Vue({
   router,
   el: '#app',
+  methods: {
+    async checkStartingRoute() {
+      if (
+        (!localStorage.getItem('setup_complete')
+        || !(await window.checkVerification(localStorage.getItem('verification'))))
+        && !this.$route.path.includes('setup')
+        && !navigator.userAgent.includes('Chrome-Lighthouse')
+      ) this.$router.push('/setup/verification')
+    }
+  },
   mounted() {
     const loadingScreen = document.getElementById('loading_screen')
     var headers, i
 
     loadingScreen.parentNode.removeChild(loadingScreen)
-
-    if (
-      !localStorage.getItem('setup_complete')
-      && !this.$route.path.includes('setup')
-      && !navigator.userAgent.includes('Chrome-Lighthouse')
-    ) this.$router.push('/setup/welcome')
 
     var darkTheme = undefined
     switch (localStorage.getItem('theme') || 'auto') {
@@ -123,5 +139,7 @@ new Vue({
         headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
       }
     })
+
+    this.checkStartingRoute()
   }
 })
