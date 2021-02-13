@@ -8,7 +8,7 @@ export default {
       title: 'Icarus',
       tabs: [
         {
-          icon: 'view_list',
+          icon: 'calendar_today',
           title: 'Progress',
           url: '/progress'
         },
