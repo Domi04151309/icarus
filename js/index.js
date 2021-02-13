@@ -22,6 +22,7 @@ const Food = () => import('./pages/food.js')
 const AddFood = () => import('./pages/add-food.js')
 
 const NewExercise = () => import('./pages/new-exercise.js')
+const ExerciseList = () => import('./pages/exercise-list.js')
 
 const Preferences = () => import('./pages/preferences.js')
 const Data = () => import('./pages/data.js')
@@ -45,6 +46,7 @@ const routes = [
   { path: '/progress/calendar', component: Calendar },
   { path: '/exercises', component: Exercises },
   { path: '/exercises/new-exercise', component: NewExercise },
+  { path: '/exercises/exercise-list', component: ExerciseList },
   { path: '/experience', component: Experience },
   { path: '/experience/healthy', component: Food, props: { healthy: true } },
   { path: '/experience/not-so-healthy', component: Food, props: { healthy: false } },
