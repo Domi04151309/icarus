@@ -3,7 +3,7 @@ export default [
 		name: 'Push-Ups',
 		variations: [
 			{
-				name: 'Standart',
+				name: 'Standard',
 				fatLoss: 0,
 				muscleGain: 1,
 				cardio: -1,
@@ -36,7 +36,7 @@ export default [
 		name: 'Sit-Ups',
 		variations: [
 			{
-				name: 'Standart',
+				name: 'Standard',
 				fatLoss: 0,
 				muscleGain: 1,
 				cardio: 0,
@@ -50,7 +50,7 @@ export default [
 				legs: -1
 			},
 			{
-				name: 'Feed Up',
+				name: 'Feet Up',
 				fatLoss: 0,
 				muscleGain: 1,
 				cardio: 0,
