@@ -55,8 +55,8 @@ layout: null
       "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
     },
     {
-      "name": "Experience",
-      "url": "{{ site.baseurl }}/#/experience",
+      "name": "Nutrition",
+      "url": "{{ site.baseurl }}/#/nutrition",
       "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
     },
     {

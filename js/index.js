@@ -9,7 +9,7 @@ const SetupFinish = () => import('./pages/setup/5-finish.js')
 
 const Progress = () => import('./pages/main/progress.js')
 const Exercises = () => import('./pages/main/exercises.js')
-const Experience = () => import('./pages/main/experience.js')
+const Nutrition = () => import('./pages/main/nutrition.js')
 const Account = () => import('./pages/main/account.js')
 
 const Day = () => import('./pages/day.js')
@@ -25,6 +25,8 @@ const NewExercise = () => import('./pages/new-exercise.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
 
 const Preferences = () => import('./pages/preferences.js')
+const NutritionPlan = () => import('./pages/nutrition-plan.js')
+const WorkoutPlan = () => import('./pages/workout-plan.js')
 const Data = () => import('./pages/data.js')
 const Help = () => import('./pages/help.js')
 const About = () => import('./pages/about.js')
@@ -47,13 +49,15 @@ const routes = [
   { path: '/exercises', component: Exercises },
   { path: '/exercises/new-exercise', component: NewExercise },
   { path: '/exercises/exercise-list', component: ExerciseList },
-  { path: '/experience', component: Experience },
-  { path: '/experience/healthy', component: Food, props: { healthy: true } },
-  { path: '/experience/not-so-healthy', component: Food, props: { healthy: false } },
-  { path: '/experience/healthy/add-food', component: AddFood, props: { healthy: true } },
-  { path: '/experience/not-so-healthy/add-food', component: AddFood, props: { healthy: false } },
+  { path: '/nutrition', component: Nutrition },
+  { path: '/nutrition/healthy', component: Food, props: { healthy: true } },
+  { path: '/nutrition/casual', component: Food, props: { healthy: false } },
+  { path: '/nutrition/healthy/add-food', component: AddFood, props: { healthy: true } },
+  { path: '/nutrition/casual/add-food', component: AddFood, props: { healthy: false } },
   { path: '/account', component: Account },
   { path: '/account/preferences', component: Preferences },
+  { path: '/account/nutrition', component: NutritionPlan },
+  { path: '/account/workout', component: WorkoutPlan },
   { path: '/account/data', component: Data },
   { path: '/account/help', component: Help },
   { path: '/account/about', component: About }
@@ -88,13 +92,13 @@ router.beforeEach((to, from, next) => {
     if (
       from.path == '/progress'
       || from.path == '/exercises'
-      || from.path == '/experience'
+      || from.path == '/nutrition'
       || from.path == '/account'
     ) next(false)
     else if (
       from.path.includes('progress')
       || from.path.includes('exercises')
-      || from.path.includes('experience')
+      || from.path.includes('nutrition')
       || from.path.includes('account')
     ) next(from.path.substring(0, from.path.lastIndexOf('/')))
     else next()

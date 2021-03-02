@@ -15,15 +15,15 @@ export default {
   computed: {
     writtenType() {
       if (this.healthy) return 'healthy'
-      else return 'not-so-healthy'
+      else return 'casual'
     },
     title() {
-      if (this.healthy) return 'The Healthy'
-      else return 'The Not-So-Healthy'
+      if (this.healthy) return 'Healthy'
+      else return 'Casual'
     },
     secondaryTitle() {
       if (this.healthy) return 'Healthy Food'
-      else return 'Not-So-Healthy Food'
+      else return 'Casual Food'
     },
     icon() {
       if (this.healthy) return 'restaurant_menu'
@@ -48,14 +48,14 @@ export default {
     suggestions: () => ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
   },
   template:
-  `<page :title="title" parent="/experience">
+  `<page :title="title" parent="/nutrition">
     <div class="text-center">
       <progress-ring radius="64" :progress="progress" stroke="8"></progress-ring>
       <h2>{{ secondaryTitle }}</h2>
     </div>
     <div class="grid-2 gap-16">
-      <food-list-item v-for="(item, index) in items" :key="index" :link="'/experience/' + writtenType + '/add-food?item=' + index" :title="item.title" :icon="icon"></food-list-item>
-      <food-list-item :link="'/experience/' + writtenType + '/add-food'" title="Add Item" icon="add"></food-list-item>
+      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/add-food?item=' + index" :title="item.title" :icon="icon"></food-list-item>
+      <food-list-item :link="'/nutrition/' + writtenType + '/add-food'" title="Add Item" icon="add"></food-list-item>
     </div>
     <h2 class="text-center">What You Could Eat</h2>
     <div class="grid-1-3 gap-16">

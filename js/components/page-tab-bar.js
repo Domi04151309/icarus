@@ -19,8 +19,8 @@ export default {
         },
         {
           icon: 'local_dining',
-          title: 'Experience',
-          url: '/experience'
+          title: 'Nutrition',
+          url: '/nutrition'
         },
         {
           icon: 'account_circle',

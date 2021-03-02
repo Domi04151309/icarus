@@ -26,8 +26,8 @@ export default {
   computed: {
     title: () => 'Add Food',
     parent() {
-      if (this.healthy) return '/experience/healthy'
-      else return '/experience/not-so-healthy'
+      if (this.healthy) return '/nutrition/healthy'
+      else return '/nutrition/casual'
     },
     icon() {
       if (this.healthy) return 'restaurant_menu'
@@ -86,7 +86,7 @@ export default {
               this.foodItem.title = instance.$refs.input.value
               foodArray[this.$route.query.item].title = instance.$refs.input.value
               if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
-              else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+              else localStorage.setItem('casual-food', JSON.stringify(foodArray))
             }
           }
         }
@@ -108,7 +108,7 @@ export default {
             if (this.$route.query.item != undefined) {
               foodArray.splice(this.$route.query.item, 1)
               if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
-              else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+              else localStorage.setItem('casual-food', JSON.stringify(foodArray))
             }
             this.$router.push(this.parent)
           }
@@ -124,11 +124,11 @@ export default {
       if (this.$route.query.item == undefined) {
         foodArray.push(this.foodItem)
         if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
-        else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+        else localStorage.setItem('casual-food', JSON.stringify(foodArray))
       } else {
         foodArray[this.$route.query.item] = this.foodItem
         if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
-        else localStorage.setItem('not-so-healthy-food', JSON.stringify(foodArray))
+        else localStorage.setItem('casual-food', JSON.stringify(foodArray))
 
         var dateId = Identifiers.getDateId()
         localStorage.setItem(

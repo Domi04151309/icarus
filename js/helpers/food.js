@@ -58,7 +58,7 @@ export default {
   getNotSoHealthyFood() {
     var array = []
     try {
-      array = JSON.parse(localStorage.getItem('not-so-healthy-food'))
+      array = JSON.parse(localStorage.getItem('casual-food'))
     } catch (e) {
       console.warn(e)
       array = undefined
