@@ -13,6 +13,8 @@
   --border-radius-1x: 8px;
   --border-radius-2x: 16px;
   --border-radius-4x: 32px;
+  --card-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  --background-dim: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)) no-repeat center;
 }
 .deep-orange {
   --accent-color: #FF3D00;
@@ -176,7 +178,7 @@ p {
   background: var(--elevation-overlay);
   border-radius: var(--border-radius-4x);
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--card-shadow);
   transition-duration: .25s;
 }
 button, input {
@@ -272,7 +274,6 @@ h2 > .c-icon {
   margin: -8px 0;
   padding: 0;
   border-radius: var(--border-radius-2x);
-  box-shadow: none;
   font-weight: bold;
 }
 .progress-control.left {
@@ -292,7 +293,7 @@ h2 > .c-icon {
   border-radius: 50%;
   background: var(--accent-color);
   color: var(--text-color-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--card-shadow);
   cursor: pointer;
 }
 .fab:hover {
@@ -380,7 +381,7 @@ h2 > .c-icon {
   object-fit: cover;
 }
 .img-card > .overlay {
-  background: rgba(0, 0, 0, .16);
+  background: rgba(0, 0, 0, .25);
 }
 .img-card > h2 {
   height: auto;
@@ -653,12 +654,22 @@ h2.large-app-bar {
   position: relative;
   margin: 0;
   padding: 128px 16px;
-  background:  linear-gradient(rgba(0, 0, 0, .16), rgba(0, 0, 0, .16)) no-repeat center center, url('../images/exercises/cycling.jpg') no-repeat center center;
-  background-size: cover, cover;
   text-shadow: 0 0 6px rgba(0,0,0,.5);
   color: var(--text-color-dark);
   text-align: center;
   z-index: 0;
+}
+div.large-app-bar.exercises > h2 {
+  background: var(--background-dim), url('../images/exercises/cycling.jpg') no-repeat center;
+  background-size: cover;
+}
+div.large-app-bar.healthy > h2 {
+  background: var(--background-dim), url('../images/food/healthy.jpg') no-repeat center;
+  background-size: cover;
+}
+div.large-app-bar.casual > h2 {
+  background: var(--background-dim), url('../images/food/casual.jpg') no-repeat center;
+  background-size: cover;
 }
 main.large-app-bar {
   position: relative;

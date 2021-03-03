@@ -54,8 +54,8 @@ export default {
       <h2>{{ secondaryTitle }}</h2>
     </div>
     <div class="grid-2 gap-16">
-      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/add-food?item=' + index" :title="item.title" :icon="icon"></food-list-item>
-      <food-list-item :link="'/nutrition/' + writtenType + '/add-food'" title="Add Item" icon="add"></food-list-item>
+      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + index" :title="item.title" :icon="icon"></food-list-item>
+      <food-list-item :link="'/nutrition/' + writtenType + '/food-item'" title="Add Item" icon="add"></food-list-item>
     </div>
     <h2 class="text-center">What You Could Eat</h2>
     <div class="grid-1-3 gap-16">

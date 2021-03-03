@@ -1,17 +1,18 @@
 import Page from '../components/page-large-app-bar.js'
 import ProgressRing from '../components/progress-ring.js'
 
+//TODO: Add content
+
 export default {
-  name: 'new-exercise',
+  name: 'exercise-details',
   computed: {
-    title: () => 'New Exercise'
+    title: () => 'Exercise'
   },
   template:
-  `<page :title="title" parent="/exercises">
+  `<page :title="title" parent="/exercises" class="exercises">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
         Dummy text dummy text dummy text dummy text dummy text dummy text.
         Dummy text dummy text dummy text dummy text dummy text dummy text.
       </p>
@@ -35,7 +36,6 @@ export default {
     <div class="card mb-16-p-16">
       <h2>Information</h2>
       <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
         Dummy text dummy text dummy text dummy text dummy text dummy text.
         Dummy text dummy text dummy text dummy text dummy text dummy text.
       </p>

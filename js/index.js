@@ -19,9 +19,11 @@ const Calendar = () => import('./pages/calendar.js')
 
 const Food = () => import('./pages/food.js')
 
-const AddFood = () => import('./pages/add-food.js')
+const FoodDetails = () => import('./pages/food-details.js')
 
-const NewExercise = () => import('./pages/new-exercise.js')
+const FoodItem = () => import('./pages/food-item.js')
+
+const ExerciseDetails = () => import('./pages/exercise-details.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
 
 const Preferences = () => import('./pages/preferences.js')
@@ -47,13 +49,15 @@ const routes = [
   { path: '/progress/month', component: Month },
   { path: '/progress/calendar', component: Calendar },
   { path: '/exercises', component: Exercises },
-  { path: '/exercises/new-exercise', component: NewExercise },
+  { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },
   { path: '/nutrition', component: Nutrition },
   { path: '/nutrition/healthy', component: Food, props: { healthy: true } },
   { path: '/nutrition/casual', component: Food, props: { healthy: false } },
-  { path: '/nutrition/healthy/add-food', component: AddFood, props: { healthy: true } },
-  { path: '/nutrition/casual/add-food', component: AddFood, props: { healthy: false } },
+  { path: '/nutrition/healthy/food-details', component: FoodDetails, props: { healthy: true } },
+  { path: '/nutrition/casual/food-details', component: FoodDetails, props: { healthy: false } },
+  { path: '/nutrition/healthy/food-item', component: FoodItem, props: { healthy: true } },
+  { path: '/nutrition/casual/food-item', component: FoodItem, props: { healthy: false } },
   { path: '/account', component: Account },
   { path: '/account/preferences', component: Preferences },
   { path: '/account/nutrition', component: NutritionPlan },

@@ -13,9 +13,7 @@ export default {
     </header>
     <h2 class="large-app-bar">{{ title }}</h2>
     <main class="large-app-bar zoom-in-animation">
-      <div>
-        <slot></slot>
-      </div>
+      <slot></slot>
     </main>
   </div>`
 }
