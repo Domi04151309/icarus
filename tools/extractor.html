@@ -1,0 +1,68 @@
+<h1>Data Extractor</h1>
+<span id="result"></span>
+<script>
+  const COLUMN_MAIN_TITLE = 0
+  const COLUMN_VARIATION_TITLE = 1
+  const COLUMN_FAT_LOSS = 2
+  const COLUMN_MUSCLE_GAIN = 7
+  const COLUMN_CARDIO = 8
+  const COLUMN_ENDURANCE= 9
+  const COLUMN_ARMS = 10
+  const COLUMN_SHOULDERS = 11
+  const COLUMN_BACK = 12
+  const COLUMN_CHEST = 13
+  const COLUMN_ABS = 14
+  const COLUMN_BOOTY = 15
+  const COLUMN_LEGS = 16
+
+  const FILE_PATH = './Data%20-%20Parameters.csv'
+  const IGNORE_LINES = [1, 2, 34, 45, 58]
+
+  fetch(FILE_PATH)
+    .then(response => response.text())
+    .then(result => {
+      var lines = result.split('\n')
+
+      var removedLines = 0
+      IGNORE_LINES.forEach(item => {
+        lines.splice(item - removedLines - 1 , 1)
+        removedLines++
+      })
+
+      var usefulData = []
+      var generalType = null
+      var lineArray = []
+      var currentObj = null
+      var variations = []
+
+      lines.forEach(item => {
+        lineArray = item.split(',')
+        if (lineArray[COLUMN_MAIN_TITLE] != '') {
+          if (currentObj != null) {
+            currentObj.variations = variations
+            usefulData.push(currentObj)
+          }
+          generalType = lineArray[COLUMN_MAIN_TITLE]
+          currentObj = {}
+          variations = []
+          currentObj.name = generalType
+        }
+        variations.push({
+          name: lineArray[COLUMN_VARIATION_TITLE],
+          fatLoss: lineArray[COLUMN_FAT_LOSS],
+          muscleGain: lineArray[COLUMN_MUSCLE_GAIN],
+          cardio: lineArray[COLUMN_CARDIO],
+          endurance: lineArray[COLUMN_ENDURANCE],
+          arms: lineArray[COLUMN_ARMS],
+          shoulders: lineArray[COLUMN_SHOULDERS],
+          back: lineArray[COLUMN_BACK],
+          chest: lineArray[COLUMN_CHEST],
+          abs: lineArray[COLUMN_ABS],
+          booty: lineArray[COLUMN_BOOTY],
+          legs: lineArray[COLUMN_LEGS]
+        })
+      })
+      console.log(usefulData)
+      document.getElementById('result').innerHTML = JSON.stringify(usefulData)
+    })
+</script>

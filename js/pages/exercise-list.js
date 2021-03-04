@@ -18,7 +18,7 @@ export default {
         <li v-for="variation in item.variations" :key="index + variation.name">
           <span>
             {{ variation.name }}<br>
-            <span class="p">Recommended</span>
+            <span class="p">Loading</span>
           </span>
         </li>
       </ul>
