@@ -1,5 +1,7 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 
+import ExercisesHelper from '../helpers/exercises.js'
+
 export default {
   name: 'setup-fitness',
   data() {
@@ -56,6 +58,7 @@ export default {
   methods: {
     handleClick() {
       localStorage.setItem('fitness', JSON.stringify(this.fitness))
+      ExercisesHelper.generateNewScores()
       this.$router.push('/setup/finish')
     }
   },

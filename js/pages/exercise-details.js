@@ -1,15 +1,27 @@
 import Page from '../components/page-large-app-bar.js'
 import ProgressRing from '../components/progress-ring.js'
 
+import Exercises from '../data/exercises.js'
+
 //TODO: Add content
 
 export default {
   name: 'exercise-details',
+  data() {
+    return {
+      exerciseItem: {
+        variations: [
+          { }
+        ]
+      },
+      variationNumber: 0
+    }
+  },
   computed: {
     title: () => 'Exercise'
   },
   template:
-  `<page :title="title" parent="/exercises" class="exercises">
+  `<page :title="exerciseItem.variations[variationNumber].name + ' ' + exerciseItem.name" parent="/exercises" class="exercises">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <p>
@@ -44,5 +56,14 @@ export default {
   components: {
       Page,
       ProgressRing
+  },
+  mounted() {
+    if (this.$route.query.posX != null && this.$route.query.posY != null) {
+      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)]
+      this.variationNumber = parseInt(this.$route.query.posY, 10)
+    } else {
+      alert('TODO: Error Handling')
+      //this.$router.push()
+    }
   }
 }

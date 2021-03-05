@@ -51,7 +51,7 @@ export default {
       array = JSON.parse(localStorage.getItem('healthy-food'))
     } catch (e) {
       console.warn(e)
-      array = undefined
+      array = null
     }
     return array || this.defaultHealthyFood
   },
@@ -61,7 +61,7 @@ export default {
       array = JSON.parse(localStorage.getItem('casual-food'))
     } catch (e) {
       console.warn(e)
-      array = undefined
+      array = null
     }
     return array || this.defaultNotSoHealthyFood
   },

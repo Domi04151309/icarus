@@ -129,7 +129,7 @@ new Vue({
 
     loadingScreen.parentNode.removeChild(loadingScreen)
 
-    var darkTheme = undefined
+    var darkTheme = null
     switch (localStorage.getItem('theme') || 'auto') {
       case 'auto':
         darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches

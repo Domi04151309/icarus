@@ -81,7 +81,7 @@ export default {
             var foodArray = []
             if (this.healthy) foodArray = FoodHelper.getHealthyFood()
             else foodArray = FoodHelper.getNotSoHealthyFood()
-            if (this.$route.query.item != undefined) {
+            if (this.$route.query.item != null) {
               foodArray.splice(this.$route.query.item, 1)
               if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
               else localStorage.setItem('casual-food', JSON.stringify(foodArray))
@@ -117,7 +117,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.query.item != undefined) {
+    if (this.$route.query.item != null) {
       if (this.healthy)
         this.foodItem = FoodHelper.getHealthyFood()[this.$route.query.item]
       else

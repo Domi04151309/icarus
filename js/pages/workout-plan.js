@@ -1,5 +1,7 @@
 import Page from '../components/page.js'
 
+import ExercisesHelper from '../helpers/exercises.js'
+
 export default {
   name: 'workout-plan',
   data() {
@@ -49,6 +51,7 @@ export default {
   methods: {
     handleClick() {
       localStorage.setItem('fitness', JSON.stringify(this.fitness))
+      ExercisesHelper.generateNewScores()
       this.$router.push('/account')
     }
   },
