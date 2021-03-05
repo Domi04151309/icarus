@@ -20,10 +20,10 @@ export default {
       <h2 class="p-16 m-0">{{ item.name }}</h2>
       <ul class="link-list m-0">
         <li v-for="variation in item.variations" :key="index + variation.name">
-          <span>
+          <router-link to="/exercises/exercise-details">
             {{ variation.name }}<br>
             <span class="p">Score: {{ ExercisesHelper.getScore(variation) }}</span>
-          </span>
+          </router-link>
         </li>
       </ul>
     </div>
