@@ -1,5 +1,5 @@
 <h1>Data Extractor</h1>
-<span id="result"></span>
+<p id="result"></p>
 <script>
   const COLUMN_MAIN_TITLE = 0
   const COLUMN_VARIATION_TITLE = 1
@@ -15,8 +15,14 @@
   const COLUMN_BOOTY = 15
   const COLUMN_LEGS = 16
 
-  const FILE_PATH = './Data%20-%20Parameters.csv'
+  const FILE_PATH = './Data%20-%20Exercises.csv'
   const IGNORE_LINES = [1, 2, 34, 45, 58]
+
+  function getIntFromArray(array, index) {
+    var temp = parseInt(array[index], 10)
+    if (isNaN(temp)) return 0
+    else return temp
+  }
 
   fetch(FILE_PATH)
     .then(response => response.text())
@@ -45,21 +51,21 @@
           generalType = lineArray[COLUMN_MAIN_TITLE]
           currentObj = {}
           variations = []
-          currentObj.name = generalType
+          currentObj.title = generalType
         }
         variations.push({
-          name: lineArray[COLUMN_VARIATION_TITLE],
-          fatLoss: lineArray[COLUMN_FAT_LOSS],
-          muscleGain: lineArray[COLUMN_MUSCLE_GAIN],
-          cardio: lineArray[COLUMN_CARDIO],
-          endurance: lineArray[COLUMN_ENDURANCE],
-          arms: lineArray[COLUMN_ARMS],
-          shoulders: lineArray[COLUMN_SHOULDERS],
-          back: lineArray[COLUMN_BACK],
-          chest: lineArray[COLUMN_CHEST],
-          abs: lineArray[COLUMN_ABS],
-          booty: lineArray[COLUMN_BOOTY],
-          legs: lineArray[COLUMN_LEGS]
+          title: lineArray[COLUMN_VARIATION_TITLE],
+          fatLoss: getIntFromArray(lineArray, COLUMN_FAT_LOSS),
+          muscleGain: getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN),
+          cardio: getIntFromArray(lineArray, COLUMN_CARDIO),
+          endurance: getIntFromArray(lineArray, COLUMN_ENDURANCE),
+          arms: getIntFromArray(lineArray, COLUMN_ARMS),
+          shoulders: getIntFromArray(lineArray, COLUMN_SHOULDERS),
+          back: getIntFromArray(lineArray, COLUMN_BACK),
+          chest: getIntFromArray(lineArray, COLUMN_CHEST),
+          abs: getIntFromArray(lineArray, COLUMN_ABS),
+          booty: getIntFromArray(lineArray, COLUMN_BOOTY),
+          legs: getIntFromArray(lineArray, COLUMN_LEGS)
         })
       })
       console.log(usefulData)

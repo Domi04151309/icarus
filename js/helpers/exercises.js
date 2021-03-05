@@ -5,11 +5,20 @@ const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders'
 
 export default {
   getScore(posX, posY) {
-    var scores = null
+    return this.loadScores()[posX][posY]
+  },
+  categoryScore(posX) {
+    var scores = this.loadScores()
+    var score = 0
+    scores[posX].forEach(item => {
+      score += item
+    })
+    return score / scores[posX].length
+  },
+  loadScores() {
     var stored = localStorage.getItem(EXERCISE_SCORES)
-    if (stored == null) scores = this.generateNewScores()
-    else scores = JSON.parse(stored)
-    return scores[posX][posY]
+    if (stored == null) return this.generateNewScores()
+    else return JSON.parse(stored)
   },
   generateNewScores() {
     var array = []

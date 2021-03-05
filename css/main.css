@@ -224,6 +224,21 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: var(--border-radius-1x);
   margin-top: -6px;
 }
+input[type=radio] {
+  display: none;
+}
+input[type=radio] + label {
+  display: inline-block;
+  padding: 4px 16px;
+  background: var(--elevation-overlay);
+  border-radius: var(--border-radius-2x);
+  border: 1px solid var(--hover-color);
+  box-shadow: var(--card-shadow);
+}
+input[type=radio]:checked + label {
+  background: var(--hover-color);
+  color: var(--text-color);
+}
 progress {
   -webkit-appearance: none;
   appearance: none;
@@ -466,6 +481,9 @@ h2 > .c-icon {
 }
 .mb-8 {
   margin-bottom: 8px;
+}
+.mr-8 {
+  margin-right: 8px;
 }
 .mr-16 {
   margin-right: 16px;

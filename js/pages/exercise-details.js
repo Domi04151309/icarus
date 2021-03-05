@@ -21,7 +21,7 @@ export default {
     title: () => 'Exercise'
   },
   template:
-  `<page :title="exerciseItem.variations[variationNumber].name + ' ' + exerciseItem.name" parent="/exercises" class="exercises">
+  `<page :title="exerciseItem.variations[variationNumber].title + ' ' + exerciseItem.title" parent="/exercises" class="exercises">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <p>
