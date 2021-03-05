@@ -1,6 +1,6 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 
-import ExercisesHelper from '../helpers/exercises.js'
+import ExercisesHelper from '../../helpers/exercises.js'
 
 export default {
   name: 'setup-fitness',
