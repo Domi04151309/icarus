@@ -260,12 +260,19 @@ progress::-webkit-progress-value {
 .accent-text {
   color: var(--accent-color)
 }
+.big-text {
+  font-size: 32px;
+}
 .card {
   display: block;
   border: 1px solid var(--hover-color);
   border-radius: var(--border-radius-2x);
   text-decoration: inherit;
   color: inherit;
+}
+.big-c-icon {
+  font-size: 32px;
+  margin: 0 32px 0 16px;
 }
 .card:not(.intro) > h2:first-child {
   margin: 0 0 8px;
@@ -477,15 +484,21 @@ h2 > .c-icon {
 .mt-0 {
   margin-top: 0;
 }
+.mt-16 {
+  margin-top: 16px;
+}
 .mb-16-p-16 {
   padding: 16px;
+  margin-bottom: 16px;
+}
+.mb-16 {
   margin-bottom: 16px;
 }
 .mb-32 {
   margin-bottom: 32px;
 }
-.mb-16 {
-  margin-bottom: 16px;
+.mb-48 {
+  margin-bottom: 48px;
 }
 .mt-8 {
   margin-top: 8px;
@@ -498,6 +511,10 @@ h2 > .c-icon {
 }
 .mr-16 {
   margin-right: 16px;
+}
+.mx-8 {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .my-24 {
   margin-top: 24px;

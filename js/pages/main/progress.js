@@ -22,31 +22,34 @@ export default {
   },
   template:
   `<page-tab-bar>
-    <div class="card mb-16-p-16 intro">
-      <div class="flex center">
-        <div class="material-icons-round c-icon">waves</div>
-        <div>Welcome Back {{ name }}</div>
-      </div>
-    </div>
+    <div class="mt-16 mx-8 material-icons-round big accent c-icon">waves</div>
+    <div class="mx-8 big-text">Welcome Back {{ name }}</div>
+    <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <router-link to="/progress/day" class="card mb-16-p-16">
-      <h2>Today's Goal <span class="material-icons-round c-icon">chevron_right</span></h2>
+      <h2>Today's Goals</h2>
       <progress max="100" :value="dayProgress"></progress>
       <p>Your progress for today.</p>
     </router-link>
-    <router-link to="/progress/week" class="card mb-16-p-16">
-      <h2>This Week <span class="material-icons-round c-icon">chevron_right</span></h2>
-      <progress max="100" :value="weekProgress"></progress>
-      <p>Your progress for this week.</p>
-    </router-link>
-    <router-link to="/progress/month" class="card mb-16-p-16">
-      <h2>This Month <span class="material-icons-round c-icon">chevron_right</span></h2>
-      <progress max="100" :value="monthProgress"></progress>
-      <p>Your progress for this month.</p>
-    </router-link>
+    <div class="grid-2 gap-16">
+      <router-link to="/progress/week" class="card mb-16-p-16">
+        <h2>This Week</h2>
+        <progress max="100" :value="weekProgress"></progress>
+        <p>Your progress for this week.</p>
+      </router-link>
+      <router-link to="/progress/month" class="card mb-16-p-16">
+        <h2>This Month</h2>
+        <progress max="100" :value="monthProgress"></progress>
+        <p>Your progress for this month.</p>
+      </router-link>
+    </div>
     <router-link to="/progress/calendar" class="card mb-16-p-16">
-      <h2>Calendar <span class="material-icons-round c-icon">chevron_right</span></h2>
-      <progress></progress>
-      <p>View the progress of another day, week, or month</p>
+      <div class="flex center">
+        <div class="material-icons-round big-c-icon">calendar_today</div>
+        <div>
+          <h2 class="m-0">Calendar</h2>
+          <p>View the progress of another day, week, or month</p>
+        </div>
+      </div>
     </router-link>
   </page-tab-bar>`,
   components: {
