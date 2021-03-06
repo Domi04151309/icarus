@@ -4,6 +4,29 @@ const EXERCISE_SCORES = 'exercise_scores'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
 
 export default {
+  getRecommended() {
+    var images = ['./images/exercises/cycling.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
+    var exercises = []
+    var scores = this.loadScores()
+    scores.forEach((category, i) => {
+      category.forEach((exercise, j) => {
+        var k = exercise.indexOf(Math.max(...exercise))
+        exercises.push({
+          score: scores[i][j][k],
+          posX: i,
+          posY: j,
+          posZ: k
+        })
+      })
+    })
+    exercises.sort((a, b) => b.score - a.score)
+    exercises = exercises.splice(0, 4)
+    exercises.forEach((item, i) => {
+      item.title = Exercises[item.posX].exercises[item.posY].title
+      item.image = images[i]
+    })
+    return exercises
+  },
   getScore(posX, posY, posZ) {
     try {
       return this.loadScores()[posX][posY][posZ]

@@ -86,7 +86,7 @@ export default {
               if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
               else localStorage.setItem('casual-food', JSON.stringify(foodArray))
             }
-            this.$router.push(this.parent)
+            setTimeout(() => { this.$router.push(this.parent) }, 1000)
           }
         }
       })

@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     filtered() {
-      let ex = JSON.parse(JSON.stringify(Exercises));
+      let ex = JSON.parse(JSON.stringify(Exercises))
       ex.forEach(category => {
         category.exercises.forEach((item, i) => { item.pos = i })
         let localExercises = category.exercises.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
@@ -62,17 +62,15 @@ export default {
     sort() {
       let ex = this.filtered()
       ex.forEach((category, i) => {
-        let localExercises = category.exercises.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
         if (this.sorting == 'by_score') {
-          localExercises.sort((a, b) => {
+          category.exercises.sort((a, b) => {
             var scoreA = ExercisesHelper.categoryScore(i, a.pos)
             var scoreB = ExercisesHelper.categoryScore(i, b.pos)
             return scoreA > scoreB ? -1 : scoreA < scoreB ? 1 : 0
           })
         } else if (this.sorting == 'alphabetically') {
-           localExercises.sort((a, b) => a.title.localeCompare(b.title))
+           category.exercises.sort((a, b) => a.title.localeCompare(b.title))
         }
-        category.exercises = localExercises
       })
       this.listItems = ex
     }
