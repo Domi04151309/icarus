@@ -1,4 +1,7 @@
+/*global Vue*/
+
 import Page from '../components/page-large-app-bar.js'
+import Modal from '../components/modal.js'
 import ProgressRing from '../components/progress-ring.js'
 
 import Exercises from '../data/exercises.js'
@@ -58,12 +61,22 @@ export default {
       ProgressRing
   },
   mounted() {
-    if (this.$route.query.posX != null && this.$route.query.posY != null) {
-      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)]
-      this.variationNumber = parseInt(this.$route.query.posY, 10)
+    if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
+      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)]
+      this.variationNumber = parseInt(this.$route.query.posZ, 10)
     } else {
-      alert('TODO: Error Handling')
-      //this.$router.push()
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Exercise Not Found',
+          message: 'Unfortunately, this exercise does not exist.',
+          positiveFunction: () => {
+            setTimeout(() => { this.$router.push('/exercises') }, 1000)
+          }
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
     }
   }
 }

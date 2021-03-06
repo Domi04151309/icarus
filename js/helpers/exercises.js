@@ -4,16 +4,20 @@ const EXERCISE_SCORES = 'exercise_scores'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
 
 export default {
-  getScore(posX, posY) {
-    return this.loadScores()[posX][posY]
+  getScore(posX, posY, posZ) {
+    try {
+      return this.loadScores()[posX][posY][posZ]
+    } catch {
+      return this.generateNewScores()[posX][posY][posZ]
+    }
   },
-  categoryScore(posX) {
-    var scores = this.loadScores()
+  categoryScore(posX, posY) {
+    var scores = this.loadScores()[posX]
     var score = 0
-    scores[posX].forEach(item => {
+    scores[posY].forEach(item => {
       score += item
     })
-    return score / scores[posX].length
+    return score / scores[posY].length
   },
   loadScores() {
     var stored = localStorage.getItem(EXERCISE_SCORES)
@@ -21,17 +25,22 @@ export default {
     else return JSON.parse(stored)
   },
   generateNewScores() {
-    var array = []
-    var innerArray = []
-    Exercises.forEach(item => {
-      innerArray = []
-      item.variations.forEach(innerItem => {
-        innerArray.push(this.calculateScore(innerItem))
+    var categoryArray = []
+    var exerciseArray = []
+    var variationArray = []
+    Exercises.forEach(category => {
+      exerciseArray = []
+      category.exercises.forEach(exercise => {
+        variationArray = []
+        exercise.variations.forEach(innerItem => {
+          variationArray.push(this.calculateScore(innerItem))
+        })
+        exerciseArray.push(variationArray)
       })
-      array.push(innerArray)
+      categoryArray.push(exerciseArray)
     })
-    localStorage.setItem(EXERCISE_SCORES, JSON.stringify(array))
-    return array
+    localStorage.setItem(EXERCISE_SCORES, JSON.stringify(categoryArray))
+    return categoryArray
   },
   calculateScore(exercise) {
     var parameters = null

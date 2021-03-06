@@ -1,22 +1,23 @@
 <h1>Data Extractor</h1>
 <p id="result"></p>
 <script>
-  const COLUMN_MAIN_TITLE = 0
-  const COLUMN_VARIATION_TITLE = 1
-  const COLUMN_FAT_LOSS = 2
-  const COLUMN_MUSCLE_GAIN = 7
-  const COLUMN_CARDIO = 8
-  const COLUMN_ENDURANCE= 9
-  const COLUMN_ARMS = 10
-  const COLUMN_SHOULDERS = 11
-  const COLUMN_BACK = 12
-  const COLUMN_CHEST = 13
-  const COLUMN_ABS = 14
-  const COLUMN_BOOTY = 15
-  const COLUMN_LEGS = 16
+  const COLUMN_CATEGORY_TITLE = 0
+  const COLUMN_EXERCISE_TITLE = 1
+  const COLUMN_VARIATION_TITLE = 2
+  const COLUMN_FAT_LOSS = 3
+  const COLUMN_MUSCLE_GAIN = 8
+  const COLUMN_CARDIO = 9
+  const COLUMN_ENDURANCE= 10
+  const COLUMN_ARMS = 11
+  const COLUMN_SHOULDERS = 12
+  const COLUMN_BACK = 13
+  const COLUMN_CHEST = 14
+  const COLUMN_ABS = 15
+  const COLUMN_BOOTY = 16
+  const COLUMN_LEGS = 17
 
   const FILE_PATH = './Data%20-%20Exercises.csv'
-  const IGNORE_LINES = [1, 2, 34, 45, 58]
+  const IGNORE_LINES = [1, 33, 44, 59]
 
   function getIntFromArray(array, index) {
     var temp = parseInt(array[index], 10)
@@ -35,25 +36,26 @@
         removedLines++
       })
 
-      var usefulData = []
-      var generalType = null
+      var data = []
       var lineArray = []
-      var currentObj = null
-      var variations = []
+      var categoryObj = null
+      var exerciseObj = null
 
       lines.forEach(item => {
         lineArray = item.split(',')
-        if (lineArray[COLUMN_MAIN_TITLE] != '') {
-          if (currentObj != null) {
-            currentObj.variations = variations
-            usefulData.push(currentObj)
-          }
-          generalType = lineArray[COLUMN_MAIN_TITLE]
-          currentObj = {}
-          variations = []
-          currentObj.title = generalType
+        if (lineArray[COLUMN_CATEGORY_TITLE] != '') {
+          categoryObj = new Object()
+          data.push(categoryObj)
+          categoryObj.title = lineArray[COLUMN_CATEGORY_TITLE]
+          categoryObj.exercises = []
         }
-        variations.push({
+        if (lineArray[COLUMN_EXERCISE_TITLE] != '') {
+          exerciseObj = new Object()
+          categoryObj.exercises.push(exerciseObj)
+          exerciseObj.title = lineArray[COLUMN_EXERCISE_TITLE]
+          exerciseObj.variations = []
+        }
+        exerciseObj.variations.push({
           title: lineArray[COLUMN_VARIATION_TITLE],
           fatLoss: getIntFromArray(lineArray, COLUMN_FAT_LOSS),
           muscleGain: getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN),
@@ -68,7 +70,7 @@
           legs: getIntFromArray(lineArray, COLUMN_LEGS)
         })
       })
-      console.log(usefulData)
-      document.getElementById('result').innerHTML = JSON.stringify(usefulData)
+      console.log(data)
+      document.getElementById('result').innerHTML = JSON.stringify(data)
     })
 </script>

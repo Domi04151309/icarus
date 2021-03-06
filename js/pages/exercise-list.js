@@ -29,16 +29,21 @@ export default {
       <input type="radio" id="alphabetically" value="alphabetically" v-model="sorting">
       <label for="alphabetically">Alphabetically</label>
     </div>
-    <div class="card mb-16" v-for="(item, posX) in listItems" :key="posX + item.title">
-      <h2 class="p-16 m-0">{{ item.title }}</h2>
-      <ul class="link-list m-0">
-        <li v-for="(variation, posY) in item.variations" :key="posX + variation.title">
-          <router-link :to="'/exercises/exercise-details?posX=' + item.pos + '&posY=' + posY">
-            {{ variation.title }}<br>
-            <span class="p">Score: {{ ExercisesHelper.getScore(item.pos, posY) }}</span>
-          </router-link>
-        </li>
-      </ul>
+    <div v-for="(category, posX) in listItems" :key="posX + category.title">
+      <p class="text-center">{{ category.title }}</p>
+      <div class="category">
+        <div class="card mb-16" v-for="(exercise, posY) in category.exercises" :key="posY + exercise.title">
+          <h2 class="p-16 m-0">{{ exercise.title }}</h2>
+          <ul class="link-list m-0">
+            <li v-for="(variation, posZ) in exercise.variations" :key="posY + variation.title">
+              <router-link :to="'/exercises/exercise-details?posX=' + posX + '&posY=' + exercise.pos + '&posZ=' + posZ">
+                {{ variation.title }}<br>
+                <span class="p">Score: {{ ExercisesHelper.getScore(posX, exercise.pos, posZ) }}</span>
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </page>`,
   components: {
@@ -46,20 +51,30 @@ export default {
   },
   methods: {
     filtered() {
-      var ex = Exercises
-      ex.forEach((item, i) => { item.pos = i })
-      return ex.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
+      let ex = JSON.parse(JSON.stringify(Exercises));
+      ex.forEach(category => {
+        category.exercises.forEach((item, i) => { item.pos = i })
+        let localExercises = category.exercises.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
+        category.exercises = localExercises
+      })
+      return ex
     },
     sort() {
-      if (this.sorting == 'by_score') {
-        this.listItems = this.filtered().sort((a, b) => {
-          var scoreA = ExercisesHelper.categoryScore(a.pos)
-          var scoreB = ExercisesHelper.categoryScore(b.pos)
-          return scoreA > scoreB ? -1 : scoreA < scoreB ? 1 : 0
-        })
-      } else if (this.sorting == 'alphabetically') {
-         this.listItems = this.filtered().sort((a, b) => a.title.localeCompare(b.title))
-      } else this.listItems = []
+      let ex = this.filtered()
+      ex.forEach((category, i) => {
+        let localExercises = category.exercises.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
+        if (this.sorting == 'by_score') {
+          localExercises.sort((a, b) => {
+            var scoreA = ExercisesHelper.categoryScore(i, a.pos)
+            var scoreB = ExercisesHelper.categoryScore(i, b.pos)
+            return scoreA > scoreB ? -1 : scoreA < scoreB ? 1 : 0
+          })
+        } else if (this.sorting == 'alphabetically') {
+           localExercises.sort((a, b) => a.title.localeCompare(b.title))
+        }
+        category.exercises = localExercises
+      })
+      this.listItems = ex
     }
   },
   mounted() {
