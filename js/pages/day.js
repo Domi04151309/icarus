@@ -87,7 +87,7 @@ export default {
         </p>
       </div>
       <div class="card mb-16-p-16">
-        <h2>Workout Exercises <span class="material-icons-round c-icon">fitness_center</span></h2>
+        <h2>Exercises <span class="material-icons-round c-icon">fitness_center</span></h2>
         <div class="flex my-24 red">
           <button class="progress-control left" type="button" v-on:click="removeOne('_exercises')">&minus;</button>
           <progress :max="ProgressCompanion.maxExercises" :value="exercises"></progress>

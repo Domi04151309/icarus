@@ -5,6 +5,7 @@ import Modal from '../components/modal.js'
 import ProgressRing from '../components/progress-ring.js'
 
 import Exercises from '../data/exercises.js'
+import Identifiers from '../helpers/identifiers.js'
 
 //TODO: Add content
 
@@ -50,10 +51,21 @@ export default {
         Dummy text dummy text dummy text dummy text dummy text dummy text.
       </p>
     </div>
+    <button class="w-100" type="button" v-on:click="onPerformClicked()">Perform</button>
   </page>`,
   components: {
       Page,
       ProgressRing
+  },
+  methods: {
+    onPerformClicked() {
+      var dateId = Identifiers.getDateId()
+      localStorage.setItem(
+        dateId + '_exercises',
+        (parseInt(localStorage.getItem(dateId + '_exercises'), 10) || 0) + 1
+      )
+      this.$router.push('/exercises')
+    }
   },
   mounted() {
     if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
