@@ -12,24 +12,19 @@ export default {
   name: 'exercise-details',
   data() {
     return {
-      exerciseItem: {
-        variations: [
-          { }
-        ]
-      },
-      variationNumber: 0
+      exerciseTitle: '',
+      exerciseItem: { }
     }
   },
   computed: {
     title: () => 'Exercise'
   },
   template:
-  `<page :title="exerciseItem.variations[variationNumber].title + ' ' + exerciseItem.title" parent="/exercises" class="exercises">
+  `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
+        {{ exerciseItem.tutorial }}
       </p>
     </div>
     <div class="card text-center mb-16-p-16">
@@ -62,8 +57,8 @@ export default {
   },
   mounted() {
     if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
-      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)]
-      this.variationNumber = parseInt(this.$route.query.posZ, 10)
+      this.exerciseTitle = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].title
+      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].variations[parseInt(this.$route.query.posZ, 10)]
     } else {
       var ComponentClass = Vue.extend(Modal)
       var instance = new ComponentClass({

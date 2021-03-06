@@ -15,6 +15,7 @@
   const COLUMN_ABS = 15
   const COLUMN_BOOTY = 16
   const COLUMN_LEGS = 17
+  const COLUMN_TUTORIAL = 34
 
   const FILE_PATH = './Data%20-%20Exercises.csv'
   const IGNORE_LINES = [1, 33, 44, 59]
@@ -42,7 +43,11 @@
       var exerciseObj = null
 
       lines.forEach(item => {
-        lineArray = item.split(',')
+        lineArray = CSVtoArray(item)
+        if (lineArray == null) {
+          console.error('Invalid Item: ' + item)
+          return
+        }
         if (lineArray[COLUMN_CATEGORY_TITLE] != '') {
           categoryObj = new Object()
           data.push(categoryObj)
@@ -57,6 +62,7 @@
         }
         exerciseObj.variations.push({
           title: lineArray[COLUMN_VARIATION_TITLE],
+          tutorial: lineArray[COLUMN_TUTORIAL],
           fatLoss: getIntFromArray(lineArray, COLUMN_FAT_LOSS),
           muscleGain: getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN),
           cardio: getIntFromArray(lineArray, COLUMN_CARDIO),
@@ -73,4 +79,29 @@
       console.log(data)
       document.getElementById('result').innerHTML = JSON.stringify(data)
     })
+
+    function CSVtoArray(text) {
+      var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+      var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+
+      // Return NULL if input string is not well formed CSV string.
+      if (!re_valid.test(text)) return null;
+
+      var a = []; // Initialize array to receive values.
+      text.replace(re_value, // "Walk" the string using replace with callback.
+          function(m0, m1, m2, m3) {
+
+              // Remove backslash from \' in single quoted values.
+              if (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+
+              // Remove backslash from \" in double quoted values.
+              else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+              else if (m3 !== undefined) a.push(m3);
+              return ''; // Return empty string.
+          });
+
+      // Handle special case of empty last value.
+      if (/,\s*$/.test(text)) a.push('');
+      return a;
+    }
 </script>
