@@ -22,8 +22,8 @@ export default {
   },
   template:
   `<page-tab-bar>
-    <div class="mt-16 mx-8 material-icons-round big accent c-icon">waves</div>
-    <div class="mx-8 big-text">Welcome Back {{ name }}</div>
+    <div class="mt-16 mx-8 material-icons-round big accent">waves</div>
+    <h2 class="mx-8 secondary-title">Welcome Back {{ name }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <router-link to="/progress/day" class="card mb-16-p-16">
       <h2>Today's Goals</h2>

@@ -257,11 +257,12 @@ progress::-webkit-progress-value {
 }
 
 /* general elements */
+.secondary-title {
+  margin: 0;
+  font-size: 32px;
+}
 .accent-text {
   color: var(--accent-color)
-}
-.big-text {
-  font-size: 32px;
 }
 .card {
   display: block;
@@ -690,7 +691,7 @@ footer .router-link-active {
 
 /* exercises */
 .card.exercise {
-  height: calc(50vh - 80px);
+  height: calc(33vh - 48px);
   max-height: 256px;
 }
 div.large-app-bar {

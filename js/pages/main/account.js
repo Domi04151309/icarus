@@ -24,7 +24,7 @@ export default {
       <li><router-link to="/account/preferences"><span class="material-icons-round">settings</span>Preferences</router-link></li>
       <li><router-link to="/account/nutrition"><span class="material-icons-round">local_dining</span>Nutrition Plan</router-link></li>
       <li><router-link to="/account/workout"><span class="material-icons-round">directions_run</span>Workout Plan</router-link></li>
-      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Your Data</router-link></li>
+      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Raw Data</router-link></li>
       <li><router-link to="/account/help"><span class="material-icons-round">help</span>Help</router-link></li>
       <li><router-link to="/account/about"><span class="material-icons-round">info</span>About</router-link></li>
     </ul>

@@ -94,7 +94,7 @@ export default {
           <button class="progress-control right" type="button" v-on:click="addOne('_exercises')">+</button>
         </div>
         <p>
-          An exercise is great for testing and improving your abilites and performance.
+          Exercises are great for testing and improving your abilites and performance.
         </p>
       </div>
       <div class="card mb-16-p-16">
