@@ -5,6 +5,7 @@ import Modal from '../components/modal.js'
 import ProgressRing from '../components/progress-ring.js'
 
 import Exercises from '../data/exercises.js'
+import ExerciseHelper from '../helpers/exercises.js'
 import Identifiers from '../helpers/identifiers.js'
 
 //TODO: Add content
@@ -64,6 +65,11 @@ export default {
         dateId + '_exercises',
         (parseInt(localStorage.getItem(dateId + '_exercises'), 10) || 0) + 1
       )
+      ExerciseHelper.addRecentExercise([
+        parseInt(this.$route.query.posX, 10),
+        parseInt(this.$route.query.posY, 10),
+        parseInt(this.$route.query.posZ, 10)
+      ])
       this.$router.push('/exercises')
     }
   },

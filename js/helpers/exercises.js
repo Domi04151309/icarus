@@ -1,6 +1,7 @@
 import Exercises from '../data/exercises.js'
 
 const EXERCISE_SCORES = 'exercise_scores'
+const EXERCISE_RECENTS = 'exercise_recents'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
 
 export default {
@@ -8,10 +9,14 @@ export default {
     var images = ['./images/exercises/cycling.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
     var exercises = []
     var scores = this.loadScores()
+    var recents = this.loadRecents()
+    recents.forEach(item => {
+      scores[item[0]][item[1]] = []
+    })
     scores.forEach((category, i) => {
       category.forEach((exercise, j) => {
         var k = exercise.indexOf(Math.max(...exercise))
-        exercises.push({
+        if (k != -1) exercises.push({
           score: scores[i][j][k],
           posX: i,
           posY: j,
@@ -26,6 +31,16 @@ export default {
       item.image = images[i]
     })
     return exercises
+  },
+  addRecentExercise(position) {
+    var recents = this.loadRecents()
+    recents.unshift(position)
+    localStorage.setItem(EXERCISE_RECENTS, JSON.stringify(recents.slice(0, 8)))
+  },
+  loadRecents() {
+    var stored = localStorage.getItem(EXERCISE_RECENTS)
+    if (stored == null) return []
+    else return JSON.parse(stored)
   },
   getScore(posX, posY, posZ) {
     try {
