@@ -1,5 +1,8 @@
+import JsonHelper from './json.js'
+
 import Exercises from '../data/exercises.js'
 
+const EXERCISE_PARAMETERS = 'fitness'
 const EXERCISE_SCORES = 'exercise_scores'
 const EXERCISE_RECENTS = 'exercise_recents'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
@@ -8,8 +11,8 @@ export default {
   getRecommended() {
     var images = ['./images/exercises/cycling.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
     var exercises = []
-    var scores = this.loadScores()
-    var recents = this.loadRecents()
+    var scores = JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())
+    var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
     recents.forEach(item => {
       scores[item[0]][item[1]] = []
     })
@@ -33,34 +36,24 @@ export default {
     return exercises
   },
   addRecentExercise(position) {
-    var recents = this.loadRecents()
+    var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
     recents.unshift(position)
     localStorage.setItem(EXERCISE_RECENTS, JSON.stringify(recents.slice(0, 8)))
   },
-  loadRecents() {
-    var stored = localStorage.getItem(EXERCISE_RECENTS)
-    if (stored == null) return []
-    else return JSON.parse(stored)
-  },
   getScore(posX, posY, posZ) {
     try {
-      return this.loadScores()[posX][posY][posZ]
+      return JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())[posX][posY][posZ]
     } catch {
       return this.generateNewScores()[posX][posY][posZ]
     }
   },
   categoryScore(posX, posY) {
-    var scores = this.loadScores()[posX]
+    var scores = JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())[posX]
     var score = 0
     scores[posY].forEach(item => {
       score += item
     })
     return score / scores[posY].length
-  },
-  loadScores() {
-    var stored = localStorage.getItem(EXERCISE_SCORES)
-    if (stored == null) return this.generateNewScores()
-    else return JSON.parse(stored)
   },
   generateNewScores() {
     var categoryArray = []
@@ -81,11 +74,8 @@ export default {
     return categoryArray
   },
   calculateScore(exercise) {
-    var parameters = null
-    var stored = localStorage.getItem('fitness')
-    if (stored === null) return 0
-    else parameters = JSON.parse(stored)
-
+    var parameters = JsonHelper.getData(EXERCISE_PARAMETERS, () => 0)
+    
     var score = 100 * PARAMETER_LIST.length
     PARAMETER_LIST.forEach(item => {
       score += parseInt(parameters[item], 10) * exercise[item]

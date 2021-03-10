@@ -334,6 +334,7 @@ h2 > .c-icon {
   color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
+  overflow: hidden;
 }
 .link-list .material-icons-round {
   margin-right: 16px;

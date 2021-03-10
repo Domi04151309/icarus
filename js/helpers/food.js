@@ -1,3 +1,5 @@
+import JsonHelper from './json.js'
+
 export default {
   defaultHealthyFood: [
     {
@@ -46,38 +48,17 @@ export default {
     }
   ],
   getHealthyFood() {
-    var array = []
-    try {
-      array = JSON.parse(localStorage.getItem('healthy-food'))
-    } catch (e) {
-      console.warn(e)
-      array = null
-    }
-    return array || this.defaultHealthyFood
+    return JsonHelper.getData('healthy-food') || this.defaultHealthyFood
   },
   getNotSoHealthyFood() {
-    var array = []
-    try {
-      array = JSON.parse(localStorage.getItem('casual-food'))
-    } catch (e) {
-      console.warn(e)
-      array = null
-    }
-    return array || this.defaultNotSoHealthyFood
+    return JsonHelper.getData('casual-food') || this.defaultNotSoHealthyFood
   },
   defaultFoodStatistics: {
     healthy: 0,
     notSoHealthy: 0
   },
   getFoodStatistics() {
-    var object = {}
-    try {
-      object = JSON.parse(localStorage.getItem('food-statistics'))
-    } catch (e) {
-      console.warn(e)
-      object = this.defaultFoodStatistics
-    }
-    return object || this.defaultFoodStatistics
+    return JsonHelper.getData('food-statistics') || this.defaultFoodStatistics
   },
   addOneHealthyFoodToStatistics() {
     var object = {}
