@@ -11,9 +11,9 @@ export default {
   data() {
     return {
       generalSuggestions: [
-        { title: "Breakfast", img: '../images/food/breakfast.jpg' },
-        { title: 'Lunch', img: '../images/food/lunch.jpg' },
-        { title: 'Dinner', img: '../images/food/dinner.jpg' }
+        { title: "Breakfast", img: './images/food/breakfast.jpg' },
+        { title: 'Lunch', img: './images/food/lunch.jpg' },
+        { title: 'Dinner', img: './images/food/dinner.jpg' }
       ]
     }
   },
