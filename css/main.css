@@ -255,6 +255,9 @@ progress::-webkit-progress-value {
   border-radius: var(--border-radius-1x);
   transition: width .5s;
 }
+svg {
+  flex: none;
+}
 
 /* general elements */
 .secondary-title {
@@ -493,8 +496,14 @@ h2 > .c-icon {
   padding: 16px;
   margin-bottom: 16px;
 }
+.mb-8 {
+  margin-bottom: 8px;
+}
 .mb-16 {
   margin-bottom: 16px;
+}
+.mb-24 {
+  margin-bottom: 24px;
 }
 .mb-32 {
   margin-bottom: 32px;
@@ -505,8 +514,8 @@ h2 > .c-icon {
 .mt-8 {
   margin-top: 8px;
 }
-.mb-8 {
-  margin-bottom: 8px;
+.mt-48 {
+  margin-top: 48px;
 }
 .mr-8 {
   margin-right: 8px;
@@ -708,7 +717,7 @@ h2.large-app-bar {
   z-index: 0;
 }
 div.large-app-bar.exercises > h2 {
-  background: var(--background-dim), url('../images/exercises/cycling.jpg') no-repeat center;
+  background: var(--background-dim), url('../images/exercises/hiking.jpg') no-repeat center;
   background-size: cover;
 }
 div.large-app-bar.healthy > h2 {

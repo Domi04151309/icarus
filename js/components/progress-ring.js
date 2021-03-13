@@ -6,7 +6,7 @@ export default {
     stroke: Number
   },
   data() {
-    const normalizedRadius = this.radius - this.stroke * 2
+    const normalizedRadius = this.radius - this.stroke / 2
     const circumference = normalizedRadius * 2 * Math.PI
 
     return {

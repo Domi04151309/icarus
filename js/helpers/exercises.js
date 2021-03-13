@@ -9,7 +9,7 @@ const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders'
 
 export default {
   getRecommended() {
-    var images = ['./images/exercises/cycling.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
+    var images = ['./images/exercises/hiking.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
     var exercises = []
     var scores = JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())
     var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
@@ -75,7 +75,7 @@ export default {
   },
   calculateScore(exercise) {
     var parameters = JsonHelper.getData(EXERCISE_PARAMETERS, () => 0)
-    
+
     var score = 100 * PARAMETER_LIST.length
     PARAMETER_LIST.forEach(item => {
       score += parseInt(parameters[item], 10) * exercise[item]
