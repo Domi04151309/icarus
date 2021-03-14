@@ -108,6 +108,7 @@ export default {
   methods: {
     updateProgress() {
       this.total = this.dayHelper.getProgress() * 100
+      this.dayHelper.saveProgress()
     },
     addOne(key) {
       this.dayHelper.progress[key] += 1
@@ -161,10 +162,6 @@ export default {
       this.dayHelper = new DayHelper(dateString)
       this.readableDate = dateString.substring(6, 8) + '/' + dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
-    this.updateProgress()
-    window.addEventListener('beforeunload', () => { this.dayHelper.saveProgress() })
-  },
-  destroyed() {
-    this.dayHelper.saveProgress()
+    this.total = this.dayHelper.getProgress() * 100
   }
 }
