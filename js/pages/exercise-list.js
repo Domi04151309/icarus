@@ -75,7 +75,7 @@ export default {
       this.listItems = ex
     }
   },
-  mounted() {
+  created() {
     this.sort()
   }
 }

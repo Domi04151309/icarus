@@ -53,7 +53,7 @@ export default {
       this.storage = array
     }
   },
-  mounted() {
+  created() {
     this.loadEntries()
   }
 }

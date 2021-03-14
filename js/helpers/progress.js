@@ -1,4 +1,5 @@
-import Identifiers from '../helpers/identifiers.js'
+import Identifiers from './identifiers.js'
+import JsonHelper from './json.js'
 
 const ProgressCompanion = {
   maxWater: '12',
@@ -10,18 +11,38 @@ const ProgressCompanion = {
   maxSleep: '9'
 }
 
+const DefaultObject = {
+  water: 0,
+  calories: 0,
+  carbs: 0,
+  proteins: 0,
+  fat: 0,
+  exercises: 0,
+  sleep: 0
+}
+
 class DayHelper {
   constructor(dateId) {
     this.dateId = dateId
+    this.progress = JsonHelper.getData(dateId, () => DefaultObject)
+  }
+  saveProgress() {
+    localStorage.setItem(this.dateId, JSON.stringify(this.progress))
   }
   getProgress() {
-    return ((parseInt(localStorage.getItem(this.dateId + '_water'), 10) || 0) / ProgressCompanion.maxWater
-    + (parseInt(localStorage.getItem(this.dateId + '_calories'), 10) || 0) / ProgressCompanion.maxCalories
-    + (parseInt(localStorage.getItem(this.dateId + '_carbs'), 10) || 0) / ProgressCompanion.maxCarbs
-    + (parseInt(localStorage.getItem(this.dateId + '_proteins'), 10) || 0) / ProgressCompanion.maxProteins
-    + (parseInt(localStorage.getItem(this.dateId + '_fat'), 10) || 0) / ProgressCompanion.maxFat
-    + (parseInt(localStorage.getItem(this.dateId + '_exercises'), 10) || 0) / ProgressCompanion.maxExercises
-    + (parseInt(localStorage.getItem(this.dateId + '_sleep'), 10) || 0) / ProgressCompanion.maxSleep) / 7
+    return (this.progress.water / ProgressCompanion.maxWater
+    + this.progress.calories / ProgressCompanion.maxCalories
+    + this.progress.carbs / ProgressCompanion.maxCarbs
+    + this.progress.proteins / ProgressCompanion.maxProteins
+    + this.progress.fat / ProgressCompanion.maxFat
+    + this.progress.exercises / ProgressCompanion.maxExercises
+    + this.progress.sleep / ProgressCompanion.maxSleep) / 7
+  }
+  getFoodProgress() {
+    return (this.progress.calories / ProgressCompanion.maxCalories
+    + this.progress.carbs / ProgressCompanion.maxCarbs
+    + this.progress.proteins / ProgressCompanion.maxProteins
+    + this.progress.fat / ProgressCompanion.maxFat) / 4
   }
 }
 
@@ -48,34 +69,37 @@ class WeekHelper {
   }
   getWaterProgress() {
     var progress = 0
+    var dayHelper = null
     this.forDayInWeek(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_water'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.water
     })
     return progress / (ProgressCompanion.maxWater * 7)
   }
   getFoodProgress() {
     var progress = 0
-    var dateId = null
+    var dayHelper = null
     this.forDayInWeek(date => {
-      dateId = Identifiers.getDateId(date)
-      progress += ((parseInt(localStorage.getItem(dateId + '_calories'), 10) || 0) / ProgressCompanion.maxCalories
-      + (parseInt(localStorage.getItem(dateId + '_carbs'), 10) || 0) / ProgressCompanion.maxCarbs
-      + (parseInt(localStorage.getItem(dateId + '_proteins'), 10) || 0) / ProgressCompanion.maxProteins
-      + (parseInt(localStorage.getItem(dateId + '_fat'), 10) || 0) / ProgressCompanion.maxFat)
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.getFoodProgress()
     })
-    return progress / (4 * 7)
+    return progress / 7
   }
   getExercisesProgress() {
     var progress = 0
+    var dayHelper = null
     this.forDayInWeek(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_exercises'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.exercises
     })
     return progress / (ProgressCompanion.maxExercises * 7)
   }
   getSleepProgress() {
     var progress = 0
+    var dayHelper = null
     this.forDayInWeek(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_sleep'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.sleep
     })
     return progress / (ProgressCompanion.maxSleep * 7)
   }
@@ -108,34 +132,37 @@ class MonthHelper {
   }
   getWaterProgress() {
     var progress = 0
+    var dayHelper = null
     var days = this.forDayInMonth(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_water'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.water
     })
     return progress / (ProgressCompanion.maxWater * days)
   }
   getFoodProgress() {
     var progress = 0
-    var dateId = null
+    var dayHelper = null
     var days = this.forDayInMonth(date => {
-      dateId = Identifiers.getDateId(date)
-      progress += ((parseInt(localStorage.getItem(dateId + '_calories'), 10) || 0) / ProgressCompanion.maxCalories
-      + (parseInt(localStorage.getItem(dateId + '_carbs'), 10) || 0) / ProgressCompanion.maxCarbs
-      + (parseInt(localStorage.getItem(dateId + '_proteins'), 10) || 0) / ProgressCompanion.maxProteins
-      + (parseInt(localStorage.getItem(dateId + '_fat'), 10) || 0) / ProgressCompanion.maxFat)
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.getFoodProgress()
     })
     return progress / (4 * days)
   }
   getExercisesProgress() {
     var progress = 0
+    var dayHelper = null
     var days = this.forDayInMonth(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_exercises'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.exercises
     })
     return progress / (ProgressCompanion.maxExercises * days)
   }
   getSleepProgress() {
     var progress = 0
+    var dayHelper = null
     var days = this.forDayInMonth(date => {
-      progress += parseInt(localStorage.getItem(Identifiers.getDateId(date) + '_sleep'), 10) || 0
+      dayHelper = new DayHelper(Identifiers.getDateId(date))
+      progress += dayHelper.progress.sleep
     })
     return progress / (ProgressCompanion.maxSleep * days)
   }

@@ -2,6 +2,11 @@ import PageTabBar from '../../components/page-tab-bar.js'
 
 export default {
   name: 'account',
+  computed: {
+    name: () => localStorage.getItem('info_name') || 'undefined',
+    age: () => localStorage.getItem('info_age') || 'undefined',
+    mq: () => localStorage.getItem('info_mq') || 'undefined'
+  },
   template:
   `<page-tab-bar>
     <div class="flex mb-16">
@@ -9,14 +14,14 @@ export default {
       <ul class="no-bullets p">
         <li class="flex mb-8">
           <div class="mr-16">
-            <small class="item-caption">Name</small><span ref="name"></span>
+            <small class="item-caption">Name</small>{{ name }}</span>
           </div>
           <div>
-            <small class="item-caption">Age</small><span ref="age"></span>
+            <small class="item-caption">Age</small>{{ age }}</span>
           </div>
         </li>
         <li>
-          <small class="item-caption">Motivation Quota</small><span ref="mq"></span>
+          <small class="item-caption">Motivation Quota</small>{{ mq }}</span>
         </li>
       </ul>
     </div>
@@ -31,10 +36,5 @@ export default {
   </page-tab-bar>`,
   components: {
       PageTabBar
-  },
-  mounted() {
-    this.$refs.name.innerHTML = localStorage.getItem('info_name') || 'undefined'
-    this.$refs.age.innerHTML = localStorage.getItem('info_age') || 'undefined'
-    this.$refs.mq.innerHTML = localStorage.getItem('info_mq') || 'undefined'
   }
 }

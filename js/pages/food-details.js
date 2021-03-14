@@ -116,13 +116,16 @@ export default {
       this.$router.push(this.parent)
     }
   },
-  mounted() {
+  created() {
     if (this.$route.query.item != null) {
       if (this.healthy)
         this.foodItem = FoodHelper.getHealthyFood()[this.$route.query.item]
       else
         this.foodItem = FoodHelper.getNotSoHealthyFood()[this.$route.query.item]
-    } else {
+    }
+  },
+  mounted() {
+    if (this.$route.query.item == null) {
       this.$router.push('/nutrition/' + this.writtenType + '/food-item')
     }
   }

@@ -75,17 +75,18 @@ export default {
   components: {
     Page
   },
-  mounted() {
+  created() {
     var dateString = this.$route.query.date
+    var dateId = null
     if (dateString == null) {
-      this.dateId = Identifiers.getDateId()
+      dateId = Identifiers.getDateId()
       this.readableDate = 'this week'
     } else {
-      this.dateId = dateString
+      dateId = dateString
       this.readableDate = dateString.substring(6, 8) + '/' + dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
-    var weekHelper = new WeekHelper(this.dateId)
+    var weekHelper = new WeekHelper(dateId)
     this.total = weekHelper.getProgress() * 100
 
     var dayHelper = null
@@ -101,7 +102,7 @@ export default {
     this.exercises = weekHelper.getExercisesProgress() * 100
     this.sleep = weekHelper.getSleepProgress() * 100
 
-    var lastWeek = Identifiers.dateIdToDate(this.dateId)
+    var lastWeek = Identifiers.dateIdToDate(dateId)
     lastWeek.setTime(lastWeek.getTime() - (7 * 24 * 3600000))
     weekHelper = new WeekHelper(Identifiers.getDateId(lastWeek))
 

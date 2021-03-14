@@ -78,13 +78,15 @@ export default {
       this.$router.push(this.parent)
     }
   },
-  mounted() {
+  created() {
     if (this.$route.query.item != null) {
       if (this.healthy)
         this.foodItem = FoodHelper.getHealthyFood()[this.$route.query.item]
       else
         this.foodItem = FoodHelper.getNotSoHealthyFood()[this.$route.query.item]
     }
+  },
+  mounted() {
     setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
   },
   components: {

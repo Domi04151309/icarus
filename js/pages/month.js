@@ -7,7 +7,6 @@ export default {
   name: 'about',
   data() {
     return {
-      dateId: '',
       readableDate: '',
       total: 0,
       month: [],
@@ -69,17 +68,18 @@ export default {
   components: {
       Page
   },
-  mounted() {
+  created() {
     var dateString = this.$route.query.date
+    var dateId = null
     if (dateString == null) {
-      this.dateId = Identifiers.getDateId()
+      dateId = Identifiers.getDateId()
       this.readableDate = 'this month'
     } else {
-      this.dateId = dateString
+      dateId = dateString
       this.readableDate = dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
-    var monthHelper = new MonthHelper(this.dateId)
+    var monthHelper = new MonthHelper(dateId)
     this.total = monthHelper.getProgress() * 100
 
     var weekHelper = null
@@ -98,7 +98,7 @@ export default {
     this.exercises = monthHelper.getExercisesProgress() * 100
     this.sleep = monthHelper.getSleepProgress() * 100
 
-    var lastMonth = Identifiers.dateIdToDate(this.dateId)
+    var lastMonth = Identifiers.dateIdToDate(dateId)
     if (lastMonth.getMonth() == 0) {
       lastMonth.setYear(lastMonth.getYear() - 1)
       lastMonth.setMonth(11)
