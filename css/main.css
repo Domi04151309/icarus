@@ -168,10 +168,13 @@ h1, h2, h3, h4, h5, h6 {
 img {
   max-width: 100%;
 }
-label, p, .p {
+label, ol, p, .p {
   color: var(--text-color-secondary);
 }
-p {
+ol {
+  padding-left: 24px;
+}
+ol, ol > li, p {
   margin: 8px 0;
 }
 .card, button, input {

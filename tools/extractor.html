@@ -16,9 +16,24 @@
   const COLUMN_BOOTY = 16
   const COLUMN_LEGS = 17
   const COLUMN_TUTORIAL = 34
+  const COLUMN_INFORMATION = 35
 
   const FILE_PATH = './Data%20-%20Exercises.csv'
   const IGNORE_LINES = [1, 33, 44, 59]
+
+  var currentLine = 0
+  var failingLines = []
+
+  function extractJSON(string) {
+    if (string == '') return []
+    try {
+      return JSON.parse(string.replaceAll("'", '"'))
+    } catch (error) {
+      console.error('Invalid JSON at ' + currentLine + ': ' + string)
+      failingLines.push(currentLine)
+      return []
+    }
+  }
 
   function getIntFromArray(array, index) {
     var temp = parseInt(array[index], 10)
@@ -26,59 +41,63 @@
     else return temp
   }
 
-  fetch(FILE_PATH)
-    .then(response => response.text())
-    .then(result => {
-      var lines = result.split('\n')
+  async function run() {
+    await fetch(FILE_PATH)
+      .then(response => response.text())
+      .then(result => {
+        var lines = result.split('\n')
 
-      var removedLines = 0
-      IGNORE_LINES.forEach(item => {
-        lines.splice(item - removedLines - 1 , 1)
-        removedLines++
-      })
+        var data = []
+        var lineArray = []
+        var categoryObj = null
+        var exerciseObj = null
 
-      var data = []
-      var lineArray = []
-      var categoryObj = null
-      var exerciseObj = null
-
-      lines.forEach(item => {
-        lineArray = CSVtoArray(item)
-        if (lineArray == null) {
-          console.error('Invalid Item: ' + item)
-          return
-        }
-        if (lineArray[COLUMN_CATEGORY_TITLE] != '') {
-          categoryObj = new Object()
-          data.push(categoryObj)
-          categoryObj.title = lineArray[COLUMN_CATEGORY_TITLE]
-          categoryObj.exercises = []
-        }
-        if (lineArray[COLUMN_EXERCISE_TITLE] != '') {
-          exerciseObj = new Object()
-          categoryObj.exercises.push(exerciseObj)
-          exerciseObj.title = lineArray[COLUMN_EXERCISE_TITLE]
-          exerciseObj.variations = []
-        }
-        exerciseObj.variations.push({
-          title: lineArray[COLUMN_VARIATION_TITLE],
-          tutorial: lineArray[COLUMN_TUTORIAL],
-          fatLoss: getIntFromArray(lineArray, COLUMN_FAT_LOSS),
-          muscleGain: getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN),
-          cardio: getIntFromArray(lineArray, COLUMN_CARDIO),
-          endurance: getIntFromArray(lineArray, COLUMN_ENDURANCE),
-          arms: getIntFromArray(lineArray, COLUMN_ARMS),
-          shoulders: getIntFromArray(lineArray, COLUMN_SHOULDERS),
-          back: getIntFromArray(lineArray, COLUMN_BACK),
-          chest: getIntFromArray(lineArray, COLUMN_CHEST),
-          abs: getIntFromArray(lineArray, COLUMN_ABS),
-          booty: getIntFromArray(lineArray, COLUMN_BOOTY),
-          legs: getIntFromArray(lineArray, COLUMN_LEGS)
+        lines.forEach((item, i) => {
+          currentLine = i + 1
+          if (IGNORE_LINES.includes(i + 1)) return
+          lineArray = CSVtoArray(item)
+          if (lineArray == null) {
+            console.error('Invalid Item at ' + (i + 1) + ': ' + item)
+            failingLines.push(currentLine)
+            return
+          }
+          if (lineArray[COLUMN_CATEGORY_TITLE] != '') {
+            categoryObj = new Object()
+            data.push(categoryObj)
+            categoryObj.title = lineArray[COLUMN_CATEGORY_TITLE]
+            categoryObj.exercises = []
+            console.log('New category ' + lineArray[COLUMN_CATEGORY_TITLE] + ' at ' + (i + 1))
+          }
+          if (lineArray[COLUMN_EXERCISE_TITLE] != '') {
+            exerciseObj = new Object()
+            categoryObj.exercises.push(exerciseObj)
+            exerciseObj.title = lineArray[COLUMN_EXERCISE_TITLE]
+            exerciseObj.variations = []
+          }
+          exerciseObj.variations.push({
+            title: lineArray[COLUMN_VARIATION_TITLE],
+            tutorial: extractJSON(lineArray[COLUMN_TUTORIAL]),
+            information: extractJSON(lineArray[COLUMN_INFORMATION]),
+            fatLoss: getIntFromArray(lineArray, COLUMN_FAT_LOSS),
+            muscleGain: getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN),
+            cardio: getIntFromArray(lineArray, COLUMN_CARDIO),
+            endurance: getIntFromArray(lineArray, COLUMN_ENDURANCE),
+            arms: getIntFromArray(lineArray, COLUMN_ARMS),
+            shoulders: getIntFromArray(lineArray, COLUMN_SHOULDERS),
+            back: getIntFromArray(lineArray, COLUMN_BACK),
+            chest: getIntFromArray(lineArray, COLUMN_CHEST),
+            abs: getIntFromArray(lineArray, COLUMN_ABS),
+            booty: getIntFromArray(lineArray, COLUMN_BOOTY),
+            legs: getIntFromArray(lineArray, COLUMN_LEGS)
+          })
         })
+        console.log(data)
+        document.getElementById('result').innerHTML = JSON.stringify(data)
       })
-      console.log(data)
-      document.getElementById('result').innerHTML = JSON.stringify(data)
-    })
+      console.log('Failing lines: ' + failingLines.join())
+    }
+
+    run()
 
     function CSVtoArray(text) {
       var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;

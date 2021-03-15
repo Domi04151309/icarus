@@ -25,13 +25,15 @@ export default {
   `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
-      <p>
-        {{ exerciseItem.tutorial }}
-      </p>
+      <ol>
+        <li v-for="(item, i) in exerciseItem.tutorial" :key="i">{{ item }}</li>
+      </ol>
     </div>
     <div class="card text-center mb-16-p-16">
       <h2>Timer</h2>
-      <progress-ring radius="64" progress="66" stroke="8"></progress-ring>
+      <div class="p-16">
+        <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+      </div>
     </div>
     <div class="card mb-16-p-16">
       <h2>Sets</h2>
@@ -45,11 +47,10 @@ export default {
       <h2>Repetitions</h2>
       <input type="number" value="4" autocomplete="off"></input>
     </div>
-    <div class="card mb-16-p-16">
+    <div v-if="exerciseItem.information.length > 0" class="card mb-16-p-16">
       <h2>Information</h2>
       <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
+        {{ exerciseItem.information[0] }}
       </p>
     </div>
     <button class="w-100" type="button" v-on:click="onPerformClicked()">Perform</button>
