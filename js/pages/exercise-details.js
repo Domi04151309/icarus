@@ -15,8 +15,8 @@ export default {
   data() {
     return {
       exerciseTitle: '',
-      exerciseItem: { },
-      intensity: null,
+      exerciseItem: { intensities: { low: { }, medium: { }, high: { }, full: { } } },
+      intensity: 'medium',
     }
   },
   computed: {
@@ -24,12 +24,11 @@ export default {
   },
   watch: {
     intensity() {
-      this.$refs.low.classList.remove('selected')
-      this.$refs.medium.classList.remove('selected')
-      this.$refs.high.classList.remove('selected')
-      if (this.intensity === 'low') this.$refs.low.classList.add('selected')
-      else if (this.intensity === 'medium') this.$refs.medium.classList.add('selected')
-      else if (this.intensity === 'high') this.$refs.high.classList.add('selected')
+      ['low', 'medium', 'high', 'full'].forEach(item => {
+        this.$refs[item].classList.remove('selected')
+      })
+      console.log('triggered')
+      this.$refs[this.intensity].classList.add('selected')
     }
   },
   template:
@@ -44,27 +43,44 @@ export default {
       <h2>Intensity</h2>
       <div class="question button-bar">
         <button ref="low" type="button" v-on:click="intensity = 'low'">Low</button>
-        <button ref="medium" type="button" v-on:click="intensity = 'medium'">Medium</button>
+        <button ref="medium" class="selected" type="button" v-on:click="intensity = 'medium'">Medium</button>
         <button ref="high" type="button" v-on:click="intensity = 'high'">High</button>
+        <button ref="full" type="button" v-on:click="intensity = 'full'">Full</button>
+      </div>
+    </div>
+    <div class="card flex space center text-center mb-16-p-16">
+      <div>
+        <h2 class="m-0">{{ exerciseItem.intensities[intensity].sets || 0 }}</h2>
+        <p class="mb-0">Sets</p>
+      </div>
+      <div>
+        <h2 class="m-0">{{ exerciseItem.intensities[intensity].repetitions || 0 }}</h2>
+        <p class="mb-0">Repetitions</p>
+      </div>
+      <div>
+        <h2 class="m-0">{{ exerciseItem.intensities[intensity].time || 0 }}</h2>
+        <p class="mb-0">Time</p>
       </div>
     </div>
     <div class="card text-center mb-16-p-16">
       <h2>Timer</h2>
-      <div class="p-16">
-        <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+      <div class="flex space center">
+        <button class="progress-control material-icons-round" type="button">play_arrow</button>
+        <div class="p-16">
+          <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+        </div>
+        <button class="progress-control material-icons-round" type="button">stop</button>
       </div>
     </div>
-    <div class="card mb-16-p-16">
-      <h2>Sets</h2>
-      <div class="flex my-24">
-        <button class="progress-control left" type="button" v-on:click="">&minus;</button>
+    <div class="grid-2 gap-16">
+      <div class="card mb-16-p-16">
+        <h2>Sets</h2>
         <progress max="100" value="33"></progress>
-        <button class="progress-control right" type="button" v-on:click="">+</button>
       </div>
-    </div>
-    <div class="card mb-16-p-16">
-      <h2>Repetitions</h2>
-      <input type="number" value="4" autocomplete="off"></input>
+      <div class="card mb-16-p-16">
+        <h2>Repetitions</h2>
+        <progress max="100" value="66"></progress>
+      </div>
     </div>
     <div v-if="(exerciseItem.information || []).length > 0" class="card mb-16-p-16">
       <h2>Information</h2>
@@ -97,7 +113,6 @@ export default {
     if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
       this.exerciseTitle = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].title
       this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].variations[parseInt(this.$route.query.posZ, 10)]
-      this.intensity = 'low'
     } else {
       var ComponentClass = Vue.extend(Modal)
       var instance = new ComponentClass({

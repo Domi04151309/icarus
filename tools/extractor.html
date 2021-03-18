@@ -15,6 +15,18 @@
   const COLUMN_ABS = 15
   const COLUMN_BOOTY = 16
   const COLUMN_LEGS = 17
+  const COLUMN_SETS_LOW = 19
+  const COLUMN_SETS_MEDIUM = 20
+  const COLUMN_SETS_HIGH = 21
+  const COLUMN_SETS_FULL = 22
+  const COLUMN_REPETITIONS_LOW = 24
+  const COLUMN_REPETITIONS_MEDIUM = 25
+  const COLUMN_REPETITIONS_HIGH = 26
+  const COLUMN_REPETITIONS_FULL = 27
+  const COLUMN_TIME_LOW = 29
+  const COLUMN_TIME_MEDIUM = 30
+  const COLUMN_TIME_HIGH = 31
+  const COLUMN_TIME_FULL = 32
   const COLUMN_TUTORIAL = 34
   const COLUMN_INFORMATION = 35
 
@@ -88,7 +100,29 @@
             chest: getIntFromArray(lineArray, COLUMN_CHEST),
             abs: getIntFromArray(lineArray, COLUMN_ABS),
             booty: getIntFromArray(lineArray, COLUMN_BOOTY),
-            legs: getIntFromArray(lineArray, COLUMN_LEGS)
+            legs: getIntFromArray(lineArray, COLUMN_LEGS),
+            intensities: {
+              low: {
+                sets: lineArray[COLUMN_SETS_LOW],
+                repetitions: lineArray[COLUMN_REPETITIONS_LOW],
+                time: lineArray[COLUMN_TIME_LOW]
+              },
+              medium: {
+                sets: lineArray[COLUMN_SETS_MEDIUM],
+                repetitions: lineArray[COLUMN_REPETITIONS_MEDIUM],
+                time: lineArray[COLUMN_TIME_MEDIUM]
+              },
+              high: {
+                sets: lineArray[COLUMN_SETS_HIGH],
+                repetitions: lineArray[COLUMN_REPETITIONS_HIGH],
+                time: lineArray[COLUMN_TIME_HIGH]
+              },
+              full: {
+                sets: lineArray[COLUMN_SETS_FULL],
+                repetitions: lineArray[COLUMN_REPETITIONS_FULL],
+                time: lineArray[COLUMN_TIME_FULL]
+              }
+            }
           })
         })
         console.log(data)
