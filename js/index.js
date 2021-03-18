@@ -17,6 +17,8 @@ const Week = () => import('./pages/week.js')
 const Month = () => import('./pages/month.js')
 const Calendar = () => import('./pages/calendar.js')
 
+const FoodSuggestions = () => import('./pages/food-suggestions.js')
+
 const Food = () => import('./pages/food.js')
 
 const FoodDetails = () => import('./pages/food-details.js')
@@ -52,6 +54,7 @@ const routes = [
   { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },
   { path: '/nutrition', component: Nutrition },
+  { path: '/nutrition/suggestions', component: FoodSuggestions },
   { path: '/nutrition/healthy', component: Food, props: { healthy: true } },
   { path: '/nutrition/casual', component: Food, props: { healthy: false } },
   { path: '/nutrition/healthy/food-details', component: FoodDetails, props: { healthy: true } },

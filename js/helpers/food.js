@@ -22,6 +22,27 @@ export default {
       carbs: 50,
       proteins: 50,
       fat: 50
+    },
+    {
+      title: 'Orange',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
+    },
+    {
+      title: 'Lettuce',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
+    },
+    {
+      title: 'Fruit Salad',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
     }
   ],
   defaultNotSoHealthyFood: [
@@ -41,6 +62,27 @@ export default {
     },
     {
       title: 'Fries',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
+    },
+    {
+      title: 'Chicken Wings',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
+    },
+    {
+      title: 'Pizza',
+      calories: 50,
+      carbs: 50,
+      proteins: 50,
+      fat: 50
+    },
+    {
+      title: 'Chickenburger',
       calories: 50,
       carbs: 50,
       proteins: 50,

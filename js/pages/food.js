@@ -4,12 +4,21 @@ import FoodListItem from '../components/food-list-item.js'
 
 import FoodHelper from '../helpers/food.js'
 
-//TODO: Dynamically generate content
+//TODO: Add more content
 
 export default {
   name: 'food',
   props: {
     healthy: Boolean
+  },
+  data() {
+    return {
+      searchString: '',
+      items: []
+    }
+  },
+  watch: {
+    searchString() { this.sort() }
   },
   computed: {
     writtenType() {
@@ -28,7 +37,7 @@ export default {
       if (this.healthy) return 'restaurant_menu'
       else return 'fastfood'
     },
-    items() {
+    defaultItems() {
       if (this.healthy) return FoodHelper.getHealthyFood()
       else return FoodHelper.getNotSoHealthyFood()
     },
@@ -38,8 +47,7 @@ export default {
         return (statistics.healthy * 100) / (statistics.healthy + statistics.notSoHealthy)
       else
         return (statistics.notSoHealthy * 100) / (statistics.healthy + statistics.notSoHealthy)
-    },
-    suggestions: () => ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
+    }
   },
   template:
   `<page :title="title" parent="/nutrition">
@@ -49,18 +57,32 @@ export default {
       </div>
       <h2>{{ secondaryTitle }}</h2>
     </div>
+    <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
     <div class="grid-2 gap-16">
       <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + index" :title="item.title" :icon="icon"></food-list-item>
-      <food-list-item :link="'/nutrition/' + writtenType + '/food-item'" title="Add Item" icon="add"></food-list-item>
     </div>
-    <h2 class="text-center">Our Suggestions</h2>
-    <div class="grid-2 gap-16" v-on:click="alert('Not yet implemented!')">
-      <food-list-item v-for="item in suggestions" :key="item" :title="item" :icon="icon"></food-list-item>
-    </div>
+    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
   components: {
       Page,
       ProgressRing,
       FoodListItem
+  },
+  methods: {
+    sort() {
+      let food = JSON.parse(JSON.stringify(this.defaultItems))
+      food = food.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
+      food.sort((a, b) => a.title.localeCompare(b.title))
+      this.items = food
+    },
+    onFabClicked() {
+      this.$router.push('/nutrition/' + this.writtenType + '/food-item')
+    }
+  },
+  created() {
+    this.sort()
+  },
+  mounted() {
+    setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
   }
 }

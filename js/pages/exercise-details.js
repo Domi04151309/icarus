@@ -19,9 +19,6 @@ export default {
       intensity: 'medium',
     }
   },
-  computed: {
-    title: () => 'Exercise'
-  },
   watch: {
     intensity() {
       ['low', 'medium', 'high', 'full'].forEach(item => {
