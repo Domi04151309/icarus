@@ -15,11 +15,22 @@ export default {
   data() {
     return {
       exerciseTitle: '',
-      exerciseItem: { }
+      exerciseItem: { },
+      intensity: null,
     }
   },
   computed: {
     title: () => 'Exercise'
+  },
+  watch: {
+    intensity() {
+      this.$refs.low.classList.remove('selected')
+      this.$refs.medium.classList.remove('selected')
+      this.$refs.high.classList.remove('selected')
+      if (this.intensity === 'low') this.$refs.low.classList.add('selected')
+      else if (this.intensity === 'medium') this.$refs.medium.classList.add('selected')
+      else if (this.intensity === 'high') this.$refs.high.classList.add('selected')
+    }
   },
   template:
   `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises">
@@ -28,6 +39,14 @@ export default {
       <ol>
         <li v-for="(item, i) in exerciseItem.tutorial" :key="i">{{ item }}</li>
       </ol>
+    </div>
+    <div class="card mb-16-p-16 text-center">
+      <h2>Intensity</h2>
+      <div class="question button-bar">
+        <button ref="low" type="button" v-on:click="intensity = 'low'">Low</button>
+        <button ref="medium" type="button" v-on:click="intensity = 'medium'">Medium</button>
+        <button ref="high" type="button" v-on:click="intensity = 'high'">High</button>
+      </div>
     </div>
     <div class="card text-center mb-16-p-16">
       <h2>Timer</h2>
@@ -47,7 +66,7 @@ export default {
       <h2>Repetitions</h2>
       <input type="number" value="4" autocomplete="off"></input>
     </div>
-    <div v-if="exerciseItem.information.length > 0" class="card mb-16-p-16">
+    <div v-if="(exerciseItem.information || []).length > 0" class="card mb-16-p-16">
       <h2>Information</h2>
       <p>
         {{ exerciseItem.information[0] }}
@@ -78,6 +97,7 @@ export default {
     if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
       this.exerciseTitle = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].title
       this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].variations[parseInt(this.$route.query.posZ, 10)]
+      this.intensity = 'low'
     } else {
       var ComponentClass = Vue.extend(Modal)
       var instance = new ComponentClass({

@@ -360,7 +360,7 @@ h2 > .c-icon {
   border-radius: var(--border-radius-1x);
 }
 .button-bar button {
-  background: var(--window-background);
+  background: transparent;
   color: var(--accent-color);
   font-weight: bold;
   box-shadow: none;
