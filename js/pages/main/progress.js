@@ -42,13 +42,11 @@ export default {
         <p>Your progress for this month.</p>
       </router-link>
     </div>
-    <router-link to="/progress/calendar" class="card mb-16-p-16">
-      <div class="flex center">
-        <div class="material-icons-round big-c-icon">calendar_today</div>
-        <div>
-          <h2 class="m-0">Calendar</h2>
-          <p>View the progress of another day, week, or month</p>
-        </div>
+    <router-link to="/progress/calendar" class="card mb-16-p-16 flex center">
+      <div class="material-icons-round big-c-icon">calendar_today</div>
+      <div>
+        <h2 class="m-0">Calendar</h2>
+        <p>View the progress of another day, week, or month</p>
       </div>
     </router-link>
   </page-tab-bar>`,
