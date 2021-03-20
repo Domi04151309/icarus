@@ -38,24 +38,32 @@ export default {
   `<page :title="foodItem.title" :parent="parent" :class="writtenType">
     <div class="card mb-16-p-16">
       <h2>Description</h2>
-      <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-      </p>
-    </div>
-    <div class="card mb-16-p-16">
-      <h2>Ingredients</h2>
-      <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-      </p>
+      <p>{{ foodItem.description || 'No description provided' }}</p>
     </div>
     <div class="card mb-16-p-16">
       <h2>Preparation</h2>
-      <p>
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-        Dummy text dummy text dummy text dummy text dummy text dummy text.
-      </p>
+      <p>{{ foodItem.preparation || 'No instructions provided' }}</p>
+    </div>
+    <div class="card mb-16-p-16">
+      <h2>Values</h2>
+      <div class="grid-2 gap-16">
+        <div>
+          <label for="calories">Calories</label>
+          <input id="calories" v-model="foodItem.calories" type="number"></input>
+        </div>
+        <div>
+          <label for="carbs">Carbs</label>
+          <input id="carbs" v-model="foodItem.carbs" type="number"></input>
+        </div>
+        <div class="mb-16">
+          <label for="proteins">Proteins</label>
+          <input id="proteins" v-model="foodItem.proteins" type="number"></input>
+        </div>
+        <div class="mb-16">
+          <label for="fat">Fat</label>
+          <input id="fat" v-model="foodItem.fat" type="number"></input>
+        </div>
+      </div>
     </div>
     <div class="grid-2 gap-16 mb-16">
       <button type="button" v-on:click="onEditClicked()">Edit</button>

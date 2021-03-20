@@ -5,7 +5,7 @@ var CACHE_NAME = 'icarus-{{ site.time | date: "%Y-%m-%d-%H:%M" }}';
 var urlsToCache = [
   {% for file in site.static_files %}'{{ site.baseurl }}{{ file.path }}',
   {% endfor %}
-  '/'
+  '{{ site.baseurl }}/'
 ];
 
 self.addEventListener('install', event => {
@@ -40,6 +40,7 @@ self.addEventListener('fetch', event => {
           var responseToCache = response.clone();
 
           caches.open(CACHE_NAME).then(cache => {
+            if (event.request.url.indexOf('http') !== 0) return;
             cache.put(event.request, responseToCache);
           });
 
@@ -47,7 +48,7 @@ self.addEventListener('fetch', event => {
         }
       );
     }).catch(() => {
-      return caches.match('/');
+      return caches.match('{{ site.baseurl }}/');
     })
   );
 });

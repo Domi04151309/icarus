@@ -102,6 +102,16 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #A8A8A8;
 }
+.dark-theme ::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #3e3e3e;
+  border: 2px solid #0e0e0e;
+}
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: #575757;
+}
 
 /* major elements */
 * {
@@ -177,14 +187,14 @@ ol {
 ol, ol > li, p {
   margin: 8px 0;
 }
-.card, button, input {
+.card, button, input, textarea {
   background: var(--elevation-overlay);
   border-radius: var(--border-radius-4x);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition-duration: .25s;
 }
-button, input {
+button, input, textarea {
   margin: 4px 0;
   outline: 0;
   border: 0;
@@ -200,12 +210,18 @@ button {
 button:hover {
   background: var(--accent-color-dark);
 }
-input {
+input, textarea {
   display: block;
   width: 100%;
   margin: auto;
   color: var(--text-color);
   border-radius: var(--border-radius-1x);
+}
+textarea {
+  height: 96px;
+  font-family: arial, sans-serif;
+  overflow-y: auto;
+  resize: none;
 }
 input[type=range] {
   box-shadow: none;

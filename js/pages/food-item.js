@@ -41,22 +41,26 @@ export default {
     </p>
     <label for="foodTitle">Title</label>
     <input id="foodTitle" v-model="foodItem.title" class="mb-16" type="text" autocomplete="off"></input>
+    <label for="foodDescription">Description</label>
+    <textarea id="foodDescription" v-model="foodItem.description" class="mb-16" autocomplete="off"></textarea>
+    <label for="foodPreparation">Preparation</label>
+    <textarea id="foodPreparation" v-model="foodItem.preparation" class="mb-16" autocomplete="off"></textarea>
     <div class="grid-2 gap-16 mb-16">
       <div>
         <label for="calories">Calories</label>
-        <input id="calories" v-model="foodItem.calories" type="number" value="0"></input>
+        <input id="calories" v-model="foodItem.calories" type="number"></input>
       </div>
       <div>
         <label for="carbs">Carbs</label>
-        <input id="carbs" v-model="foodItem.carbs" type="number" value="0"></input>
+        <input id="carbs" v-model="foodItem.carbs" type="number"></input>
       </div>
       <div class="mb-16">
         <label for="proteins">Proteins</label>
-        <input id="proteins" v-model="foodItem.proteins" type="number" value="0"></input>
+        <input id="proteins" v-model="foodItem.proteins" type="number"></input>
       </div>
       <div class="mb-16">
         <label for="fat">Fat</label>
-        <input id="fat" v-model="foodItem.fat" type="number" value="0"></input>
+        <input id="fat" v-model="foodItem.fat" type="number"></input>
       </div>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
