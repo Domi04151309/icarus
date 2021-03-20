@@ -28,10 +28,12 @@ const FoodItem = () => import('./pages/food-item.js')
 const ExerciseDetails = () => import('./pages/exercise-details.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
 
-const Preferences = () => import('./pages/preferences.js')
+const AppSettings = () => import('./pages/app-settings.js')
+const DataSettings = () => import('./pages/data-settings.js')
 const NutritionPlan = () => import('./pages/nutrition-plan.js')
 const WorkoutPlan = () => import('./pages/workout-plan.js')
 const Data = () => import('./pages/data.js')
+const BackupAndRestore = () => import('./pages/backup-and-restore.js')
 const Help = () => import('./pages/help.js')
 const About = () => import('./pages/about.js')
 
@@ -62,10 +64,12 @@ const routes = [
   { path: '/nutrition/healthy/food-item', component: FoodItem, props: { healthy: true } },
   { path: '/nutrition/casual/food-item', component: FoodItem, props: { healthy: false } },
   { path: '/account', component: Account },
-  { path: '/account/preferences', component: Preferences },
-  { path: '/account/nutrition', component: NutritionPlan },
-  { path: '/account/workout', component: WorkoutPlan },
-  { path: '/account/data', component: Data },
+  { path: '/account/app', component: AppSettings },
+  { path: '/account/data', component: DataSettings },
+  { path: '/account/data/nutrition', component: NutritionPlan },
+  { path: '/account/data/workout', component: WorkoutPlan },
+  { path: '/account/data/raw', component: Data },
+  { path: '/account/backup-and-restore', component: BackupAndRestore },
   { path: '/account/help', component: Help },
   { path: '/account/about', component: About }
 ]

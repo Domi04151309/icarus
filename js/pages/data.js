@@ -12,7 +12,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/account">
+  `<page :title="title" parent="/account/data">
     <ul class="link-list ignore-page-padding">
       <li v-for="item in storage" :key="item.key">
         <span v-on:click="deleteEntry(item.key)">

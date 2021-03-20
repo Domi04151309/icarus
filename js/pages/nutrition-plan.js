@@ -11,7 +11,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/account" class="text-center">
+  `<page :title="title" parent="/account/data" class="text-center">
     <label for="fat_loss">Fat loss</label>
     <input id="fat_loss" ref="fat_loss" class="mb-16" type="range" max="100">
     <simple-question ref="less_sweets" question="Do you want to eat less sweets?" class="mb-16"></simple-question>
@@ -31,7 +31,7 @@ export default {
       localStorage.setItem('info_more_water',this.$refs.more_water.value)
       localStorage.setItem('info_vegetarian',this.$refs.vegetarian.value)
       localStorage.setItem('info_vegan',this.$refs.vegan.value)
-      this.$router.push('/account')
+      this.$router.push('/account/data')
     }
   },
   mounted() {

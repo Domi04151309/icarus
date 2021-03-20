@@ -22,7 +22,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/account" class="text-center">
+  `<page :title="title" parent="/account/data" class="text-center">
     <label for="muscle_gain">Muscle gain</label>
     <input id="muscle_gain" class="mb-16" type="range" max="100" v-model="fitness.muscleGain">
     <label for="cardio">Cardio</label>
@@ -52,7 +52,7 @@ export default {
     handleClick() {
       localStorage.setItem('fitness', JSON.stringify(this.fitness))
       ExercisesHelper.generateNewScores()
-      this.$router.push('/account')
+      this.$router.push('/account/data')
     }
   },
   created() {

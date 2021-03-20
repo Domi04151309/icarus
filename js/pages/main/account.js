@@ -3,9 +3,9 @@ import PageTabBar from '../../components/page-tab-bar.js'
 export default {
   name: 'account',
   computed: {
-    name: () => localStorage.getItem('info_name') || 'undefined',
-    age: () => localStorage.getItem('info_age') || 'undefined',
-    mq: () => localStorage.getItem('info_mq') || 'undefined'
+    name: () => localStorage.getItem('info_name') || 'Guest',
+    age: () => localStorage.getItem('info_age') || '0',
+    mq: () => localStorage.getItem('info_mq') || '0'
   },
   template:
   `<page-tab-bar>
@@ -26,10 +26,9 @@ export default {
       </ul>
     </div>
     <ul class="link-list card">
-      <li><router-link to="/account/preferences"><span class="material-icons-round">settings</span>Preferences</router-link></li>
-      <li><router-link to="/account/nutrition"><span class="material-icons-round">local_dining</span>Nutrition Plan</router-link></li>
-      <li><router-link to="/account/workout"><span class="material-icons-round">directions_run</span>Workout Plan</router-link></li>
-      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Raw Data</router-link></li>
+      <li><router-link to="/account/app"><span class="material-icons-round">settings</span>App Settings</router-link></li>
+      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Data Settings</router-link></li>
+      <li><router-link to="/account/backup-and-restore"><span class="material-icons-round">settings_backup_restore</span>Backup And Restore</router-link></li>
       <li><router-link to="/account/help"><span class="material-icons-round">help</span>Help</router-link></li>
       <li><router-link to="/account/about"><span class="material-icons-round">info</span>About</router-link></li>
     </ul>
