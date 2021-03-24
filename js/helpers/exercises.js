@@ -5,6 +5,7 @@ import Exercises from '../data/exercises.js'
 const EXERCISE_PARAMETERS = 'fitness'
 const EXERCISE_SCORES = 'exercise_scores'
 const EXERCISE_RECENTS = 'exercise_recents'
+const EXERCISE_STATISTICS = 'exercise_statistics'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
 
 export default {
@@ -39,6 +40,12 @@ export default {
     var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
     recents.unshift(position)
     localStorage.setItem(EXERCISE_RECENTS, JSON.stringify(recents.slice(0, 8)))
+  },
+  getStatistics() {
+    return parseInt(localStorage.getItem(EXERCISE_STATISTICS) || 0, 10)
+  },
+  addOneExerciseToStatistic() {
+    localStorage.setItem(EXERCISE_STATISTICS, this.getStatistics() + 1)
   },
   getScore(posX, posY, posZ) {
     try {

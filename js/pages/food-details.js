@@ -5,6 +5,9 @@ import Modal from '../components/modal.js'
 
 import FoodHelper from '../helpers/food.js'
 import Identifiers from '../helpers/identifiers.js'
+import { DayHelper } from '../helpers/progress.js'
+
+const FOOD_PARAMETERS = ['calories', 'carbs', 'proteins', 'fat']
 
 //TODO: Add content
 
@@ -102,23 +105,12 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     onConsumeClicked() {
-      var dateId = Identifiers.getDateId()
-      localStorage.setItem(
-        dateId + '_calories',
-        (parseInt(localStorage.getItem(dateId + '_calories'), 10) || 0) + this.foodItem.calories
-      )
-      localStorage.setItem(
-        dateId + '_carbs',
-        (parseInt(localStorage.getItem(dateId + '_carbs'), 10) || 0) + this.foodItem.carbs
-      )
-      localStorage.setItem(
-        dateId + '_proteins',
-        (parseInt(localStorage.getItem(dateId + '_proteins'), 10) || 0) + this.foodItem.proteins
-      )
-      localStorage.setItem(
-        dateId + '_fat',
-        (parseInt(localStorage.getItem(dateId + '_fat'), 10) || 0) + this.foodItem.fat
-      )
+      var dayHelper = new DayHelper(Identifiers.getDateId())
+      FOOD_PARAMETERS.forEach(item => {
+        dayHelper.progress[item] += this.foodItem[item]
+      })
+      dayHelper.saveProgress()
+
       if (this.healthy) FoodHelper.addOneHealthyFoodToStatistics()
       else FoodHelper.addOneNotSoHealthyFoodToStatistics()
       this.$router.push(this.parent)
