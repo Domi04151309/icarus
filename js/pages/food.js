@@ -59,7 +59,7 @@ export default {
     </div>
     <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
     <div class="grid-2 gap-16">
-      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + index" :title="item.title" :icon="icon"></food-list-item>
+      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + item.pos" :title="item.title" :icon="icon"></food-list-item>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
@@ -71,6 +71,7 @@ export default {
   methods: {
     sort() {
       let food = JSON.parse(JSON.stringify(this.defaultItems))
+      food.forEach((item, i) => { item.pos = i })
       food = food.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
       food.sort((a, b) => a.title.localeCompare(b.title))
       this.items = food
