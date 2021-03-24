@@ -1,11 +1,13 @@
 import PageTabBar from '../../components/page-tab-bar.js'
 
+import LevelHelper from '../../helpers/level.js'
+
 export default {
   name: 'account',
   computed: {
     name: () => localStorage.getItem('info_name') || 'Guest',
     age: () => localStorage.getItem('info_age') || '0',
-    mq: () => localStorage.getItem('info_mq') || '0'
+    mq: () => LevelHelper.getMotivationQuota() || '0'
   },
   template:
   `<page-tab-bar>
