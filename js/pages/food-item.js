@@ -21,8 +21,13 @@ export default {
   computed: {
     title: () => 'Food Item',
     parent() {
-      if (this.healthy) return '/nutrition/healthy'
-      else return '/nutrition/casual'
+      if (this.$route.query.item) {
+        if (this.healthy) return '/nutrition/healthy/food-details?item=' + this.$route.query.item
+        else return '/nutrition/casual/food-details?item=' + this.$route.query.item
+      } else {
+        if (this.healthy) return '/nutrition/healthy'
+        else return '/nutrition/casual'
+      }
     },
     icon() {
       if (this.healthy) return 'restaurant_menu'

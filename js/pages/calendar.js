@@ -1,12 +1,15 @@
 import Page from '../components/page.js'
 
+import { MonthHelper } from '../helpers/progress.js'
+
 export default {
   name: 'calendar',
   data() {
     return {
       title: 'Calendar',
       month: 0,
-      year: 0
+      year: 0,
+      monthProgress: 0
     }
   },
   computed: {
@@ -32,8 +35,12 @@ export default {
       </h3>
     </div>
     <div id="picker-container" class="card mb-16-p-16 text-center grid-7"></div>
+    <div v-on:click="openMonth()" class="card mb-16-p-16">
+      <h2>Whole Month</h2>
+      <progress max="100" :value="monthProgress"></progress>
+      <p>Click too see the whole month.</p>
+    </div>
     <div class="card mb-16-p-16">
-      <button class="w-100" type="button" v-on:click="openMonth()">Whole Month</button>
       <div id="weeks" class="flex space"></div>
     </div>
   </page>`,
@@ -59,6 +66,9 @@ export default {
       weekContainer.innerHTML = ''
       document.getElementById('month-title').innerHTML = this.months[this.month]
       document.getElementById('year').innerHTML = this.year
+
+      var helper = new MonthHelper(this.year + String(this.month + 1).padStart(2, '0') + '01')
+      this.monthProgress = helper.getProgress() * 100
 
       for (i = 0; i < 7; i++) {
         dayNode = document.createElement('div')

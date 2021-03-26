@@ -340,9 +340,13 @@ h2 > .c-icon {
   color: var(--text-color-dark);
   box-shadow: var(--card-shadow);
   cursor: pointer;
+  animation: fadeIn .5s;
 }
 .fab:hover {
   background: var(--accent-color-dark);
+}
+.fab.raised {
+  bottom: 72px;
 }
 .link-list {
   padding: 0;

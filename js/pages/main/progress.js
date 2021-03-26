@@ -49,8 +49,17 @@ export default {
         <p>View the progress of another day, week, or month</p>
       </div>
     </router-link>
+    <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {
       PageTabBar
+  },
+  methods: {
+    onFabClicked() {
+      this.$router.push('/progress/diary')
+    }
+  },
+  mounted() {
+    setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
   }
 }
