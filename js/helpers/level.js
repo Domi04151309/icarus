@@ -3,6 +3,6 @@ import ExerciseHelper from './exercises.js'
 
 export default {
   getMotivationQuota() {
-    return FoodHelper.getFoodStatistics().healthy + ExerciseHelper.getStatistics()
+    return FoodHelper.getFoodStatistics().healthy.length + ExerciseHelper.getStatistics().length
   }
 }

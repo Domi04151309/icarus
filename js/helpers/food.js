@@ -90,33 +90,39 @@ export default {
     }
   ],
   getHealthyFood() {
-    return JsonHelper.getData('healthy-food') || this.defaultHealthyFood
+    return JsonHelper.getData('healthy-food', () => this.defaultHealthyFood)
   },
   getNotSoHealthyFood() {
-    return JsonHelper.getData('casual-food') || this.defaultNotSoHealthyFood
+    return JsonHelper.getData('casual-food', () => this.defaultNotSoHealthyFood)
   },
   defaultFoodStatistics: {
-    healthy: 0,
-    notSoHealthy: 0
+    healthy: [],
+    notSoHealthy: []
   },
   getFoodStatistics() {
-    return JsonHelper.getData('food-statistics') || this.defaultFoodStatistics
+    return JsonHelper.getData('food-statistics', () => this.defaultFoodStatistics)
   },
   addOneHealthyFoodToStatistics() {
+    var date = new Date()
     var object = {}
     try {
       object = this.getFoodStatistics()
-      object.healthy += 1
+      object.healthy.push({
+        time: date.getTime()
+      })
       localStorage.setItem('food-statistics', JSON.stringify(object))
     } catch (e) {
       console.warn(e)
     }
   },
   addOneNotSoHealthyFoodToStatistics() {
+    var date = new Date()
     var object = {}
     try {
       object = this.getFoodStatistics()
-      object.notSoHealthy += 1
+      object.notSoHealthy.push({
+        time: date.getTime()
+      })
       localStorage.setItem('food-statistics', JSON.stringify(object))
     } catch (e) {
       console.warn(e)

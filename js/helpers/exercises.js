@@ -42,10 +42,15 @@ export default {
     localStorage.setItem(EXERCISE_RECENTS, JSON.stringify(recents.slice(0, 8)))
   },
   getStatistics() {
-    return parseInt(localStorage.getItem(EXERCISE_STATISTICS) || 0, 10)
+    return JsonHelper.getData(EXERCISE_STATISTICS, () => [])
   },
   addOneExerciseToStatistic() {
-    localStorage.setItem(EXERCISE_STATISTICS, this.getStatistics() + 1)
+    var date = new Date()
+    var array = this.getStatistics()
+    array.push({
+      time: date.getTime()
+    })
+    localStorage.setItem(EXERCISE_STATISTICS, JSON.stringify(array))
   },
   getScore(posX, posY, posZ) {
     try {

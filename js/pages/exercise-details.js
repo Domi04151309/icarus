@@ -7,6 +7,7 @@ import ProgressRing from '../components/progress-ring.js'
 import Exercises from '../data/exercises.js'
 import ExerciseHelper from '../helpers/exercises.js'
 import Identifiers from '../helpers/identifiers.js'
+import { DayHelper } from '../helpers/progress.js'
 
 //TODO: Add content
 
@@ -93,11 +94,9 @@ export default {
   },
   methods: {
     onPerformClicked() {
-      var dateId = Identifiers.getDateId()
-      localStorage.setItem(
-        dateId + '_exercises',
-        (parseInt(localStorage.getItem(dateId + '_exercises'), 10) || 0) + 1
-      )
+      var dayHelper = new DayHelper(Identifiers.getDateId())
+      dayHelper.progress.exercises += 1
+      dayHelper.saveProgress()
       ExerciseHelper.addRecentExercise([
         parseInt(this.$route.query.posX, 10),
         parseInt(this.$route.query.posY, 10),
