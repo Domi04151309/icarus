@@ -16,13 +16,13 @@ export default {
   template:
   `<page :title="title" parent="/progress">
     <div class="card mb-16-p-16 intro text-center">
-      <h2>Coming soon...</h2>
+      <h2>Everything at a glance</h2>
     </div>
-    <ul class="link-list m-0">
+    <ul class="card link-list m-0">
       <li v-for="(item, index) in items" :key="index">
         <span>
-          {{ new Date(item.time).toUTCString() }}<br>
-          <span class="p">{{ item.type }}</span>
+          {{ item.type }}<br>
+          <span class="p">{{ item.details }}</span>
         </span>
       </li>
     </ul>
@@ -45,6 +45,10 @@ export default {
       this.items.push(item)
     })
 
+    this.items.forEach(item => {
+      var string = new Date(item.time).toUTCString()
+      item.details = string.substr(0, string.lastIndexOf(':'))
+    })
     this.items = this.items.sort((a, b) => { return b.time - a.time })
     console.log(this.items)
   }
