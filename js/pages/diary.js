@@ -45,7 +45,7 @@ export default {
       this.items.push(item)
     })
 
-    this.items = this.items.sort((a, b) => { return a.time - b.time })
+    this.items = this.items.sort((a, b) => { return b.time - a.time })
     console.log(this.items)
   }
 }

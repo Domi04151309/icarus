@@ -44,9 +44,9 @@ export default {
     progress() {
       var statistics = FoodHelper.getFoodStatistics()
       if (this.healthy)
-        return (statistics.healthy * 100) / (statistics.healthy + statistics.notSoHealthy)
+        return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
       else
-        return (statistics.notSoHealthy * 100) / (statistics.healthy + statistics.notSoHealthy)
+        return (statistics.notSoHealthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
     }
   },
   template:

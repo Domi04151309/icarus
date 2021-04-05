@@ -20,11 +20,11 @@ export default {
   computed: {
     healthyProgress() {
       var statistics = FoodHelper.getFoodStatistics()
-      return (statistics.healthy * 100) / (statistics.healthy + statistics.notSoHealthy)
+      return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
     },
     casualProgress() {
       var statistics = FoodHelper.getFoodStatistics()
-      return (statistics.notSoHealthy * 100) / (statistics.healthy + statistics.notSoHealthy)
+      return (statistics.notSoHealthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
     }
   },
   template:
