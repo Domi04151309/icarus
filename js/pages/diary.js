@@ -15,41 +15,71 @@ export default {
   },
   template:
   `<page :title="title" parent="/progress">
-    <div class="card mb-16-p-16 intro text-center">
-      <h2>Everything at a glance</h2>
+    <div v-for="(date, index) in items" :key="index">
+      <h2 class="text-center">{{ date.title }}</h2>
+      <ul class="card link-list m-0">
+        <li v-for="item in date.items" :key="item.time">
+          <span v-on:click="share(item, date.title)">
+            {{ item.type }}<br>
+            <span class="p">{{ item.details }}</span>
+          </span>
+        </li>
+      </ul>
     </div>
-    <ul class="card link-list m-0">
-      <li v-for="(item, index) in items" :key="index">
-        <span>
-          {{ item.type }}<br>
-          <span class="p">{{ item.details }}</span>
-        </span>
-      </li>
-    </ul>
   </page>`,
   components: {
       Page
   },
+  methods: {
+    async share(item, date) {
+      const shareData = {
+        title: 'Diary Entry',
+        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date
+      }
+      console.log(shareData)
+      try {
+        await navigator.share(shareData)
+      } catch (e) {
+        console.warn(e)
+      }
+    }
+  },
   created() {
+    var items = []
     var food = FoodHelper.getFoodStatistics()
     food.healthy.forEach(item => {
       item.type = 'You ate something healthy'
-      this.items.push(item)
+      items.push(item)
     })
     food.notSoHealthy.forEach(item => {
       item.type = 'You ate something casual'
-      this.items.push(item)
+      items.push(item)
     })
     ExerciseHelper.getStatistics().forEach(item => {
       item.type = 'You did an exercise'
-      this.items.push(item)
+      items.push(item)
     })
+    items = items.sort((a, b) => { return b.time - a.time })
 
-    this.items.forEach(item => {
-      var string = new Date(item.time).toUTCString()
-      item.details = string.substr(0, string.lastIndexOf(':'))
+    var array = []
+    var currentDate = ""
+    var currentObject = {}
+    var date = null
+    var dateString = ""
+    items.forEach(item => {
+      date = new Date(item.time)
+      dateString = date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
+      if (currentDate != dateString) {
+        currentDate = dateString
+        currentObject = new Object()
+        currentObject.title = dateString
+        currentObject.items = new Array()
+        array.push(currentObject)
+      }
+      item.details = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      currentObject.items.push(item)
     })
-    this.items = this.items.sort((a, b) => { return b.time - a.time })
-    console.log(this.items)
+    console.log(array)
+    this.items = array
   }
 }
