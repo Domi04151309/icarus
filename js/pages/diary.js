@@ -20,8 +20,13 @@ export default {
       <ul class="card link-list m-0">
         <li v-for="item in date.items" :key="item.time">
           <span v-on:click="share(item, date.title)">
-            {{ item.type }}<br>
-            <span class="p">{{ item.details }}</span>
+            <div class="flex between center">
+              <div>
+                {{ item.type }}<br>
+                <span class="p">{{ item.details }}</span>
+              </div>
+              <div class="material-icons-round big-c-icon">{{ item.icon }}</div>
+            </div>
           </span>
         </li>
       </ul>
@@ -34,7 +39,8 @@ export default {
     async share(item, date) {
       const shareData = {
         title: 'Diary Entry',
-        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date
+        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date + '. Take your personal health to the next level with Icarus.',
+        url: 'https://domi04151309.github.io/icarus/'
       }
       console.log(shareData)
       try {
@@ -49,14 +55,17 @@ export default {
     var food = FoodHelper.getFoodStatistics()
     food.healthy.forEach(item => {
       item.type = 'You ate something healthy'
+      item.icon = 'restaurant_menu'
       items.push(item)
     })
     food.notSoHealthy.forEach(item => {
       item.type = 'You ate something casual'
+      item.icon = 'fastfood'
       items.push(item)
     })
     ExerciseHelper.getStatistics().forEach(item => {
       item.type = 'You did an exercise'
+      item.icon = 'directions_run'
       items.push(item)
     })
     items = items.sort((a, b) => { return b.time - a.time })
