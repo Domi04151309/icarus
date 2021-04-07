@@ -1,34 +1,34 @@
 <h1>Data Extractor</h1>
-<p id="result"></p>
+<samp id="result"></samp>
 <script>
   const COLUMN_CATEGORY_TITLE = 0
   const COLUMN_EXERCISE_TITLE = 1
   const COLUMN_VARIATION_TITLE = 2
   const COLUMN_FAT_LOSS = 3
-  const COLUMN_MUSCLE_GAIN = 8
-  const COLUMN_CARDIO = 9
-  const COLUMN_ENDURANCE= 10
-  const COLUMN_ARMS = 11
-  const COLUMN_SHOULDERS = 12
-  const COLUMN_BACK = 13
-  const COLUMN_CHEST = 14
-  const COLUMN_ABS = 15
-  const COLUMN_BOOTY = 16
-  const COLUMN_LEGS = 17
-  const COLUMN_SETS_LOW = 19
-  const COLUMN_SETS_MEDIUM = 20
-  const COLUMN_SETS_HIGH = 21
-  const COLUMN_SETS_FULL = 22
-  const COLUMN_REPETITIONS_LOW = 24
-  const COLUMN_REPETITIONS_MEDIUM = 25
-  const COLUMN_REPETITIONS_HIGH = 26
-  const COLUMN_REPETITIONS_FULL = 27
-  const COLUMN_TIME_LOW = 29
-  const COLUMN_TIME_MEDIUM = 30
-  const COLUMN_TIME_HIGH = 31
-  const COLUMN_TIME_FULL = 32
-  const COLUMN_TUTORIAL = 34
-  const COLUMN_INFORMATION = 35
+  const COLUMN_MUSCLE_GAIN = 4
+  const COLUMN_CARDIO = 5
+  const COLUMN_ENDURANCE= 6
+  const COLUMN_ARMS = 7
+  const COLUMN_SHOULDERS = 8
+  const COLUMN_BACK = 9
+  const COLUMN_CHEST = 10
+  const COLUMN_ABS = 11
+  const COLUMN_BOOTY = 12
+  const COLUMN_LEGS = 13
+  const COLUMN_SETS_LOW = 15
+  const COLUMN_SETS_MEDIUM = 16
+  const COLUMN_SETS_HIGH = 17
+  const COLUMN_SETS_FULL = 18
+  const COLUMN_REPETITIONS_LOW = 20
+  const COLUMN_REPETITIONS_MEDIUM = 21
+  const COLUMN_REPETITIONS_HIGH = 22
+  const COLUMN_REPETITIONS_FULL = 23
+  const COLUMN_TIME_LOW = 25
+  const COLUMN_TIME_MEDIUM = 26
+  const COLUMN_TIME_HIGH = 27
+  const COLUMN_TIME_FULL = 28
+  const COLUMN_TUTORIAL = 30
+  const COLUMN_INFORMATION = 31
 
   const FILE_PATH = './Data%20-%20Exercises.csv'
   const IGNORE_LINES = [1, 33, 44, 59]
@@ -126,7 +126,7 @@
           })
         })
         console.log(data)
-        document.getElementById('result').innerHTML = JSON.stringify(data)
+        document.getElementById('result').innerHTML = 'export default ' + JSON.stringify(data)
       })
       console.log('Failing lines: ' + failingLines.join())
     }
