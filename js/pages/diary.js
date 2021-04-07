@@ -39,7 +39,7 @@ export default {
     async share(item, date) {
       const shareData = {
         title: 'Diary Entry',
-        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date + '. Take your personal health to the next level with Icarus.',
+        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date + '. Take your personal health to the next level and start tracking your fitness today with Icarus.',
         url: 'https://domi04151309.github.io/icarus/'
       }
       console.log(shareData)
