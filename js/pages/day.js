@@ -115,8 +115,10 @@ export default {
       this.updateProgress()
     },
     removeOne(key) {
-      this.dayHelper.progress[key] -= 1
-      this.updateProgress()
+      if (this.dayHelper.progress[key] != 0) {
+        this.dayHelper.progress[key] -= 1
+        this.updateProgress()
+      }
     },
     addAmount(key) {
       var ComponentClass = Vue.extend(ModalInput)
@@ -128,6 +130,8 @@ export default {
           positiveText: 'Add',
           positiveFunction: () => {
             this.dayHelper.progress[key] += parseInt(instance.$refs.input.value, 10)
+            if (this.dayHelper.progress[key] < 0) this.dayHelper.progress[key] = 0
+            if (this.dayHelper.progress[key] > 1000000) this.dayHelper.progress[key] = 1000000
             this.updateProgress()
           }
         }
@@ -145,6 +149,8 @@ export default {
           positiveText: 'Remove',
           positiveFunction: () => {
             this.dayHelper.progress[key] -= parseInt(instance.$refs.input.value, 10)
+            if (this.dayHelper.progress[key] < 0) this.dayHelper.progress[key] = 0
+            if (this.dayHelper.progress[key] > 1000000) this.dayHelper.progress[key] = 1000000
             this.updateProgress()
           }
         }
