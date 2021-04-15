@@ -15,8 +15,8 @@ export default {
       level: Math.log2(nearestPowerOf2),
       sectionExp: exp - nearestPowerOf2,
       totalExp: exp,
-      neededSectionExp: Math.pow(Math.log2(nearestPowerOf2) + 1, 2) - nearestPowerOf2,
-      neededTotalExp: Math.pow(Math.log2(nearestPowerOf2) + 1, 2)
+      neededSectionExp: Math.pow(2, Math.log2(nearestPowerOf2) + 1) - nearestPowerOf2,
+      neededTotalExp: Math.pow(2, Math.log2(nearestPowerOf2) + 1)
     }
   }
 }
