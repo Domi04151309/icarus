@@ -126,7 +126,7 @@
           })
         })
         console.log(data)
-        document.getElementById('result').innerHTML = 'export default ' + JSON.stringify(data)
+        document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
       })
       console.log('Failing lines: ' + failingLines.join())
     }

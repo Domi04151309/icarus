@@ -76,6 +76,14 @@ const routes = [
   { path: '/account/about', component: About }
 ]
 
+var headers, i
+document.addEventListener('scroll', () => {
+  headers = document.getElementsByTagName('HEADER')
+  for (i = 0; i < headers.length; i++) {
+    headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
+  }
+})
+
 var modal
 const router = new VueRouter({ routes })
 
@@ -134,8 +142,6 @@ new Vue({
   },
   mounted() {
     const loadingScreen = document.getElementById('loading_screen')
-    var headers, i
-
     loadingScreen.parentNode.removeChild(loadingScreen)
 
     var darkTheme = null
@@ -151,13 +157,6 @@ new Vue({
         break
     }
     document.documentElement.classList.toggle('dark-theme', darkTheme)
-
-    document.addEventListener('scroll', () => {
-      headers = document.getElementsByTagName('HEADER')
-      for (i = 0; i < headers.length; i++) {
-        headers[i].classList.toggle('header-shadow', window.pageYOffset > 0)
-      }
-    })
 
     this.checkStartingRoute()
   }
