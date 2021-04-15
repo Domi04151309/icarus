@@ -546,6 +546,12 @@ h2 > .c-icon {
 .mt-48 {
   margin-top: 48px;
 }
+.ml-32 {
+  margin-left: 32px;
+}
+.mr-4 {
+  margin-right: 4px;
+}
 .mr-8 {
   margin-right: 8px;
 }

@@ -7,25 +7,31 @@ export default {
   computed: {
     name: () => localStorage.getItem('info_name') || 'Guest',
     age: () => localStorage.getItem('info_age') || '0',
-    mq: () => LevelHelper.getMotivationQuota() || '0'
+    levelData: () => LevelHelper.getLevelData(),
+    pointStr: () => { if (LevelHelper.getLevelData().sectionExp == 1) return "point"; else return "points"; }
   },
   template:
   `<page-tab-bar>
-    <div class="flex mb-16">
+    <div class="flex mb-32">
       <span id="profile-icon" class="material-icons-round">account_circle</span>
-      <ul class="no-bullets p">
-        <li class="flex mb-8">
+      <div class="p w-100 ml-32 mr-16">
+        <div class="flex mb-8">
           <div class="mr-16">
-            <small class="item-caption">Name</small>{{ name }}</span>
+            <small class="item-caption">Name</small>{{ name }}
           </div>
-          <div>
-            <small class="item-caption">Age</small>{{ age }}</span>
+          <div class="mr-16">
+            <small class="item-caption">Age</small>{{ age }}
           </div>
-        </li>
-        <li>
-          <small class="item-caption">Motivation Quota</small>{{ mq }}</span>
-        </li>
-      </ul>
+          <!--div>
+            <small class="item-caption">Level</small>{{ levelData.level }}
+          </div-->
+        </div>
+        <progress :max="levelData.neededSectionExp" :value="levelData.sectionExp"></progress>
+        <div class="flex between">
+          <small class="item-caption">Level {{ levelData.level }}</small>
+          <small class="item-caption mr-4">{{ levelData.sectionExp }}/{{ levelData.neededSectionExp }} points</small>
+        </div>
+      </div>
     </div>
     <ul class="link-list card">
       <li><router-link to="/account/app"><span class="material-icons-round">settings</span>App Settings</router-link></li>
