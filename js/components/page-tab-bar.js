@@ -18,7 +18,7 @@ export default {
           url: '/exercises'
         },
         {
-          icon: 'local_dining',
+          icon: 'restaurant_menu',
           title: 'Nutrition',
           url: '/nutrition'
         },
