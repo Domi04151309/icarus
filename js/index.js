@@ -1,5 +1,7 @@
 /*global Vue, VueRouter*/
 
+import JsonHelper from './helpers/json.js'
+
 const SetupVerification = () => import('./pages/setup/0-verification.js')
 const SetupWelcome = () => import('./pages/setup/1-welcome.js')
 const SetupInfo = () => import('./pages/setup/2-info.js')
@@ -75,6 +77,12 @@ const routes = [
   { path: '/account/help', component: Help },
   { path: '/account/about', component: About }
 ]
+
+window.addEventListener('error', e => {
+  var errors = JsonHelper.getData('errors', () => [])
+  errors.push(e.message + ' at ' + e.filename.replace(/.*\/\/[^/]*/, '') + ':' + e.lineno)
+  localStorage.setItem('errors', JSON.stringify(errors))
+})
 
 var headers, i
 document.addEventListener('scroll', () => {
