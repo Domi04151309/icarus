@@ -17,6 +17,7 @@ export default {
       <li v-on:click="changeTheme()"><span><span class="material-icons-round">palette</span>Change theme</span></li>
       <li v-on:click="reset('healthy-food')"><span><span class="material-icons-round">restaurant_menu</span>Reset healthy food</span></li>
       <li v-on:click="reset('casual-food')"><span><span class="material-icons-round">fastfood</span>Reset casual food</span></li>
+      <li><router-link to="/account/app/log"><span class="material-icons-round">report</span>View error log</router-link></li>
       <li v-on:click="clearCache()"><span><span class="material-icons-round">delete</span>Clear cache</span></li>
     </ul>
   </page>`,

@@ -32,6 +32,7 @@ const ExerciseDetails = () => import('./pages/exercise-details.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
 
 const AppSettings = () => import('./pages/app-settings.js')
+const ErrorLog = () => import('./pages/log.js')
 const DataSettings = () => import('./pages/data-settings.js')
 const NutritionPlan = () => import('./pages/nutrition-plan.js')
 const WorkoutPlan = () => import('./pages/workout-plan.js')
@@ -69,6 +70,7 @@ const routes = [
   { path: '/nutrition/casual/food-item', component: FoodItem, props: { healthy: false } },
   { path: '/account', component: Account },
   { path: '/account/app', component: AppSettings },
+  { path: '/account/app/log', component: ErrorLog },
   { path: '/account/data', component: DataSettings },
   { path: '/account/data/nutrition', component: NutritionPlan },
   { path: '/account/data/workout', component: WorkoutPlan },
