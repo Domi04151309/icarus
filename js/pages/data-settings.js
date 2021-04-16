@@ -14,8 +14,9 @@ export default {
   template:
   `<page :title="title" parent="/account">
     <ul class="link-list ignore-page-padding">
-      <li v-on:click="edit('Change Name', 'info_name', 'text')"><span><span class="material-icons-round">edit</span>Change name</span></li>
+      <li v-on:click="edit('Change Name', 'info_name', 'text')"><span><span class="material-icons-round">face</span>Change name</span></li>
       <li v-on:click="edit('Change Age', 'info_age', 'number')"><span><span class="material-icons-round">edit</span>Change age</span></li>
+      <li v-on:click="edit('Change Weight', 'info_weight', 'number')"><span><span class="material-icons-round">edit</span>Change weight</span></li>
       <li><router-link to="/account/data/nutrition"><span class="material-icons-round">restaurant_menu</span>Nutrition Plan</router-link></li>
       <li><router-link to="/account/data/workout"><span class="material-icons-round">directions_run</span>Workout Plan</router-link></li>
       <li><router-link to="/account/data/raw"><span class="material-icons-round">storage</span>Raw Data</router-link></li>

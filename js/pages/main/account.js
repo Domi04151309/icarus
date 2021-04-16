@@ -7,8 +7,8 @@ export default {
   computed: {
     name: () => localStorage.getItem('info_name') || 'Guest',
     age: () => localStorage.getItem('info_age') || '0',
-    levelData: () => LevelHelper.getLevelData(),
-    pointStr: () => { if (LevelHelper.getLevelData().sectionExp == 1) return "point"; else return "points"; }
+    weight: () => localStorage.getItem('info_weight') || '0',
+    levelData: () => LevelHelper.getLevelData()
   },
   template:
   `<page-tab-bar>
@@ -22,9 +22,9 @@ export default {
           <div class="mr-16">
             <small class="item-caption">Age</small>{{ age }}
           </div>
-          <!--div>
-            <small class="item-caption">Level</small>{{ levelData.level }}
-          </div-->
+          <div>
+            <small class="item-caption">Weight</small>{{ weight }}
+          </div>
         </div>
         <progress :max="levelData.neededSectionExp" :value="levelData.sectionExp"></progress>
         <div class="flex between">

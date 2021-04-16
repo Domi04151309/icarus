@@ -10,6 +10,7 @@ export default {
       <p class="mb-32">Please tell us a little bit about yourself.</p>
       <input ref="name" class="setup-input mb-16" type="text" placeholder="Name" autocomplete="off">
       <input ref="age" class="setup-input mb-16" type="number" placeholder="Age" autocomplete="off">
+      <input ref="weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
       <button type="button" v-on:click="handleClick()">Continue</button>
     </page-no-app-bar>
   </div>`,
@@ -20,11 +21,13 @@ export default {
     handleClick() {
       localStorage.setItem('info_name', this.$refs.name.value)
       localStorage.setItem('info_age', this.$refs.age.value)
+      localStorage.setItem('info_weight', this.$refs.weight.value)
       this.$router.push('/setup/nutrition')
     }
   },
   mounted() {
     this.$refs.name.value = localStorage.getItem('info_name')
     this.$refs.age.value = localStorage.getItem('info_age')
+    this.$refs.weight.value = localStorage.getItem('info_weight')
   }
 }
