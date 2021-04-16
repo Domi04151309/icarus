@@ -17,7 +17,7 @@ Saved with the width set to 1920px and the quality set to 60%
 - https://unsplash.com/photos/HlNcigvUi4Q
 - https://unsplash.com/photos/dsT5LGzEuzE
 - https://unsplash.com/photos/N_Y88TWmGwA
-- https://unsplash.com/photos/yUIN4QWKCTw
+- https://unsplash.com/photos/MQUqbmszGGM
 - https://unsplash.com/photos/jUPOXXRNdcA
 - https://unsplash.com/photos/Yizrl9N_eDA
 

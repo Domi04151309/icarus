@@ -43,7 +43,7 @@ export default {
           It's healthy to drink about 3.7 litres per day. Thats about 11 and a half cups of water.
         </p>
         <h3>Calories <span class="p">{{ dayHelper.progress.calories }}/{{ ProgressCompanion.maxCalories }}</span></h3>
-        <div class="flex my-24 light-green">
+        <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('calories')">&minus;</button>
           <progress :max="ProgressCompanion.maxCalories" :value="dayHelper.progress.calories"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('calories')">+</button>
@@ -52,7 +52,7 @@ export default {
           Calories tell you about the general energy in your food.
         </p>
         <h3>Carbs <span class="p">{{ dayHelper.progress.carbs }}/{{ ProgressCompanion.maxCarbs }}</span></h3>
-        <div class="flex my-24 light-green">
+        <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('carbs')">&minus;</button>
           <progress :max="ProgressCompanion.maxCarbs" :value="dayHelper.progress.carbs"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('carbs')">+</button>
@@ -61,7 +61,7 @@ export default {
           Carbohydrates are the main source of energy for your body.
         </p>
         <h3>Proteins <span class="p">{{ dayHelper.progress.proteins }}/{{ ProgressCompanion.maxProteins }}</span></h3>
-        <div class="flex my-24 light-green">
+        <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('proteins')">&minus;</button>
           <progress :max="ProgressCompanion.maxProteins" :value="dayHelper.progress.proteins"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('proteins')">+</button>
@@ -70,7 +70,7 @@ export default {
           Proteins are important for building muscle mass.
         </p>
         <h3>Fat <span class="p">{{ dayHelper.progress.fat }}/{{ ProgressCompanion.maxFat }}</span></h3>
-        <div class="flex my-24 light-green">
+        <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('fat')">&minus;</button>
           <progress :max="ProgressCompanion.maxFat" :value="dayHelper.progress.fat"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('fat')">+</button>

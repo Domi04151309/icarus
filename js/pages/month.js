@@ -53,9 +53,9 @@ export default {
         <progress class="reverse mb-16" max="100" :value="lastWater"></progress>
         <p class="progress-text">Water</p>
         <progress class="mb-16" max="100" :value="water"></progress>
-        <progress class="reverse mb-16 light-green" max="100" :value="lastFood"></progress>
+        <progress class="reverse mb-16 green" max="100" :value="lastFood"></progress>
         <p class="progress-text">Food</p>
-        <progress class="mb-16 light-green" max="100" :value="food"></progress>
+        <progress class="mb-16 green" max="100" :value="food"></progress>
         <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
         <p class="progress-text">Exercices</p>
         <progress class="mb-16 red" max="100" :value="exercises"></progress>

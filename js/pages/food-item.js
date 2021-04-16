@@ -35,7 +35,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" :parent="parent">
+  `<page :title="title" :parent="parent" class="green">
     <h2 class="flex center mt-0">
       <div class="material-icons-round accent img">{{ icon }}</div>
       <div>{{ foodItem.title }}</div>

@@ -50,7 +50,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/nutrition">
+  `<page :title="title" parent="/nutrition" class="green">
     <div class="text-center">
       <div class="p-16">
         <progress-ring radius="48" :progress="progress" stroke="8"></progress-ring>

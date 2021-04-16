@@ -38,7 +38,7 @@ export default {
     }
   },
   template:
-  `<page :title="foodItem.title" :parent="parent" :class="writtenType">
+  `<page :title="foodItem.title" :parent="parent" :class="writtenType + ' green'">
     <div class="card mb-16-p-16">
       <h2>Description</h2>
       <p>{{ foodItem.description || 'No description provided' }}</p>

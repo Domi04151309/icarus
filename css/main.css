@@ -26,12 +26,12 @@
   --accent-color-light: #40C4FF;
   --accent-color-dark: #0091EA;
 }
-.light-green {
-  --accent-color: #7CB342;
-  --accent-color-light: #8BC34A;
-  --accent-color-dark: #689F38;
+.green {
+  --accent-color: #00ad10;
+  --accent-color-light: #43b741;
+  --accent-color-dark: #009b03;
 }
-.red, :root, .light-blue, .light-green {
+.red, :root, .light-blue, .green {
   --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
 }
 :root.dark-theme {
@@ -155,7 +155,7 @@ button, input, textarea {
 }
 button {
   text-align: center;
-  background: var(--accent-color);
+  background: var(--accent-color-gradient);
   color: var(--text-color-dark);
   cursor: pointer;
 }

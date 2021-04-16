@@ -28,7 +28,7 @@ export default {
     }
   },
   template:
-  `<page-tab-bar>
+  `<page-tab-bar class="green">
     <h2 class="mt-16 mx-8 secondary-title">Plan Your Meals</h2>
     <p class="mt-0 mb-48 mx-8">It's time to eat something delicious!</p>
     <router-link to="/nutrition/healthy" class="card mb-16-p-16 flex center">

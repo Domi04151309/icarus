@@ -11,7 +11,7 @@ export default {
     }
   },
   template:
-  `<page-tab-bar>
+  `<page-tab-bar class="red">
     <h2 class="mt-16 mx-8 secondary-title">Exercises</h2>
     <p class="mt-0 mb-48 mx-8">An exercise a day keeps the doctor away!</p>
     <div class="grid-2 gap-16 mb-16">

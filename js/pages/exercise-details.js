@@ -30,7 +30,7 @@ export default {
     }
   },
   template:
-  `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises">
+  `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises red">
     <div class="card mb-16-p-16">
       <h2>Tutorial</h2>
       <ol>
