@@ -84,6 +84,6 @@ export default {
     this.sort()
   },
   mounted() {
-    setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
   }
 }

@@ -70,6 +70,9 @@ export default {
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
+  components: {
+      Page
+  },
   methods: {
     onFabClicked() {
       var foodArray = []
@@ -96,9 +99,6 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
-  },
-  components: {
-      Page
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
   }
 }

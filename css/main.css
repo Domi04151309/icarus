@@ -27,9 +27,9 @@
   --accent-color-dark: #0091EA;
 }
 .green {
-  --accent-color: #00C010;
-  --accent-color-light: #49ca45;
-  --accent-color-dark: #00b000;
+  --accent-color: #10D030;
+  --accent-color-light: #52d854;
+  --accent-color-dark: #00bf28;
 }
 .red, :root, .light-blue, .green {
   --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
@@ -159,8 +159,11 @@ button {
   color: var(--text-color-dark);
   cursor: pointer;
 }
-button:hover {
-  background: var(--accent-color-dark);
+button:hover, .fab:hover {
+  filter: brightness(.9);
+}
+button:active, .fab:active {
+  filter: brightness(.8);
 }
 input, textarea {
   display: block;
@@ -290,14 +293,11 @@ h2 > .c-icon {
   line-height: 56px;
   text-align: center;
   border-radius: 50%;
-  background: var(--accent-color);
+  background: var(--accent-color-gradient);
   color: var(--text-color-dark);
   box-shadow: var(--card-shadow);
   cursor: pointer;
   animation: fadeIn .5s;
-}
-.fab:hover {
-  background: var(--accent-color-dark);
 }
 .fab.raised {
   bottom: 72px;

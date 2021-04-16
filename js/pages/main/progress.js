@@ -60,6 +60,6 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => { this.$refs.fab.classList.remove('hidden') }, 500)
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
   }
 }
