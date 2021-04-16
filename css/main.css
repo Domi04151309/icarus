@@ -27,9 +27,9 @@
   --accent-color-dark: #0091EA;
 }
 .green {
-  --accent-color: #00ad10;
-  --accent-color-light: #43b741;
-  --accent-color-dark: #009b03;
+  --accent-color: #00C010;
+  --accent-color-light: #49ca45;
+  --accent-color-dark: #00b000;
 }
 .red, :root, .light-blue, .green {
   --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
