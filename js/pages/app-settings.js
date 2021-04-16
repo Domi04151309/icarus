@@ -15,6 +15,8 @@ export default {
   `<page :title="title" parent="/account">
     <ul class="link-list ignore-page-padding">
       <li v-on:click="changeTheme()"><span><span class="material-icons-round">palette</span>Change theme</span></li>
+      <li v-on:click="reset('healthy-food')"><span><span class="material-icons-round">restaurant_menu</span>Reset healthy food</span></li>
+      <li v-on:click="reset('casual-food')"><span><span class="material-icons-round">fastfood</span>Reset casual food</span></li>
       <li v-on:click="clearCache()"><span><span class="material-icons-round">delete</span>Clear cache</span></li>
     </ul>
   </page>`,
@@ -25,6 +27,21 @@ export default {
     changeTheme() {
       var ComponentClass = Vue.extend(ModalTheme)
       var instance = new ComponentClass()
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    },
+    reset(key) {
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Reset Item',
+          message: 'Are you sure you want to reset this item? This cannot be undone.',
+          positiveText: 'Reset',
+          positiveFunction: () => {
+            localStorage.removeItem(key)
+          }
+        }
+      })
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },

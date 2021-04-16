@@ -1,0 +1,104 @@
+<h1>Food Extractor</h1>
+<p>This tool converts CSV data to useful JSON data.</p>
+<samp id="result"></samp>
+<script>
+  const COLUMN_TITLE = 0
+  const COLUMN_CALORIES = 1
+  const COLUMN_FAT = 2
+  const COLUMN_CARBS = 3
+  const COLUMN_PROTEINS = 4
+  /*const COLUMN_SUGAR = 5
+  const COLUMN_ALCOHOL = 6
+  const COLUMN_PORTION = 7
+  const COLUMN_SERVING = 8
+  const COLUMN_FAT_LOSS = 9
+  const COLUMN_MUSCLE_GAIN = 10
+  const COLUMN_LESS_SWEETS = 11
+  const COLUMN_MORE_WATER = 12
+  const COLUMN_VEGETARIAN = 13
+  const COLUMN_VEGAN = 14*/
+  const COLUMN_HEALTHY = 15
+  const COLUMN_CASUAL = 16
+
+  const FILE_PATH = './Icarus%20Data%20-%20Nutrition%20Data.csv'
+  const IGNORE_LINES = [1, 2, 18, 31, 38, 49, 62, 69, 72, 73, 84, 93]
+
+  var currentLine = 0
+  var failingLines = []
+
+  function getIntFromArray(array, index) {
+    var temp = parseInt(array[index], 10)
+    if (isNaN(temp)) return 0
+    else return temp
+  }
+
+  function addItemToArray(array, line) {
+    array.push({
+      title: line[COLUMN_TITLE],
+      calories: getIntFromArray(line, COLUMN_CALORIES),
+      carbs: getIntFromArray(line, COLUMN_CARBS),
+      proteins: getIntFromArray(line, COLUMN_PROTEINS),
+      fat: getIntFromArray(line, COLUMN_FAT)
+    })
+  }
+
+  async function run() {
+    await fetch(FILE_PATH)
+      .then(response => {
+        if (!response.ok) throw new Error()
+        else return response.text()
+      })
+      .then(result => {
+        var lines = result.split('\n')
+
+        var data = { healthy: [], casual: [] }
+        var lineArray = []
+
+        lines.forEach((item, i) => {
+          currentLine = i + 1
+          if (IGNORE_LINES.includes(i + 1)) return
+          if (i >= 101) return
+          lineArray = CSVtoArray(item)
+          if (lineArray == null) {
+            console.error('Invalid Item at ' + (i + 1) + ': ' + item)
+            failingLines.push(currentLine)
+            return
+          }
+          if (lineArray[COLUMN_HEALTHY] == '1') addItemToArray(data.healthy, lineArray)
+          if (lineArray[COLUMN_CASUAL] == '1') addItemToArray(data.casual, lineArray)
+        })
+        console.log(data)
+        document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
+        console.log('Failing lines: ' + failingLines.join())
+      }).catch(() => {
+        document.getElementById('result').innerHTML = 'An error occurred while trying to fetch the file. Check if the file exists and whether you are running this locally.'
+      })
+    }
+
+    run()
+
+    function CSVtoArray(text) {
+      var re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+      var re_value = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+
+      // Return NULL if input string is not well formed CSV string.
+      if (!re_valid.test(text)) return null;
+
+      var a = []; // Initialize array to receive values.
+      text.replace(re_value, // "Walk" the string using replace with callback.
+          function(m0, m1, m2, m3) {
+
+              // Remove backslash from \' in single quoted values.
+              if (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+
+              // Remove backslash from \" in double quoted values.
+              else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+              else if (m3 !== undefined) a.push(m3);
+              return ''; // Return empty string.
+          });
+
+      // Handle special case of empty last value.
+      if (/,\s*$/.test(text)) a.push('');
+      return a;
+    }
+</script>
