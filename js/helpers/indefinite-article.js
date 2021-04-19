@@ -1,7 +1,9 @@
 /*
+ * modified version indefinite-article.js v2.0.0m, 2021 of
  * indefinite-article.js v1.0.0, 12-18-2011
  *
- * @author: Rodrigo Neri (@rigoneri)
+ * author: Rodrigo Neri (@rigoneri)
+ * modified: Domi04151309
  *
  * (The MIT License)
  *
@@ -24,61 +26,46 @@
  * THE SOFTWARE.
  */
 
- export default function (phrase) {
+ export default phrase => {
 
     // Getting the first word
-    var match = /\w+/.exec(phrase);
-    if (match)
-        var word = match[0];
-    else
-        return "an";
+    var word = null
+    const match = /\w+/.exec(phrase)
+    if (match) word = match[0]
+    else return null
 
-    var l_word = word.toLowerCase();
+    const lowerCase = word.toLowerCase()
     // Specific start of words that should be preceeded by 'an'
-    var alt_cases = ["honest", "hour", "hono"];
-    for (var i in alt_cases) {
-        if (l_word.indexOf(alt_cases[i]) == 0)
-            return "an";
+    for (const altCase of ['honest', 'hour', 'hono']) {
+      if (lowerCase.indexOf(altCase) == 0) return 'an'
     }
 
     // Single letter word which should be preceeded by 'an'
-    if (l_word.length == 1) {
-        if ("aedhilmnorsx".indexOf(l_word) >= 0)
-            return "an";
-        else
-            return "a";
+    if (lowerCase.length == 1) {
+      if ('aedhilmnorsx'.indexOf(lowerCase) >= 0) return 'an'
+      else return 'a'
     }
 
     // Capital words which should likely be preceeded by 'an'
-    if (word.match(/(?!FJO|[HLMNS]Y.|RY[EO]|SQU|(F[LR]?|[HL]|MN?|N|RH?|S[CHKLMNPTVW]?|X(YL)?)[AEIOU])[FHLMNRSX][A-Z]/)) {
-        return "an";
-    }
+    if (word.match(/(?!FJO|[HLMNS]Y.|RY[EO]|SQU|(F[LR]?|[HL]|MN?|N|RH?|S[CHKLMNPTVW]?|X(YL)?)[AEIOU])[FHLMNRSX][A-Z]/)) return 'an'
 
     // Special cases where a word that begins with a vowel should be preceeded by 'a'
-    var regexes = [/^e[uw]/, /^onc?e\b/, /^uni([^nmd]|mo)/, /^u[bcfhjkqrst][aeiou]/]
-    for (var j in regexes) {
-        if (l_word.match(regexes[j]))
-            return "a"
+    for (const regex of [/^e[uw]/, /^onc?e\b/, /^uni([^nmd]|mo)/, /^u[bcfhjkqrst][aeiou]/]) {
+      if (lowerCase.match(regex)) return 'a'
     }
 
     // Special capital words (UK, UN)
-    if (word.match(/^U[NK][AIEO]/)) {
-        return "a";
-    }
+    if (word.match(/^U[NK][AIEO]/)) return 'a'
     else if (word == word.toUpperCase()) {
-        if ("aedhilmnorsx".indexOf(l_word[0]) >= 0)
-            return "an";
-        else
-            return "a";
+        if ('aedhilmnorsx'.indexOf(lowerCase[0]) >= 0) return 'an'
+        else return 'a'
     }
 
     // Basic method of words that begin with a vowel being preceeded by 'an'
-    if ("aeiou".indexOf(l_word[0]) >= 0)
-        return "an";
+    if ('aeiou'.indexOf(lowerCase[0]) >= 0) return 'an'
 
     // Instances where y follwed by specific letters is preceeded by 'an'
-    if (l_word.match(/^y(b[lor]|cl[ea]|fere|gg|p[ios]|rou|tt)/))
-        return "an";
+    if (lowerCase.match(/^y(b[lor]|cl[ea]|fere|gg|p[ios]|rou|tt)/)) return 'an'
 
-    return "a";
+    return 'a'
 }
