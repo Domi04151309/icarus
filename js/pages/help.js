@@ -11,9 +11,14 @@ export default {
   },
   template:
   `<page :title="title" parent="/account">
-    <div class="card mb-16-p-16 intro text-center">
-      <h2>Coming soon...</h2>
-    </div>
+    <h2>Exercise Recommendations</h2>
+    <p>Coming soon...</p>
+    <h2>Food Recommendations</h2>
+    <p>Coming soon...</p>
+    <h2>Level System</h2>
+    <p>Coming soon...</p>
+    <h2>Progress Calculation</h2>
+    <p>Coming soon...</p>
   </page>`,
   components: {
       Page
