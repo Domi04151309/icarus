@@ -84,7 +84,8 @@ export default {
           message: 'Unfortunately, this entry does not exist.',
           positiveFunction: () => {
             setTimeout(() => { this.$router.push('/progress/diary') }, 1000)
-          }
+          },
+          negativeButton: false
         }
       })
       instance.$mount()

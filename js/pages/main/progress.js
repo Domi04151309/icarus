@@ -1,4 +1,7 @@
+/*global Vue*/
+
 import PageTabBar from '../../components/page-tab-bar.js'
+import Modal from '../../components/modal.js'
 
 import Identifiers from '../../helpers/identifiers.js'
 import { DayHelper, WeekHelper, MonthHelper } from '../../helpers/progress.js'
@@ -61,5 +64,20 @@ export default {
   },
   mounted() {
     setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
+    if (localStorage.getItem('help_progress') == null) {
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Progress Page',
+          message: 'On this page, you can track your personal progress of the current day, week, and month.',
+          positiveFunction: () => {
+            localStorage.setItem('help_progress', '1')
+          },
+          negativeButton: false
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    }
   }
 }

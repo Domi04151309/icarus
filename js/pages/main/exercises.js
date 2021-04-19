@@ -1,5 +1,8 @@
+/*global Vue*/
+
 import PageTabBar from '../../components/page-tab-bar.js'
 import ExerciseItem from '../../components/exercise-item.js'
+import Modal from '../../components/modal.js'
 
 import ExercisesHelper from '../../helpers/exercises.js'
 
@@ -30,5 +33,22 @@ export default {
   components: {
       PageTabBar,
       ExerciseItem
+  },
+  mounted() {
+    if (localStorage.getItem('help_exercises') == null) {
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Exercise Page',
+          message: 'This page is for people that want to be active. You can perform one of four recommended exercises or chose one from our huge collection by yourself to collect points.',
+          positiveFunction: () => {
+            localStorage.setItem('help_exercises', '1')
+          },
+          negativeButton: false
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    }
   }
 }

@@ -121,7 +121,8 @@ export default {
           message: 'Unfortunately, this exercise does not exist.',
           positiveFunction: () => {
             setTimeout(() => { this.$router.push('/exercises') }, 1000)
-          }
+          },
+          negativeButton: false
         }
       })
       instance.$mount()

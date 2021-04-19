@@ -18,6 +18,10 @@ export default {
     negativeFunction: {
       type: Function,
       default: () => {}
+    },
+    negativeButton: {
+      type: Boolean,
+      default: true
     }
   },
   template:
@@ -27,7 +31,7 @@ export default {
       <h2>{{ title }}</h2>
       <p>{{ message }}</p>
       <div class="button-bar">
-        <button v-on:click="negative()" type="button">{{ negativeText }}</button>
+        <button v-if="negativeButton" v-on:click="negative()" type="button">{{ negativeText }}</button>
         <button v-on:click="positive()" type="button">{{ positiveText }}</button>
       </div>
     </div>

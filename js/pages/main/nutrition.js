@@ -1,6 +1,9 @@
+/*global Vue*/
+
 import PageTabBar from '../../components/page-tab-bar.js'
 import ProgressRing from '../../components/progress-ring.js'
 import FoodListItemImage from '../../components/food-list-item-image.js'
+import Modal from '../../components/modal.js'
 
 import FoodHelper from '../../helpers/food.js'
 
@@ -54,5 +57,22 @@ export default {
       PageTabBar,
       ProgressRing,
       FoodListItemImage
+  },
+  mounted() {
+    if (localStorage.getItem('help_nutrition') == null) {
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Nutrition Page',
+          message: 'Use this page to track your eating habits and for getting new recommendations every day. Collect points by eating something healthy.',
+          positiveFunction: () => {
+            localStorage.setItem('help_nutrition', '1')
+          },
+          negativeButton: false
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    }
   }
 }
