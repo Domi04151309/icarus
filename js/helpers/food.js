@@ -16,26 +16,28 @@ export default {
   getFoodStatistics() {
     return JsonHelper.getData('food-statistics', () => this.defaultFoodStatistics)
   },
-  addOneHealthyFoodToStatistics() {
+  addOneHealthyFoodToStatistics(item = null) {
     var date = new Date()
     var object = {}
     try {
       object = this.getFoodStatistics()
       object.healthy.push({
-        time: date.getTime()
+        time: date.getTime(),
+        item: item
       })
       localStorage.setItem('food-statistics', JSON.stringify(object))
     } catch (e) {
       console.warn(e)
     }
   },
-  addOneNotSoHealthyFoodToStatistics() {
+  addOneCasualFoodToStatistics(item = null) {
     var date = new Date()
     var object = {}
     try {
       object = this.getFoodStatistics()
       object.notSoHealthy.push({
-        time: date.getTime()
+        time: date.getTime(),
+        item: item
       })
       localStorage.setItem('food-statistics', JSON.stringify(object))
     } catch (e) {

@@ -102,7 +102,10 @@ export default {
         parseInt(this.$route.query.posY, 10),
         parseInt(this.$route.query.posZ, 10)
       ])
-      ExerciseHelper.addOneExerciseToStatistic()
+      var tempItem = {}
+      tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
+      tempItem.information = this.exerciseItem.information
+      ExerciseHelper.addOneExerciseToStatistic(tempItem)
       this.$router.push('/exercises')
     }
   },

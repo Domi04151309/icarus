@@ -19,6 +19,7 @@ const Week = () => import('./pages/week.js')
 const Month = () => import('./pages/month.js')
 const Calendar = () => import('./pages/calendar.js')
 const Diary = () => import('./pages/diary.js')
+const DiaryEntry = () => import('./pages/diary-entry.js')
 
 const FoodSuggestions = () => import('./pages/food-suggestions.js')
 
@@ -57,6 +58,7 @@ const routes = [
   { path: '/progress/month', component: Month },
   { path: '/progress/calendar', component: Calendar },
   { path: '/progress/diary', component: Diary },
+  { path: '/progress/diary/entry', component: DiaryEntry },
   { path: '/exercises', component: Exercises },
   { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },

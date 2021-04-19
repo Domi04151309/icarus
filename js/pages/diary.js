@@ -1,9 +1,6 @@
 import Page from '../components/page.js'
 
-import ExerciseHelper from '../helpers/exercises.js'
-import FoodHelper from '../helpers/food.js'
-
-//TODO: Add content
+import DiaryHelper from '../helpers/diary.js'
 
 export default {
   name: 'diary',
@@ -19,7 +16,7 @@ export default {
       <h2 class="text-center">{{ date.title }}</h2>
       <ul class="card link-list m-0">
         <li v-for="item in date.items" :key="item.time">
-          <span v-on:click="share(item, date.title)">
+          <router-link :to="'/progress/diary/entry?pos=' + item.pos">
             <div class="flex between center">
               <div>
                 {{ item.type }}<br>
@@ -27,7 +24,7 @@ export default {
               </div>
               <div class="material-icons-round big-c-icon">{{ item.icon }}</div>
             </div>
-          </span>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -35,46 +32,17 @@ export default {
   components: {
       Page
   },
-  methods: {
-    async share(item, date) {
-      const shareData = {
-        title: 'Diary Entry',
-        text: item.type.replace('You', 'I') + ' at ' + item.details + ' on ' + date + '. Take your personal health to the next level and start tracking your fitness today with Icarus.',
-        url: 'https://domi04151309.github.io/icarus/'
-      }
-      console.log(shareData)
-      try {
-        await navigator.share(shareData)
-      } catch (e) {
-        console.warn(e)
-      }
-    }
-  },
   created() {
-    var items = []
-    var food = FoodHelper.getFoodStatistics()
-    food.healthy.forEach(item => {
-      item.type = 'You ate something healthy'
-      item.icon = 'restaurant_menu'
-      items.push(item)
+    var items = DiaryHelper.getItems()
+    items.forEach((item, i) => {
+      item.pos = i
     })
-    food.notSoHealthy.forEach(item => {
-      item.type = 'You ate something casual'
-      item.icon = 'fastfood'
-      items.push(item)
-    })
-    ExerciseHelper.getStatistics().forEach(item => {
-      item.type = 'You did an exercise'
-      item.icon = 'directions_run'
-      items.push(item)
-    })
-    items = items.sort((a, b) => { return b.time - a.time })
 
     var array = []
-    var currentDate = ""
+    var currentDate = ''
     var currentObject = {}
     var date = null
-    var dateString = ""
+    var dateString = ''
     items.forEach(item => {
       date = new Date(item.time)
       dateString = date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
@@ -88,7 +56,6 @@ export default {
       item.details = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       currentObject.items.push(item)
     })
-    console.log(array)
     this.items = array
   }
 }

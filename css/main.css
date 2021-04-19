@@ -435,6 +435,9 @@ h2 > .c-icon {
 .flex.between {
   justify-content: space-between;
 }
+.flex.end {
+  justify-content: flex-end;
+}
 .flex.center {
   align-items: center;
 }

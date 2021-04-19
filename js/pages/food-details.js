@@ -111,8 +111,8 @@ export default {
       })
       dayHelper.saveProgress()
 
-      if (this.healthy) FoodHelper.addOneHealthyFoodToStatistics()
-      else FoodHelper.addOneNotSoHealthyFoodToStatistics()
+      if (this.healthy) FoodHelper.addOneHealthyFoodToStatistics(this.foodItem)
+      else FoodHelper.addOneCasualFoodToStatistics(this.foodItem)
       this.$router.push(this.parent)
     }
   },

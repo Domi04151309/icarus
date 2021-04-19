@@ -44,11 +44,12 @@ export default {
   getStatistics() {
     return JsonHelper.getData(EXERCISE_STATISTICS, () => [])
   },
-  addOneExerciseToStatistic() {
+  addOneExerciseToStatistic(item = null) {
     var date = new Date()
     var array = this.getStatistics()
     array.push({
-      time: date.getTime()
+      time: date.getTime(),
+      item: item
     })
     localStorage.setItem(EXERCISE_STATISTICS, JSON.stringify(array))
   },
