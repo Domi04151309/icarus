@@ -67,7 +67,7 @@ export default {
         else selectedItem.description = selectedItem.item.description
       }
       if (selectedItem.title == null) {
-        if (selectedItem.icon == 'directions_run') selectedItem.title = 'Unknown'
+        if (selectedItem.icon == 'directions_run') selectedItem.title = 'Exercise'
         else if (selectedItem.icon == 'restaurant_menu') selectedItem.title = 'Healthy Food'
         else if (selectedItem.icon == 'fastfood') selectedItem.title = 'Casual Food'
         else selectedItem.title = 'Unknown Item'
