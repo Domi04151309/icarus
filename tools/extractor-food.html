@@ -7,9 +7,9 @@
   const COLUMN_FAT = 2
   const COLUMN_CARBS = 3
   const COLUMN_PROTEINS = 4
-  /*const COLUMN_SUGAR = 5
+  const COLUMN_SUGAR = 5
   const COLUMN_ALCOHOL = 6
-  const COLUMN_PORTION = 7
+  /*const COLUMN_PORTION = 7
   const COLUMN_SERVING = 8
   const COLUMN_FAT_LOSS = 9
   const COLUMN_MUSCLE_GAIN = 10
@@ -36,9 +36,11 @@
     array.push({
       title: line[COLUMN_TITLE],
       calories: getIntFromArray(line, COLUMN_CALORIES),
+      fat: getIntFromArray(line, COLUMN_FAT),
       carbs: getIntFromArray(line, COLUMN_CARBS),
+      sugar: getIntFromArray(line, COLUMN_SUGAR),
       proteins: getIntFromArray(line, COLUMN_PROTEINS),
-      fat: getIntFromArray(line, COLUMN_FAT)
+      alcohol: getIntFromArray(line, COLUMN_ALCOHOL)
     })
   }
 

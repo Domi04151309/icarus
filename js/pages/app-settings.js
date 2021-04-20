@@ -51,6 +51,16 @@ export default {
       ['help_progress', 'help_exercises', 'help_nutrition'].forEach(key => {
         localStorage.removeItem(key)
       })
+      var ComponentClass = Vue.extend(Modal)
+      var instance = new ComponentClass({
+        propsData: {
+          title: 'Reset Tutorial Dialogs',
+          message: 'The dialogs have been reset successfully.',
+          negativeButton: false
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
     },
     clearCache() {
       var ComponentClass = Vue.extend(Modal)

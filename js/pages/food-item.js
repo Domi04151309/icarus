@@ -10,11 +10,7 @@ export default {
   data() {
     return {
       foodItem: {
-        title: 'New Food Item',
-        calories: 0,
-        carbs: 0,
-        proteins: 0,
-        fat: 0
+        title: 'New Food Item'
       }
     }
   },
@@ -52,20 +48,28 @@ export default {
     <textarea id="foodPreparation" v-model="foodItem.preparation" class="mb-16" autocomplete="off"></textarea>
     <div class="grid-2 gap-16 mb-16">
       <div>
-        <label for="calories">Calories</label>
+        <label for="calories">Calories (kcal)</label>
         <input id="calories" v-model="foodItem.calories" type="number"></input>
       </div>
       <div>
-        <label for="carbs">Carbs</label>
+        <label for="fat">Fat (g)</label>
+        <input id="fat" v-model="foodItem.fat" type="number"></input>
+      </div>
+      <div>
+        <label for="carbs">Carbs (g)</label>
         <input id="carbs" v-model="foodItem.carbs" type="number"></input>
       </div>
-      <div class="mb-16">
-        <label for="proteins">Proteins</label>
+      <div>
+        <label for="sugar">Sugar (g)</label>
+        <input id="sugar" v-model="foodItem.sugar" type="number"></input>
+      </div>
+      <div>
+        <label for="proteins">Proteins (g)</label>
         <input id="proteins" v-model="foodItem.proteins" type="number"></input>
       </div>
-      <div class="mb-16">
-        <label for="fat">Fat</label>
-        <input id="fat" v-model="foodItem.fat" type="number"></input>
+      <div>
+        <label for="alcohol">Alcohol (vol)<label>
+        <input id="alcohol" v-model="foodItem.alcohol" type="number"></input>
       </div>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
