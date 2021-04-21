@@ -2,23 +2,31 @@ import Identifiers from './identifiers.js'
 import JsonHelper from './json.js'
 
 const ProgressCompanion = {
-  maxWater: '12',
-  maxCalories: '3000',
-  maxCarbs: '325',
-  maxProteins: '56',
-  maxFat: '77',
-  maxExercises: '1',
-  maxSleep: '9'
+  maxWater: 12,
+  maxCalories: 3000,
+  maxFat: 77,
+  maxCarbs: 325,
+  maxProteins: 56,
+  maxExercises: 1,
+  maxSleep: 9
 }
 
 const DefaultObject = {
   water: 0,
   calories: 0,
+  fat: 0,
   carbs: 0,
   proteins: 0,
-  fat: 0,
   exercises: 0,
   sleep: 0
+}
+
+function getAverageProgress(progressObj, companionObj, keys) {
+  var progress = 0
+  keys.forEach(key => {
+    progress += progressObj[key] / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)]
+  })
+  return progress / keys.length
 }
 
 class DayHelper {
@@ -29,20 +37,11 @@ class DayHelper {
   saveProgress() {
     localStorage.setItem(this.dateId, JSON.stringify(this.progress))
   }
-  getProgress() {
-    return (this.progress.water / ProgressCompanion.maxWater
-    + this.progress.calories / ProgressCompanion.maxCalories
-    + this.progress.carbs / ProgressCompanion.maxCarbs
-    + this.progress.proteins / ProgressCompanion.maxProteins
-    + this.progress.fat / ProgressCompanion.maxFat
-    + this.progress.exercises / ProgressCompanion.maxExercises
-    + this.progress.sleep / ProgressCompanion.maxSleep) / 7
-  }
   getFoodProgress() {
-    return (this.progress.calories / ProgressCompanion.maxCalories
-    + this.progress.carbs / ProgressCompanion.maxCarbs
-    + this.progress.proteins / ProgressCompanion.maxProteins
-    + this.progress.fat / ProgressCompanion.maxFat) / 4
+    return getAverageProgress(this.progress, ProgressCompanion, ['calories', 'fat', 'carbs', 'proteins'])
+  }
+  getProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['water', 'calories', 'fat', 'carbs', 'proteins', 'exercises', 'sleep'])
   }
 }
 
@@ -58,48 +57,41 @@ class WeekHelper {
       date.setDate(date.getDate() + 1)
     }
   }
+  forDayHelperInWeek(action) {
+    this.forDayInWeek(date => action(new DayHelper(Identifiers.getDateId(date))))
+  }
   getProgress() {
     var progress = 0
-    var dayHelper = null
-    this.forDayInWeek(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.getProgress()
+    this.forDayHelperInWeek(helper => {
+      progress += helper.getProgress()
     })
     return progress / 7
   }
   getWaterProgress() {
     var progress = 0
-    var dayHelper = null
-    this.forDayInWeek(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.water
+    this.forDayHelperInWeek(helper => {
+      progress += helper.progress.water
     })
     return progress / (ProgressCompanion.maxWater * 7)
   }
   getFoodProgress() {
     var progress = 0
-    var dayHelper = null
-    this.forDayInWeek(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.getFoodProgress()
+    this.forDayHelperInWeek(helper => {
+      progress += helper.getFoodProgress()
     })
     return progress / 7
   }
   getExercisesProgress() {
     var progress = 0
-    var dayHelper = null
-    this.forDayInWeek(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.exercises
+    this.forDayHelperInWeek(helper => {
+      progress += helper.progress.exercises
     })
     return progress / (ProgressCompanion.maxExercises * 7)
   }
   getSleepProgress() {
     var progress = 0
-    var dayHelper = null
-    this.forDayInWeek(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.sleep
+    this.forDayHelperInWeek(helper => {
+      progress += helper.progress.sleep
     })
     return progress / (ProgressCompanion.maxSleep * 7)
   }
@@ -121,48 +113,41 @@ class MonthHelper {
     }
     return days
   }
+  forDayHelperInMonth(action) {
+    return this.forDayInMonth(date => action(new DayHelper(Identifiers.getDateId(date))))
+  }
   getProgress() {
     var progress = 0
-    var dayHelper = null
-    var days = this.forDayInMonth(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.getProgress()
+    var days = this.forDayHelperInMonth(helper => {
+      progress += helper.getProgress()
     })
     return progress / days
   }
   getWaterProgress() {
     var progress = 0
-    var dayHelper = null
-    var days = this.forDayInMonth(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.water
+    var days = this.forDayHelperInMonth(helper => {
+      progress += helper.progress.water
     })
     return progress / (ProgressCompanion.maxWater * days)
   }
   getFoodProgress() {
     var progress = 0
-    var dayHelper = null
-    var days = this.forDayInMonth(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.getFoodProgress()
+    var days = this.forDayHelperInMonth(helper => {
+      progress += helper.getFoodProgress()
     })
     return progress / (4 * days)
   }
   getExercisesProgress() {
     var progress = 0
-    var dayHelper = null
-    var days = this.forDayInMonth(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.exercises
+    var days = this.forDayHelperInMonth(helper => {
+      progress += helper.progress.exercises
     })
     return progress / (ProgressCompanion.maxExercises * days)
   }
   getSleepProgress() {
     var progress = 0
-    var dayHelper = null
-    var days = this.forDayInMonth(date => {
-      dayHelper = new DayHelper(Identifiers.getDateId(date))
-      progress += dayHelper.progress.sleep
+    var days = this.forDayHelperInMonth(helper => {
+      progress += helper.progress.sleep
     })
     return progress / (ProgressCompanion.maxSleep * days)
   }
