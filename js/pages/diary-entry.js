@@ -18,8 +18,9 @@ export default {
     <div class="material-icons-round big">{{ item.icon }}</div>
     <h2>{{ item.title }}</h2>
     <h3>{{ new Date(item.time).toLocaleString() }}</h3>
-    <p class="mb-32">{{ item.description }}</p>
-    <div class="flex end">
+    <p>{{ item.description }}</p>
+    <p v-if="item.details != null">{{ item.details }}</p>
+    <div class="flex end mt-32">
       <button v-on:click="share()" type="button" class="flex center mr-8"><span class="material-icons-round mr-8">share</span>Share</button>
       <button v-on:click="deleteEntry()" type="button" class="flex center"><span class="material-icons-round mr-8">delete</span>Delete</button>
     </div>
