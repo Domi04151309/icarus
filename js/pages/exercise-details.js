@@ -105,7 +105,7 @@ export default {
       var tempItem = {}
       tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
       tempItem.information = this.exerciseItem.information
-      ExerciseHelper.addOneExerciseToStatistic(tempItem)
+      ExerciseHelper.addExerciseToStatistic(tempItem)
       this.$router.push('/exercises')
     }
   },

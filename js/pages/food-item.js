@@ -81,7 +81,7 @@ export default {
     onFabClicked() {
       var foodArray = []
       if (this.healthy) foodArray = FoodHelper.getHealthyFood()
-      else foodArray = FoodHelper.getNotSoHealthyFood()
+      else foodArray = FoodHelper.getCasualFood()
       if (this.$route.query.item == null) {
         foodArray.push(this.foodItem)
         if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
@@ -99,7 +99,7 @@ export default {
       if (this.healthy)
         this.foodItem = FoodHelper.getHealthyFood()[this.$route.query.item]
       else
-        this.foodItem = FoodHelper.getNotSoHealthyFood()[this.$route.query.item]
+        this.foodItem = FoodHelper.getCasualFood()[this.$route.query.item]
     }
   },
   mounted() {

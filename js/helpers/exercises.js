@@ -2,18 +2,18 @@ import JsonHelper from './json.js'
 
 import Exercises from '../data/exercises.js'
 
-const EXERCISE_PARAMETERS = 'fitness'
-const EXERCISE_SCORES = 'exercise_scores'
-const EXERCISE_RECENTS = 'exercise_recents'
-const EXERCISE_STATISTICS = 'exercise_statistics'
+const PARAMETERS = 'fitness'
+const SCORES = 'exercise_scores'
+const RECENTS = 'exercise_recents'
+const STATISTICS = 'exercise_statistics'
 const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders', 'back', 'chest', 'abs', 'booty', 'legs']
 
 export default {
   getRecommended() {
     var images = ['./images/exercises/hiking.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
     var exercises = []
-    var scores = JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())
-    var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
+    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())
+    var recents = JsonHelper.getData(RECENTS, () => [])
     recents.forEach(item => {
       scores[item[0]][item[1]] = []
     })
@@ -37,31 +37,31 @@ export default {
     return exercises
   },
   addRecentExercise(position) {
-    var recents = JsonHelper.getData(EXERCISE_RECENTS, () => [])
+    var recents = JsonHelper.getData(RECENTS, () => [])
     recents.unshift(position)
-    localStorage.setItem(EXERCISE_RECENTS, JSON.stringify(recents.slice(0, 8)))
+    localStorage.setItem(RECENTS, JSON.stringify(recents.slice(0, 8)))
   },
   getStatistics() {
-    return JsonHelper.getData(EXERCISE_STATISTICS, () => [])
+    return JsonHelper.getData(STATISTICS, () => [])
   },
-  addOneExerciseToStatistic(item = null) {
+  addExerciseToStatistic(item = null) {
     var date = new Date()
     var array = this.getStatistics()
     array.push({
       time: date.getTime(),
       item: item
     })
-    localStorage.setItem(EXERCISE_STATISTICS, JSON.stringify(array))
+    localStorage.setItem(STATISTICS, JSON.stringify(array))
   },
   getScore(posX, posY, posZ) {
     try {
-      return JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())[posX][posY][posZ]
+      return JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY][posZ]
     } catch {
       return this.generateNewScores()[posX][posY][posZ]
     }
   },
   categoryScore(posX, posY) {
-    var scores = JsonHelper.getData(EXERCISE_SCORES, () => this.generateNewScores())[posX]
+    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX]
     var score = 0
     scores[posY].forEach(item => {
       score += item
@@ -83,11 +83,11 @@ export default {
       })
       categoryArray.push(exerciseArray)
     })
-    localStorage.setItem(EXERCISE_SCORES, JSON.stringify(categoryArray))
+    localStorage.setItem(SCORES, JSON.stringify(categoryArray))
     return categoryArray
   },
   calculateScore(exercise) {
-    var parameters = JsonHelper.getData(EXERCISE_PARAMETERS, () => 0)
+    var parameters = JsonHelper.getData(PARAMETERS, () => 0)
 
     var score = 100 * PARAMETER_LIST.length
     PARAMETER_LIST.forEach(item => {

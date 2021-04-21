@@ -2,21 +2,23 @@ import JsonHelper from './json.js'
 
 import Food from '../data/food.js'
 
+const STATISTICS = 'food_statistics'
+
 export default {
   getHealthyFood() {
     return JsonHelper.getData('healthy-food', () => Food.healthy)
   },
-  getNotSoHealthyFood() {
+  getCasualFood() {
     return JsonHelper.getData('casual-food', () => Food.casual)
   },
   defaultFoodStatistics: {
     healthy: [],
-    notSoHealthy: []
+    casual: []
   },
   getFoodStatistics() {
-    return JsonHelper.getData('food-statistics', () => this.defaultFoodStatistics)
+    return JsonHelper.getData(STATISTICS, () => this.defaultFoodStatistics)
   },
-  addOneHealthyFoodToStatistics(item = null) {
+  addHealthyFoodToStatistics(item = null) {
     var date = new Date()
     var object = {}
     try {
@@ -25,21 +27,21 @@ export default {
         time: date.getTime(),
         item: item
       })
-      localStorage.setItem('food-statistics', JSON.stringify(object))
+      localStorage.setItem(STATISTICS, JSON.stringify(object))
     } catch (e) {
       console.warn(e)
     }
   },
-  addOneCasualFoodToStatistics(item = null) {
+  addCasualFoodToStatistics(item = null) {
     var date = new Date()
     var object = {}
     try {
       object = this.getFoodStatistics()
-      object.notSoHealthy.push({
+      object.casual.push({
         time: date.getTime(),
         item: item
       })
-      localStorage.setItem('food-statistics', JSON.stringify(object))
+      localStorage.setItem(STATISTICS, JSON.stringify(object))
     } catch (e) {
       console.warn(e)
     }

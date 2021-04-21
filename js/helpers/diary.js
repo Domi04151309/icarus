@@ -12,7 +12,7 @@ export default {
       item.icon = 'restaurant_menu'
       items.push(item)
     })
-    food.notSoHealthy.forEach(item => {
+    food.casual.forEach(item => {
       if (item.item != null) item.type = `You ate ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
       else item.type = 'You ate something casual'
       item.icon = 'fastfood'
@@ -36,9 +36,9 @@ export default {
         return
       }
     }
-    for (let i = 0; i < food.notSoHealthy.length; i++) {
-      if (food.notSoHealthy[i].time == time) {
-        food.notSoHealthy.splice(i, 1)
+    for (let i = 0; i < food.casual.length; i++) {
+      if (food.casual[i].time == time) {
+        food.casual.splice(i, 1)
         localStorage.setItem('food-statistics', JSON.stringify(food))
         return
       }

@@ -39,14 +39,14 @@ export default {
     },
     defaultItems() {
       if (this.healthy) return FoodHelper.getHealthyFood()
-      else return FoodHelper.getNotSoHealthyFood()
+      else return FoodHelper.getCasualFood()
     },
     progress() {
       var statistics = FoodHelper.getFoodStatistics()
       if (this.healthy)
-        return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
+        return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.casual.length)
       else
-        return (statistics.notSoHealthy.length * 100) / (statistics.healthy.length + statistics.notSoHealthy.length)
+        return (statistics.casual.length * 100) / (statistics.healthy.length + statistics.casual.length)
     }
   },
   template:
