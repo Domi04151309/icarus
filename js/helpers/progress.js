@@ -22,11 +22,7 @@ const DefaultObject = {
 }
 
 function getAverageProgress(progressObj, companionObj, keys) {
-  var progress = 0
-  keys.forEach(key => {
-    progress += progressObj[key] / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)]
-  })
-  return progress / keys.length
+  return keys.reduce((acc, key) => acc + progressObj[key] / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
 }
 
 class DayHelper {

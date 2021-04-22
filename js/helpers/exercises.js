@@ -61,12 +61,8 @@ export default {
     }
   },
   categoryScore(posX, posY) {
-    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX]
-    var score = 0
-    scores[posY].forEach(item => {
-      score += item
-    })
-    return score / scores[posY].length
+    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY]
+    return scores.reduce((acc, item) => acc + item) / scores.length
   },
   generateNewScores() {
     var categoryArray = []
@@ -90,11 +86,8 @@ export default {
     var parameters = JsonHelper.getData(PARAMETERS, () => 0)
 
     var score = 100 * PARAMETER_LIST.length
-    PARAMETER_LIST.forEach(item => {
-      score += parseInt(parameters[item], 10) * exercise[item]
-    })
-    score /= 100
+    score += PARAMETER_LIST.reduce((acc, item) => acc + parseInt(parameters[item], 10) * exercise[item], 0)
 
-    return score
+    return score / 100
   }
 }

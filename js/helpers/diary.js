@@ -30,28 +30,29 @@ export default {
     return items
   },
   deleteItem(time) {
+    const equalTime = item => item.time == time
+    var found = -1
+
     var food = FoodHelper.getFoodStatistics()
-    for (let i = 0; i < food.healthy.length; i++) {
-      if (food.healthy[i].time == time) {
-        food.healthy.splice(i, 1)
-        localStorage.setItem('food-statistics', JSON.stringify(food))
-        return
-      }
+    found = food.healthy.findIndex(equalTime)
+    if (found != -1) {
+      food.healthy.splice(found, 1)
+      localStorage.setItem('food_statistics', JSON.stringify(food))
+      return
     }
-    for (let i = 0; i < food.casual.length; i++) {
-      if (food.casual[i].time == time) {
-        food.casual.splice(i, 1)
-        localStorage.setItem('food-statistics', JSON.stringify(food))
-        return
-      }
+    found = food.casual.findIndex(equalTime)
+    if (found != -1) {
+      food.casual.splice(found, 1)
+      localStorage.setItem('food_statistics', JSON.stringify(food))
+      return
     }
+
     var exercises = ExerciseHelper.getStatistics()
-    for (let i = 0; i < exercises.length; i++) {
-      if (exercises[i].time == time) {
-        exercises.splice(i, 1)
-        localStorage.setItem('exercise_statistics', JSON.stringify(exercises))
-        return
-      }
+    found = exercises.findIndex(equalTime)
+    if (found != -1) {
+      exercises.splice(found, 1)
+      localStorage.setItem('exercise_statistics', JSON.stringify(exercises))
+      return
     }
   }
 }
