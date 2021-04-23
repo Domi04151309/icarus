@@ -48,11 +48,11 @@ export default {
     </div>
     <div class="card flex space center text-center mb-16-p-16">
       <div>
-        <h2 class="m-0">{{ exerciseItem.intensities[intensity].sets || 0 }}</h2>
+        <h2 class="m-0">{{ exerciseItem.intensities[intensity].sets || 1 }}</h2>
         <p class="mb-0">Sets</p>
       </div>
       <div>
-        <h2 class="m-0">{{ exerciseItem.intensities[intensity].repetitions || 0 }}</h2>
+        <h2 class="m-0">{{ exerciseItem.intensities[intensity].repetitions || 1 }}</h2>
         <p class="mb-0">Repetitions</p>
       </div>
       <div>
@@ -60,25 +60,31 @@ export default {
         <p class="mb-0">Time</p>
       </div>
     </div>
-    <div class="card text-center mb-16-p-16">
+    <div v-if="exerciseItem.intensities[intensity].time" class="card text-center mb-16-p-16">
       <h2>Timer</h2>
       <div class="flex space center">
         <button class="progress-control material-icons-round" type="button">play_arrow</button>
-        <div class="p-16">
+        <div class="relative p-16">
+          <div class="absolute">{{ exerciseItem.intensities[intensity].time }}</div>
           <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
         </div>
         <button class="progress-control material-icons-round" type="button">stop</button>
       </div>
     </div>
-    <div class="grid-2 gap-16">
-      <div class="card mb-16-p-16">
-        <h2>Sets</h2>
-        <progress max="100" value="33"></progress>
+    <div v-if="exerciseItem.intensities[intensity].repetitions" class="card text-center mb-16-p-16">
+      <h2>Repetitions</h2>
+      <div class="flex space center">
+        <button class="progress-control" type="button">&minus;</button>
+        <div class="relative p-16">
+          <div class="absolute">{{ 0 }}</div>
+          <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+        </div>
+        <button class="progress-control" type="button">+</button>
       </div>
-      <div class="card mb-16-p-16">
-        <h2>Repetitions</h2>
-        <progress max="100" value="66"></progress>
-      </div>
+    </div>
+    <div v-if="exerciseItem.intensities[intensity].sets" class="card mb-16-p-16">
+      <h2>Sets <span class="p">{{ 0 }}/{{ exerciseItem.intensities[intensity].sets }}</span></h2>
+      <progress max="100" value="33"></progress>
     </div>
     <div v-if="(exerciseItem.information || []).length > 0" class="card mb-16-p-16">
       <h2>Information</h2>
