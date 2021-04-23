@@ -9,8 +9,6 @@ import ExerciseHelper from '../helpers/exercises.js'
 import Identifiers from '../helpers/identifiers.js'
 import { DayHelper } from '../helpers/progress.js'
 
-//TODO: Add content
-
 export default {
   name: 'exercise-details',
   data() {
@@ -18,6 +16,11 @@ export default {
       exerciseTitle: '',
       exerciseItem: { intensities: { low: { }, medium: { }, high: { }, full: { } } },
       intensity: 'medium',
+      running: false,
+      time: 0,
+      timeMax: 0,
+      repetitions: 0,
+      sets: 0
     }
   },
   watch: {
@@ -25,8 +28,8 @@ export default {
       ['low', 'medium', 'high', 'full'].forEach(item => {
         this.$refs[item].classList.remove('selected')
       })
-      console.log('triggered')
       this.$refs[this.intensity].classList.add('selected')
+      this.computeTime()
     }
   },
   template:
@@ -63,28 +66,28 @@ export default {
     <div v-if="exerciseItem.intensities[intensity].time" class="card text-center mb-16-p-16">
       <h2>Timer</h2>
       <div class="flex space center">
-        <button class="progress-control material-icons-round" type="button">play_arrow</button>
+        <button ref="play" class="progress-control material-icons-round" type="button" v-on:click="playPauseTime()">play_arrow</button>
         <div class="relative p-16">
-          <div class="absolute">{{ exerciseItem.intensities[intensity].time }}</div>
-          <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+          <div class="absolute">{{ Math.floor(time / 60) + ':' + String(time % 60).padStart(2, '0') }}</div>
+          <progress-ring radius="56" :progress="time / timeMax * 100" stroke="8"></progress-ring>
         </div>
-        <button class="progress-control material-icons-round" type="button">stop</button>
+        <button class="progress-control material-icons-round" type="button" v-on:click="resetTime()">stop</button>
       </div>
     </div>
     <div v-if="exerciseItem.intensities[intensity].repetitions" class="card text-center mb-16-p-16">
       <h2>Repetitions</h2>
       <div class="flex space center">
-        <button class="progress-control" type="button">&minus;</button>
+        <button class="progress-control" type="button" v-on:click="removeRepetition()">&minus;</button>
         <div class="relative p-16">
-          <div class="absolute">{{ 0 }}</div>
-          <progress-ring radius="56" progress="66" stroke="8"></progress-ring>
+          <div class="absolute">{{ repetitions }}</div>
+          <progress-ring radius="56" :progress="repetitions / exerciseItem.intensities[intensity].repetitions * 100" stroke="8"></progress-ring>
         </div>
-        <button class="progress-control" type="button">+</button>
+        <button class="progress-control" type="button" v-on:click="addRepetition()">+</button>
       </div>
     </div>
     <div v-if="exerciseItem.intensities[intensity].sets" class="card mb-16-p-16">
-      <h2>Sets <span class="p">{{ 0 }}/{{ exerciseItem.intensities[intensity].sets }}</span></h2>
-      <progress max="100" value="33"></progress>
+      <h2>Sets <span class="p">{{ sets }}/{{ exerciseItem.intensities[intensity].sets }}</span></h2>
+      <progress :max="exerciseItem.intensities[intensity].sets" :value="sets"></progress>
     </div>
     <div v-if="(exerciseItem.information || []).length > 0" class="card mb-16-p-16">
       <h2>Information</h2>
@@ -99,6 +102,60 @@ export default {
       ProgressRing
   },
   methods: {
+    computeTime() {
+      if (this.exerciseItem.intensities[this.intensity].time != "") {
+        let time = this.exerciseItem.intensities[this.intensity].time
+        if (time.indexOf('.') == -1) {
+          this.timeMax = parseInt(time, 10) * 60
+        } else {
+          this.timeMax = parseInt(time.substr(0, time.indexOf('.')), 10) * 60 + parseInt(time.substring(time.indexOf('.') + 1), 10)
+        }
+        this.resetTime()
+      }
+    },
+    playPauseTime() {
+      this.running = !this.running
+      if (!this.running) {
+        this.$refs.play.innerHTML = 'play_arrow'
+      } else {
+        if (this.time == 0) this.time = this.timeMax
+        this.$refs.play.innerHTML = 'pause'
+        this.doCountdown()
+      }
+    },
+    doCountdown() {
+      if (this.running) {
+        if (this.time > 0) {
+          this.time--
+          setTimeout(() => this.doCountdown(), 1000)
+        } else {
+          this.sets++
+          this.running = false
+          this.$refs.play.innerHTML = 'play_arrow'
+        }
+      }
+    },
+    resetTime() {
+      this.running = false
+      this.time = this.timeMax
+      let play = this.$refs?.play
+      if (play != null) play.innerHTML = 'play_arrow'
+    },
+    removeRepetition() {
+      if (this.repetitions == 0) {
+        if (this.sets != 0) {
+          this.repetitions = this.exerciseItem.intensities[this.intensity].repetitions - 1
+          this.sets--
+        }
+      } else this.repetitions--
+    },
+    addRepetition() {
+      if (this.repetitions >= this.exerciseItem.intensities[this.intensity].repetitions - 1) {
+        this.repetitions = 0
+        this.sets++
+      }
+      else this.repetitions++
+    },
     onPerformClicked() {
       var dayHelper = new DayHelper(Identifiers.getDateId())
       dayHelper.progress.exercises += 1
@@ -119,6 +176,8 @@ export default {
     if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
       this.exerciseTitle = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].title
       this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].variations[parseInt(this.$route.query.posZ, 10)]
+
+      this.computeTime()
     } else {
       var ComponentClass = Vue.extend(Modal)
       var instance = new ComponentClass({
