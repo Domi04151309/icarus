@@ -95,7 +95,7 @@ export default {
         {{ exerciseItem.information[0] }}
       </p>
     </div>
-    <button class="w-100" type="button" v-on:click="onPerformClicked()">Perform</button>
+    <button class="w-100" type="button" v-on:click="onFinishClicked()">Finish</button>
   </page>`,
   components: {
       Page,
@@ -156,7 +156,7 @@ export default {
       }
       else this.repetitions++
     },
-    onPerformClicked() {
+    onFinishClicked() {
       var dayHelper = new DayHelper(Identifiers.getDateId())
       dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
