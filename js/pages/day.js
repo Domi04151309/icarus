@@ -40,7 +40,7 @@ export default {
           <button class="progress-control right" type="button" v-on:click="addOne('water')">+</button>
         </div>
         <p>
-          It's healthy to drink about 3.7 litres per day. Thats about 11 and a half cups of water.
+          It's healthy to drink about 3.7 litres per day. Thats about 15 and a half cups of water.
         </p>
         <h3>Calories <span class="p">{{ dayHelper.progress.calories }}/{{ ProgressCompanion.maxCalories }} kcal</span></h3>
         <div class="flex my-24 green">
@@ -111,7 +111,7 @@ export default {
       this.dayHelper.saveProgress()
     },
     addOne(key) {
-      this.dayHelper.progress[key] += 1
+      if (this.dayHelper.progress[key] < 50) this.dayHelper.progress[key] += 1
       this.updateProgress()
     },
     removeOne(key) {
@@ -131,7 +131,7 @@ export default {
           positiveFunction: () => {
             this.dayHelper.progress[key] += parseInt(instance.$refs.input.value, 10)
             if (this.dayHelper.progress[key] < 0) this.dayHelper.progress[key] = 0
-            if (this.dayHelper.progress[key] > 1000000) this.dayHelper.progress[key] = 1000000
+            if (this.dayHelper.progress[key] > 10000) this.dayHelper.progress[key] = 10000
             this.updateProgress()
           }
         }
@@ -150,7 +150,7 @@ export default {
           positiveFunction: () => {
             this.dayHelper.progress[key] -= parseInt(instance.$refs.input.value, 10)
             if (this.dayHelper.progress[key] < 0) this.dayHelper.progress[key] = 0
-            if (this.dayHelper.progress[key] > 1000000) this.dayHelper.progress[key] = 1000000
+            if (this.dayHelper.progress[key] > 10000) this.dayHelper.progress[key] = 10000
             this.updateProgress()
           }
         }

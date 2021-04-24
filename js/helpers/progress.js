@@ -2,8 +2,8 @@ import Identifiers from './identifiers.js'
 import JsonHelper from './json.js'
 
 const ProgressCompanion = {
-  maxWater: 12,
-  maxCalories: 3000,
+  maxWater: 16,
+  maxCalories: 2500,
   maxFat: 77,
   maxCarbs: 325,
   maxProteins: 56,
