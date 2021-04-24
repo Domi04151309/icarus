@@ -211,7 +211,7 @@ input[type=radio]:checked + label {
   background: var(--hover-color);
   color: var(--text-color);
 }
-progress {
+progress, .progress {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -220,12 +220,22 @@ progress {
   border-radius: var(--border-radius-1x);
   overflow: hidden;
 }
-progress::-webkit-progress-bar {
+progress::-webkit-progress-bar, .progress {
   background: var(--pressed-color);
 }
 progress::-webkit-progress-value {
   background: var(--accent-color-gradient);
   border-radius: var(--border-radius-1x);
+  transition: width .5s;
+}
+.progress {
+  display: flex;
+}
+.progress > div {
+  height: 100%;
+  margin-left: -12px;
+  background: var(--accent-color-gradient);
+  border-radius: 0 var(--border-radius-1x) var(--border-radius-1x) 0;
   transition: width .5s;
 }
 svg {

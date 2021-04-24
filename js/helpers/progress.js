@@ -39,9 +39,6 @@ class DayHelper {
   getFoodProgress() {
     return getAverageProgress(this.progress, ProgressCompanion, ['calories', 'fat', 'carbs', 'proteins'])
   }
-  getNutritionProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['water', 'calories', 'fat', 'carbs', 'proteins'])
-  }
   getExerciseProgress() {
     return getAverageProgress(this.progress, ProgressCompanion, ['exercises'])
   }
@@ -49,7 +46,7 @@ class DayHelper {
     return getAverageProgress(this.progress, ProgressCompanion, ['sleep'])
   }
   getProgress() {
-    return (this.getNutritionProgress() + this.getExerciseProgress() + this.getSleepProgress()) / 3
+    return (this.getWaterProgress() + this.getFoodProgress() + this.getExerciseProgress() + this.getSleepProgress()) / 4
   }
 }
 

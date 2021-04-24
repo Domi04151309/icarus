@@ -1,6 +1,7 @@
 /*global Vue*/
 
 import PageTabBar from '../../components/page-tab-bar.js'
+import ProgressSections from '../../components/progress-sections.js'
 import Modal from '../../components/modal.js'
 
 import Identifiers from '../../helpers/identifiers.js'
@@ -8,20 +9,15 @@ import { DayHelper, WeekHelper, MonthHelper } from '../../helpers/progress.js'
 
 export default {
   name: 'progress_tab',
-  computed: {
-    name: () => localStorage.getItem('info_name'),
-    dayProgress: () => {
-      var helper = new DayHelper(Identifiers.getDateId())
-      return helper.getProgress() * 100
-    },
-    weekProgress: () => {
-      var helper = new WeekHelper(Identifiers.getDateId())
-      return helper.getProgress() * 100
-    },
-    monthProgress: () => {
-      var helper = new MonthHelper(Identifiers.getDateId())
-      return helper.getProgress() * 100
+  data() {
+    return {
+      dayHelper: new DayHelper(Identifiers.getDateId()),
+      weekHelper: new WeekHelper(Identifiers.getDateId()),
+      monthHelper: new MonthHelper(Identifiers.getDateId())
     }
+  },
+  computed: {
+    name: () => localStorage.getItem('info_name')
   },
   template:
   `<page-tab-bar>
@@ -30,18 +26,33 @@ export default {
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <router-link to="/progress/day" class="card mb-16-p-16">
       <h2>Today's Goals</h2>
-      <progress max="100" :value="dayProgress"></progress>
+      <progress-sections
+        :s1="dayHelper.getSleepProgress()"
+        :s2="dayHelper.getWaterProgress()"
+        :s3="dayHelper.getFoodProgress()"
+        :s4="dayHelper.getExerciseProgress()">
+      </progress-sections>
       <p>Your progress for today.</p>
     </router-link>
     <div class="grid-2 gap-16">
       <router-link to="/progress/week" class="card mb-16-p-16">
         <h2>This Week</h2>
-        <progress max="100" :value="weekProgress"></progress>
+        <progress-sections
+          :s1="weekHelper.getSleepProgress()"
+          :s2="weekHelper.getWaterProgress()"
+          :s3="weekHelper.getFoodProgress()"
+          :s4="weekHelper.getExerciseProgress()">
+        </progress-sections>
         <p>Your progress for this week.</p>
       </router-link>
       <router-link to="/progress/month" class="card mb-16-p-16">
         <h2>This Month</h2>
-        <progress max="100" :value="monthProgress"></progress>
+        <progress-sections
+          :s1="monthHelper.getSleepProgress()"
+          :s2="monthHelper.getWaterProgress()"
+          :s3="monthHelper.getFoodProgress()"
+          :s4="monthHelper.getExerciseProgress()">
+        </progress-sections>
         <p>Your progress for this month.</p>
       </router-link>
     </div>
@@ -55,7 +66,8 @@ export default {
     <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {
-      PageTabBar
+      PageTabBar,
+      ProgressSections
   },
   methods: {
     onFabClicked() {

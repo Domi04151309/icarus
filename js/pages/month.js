@@ -1,4 +1,5 @@
 import Page from '../components/page.js'
+import ProgressSections from '../components/progress-sections.js'
 
 import Identifiers from '../helpers/identifiers.js'
 import { WeekHelper, MonthHelper } from '../helpers/progress.js'
@@ -8,7 +9,7 @@ export default {
   data() {
     return {
       readableDate: '',
-      total: 0,
+      helper: { },
       month: [],
       water: 0,
       food: 0,
@@ -32,7 +33,12 @@ export default {
   `<page :title="title" parent="/progress">
     <div class="card mb-16-p-16">
       <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
-      <progress max="100" :value="total"></progress>
+      <progress-sections
+        :s1="helper.getSleepProgress()"
+        :s2="helper.getWaterProgress()"
+        :s3="helper.getFoodProgress()"
+        :s4="helper.getExerciseProgress()">
+      </progress-sections>
       <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>
     </div>
     <div class="card mb-16-p-16">
@@ -50,23 +56,24 @@ export default {
         <p class="progress-text mt-8 mb-16">Last Month</p>
         <span></span>
         <p class="progress-text mt-8 mb-16">This Month</p>
-        <progress class="reverse mb-16" max="100" :value="lastWater"></progress>
+        <progress class="reverse mb-16" max="100" :value="lastSleep"></progress>
+        <p class="progress-text">Sleep</p>
+        <progress class="mb-16" max="100" :value="sleep"></progress>
+        <progress class="reverse mb-16 light-blue" max="100" :value="lastWater"></progress>
         <p class="progress-text">Water</p>
-        <progress class="mb-16" max="100" :value="water"></progress>
+        <progress class="mb-16 light-blue" max="100" :value="water"></progress>
         <progress class="reverse mb-16 green" max="100" :value="lastFood"></progress>
         <p class="progress-text">Food</p>
         <progress class="mb-16 green" max="100" :value="food"></progress>
         <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
         <p class="progress-text">Exercices</p>
         <progress class="mb-16 red" max="100" :value="exercises"></progress>
-        <progress class="reverse mb-16 light-blue" max="100" :value="lastSleep"></progress>
-        <p class="progress-text">Sleep</p>
-        <progress class="mb-16 light-blue" max="100" :value="sleep"></progress>
       </div>
     </div>
   </page>`,
   components: {
-      Page
+      Page,
+      ProgressSections
   },
   created() {
     var dateString = this.$route.query.date
@@ -79,12 +86,24 @@ export default {
       this.readableDate = dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
-    var monthHelper = new MonthHelper(dateId)
-    this.total = monthHelper.getProgress() * 100
+    var lastMonth = Identifiers.dateIdToDate(dateId)
+    if (lastMonth.getMonth() == 0) {
+      lastMonth.setYear(lastMonth.getYear() - 1)
+      lastMonth.setMonth(11)
+    }
+    else lastMonth.setMonth(lastMonth.getMonth() - 1)
+    this.helper = new MonthHelper(Identifiers.getDateId(lastMonth))
+
+    this.lastWater = this.helper.getWaterProgress() * 100
+    this.lastFood = this.helper.getFoodProgress() * 100
+    this.lastExercises = this.helper.getExerciseProgress() * 100
+    this.lastSleep = this.helper.getSleepProgress() * 100
+
+    this.helper = new MonthHelper(dateId)
 
     var weekHelper = null
     var i = 7
-    monthHelper.forDayInMonth(date => {
+    this.helper.forDayInMonth(date => {
       if (i == 7) {
         weekHelper = new WeekHelper(Identifiers.getDateId(date))
         this.month.push(weekHelper.getProgress() * 100)
@@ -93,22 +112,9 @@ export default {
       i++
     })
 
-    this.water = monthHelper.getWaterProgress() * 100
-    this.food = monthHelper.getFoodProgress() * 100
-    this.exercises = monthHelper.getExerciseProgress() * 100
-    this.sleep = monthHelper.getSleepProgress() * 100
-
-    var lastMonth = Identifiers.dateIdToDate(dateId)
-    if (lastMonth.getMonth() == 0) {
-      lastMonth.setYear(lastMonth.getYear() - 1)
-      lastMonth.setMonth(11)
-    }
-    else lastMonth.setMonth(lastMonth.getMonth() - 1)
-    monthHelper = new MonthHelper(Identifiers.getDateId(lastMonth))
-
-    this.lastWater = monthHelper.getWaterProgress() * 100
-    this.lastFood = monthHelper.getFoodProgress() * 100
-    this.lastExercises = monthHelper.getExerciseProgress() * 100
-    this.lastSleep = monthHelper.getSleepProgress() * 100
+    this.water = this.helper.getWaterProgress() * 100
+    this.food = this.helper.getFoodProgress() * 100
+    this.exercises = this.helper.getExerciseProgress() * 100
+    this.sleep = this.helper.getSleepProgress() * 100
   }
 }
