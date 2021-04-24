@@ -99,7 +99,7 @@ export default {
 
     this.water = weekHelper.getWaterProgress() * 100
     this.food = weekHelper.getFoodProgress() * 100
-    this.exercises = weekHelper.getExercisesProgress() * 100
+    this.exercises = weekHelper.getExerciseProgress() * 100
     this.sleep = weekHelper.getSleepProgress() * 100
 
     var lastWeek = Identifiers.dateIdToDate(dateId)
@@ -108,7 +108,7 @@ export default {
 
     this.lastWater = weekHelper.getWaterProgress() * 100
     this.lastFood = weekHelper.getFoodProgress() * 100
-    this.lastExercises = weekHelper.getExercisesProgress() * 100
+    this.lastExercises = weekHelper.getExerciseProgress() * 100
     this.lastSleep = weekHelper.getSleepProgress() * 100
   }
 }

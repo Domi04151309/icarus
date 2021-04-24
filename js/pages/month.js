@@ -95,7 +95,7 @@ export default {
 
     this.water = monthHelper.getWaterProgress() * 100
     this.food = monthHelper.getFoodProgress() * 100
-    this.exercises = monthHelper.getExercisesProgress() * 100
+    this.exercises = monthHelper.getExerciseProgress() * 100
     this.sleep = monthHelper.getSleepProgress() * 100
 
     var lastMonth = Identifiers.dateIdToDate(dateId)
@@ -108,7 +108,7 @@ export default {
 
     this.lastWater = monthHelper.getWaterProgress() * 100
     this.lastFood = monthHelper.getFoodProgress() * 100
-    this.lastExercises = monthHelper.getExercisesProgress() * 100
+    this.lastExercises = monthHelper.getExerciseProgress() * 100
     this.lastSleep = monthHelper.getSleepProgress() * 100
   }
 }

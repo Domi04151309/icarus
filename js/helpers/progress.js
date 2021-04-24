@@ -33,11 +33,23 @@ class DayHelper {
   saveProgress() {
     localStorage.setItem(this.dateId, JSON.stringify(this.progress))
   }
+  getWaterProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['water'])
+  }
   getFoodProgress() {
     return getAverageProgress(this.progress, ProgressCompanion, ['calories', 'fat', 'carbs', 'proteins'])
   }
+  getNutritionProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['water', 'calories', 'fat', 'carbs', 'proteins'])
+  }
+  getExerciseProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['exercises'])
+  }
+  getSleepProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['sleep'])
+  }
   getProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['water', 'calories', 'fat', 'carbs', 'proteins', 'exercises', 'sleep'])
+    return (this.getNutritionProgress() + this.getExerciseProgress() + this.getSleepProgress()) / 3
   }
 }
 
@@ -53,43 +65,27 @@ class WeekHelper {
       date.setDate(date.getDate() + 1)
     }
   }
-  forDayHelperInWeek(action) {
-    this.forDayInWeek(date => action(new DayHelper(Identifiers.getDateId(date))))
+  getWeeksProgress(action) {
+    var progress = 0
+    this.forDayInWeek(date => {
+      progress += action(new DayHelper(Identifiers.getDateId(date)))
+    })
+    return progress / 7
   }
   getProgress() {
-    var progress = 0
-    this.forDayHelperInWeek(helper => {
-      progress += helper.getProgress()
-    })
-    return progress / 7
+    return this.getWeeksProgress(helper => helper.getProgress())
   }
   getWaterProgress() {
-    var progress = 0
-    this.forDayHelperInWeek(helper => {
-      progress += helper.progress.water
-    })
-    return progress / (ProgressCompanion.maxWater * 7)
+    return this.getWeeksProgress(helper => helper.getWaterProgress())
   }
   getFoodProgress() {
-    var progress = 0
-    this.forDayHelperInWeek(helper => {
-      progress += helper.getFoodProgress()
-    })
-    return progress / 7
+    return this.getWeeksProgress(helper => helper.getFoodProgress())
   }
-  getExercisesProgress() {
-    var progress = 0
-    this.forDayHelperInWeek(helper => {
-      progress += helper.progress.exercises
-    })
-    return progress / (ProgressCompanion.maxExercises * 7)
+  getExerciseProgress() {
+    return this.getWeeksProgress(helper => helper.getExerciseProgress())
   }
   getSleepProgress() {
-    var progress = 0
-    this.forDayHelperInWeek(helper => {
-      progress += helper.progress.sleep
-    })
-    return progress / (ProgressCompanion.maxSleep * 7)
+    return this.getWeeksProgress(helper => helper.getSleepProgress())
   }
 }
 
@@ -109,43 +105,27 @@ class MonthHelper {
     }
     return days
   }
-  forDayHelperInMonth(action) {
-    return this.forDayInMonth(date => action(new DayHelper(Identifiers.getDateId(date))))
-  }
-  getProgress() {
+  getMonthsProgress(action) {
     var progress = 0
-    var days = this.forDayHelperInMonth(helper => {
-      progress += helper.getProgress()
+    var days = this.forDayInMonth(date => {
+      progress += action(new DayHelper(Identifiers.getDateId(date)))
     })
     return progress / days
   }
+  getProgress() {
+    return this.getMonthsProgress(helper => helper.getProgress())
+  }
   getWaterProgress() {
-    var progress = 0
-    var days = this.forDayHelperInMonth(helper => {
-      progress += helper.progress.water
-    })
-    return progress / (ProgressCompanion.maxWater * days)
+    return this.getMonthsProgress(helper => helper.getWaterProgress())
   }
   getFoodProgress() {
-    var progress = 0
-    var days = this.forDayHelperInMonth(helper => {
-      progress += helper.getFoodProgress()
-    })
-    return progress / (4 * days)
+    return this.getMonthsProgress(helper => helper.getFoodProgress())
   }
-  getExercisesProgress() {
-    var progress = 0
-    var days = this.forDayHelperInMonth(helper => {
-      progress += helper.progress.exercises
-    })
-    return progress / (ProgressCompanion.maxExercises * days)
+  getExerciseProgress() {
+    return this.getMonthsProgress(helper => helper.getExerciseProgress())
   }
   getSleepProgress() {
-    var progress = 0
-    var days = this.forDayHelperInMonth(helper => {
-      progress += helper.progress.sleep
-    })
-    return progress / (ProgressCompanion.maxSleep * days)
+    return this.getMonthsProgress(helper => helper.getSleepProgress())
   }
 }
 
