@@ -21,27 +21,27 @@
   --accent-color-light: #ff5252;
   --accent-color-dark: #d50000;
 }
+.deep-purple {
+  --accent-color: #651FFF;
+  --accent-color-light: #7C4DFF;
+  --accent-color-dark: #6200EA;
+}
+.indigo {
+  --accent-color: #3D5AFE;
+  --accent-color-light: #536DFE;
+  --accent-color-dark: #304FFE;
+}
 .light-blue {
   --accent-color: #00B0FF;
   --accent-color-light: #40C4FF;
   --accent-color-dark: #0091EA;
-}
-.cyan {
-  --accent-color: #00E5FF;
-  --accent-color-light: #18FFFF;
-  --accent-color-dark: #00B8D4;
-}
-.teal {
-  --accent-color: #1DE9B6;
-  --accent-color-light: #64FFDA;
-  --accent-color-dark: #00BFA5;
 }
 .green {
   --accent-color: #10D030;
   --accent-color-light: #52d854;
   --accent-color-dark: #00bf28;
 }
-.red, :root, .light-blue, .cyan, .teal, .green {
+.red, .deep-purple, .indigo, :root, .light-blue, .green {
   --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
 }
 :root.dark-theme {

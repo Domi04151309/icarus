@@ -26,7 +26,7 @@ function getAverageProgress(progressObj, companionObj, keys) {
 }
 
 class DayHelper {
-  constructor(dateId) {
+  constructor(dateId = Identifiers.getDateId()) {
     this.dateId = dateId
     this.progress = JsonHelper.getData(dateId, () => DefaultObject)
   }
@@ -51,7 +51,7 @@ class DayHelper {
 }
 
 class WeekHelper {
-  constructor(dateId) {
+  constructor(dateId = Identifiers.getDateId()) {
     this.dateId = dateId
   }
   forDayInWeek(action) {
@@ -87,7 +87,7 @@ class WeekHelper {
 }
 
 class MonthHelper {
-  constructor(dateId) {
+  constructor(dateId = Identifiers.getDateId()) {
     this.dateId = dateId
   }
   forDayInMonth(action) {
