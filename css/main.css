@@ -26,12 +26,22 @@
   --accent-color-light: #40C4FF;
   --accent-color-dark: #0091EA;
 }
+.cyan {
+  --accent-color: #00E5FF;
+  --accent-color-light: #18FFFF;
+  --accent-color-dark: #00B8D4;
+}
+.teal {
+  --accent-color: #1DE9B6;
+  --accent-color-light: #64FFDA;
+  --accent-color-dark: #00BFA5;
+}
 .green {
   --accent-color: #10D030;
   --accent-color-light: #52d854;
   --accent-color-dark: #00bf28;
 }
-.red, :root, .light-blue, .green {
+.red, :root, .light-blue, .cyan, .teal, .green {
   --accent-color-gradient: linear-gradient(90deg, var(--accent-color-light), var(--accent-color), var(--accent-color-dark));
 }
 :root.dark-theme {
