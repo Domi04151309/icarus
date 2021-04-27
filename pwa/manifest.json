@@ -32,6 +32,11 @@ layout: null
       "sizes": "192x192"
     },
     {
+      "src": "{{ site.baseurl }}/pwa/mipmap-xxxxhdpi/ic_launcher.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
       "src": "{{ site.baseurl }}/pwa/logo.png",
       "type": "image/png",
       "sizes": "512x512"
