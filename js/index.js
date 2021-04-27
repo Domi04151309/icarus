@@ -97,7 +97,12 @@ document.addEventListener('scroll', () => {
 })
 
 var modal
-const router = new VueRouter({ routes })
+const router = new VueRouter({
+  routes,
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  }
+})
 
 window.backButtonPress = false
 window.addEventListener('popstate', () => {
