@@ -3,7 +3,7 @@ import ExerciseHelper from './exercises.js'
 
 export default {
   getExp() {
-    return FoodHelper.getFoodStatistics().healthy.length + ExerciseHelper.getStatistics().length
+    return FoodHelper.getFoodStatistics().healthy.length + ExerciseHelper.getStatistics().length + 1
   },
   getNearestPowerOf2(n) {
     return 1 << 31 - Math.clz32(n)
