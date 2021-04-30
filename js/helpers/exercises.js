@@ -29,7 +29,7 @@ export default {
       })
     })
     exercises.sort((a, b) => b.score - a.score)
-    exercises = exercises.splice(0, 4)
+    exercises = exercises.slice(0, 4)
     exercises.forEach((item, i) => {
       item.title = Exercises[item.posX].exercises[item.posY].title
       item.image = images[i]

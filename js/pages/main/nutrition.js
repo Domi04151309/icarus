@@ -13,11 +13,7 @@ export default {
   name: 'nutrition',
   data() {
     return {
-      generalSuggestions: [
-        { title: "Suggestion A", img: './images/food/breakfast.jpg', link: '' },
-        { title: 'Suggestion B', img: './images/food/lunch.jpg', link: '' },
-        { title: 'Show more', img: './images/food/dinner.jpg', link: '/nutrition/suggestions' }
-      ]
+      recommended: FoodHelper.getRecommended()
     }
   },
   computed: {
@@ -50,7 +46,14 @@ export default {
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">What You Could Eat</h2>
     <div class="grid-1-3 gap-16 mb-16">
-      <food-list-item-image v-for="item in generalSuggestions" :key="item.title" :title="item.title" :image="item.img" :link="item.link"></food-list-item-image>
+      <food-list-item-image
+        v-for="item in recommended"
+        :key="item.title"
+        :title="item.title"
+        :image="item.image"
+        :link="item.link">
+      </food-list-item-image>
+      <food-list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/suggestions"></food-list-item-image>
     </div>
   </page-tab-bar>`,
   components: {
