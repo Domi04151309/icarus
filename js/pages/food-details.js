@@ -115,6 +115,7 @@ export default {
 
       if (this.healthy) FoodHelper.addHealthyFoodToStatistics(this.foodItem)
       else FoodHelper.addCasualFoodToStatistics(this.foodItem)
+      navigator.vibrate(5)
       this.$router.push(this.parent)
     }
   },

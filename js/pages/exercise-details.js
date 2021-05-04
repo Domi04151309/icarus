@@ -169,6 +169,7 @@ export default {
       tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
       tempItem.information = this.exerciseItem.information
       ExerciseHelper.addExerciseToStatistic(tempItem)
+      navigator.vibrate(5)
       this.$router.push('/exercises')
     }
   },

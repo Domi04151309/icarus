@@ -5,6 +5,7 @@
   --accent-color-dark: #2962FF;
   --window-background: #fff;
   --elevation-overlay: #fff;
+  --elevation-overlay-2: #fff;
   --text-color: rgba(0, 0, 0, .87);
   --text-color-secondary: rgba(0, 0, 0, .6);
   --text-color-dark: #fff;
@@ -47,6 +48,7 @@
 :root.dark-theme {
   --window-background: #121212;
   --elevation-overlay: #1e1e1e;
+  --elevation-overlay-2: #222222;
   --text-color: rgba(255, 255, 255, .87);
   --text-color-secondary: rgba(255, 255, 255, .6);
 }
@@ -179,6 +181,9 @@ input, textarea {
   margin: auto;
   color: var(--text-color);
   border-radius: var(--border-radius-1x);
+}
+.card input, .card textarea {
+  background: var(--elevation-overlay-2);
 }
 textarea {
   height: 96px;
@@ -435,6 +440,12 @@ h2 > .c-icon {
   color: var(--text-color-secondary);
   text-align: center;
   content: 'No results for this category'
+}
+.diary:empty:before {
+  display: block;
+  color: var(--text-color-secondary);
+  text-align: center;
+  content: 'There are currently no entries in your diary. Add entries by consuming food or doing exercises.'
 }
 
 /* alignment */
