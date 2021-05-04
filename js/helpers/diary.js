@@ -7,15 +7,15 @@ export default {
     var items = []
     var food = FoodHelper.getFoodStatistics()
     food.healthy.forEach(item => {
-      if (item.item != null) item.type = `You ate ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
-      else item.type = 'You ate something healthy'
+      if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
+      else item.type = 'You consumed something healthy'
       item.icon = 'restaurant_menu'
       item.details = 'You gained one extra point with this item!'
       items.push(item)
     })
     food.casual.forEach(item => {
-      if (item.item != null) item.type = `You ate ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
-      else item.type = 'You ate something casual'
+      if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
+      else item.type = 'You consumed something casual'
       item.icon = 'fastfood'
       items.push(item)
     })
