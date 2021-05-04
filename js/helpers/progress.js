@@ -11,14 +11,16 @@ const ProgressCompanion = {
   maxSleep: 9
 }
 
-const DefaultObject = {
-  water: 0,
-  calories: 0,
-  fat: 0,
-  carbs: 0,
-  proteins: 0,
-  exercises: 0,
-  sleep: 0
+function getDefaultObject() {
+  return {
+    water: 0,
+    calories: 0,
+    fat: 0,
+    carbs: 0,
+    proteins: 0,
+    exercises: 0,
+    sleep: 0
+  }
 }
 
 function getAverageProgress(progressObj, companionObj, keys) {
@@ -28,7 +30,7 @@ function getAverageProgress(progressObj, companionObj, keys) {
 class DayHelper {
   constructor(dateId = Identifiers.getDateId()) {
     this.dateId = dateId
-    this.progress = JsonHelper.getData(dateId, () => DefaultObject)
+    this.progress = JsonHelper.getData(dateId, getDefaultObject)
   }
   saveProgress() {
     localStorage.setItem(this.dateId, JSON.stringify(this.progress))
