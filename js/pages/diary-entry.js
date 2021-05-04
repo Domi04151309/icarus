@@ -20,6 +20,14 @@ export default {
     <h3>{{ new Date(item.time).toLocaleString() }}</h3>
     <p>{{ item.description }}</p>
     <p v-if="item.details != null">{{ item.details }}</p>
+    <table v-if="item.icon != 'directions_run'" class="mt-16">
+      <tr><td>Calories</td><td>{{ item.item.calories }} kcal</td></tr>
+      <tr><td>Fat</td><td>{{ item.item.fat }} g</td></tr>
+      <tr><td>Carbs</td><td>{{ item.item.carbs }} g</td></tr>
+      <tr><td>Sugar</td><td>{{ item.item.sugar }} g</td></tr>
+      <tr><td>Protein</td><td>{{ item.item.proteins }} g</td></tr>
+      <tr><td>Alcohol</td><td>{{ item.item.alcohol }} vol</td></tr>
+    </table>
     <div class="flex end mt-32">
       <button v-on:click="share()" type="button" class="flex center mr-8"><span class="material-icons-round mr-8">share</span>Share</button>
       <button v-on:click="deleteEntry()" type="button" class="flex center"><span class="material-icons-round mr-8">delete</span>Delete</button>
@@ -75,7 +83,6 @@ export default {
       }
       if (selectedItem.description == null)
         selectedItem.description = 'There is no descriptive text available for this item. You can add custom descriptive texts to food items on the nutrition page.'
-      selectedItem.item = null
       this.item = selectedItem
     } else {
       var ComponentClass = Vue.extend(Modal)

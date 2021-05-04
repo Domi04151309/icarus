@@ -64,7 +64,7 @@ export default {
         <input id="sugar" v-model="foodItem.sugar" type="number"></input>
       </div>
       <div>
-        <label for="proteins">Proteins (g)</label>
+        <label for="proteins">Protein (g)</label>
         <input id="proteins" v-model="foodItem.proteins" type="number"></input>
       </div>
       <div>

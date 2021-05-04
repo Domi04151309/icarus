@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 img {
   max-width: 100%;
 }
-label, ol, p, .p {
+table, label, ol, p, .p {
   color: var(--text-color-secondary);
 }
 ol {
@@ -148,6 +148,17 @@ ol {
 }
 ol, ol > li, p {
   margin: 8px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid var(--hover-color);
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background: var(--hover-color);
 }
 .card, button, input, textarea {
   background: var(--elevation-overlay);
