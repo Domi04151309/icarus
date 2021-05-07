@@ -58,7 +58,7 @@ export default {
       <h2>{{ secondaryTitle }}</h2>
     </div>
     <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
-    <div class="grid-2 gap-16">
+    <div class="grid-2 gap-16 search">
       <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + item.pos" :title="item.title" :icon="icon"></food-list-item>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>

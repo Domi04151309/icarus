@@ -21,12 +21,13 @@ export default {
     <p>{{ item.description }}</p>
     <p v-if="item.details != null">{{ item.details }}</p>
     <table v-if="item.icon != 'directions_run'" class="mt-16">
-      <tr><td>Calories</td><td>{{ item.item.calories }} kcal</td></tr>
-      <tr><td>Fat</td><td>{{ item.item.fat }} g</td></tr>
-      <tr><td>Carbs</td><td>{{ item.item.carbs }} g</td></tr>
-      <tr><td>Sugar</td><td>{{ item.item.sugar }} g</td></tr>
-      <tr><td>Protein</td><td>{{ item.item.proteins }} g</td></tr>
-      <tr><td>Alcohol</td><td>{{ item.item.alcohol }} vol</td></tr>
+      <tr><td>Portion</td><td>{{ item.item.serving }} {{ item.item.unit }}</td></tr>
+      <tr><td>Calories</td><td>{{ getActualValue(item.item, 'calories') }} kcal</td></tr>
+      <tr><td>Fat</td><td>{{ getActualValue(item.item, 'fat') }} g</td></tr>
+      <tr><td>Carbs</td><td>{{ getActualValue(item.item, 'carbs') }} g</td></tr>
+      <tr><td>Sugar</td><td>{{ getActualValue(item.item, 'sugar') }} g</td></tr>
+      <tr><td>Protein</td><td>{{ getActualValue(item.item, 'proteins') }} g</td></tr>
+      <tr><td>Alcohol</td><td>{{ getActualValue(item.item, 'alcohol') }} vol</td></tr>
     </table>
     <div class="flex end mt-32">
       <button v-on:click="share()" type="button" class="flex center mr-8"><span class="material-icons-round mr-8">share</span>Share</button>
@@ -37,6 +38,9 @@ export default {
       Page
   },
   methods: {
+    getActualValue(foodItem, key) {
+      return Math.round(foodItem[key] / foodItem.portion * foodItem.serving)
+    },
     async share() {
       var date = new Date(this.item.time)
       const shareData = {

@@ -452,6 +452,13 @@ h2 > .c-icon {
   text-align: center;
   content: 'No results for this category'
 }
+.search:empty:after {
+  display: block;
+  color: var(--text-color-secondary);
+  text-align: center;
+  grid-column: 1/3;
+  content: 'No results.'
+}
 .diary:empty:before {
   display: block;
   color: var(--text-color-secondary);

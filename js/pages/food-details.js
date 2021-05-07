@@ -42,31 +42,35 @@ export default {
       <p>{{ foodItem.preparation || 'No instructions provided' }}</p>
     </div>
     <div class="card mb-16-p-16">
+      <h2>Portion <small class="p">({{ foodItem.unit }})</small></h2>
+      <input v-model="foodItem.serving" aria-label="Portion" type="number"></input>
+    </div>
+    <div class="card mb-16-p-16">
       <h2>Values</h2>
       <div class="grid-2 gap-16 mb-16">
         <div>
           <label for="calories">Calories (kcal)</label>
-          <input id="calories" v-model="foodItem.calories" type="number"></input>
+          <input readonly id="calories" :value="getActualValue(foodItem.calories)" type="number"></input>
         </div>
         <div>
           <label for="fat">Fat (g)</label>
-          <input id="fat" v-model="foodItem.fat" type="number"></input>
+          <input readonly id="fat" :value="getActualValue(foodItem.fat)" type="number"></input>
         </div>
         <div>
           <label for="carbs">Carbs (g)</label>
-          <input id="carbs" v-model="foodItem.carbs" type="number"></input>
+          <input readonly id="carbs" :value="getActualValue(foodItem.carbs)" type="number"></input>
         </div>
         <div>
           <label for="sugar">Sugar (g)</label>
-          <input id="sugar" v-model="foodItem.sugar" type="number"></input>
+          <input readonly id="sugar" :value="getActualValue(foodItem.sugar)" type="number"></input>
         </div>
         <div>
           <label for="proteins">Protein (g)</label>
-          <input id="proteins" v-model="foodItem.proteins" type="number"></input>
+          <input readonly id="proteins" :value="getActualValue(foodItem.proteins)" type="number"></input>
         </div>
         <div>
           <label for="alcohol">Alcohol (vol)<label>
-          <input id="alcohol" v-model="foodItem.alcohol" type="number"></input>
+          <input readonly id="alcohol" :value="getActualValue(foodItem.alcohol)" type="number"></input>
         </div>
       </div>
     </div>
@@ -80,6 +84,9 @@ export default {
       Page
   },
   methods: {
+    getActualValue(value) {
+      return Math.round(value / this.foodItem.portion * this.foodItem.serving)
+    },
     onEditClicked() {
       this.$router.push('/nutrition/' + this.writtenType + '/food-item?item=' + this.$route.query.item)
     },
@@ -109,13 +116,13 @@ export default {
     onConsumeClicked() {
       var dayHelper = new DayHelper(Identifiers.getDateId())
       FOOD_PARAMETERS.forEach(item => {
-        dayHelper.progress[item] += this.foodItem[item]
+        dayHelper.progress[item] += this.getActualValue(this.foodItem[item])
       })
       dayHelper.saveProgress()
 
       if (this.healthy) FoodHelper.addHealthyFoodToStatistics(this.foodItem)
       else FoodHelper.addCasualFoodToStatistics(this.foodItem)
-      navigator.vibrate(5)
+      navigator.vibrate(1)
       this.$router.push(this.parent)
     }
   },

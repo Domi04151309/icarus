@@ -122,6 +122,7 @@ export default {
         this.$refs.play.innerHTML = 'pause'
         this.doCountdown()
       }
+      navigator.vibrate(1)
     },
     doCountdown() {
       if (this.running) {
@@ -140,6 +141,7 @@ export default {
       this.time = this.timeMax
       let play = this.$refs?.play
       if (play != null) play.innerHTML = 'play_arrow'
+      navigator.vibrate(1)
     },
     removeRepetition() {
       if (this.repetitions == 0) {
@@ -148,6 +150,7 @@ export default {
           this.sets--
         }
       } else this.repetitions--
+      navigator.vibrate(1)
     },
     addRepetition() {
       if (this.repetitions >= this.exerciseItem.intensities[this.intensity].repetitions - 1) {
@@ -155,6 +158,7 @@ export default {
         this.sets++
       }
       else this.repetitions++
+      navigator.vibrate(1)
     },
     onFinishClicked() {
       var dayHelper = new DayHelper(Identifiers.getDateId())
@@ -169,7 +173,7 @@ export default {
       tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
       tempItem.information = this.exerciseItem.information
       ExerciseHelper.addExerciseToStatistic(tempItem)
-      navigator.vibrate(5)
+      navigator.vibrate(1)
       this.$router.push('/exercises')
     }
   },
