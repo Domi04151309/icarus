@@ -634,7 +634,7 @@ h2 > .c-icon {
 /* navigation */
 .tab {
   display: block;
-  padding: 4px 16px;
+  padding: 4px;
   border-radius: var(--border-radius-1x);
   color: var(--text-color-secondary);
   text-decoration: none;
