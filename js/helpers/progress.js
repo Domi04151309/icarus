@@ -128,6 +128,33 @@ class MonthHelper {
   }
 }
 
+const Achievement = {
+  show(message = '') {
+    navigator.vibrate(1)
+
+    var node = document.createElement('div')
+    node.classList.add('card', 'achievement', 'normal')
+
+    var icon = document.createElement('span')
+    icon.classList.add('material-icons-round')
+    icon.appendChild(document.createTextNode('emoji_events'))
+
+    node.appendChild(icon)
+    node.appendChild(document.createTextNode(message))
+    document.body.appendChild(node)
+
+    setTimeout(() => {
+      node.classList.remove('normal')
+    }, 1000)
+    setTimeout(() => {
+      node.classList.add('reverse')
+    }, 5000)
+    setTimeout(() => {
+      node.remove()
+    }, 6000)
+  }
+}
+
 export {
-  ProgressCompanion, DayHelper, WeekHelper, MonthHelper
+  ProgressCompanion, DayHelper, WeekHelper, MonthHelper, Achievement
 }

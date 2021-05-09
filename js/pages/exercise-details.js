@@ -6,7 +6,7 @@ import ProgressRing from '../components/progress-ring.js'
 
 import Exercises from '../data/exercises.js'
 import ExerciseHelper from '../helpers/exercises.js'
-import { DayHelper } from '../helpers/progress.js'
+import { DayHelper, Achievement } from '../helpers/progress.js'
 
 export default {
   name: 'exercise-details',
@@ -172,7 +172,7 @@ export default {
       tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
       tempItem.information = this.exerciseItem.information
       ExerciseHelper.addExerciseToStatistic(tempItem)
-      navigator.vibrate(1)
+      Achievement.show('Completed an exercise')
       this.$router.push('/exercises')
     }
   },

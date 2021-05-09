@@ -193,7 +193,7 @@ input, textarea {
   color: var(--text-color);
   border-radius: var(--border-radius-1x);
 }
-.card input, .card textarea {
+.card input, .card textarea, .achievement {
   background: var(--elevation-overlay-2);
 }
 textarea {
@@ -703,6 +703,31 @@ footer .router-link-active {
 .modal-content > .button-bar > button {
   margin: -8px 0;
   padding: 8px;
+}
+
+/* achievement */
+.achievement {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: fit-content;
+  padding: 16px 32px;
+  border-radius: var(--border-radius-4x);
+  overflow: hidden;
+  z-index: 100;
+}
+.achievement.normal {
+  animation: fadeInModal .5s;
+}
+.achievement.reverse {
+  animation: fadeInModal .5s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+.achievement > .material-icons-round {
+  margin-right: 8px;
 }
 
 /* setup */

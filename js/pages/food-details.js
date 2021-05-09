@@ -4,7 +4,7 @@ import Page from '../components/page-large-app-bar.js'
 import Modal from '../components/modal.js'
 
 import FoodHelper from '../helpers/food.js'
-import { DayHelper } from '../helpers/progress.js'
+import { DayHelper, Achievement } from '../helpers/progress.js'
 
 const FOOD_PARAMETERS = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
 
@@ -121,8 +121,8 @@ export default {
 
       if (this.healthy) FoodHelper.addHealthyFoodToStatistics(this.foodItem)
       else FoodHelper.addCasualFoodToStatistics(this.foodItem)
-      navigator.vibrate(1)
-      this.$router.push(this.parent)
+      Achievement.show('Consumed something')
+      this.$router.push('/nutrition')
     }
   },
   created() {
