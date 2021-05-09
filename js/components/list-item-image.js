@@ -1,5 +1,5 @@
 export default {
-  name: 'food-list-item-image',
+  name: 'list-item-image',
   props: {
     image: String,
     title: String,

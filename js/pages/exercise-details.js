@@ -6,7 +6,6 @@ import ProgressRing from '../components/progress-ring.js'
 
 import Exercises from '../data/exercises.js'
 import ExerciseHelper from '../helpers/exercises.js'
-import Identifiers from '../helpers/identifiers.js'
 import { DayHelper } from '../helpers/progress.js'
 
 export default {
@@ -110,7 +109,7 @@ export default {
         } else {
           this.timeMax = parseInt(time.substr(0, time.indexOf('.')), 10) * 60 + parseInt(time.substring(time.indexOf('.') + 1), 10)
         }
-        this.resetTime()
+        this.resetTime(false)
       }
     },
     playPauseTime() {
@@ -136,12 +135,12 @@ export default {
         }
       }
     },
-    resetTime() {
+    resetTime(vibrate = true) {
       this.running = false
       this.time = this.timeMax
       let play = this.$refs?.play
       if (play != null) play.innerHTML = 'play_arrow'
-      navigator.vibrate(1)
+      if (vibrate) navigator.vibrate(1)
     },
     removeRepetition() {
       if (this.repetitions == 0) {
@@ -161,7 +160,7 @@ export default {
       navigator.vibrate(1)
     },
     onFinishClicked() {
-      var dayHelper = new DayHelper(Identifiers.getDateId())
+      var dayHelper = new DayHelper()
       dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
       ExerciseHelper.addRecentExercise([

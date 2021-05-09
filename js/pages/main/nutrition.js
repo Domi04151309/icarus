@@ -2,7 +2,7 @@
 
 import PageTabBar from '../../components/page-tab-bar.js'
 import ProgressRing from '../../components/progress-ring.js'
-import FoodListItemImage from '../../components/food-list-item-image.js'
+import ListItemImage from '../../components/list-item-image.js'
 import Modal from '../../components/modal.js'
 
 import FoodHelper from '../../helpers/food.js'
@@ -46,20 +46,20 @@ export default {
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">What You Could Eat</h2>
     <div class="grid-1-3 gap-16 mb-16">
-      <food-list-item-image
+      <list-item-image
         v-for="item in recommended"
         :key="item.title"
         :title="item.title"
         :image="item.image"
         :link="item.link">
-      </food-list-item-image>
-      <food-list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/suggestions"></food-list-item-image>
+      </list-item-image>
+      <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/suggestions"></list-item-image>
     </div>
   </page-tab-bar>`,
   components: {
       PageTabBar,
       ProgressRing,
-      FoodListItemImage
+      ListItemImage
   },
   mounted() {
     if (localStorage.getItem('help_nutrition') == null) {

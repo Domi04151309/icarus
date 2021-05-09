@@ -4,7 +4,6 @@ import Page from '../components/page.js'
 import ProgressSections from '../components/progress-sections.js'
 import ModalInput from '../components/modal-input.js'
 
-import Identifiers from '../helpers/identifiers.js'
 import { ProgressCompanion, DayHelper } from '../helpers/progress.js'
 
 export default {
@@ -39,7 +38,7 @@ export default {
       <div class="card mb-16-p-16">
         <h2>Well-Being <span class="material-icons-round c-icon">hotel</span></h2>
         <h3>Sleep <span class="p">{{ helper.progress.sleep }}/{{ ProgressCompanion.maxSleep }} hours</span></h3>
-        <div class="flex my-24">
+        <div class="flex my-24 deep-purple">
           <button class="progress-control left" type="button" v-on:click="removeOne('sleep')">&minus;</button>
           <progress :max="ProgressCompanion.maxSleep" :value="helper.progress.sleep"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('sleep')">+</button>
@@ -51,7 +50,7 @@ export default {
       <div class="card mb-16-p-16">
         <h2>Nutrition <span class="material-icons-round c-icon">restaurant_menu</span></h2>
         <h3>Water <span class="p">{{ helper.progress.water }}/{{ ProgressCompanion.maxWater }} cups</span></h3>
-        <div class="flex my-24 light-blue">
+        <div class="flex my-24 indigo">
           <button class="progress-control left" type="button" v-on:click="removeOne('water')">&minus;</button>
           <progress :max="ProgressCompanion.maxWater" :value="helper.progress.water"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('water')">+</button>
@@ -166,7 +165,7 @@ export default {
   created() {
     var dateString = this.$route.query.date
     if (dateString == null) {
-      this.helper = new DayHelper(Identifiers.getDateId())
+      this.helper = new DayHelper()
       this.readableDate = 'today'
     } else {
       this.helper = new DayHelper(dateString)

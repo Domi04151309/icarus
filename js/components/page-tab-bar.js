@@ -8,19 +8,24 @@ export default {
       title: 'Icarus',
       tabs: [
         {
-          icon: 'calendar_today',
+          icon: 'insights',
           title: 'Progress',
           url: '/progress'
         },
         {
-          icon: 'directions_run',
-          title: 'Exercises',
-          url: '/exercises'
+          icon: 'spa',
+          title: 'Well-Being',
+          url: '/well-being'
         },
         {
           icon: 'restaurant_menu',
           title: 'Nutrition',
           url: '/nutrition'
+        },
+        {
+          icon: 'directions_run',
+          title: 'Exercises',
+          url: '/exercises'
         },
         {
           icon: 'account_circle',

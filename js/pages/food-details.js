@@ -4,7 +4,6 @@ import Page from '../components/page-large-app-bar.js'
 import Modal from '../components/modal.js'
 
 import FoodHelper from '../helpers/food.js'
-import Identifiers from '../helpers/identifiers.js'
 import { DayHelper } from '../helpers/progress.js'
 
 const FOOD_PARAMETERS = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
@@ -114,7 +113,7 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     onConsumeClicked() {
-      var dayHelper = new DayHelper(Identifiers.getDateId())
+      var dayHelper = new DayHelper()
       FOOD_PARAMETERS.forEach(item => {
         dayHelper.progress[item] += this.getActualValue(this.foodItem[item])
       })

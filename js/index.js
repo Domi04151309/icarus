@@ -10,6 +10,7 @@ const SetupFitness = () => import('./pages/setup/4-fitness.js')
 const SetupFinish = () => import('./pages/setup/5-finish.js')
 
 const Progress = () => import('./pages/main/progress.js')
+const WellBeing = () => import('./pages/main/well-being.js')
 const Exercises = () => import('./pages/main/exercises.js')
 const Nutrition = () => import('./pages/main/nutrition.js')
 const Account = () => import('./pages/main/account.js')
@@ -59,6 +60,7 @@ const routes = [
   { path: '/progress/calendar', component: Calendar },
   { path: '/progress/diary', component: Diary },
   { path: '/progress/diary/entry', component: DiaryEntry },
+  { path: '/well-being', component: WellBeing },
   { path: '/exercises', component: Exercises },
   { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },

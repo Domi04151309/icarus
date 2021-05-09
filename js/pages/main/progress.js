@@ -11,7 +11,7 @@ export default {
   name: 'progress_tab',
   data() {
     return {
-      dayHelper: new DayHelper(Identifiers.getDateId()),
+      dayHelper: new DayHelper(),
       weekHelper: new WeekHelper(Identifiers.getDateId()),
       monthHelper: new MonthHelper(Identifiers.getDateId())
     }

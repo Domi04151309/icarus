@@ -56,12 +56,12 @@ export default {
         <p class="progress-text mt-8 mb-16">Last Month</p>
         <span></span>
         <p class="progress-text mt-8 mb-16">This Month</p>
-        <progress class="reverse mb-16" max="100" :value="lastSleep"></progress>
+        <progress class="reverse mb-16 deep-purple" max="100" :value="lastSleep"></progress>
         <p class="progress-text">Sleep</p>
-        <progress class="mb-16" max="100" :value="sleep"></progress>
-        <progress class="reverse mb-16 light-blue" max="100" :value="lastWater"></progress>
+        <progress class="mb-16 deep-purple" max="100" :value="sleep"></progress>
+        <progress class="reverse mb-16 indigo" max="100" :value="lastWater"></progress>
         <p class="progress-text">Water</p>
-        <progress class="mb-16 light-blue" max="100" :value="water"></progress>
+        <progress class="mb-16 indigo" max="100" :value="water"></progress>
         <progress class="reverse mb-16 green" max="100" :value="lastFood"></progress>
         <p class="progress-text">Food</p>
         <progress class="mb-16 green" max="100" :value="food"></progress>
