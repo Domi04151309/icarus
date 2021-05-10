@@ -160,7 +160,7 @@ export default {
       navigator.vibrate(1)
     },
     onFinishClicked() {
-      var dayHelper = new DayHelper()
+      const dayHelper = new DayHelper()
       dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
       ExerciseHelper.addRecentExercise([
@@ -168,7 +168,7 @@ export default {
         parseInt(this.$route.query.posY, 10),
         parseInt(this.$route.query.posZ, 10)
       ])
-      var tempItem = {}
+      const tempItem = {}
       tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
       tempItem.information = this.exerciseItem.information
       ExerciseHelper.addExerciseToStatistic(tempItem)
@@ -183,8 +183,8 @@ export default {
 
       this.computeTime()
     } else {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Exercise Not Found',
           message: 'Unfortunately, this exercise does not exist.',

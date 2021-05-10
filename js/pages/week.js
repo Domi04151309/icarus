@@ -83,8 +83,8 @@ export default {
     ProgressSections
   },
   created() {
-    var dateString = this.$route.query.date
-    var dateId = null
+    const dateString = this.$route.query.date
+    let dateId = null
     if (dateString == null) {
       dateId = Identifiers.getDateId()
       this.readableDate = 'this week'
@@ -93,7 +93,7 @@ export default {
       this.readableDate = dateString.substring(6, 8) + '/' + dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
-    var lastWeek = Identifiers.dateIdToDate(dateId)
+    const lastWeek = Identifiers.dateIdToDate(dateId)
     lastWeek.setTime(lastWeek.getTime() - (7 * 24 * 3600000))
     this.helper = new WeekHelper(Identifiers.getDateId(lastWeek))
 
@@ -104,8 +104,8 @@ export default {
 
     this.helper = new WeekHelper(dateId)
 
-    var dayHelper = null
-    var i = 0
+    let dayHelper = null
+    let i = 0
     this.helper.forDayInWeek(date => {
       dayHelper = new DayHelper(Identifiers.getDateId(date))
       this.week[i] = dayHelper.getProgress() * 100

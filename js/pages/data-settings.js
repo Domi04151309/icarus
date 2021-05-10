@@ -28,8 +28,8 @@ export default {
   },
   methods: {
     edit(modalTitle, storageKey, storageType) {
-      var ComponentClass = Vue.extend(ModalInput)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(ModalInput)
+      const instance = new ComponentClass({
         propsData: {
           title: modalTitle,
           inputType: storageType,
@@ -43,8 +43,8 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     deleteData() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Delete Data',
           message: 'Are you sure you want to delete your data? This cannot be undone.',

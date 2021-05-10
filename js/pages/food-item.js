@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     onFabClicked() {
-      var foodArray = []
+      let foodArray = []
       if (this.healthy) foodArray = FoodHelper.getHealthyFood()
       else foodArray = FoodHelper.getCasualFood()
       if (this.$route.query.item == null) {

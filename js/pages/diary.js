@@ -35,16 +35,16 @@ export default {
       Page
   },
   created() {
-    var items = DiaryHelper.getItems()
+    const items = DiaryHelper.getItems()
     items.forEach((item, i) => {
       item.pos = i
     })
 
-    var array = []
-    var currentDate = ''
-    var currentObject = {}
-    var date = null
-    var dateString = ''
+    const array = []
+    let currentDate = ''
+    let currentObject = {}
+    let date = null
+    let dateString = ''
     items.forEach(item => {
       date = new Date(item.time)
       dateString = date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })

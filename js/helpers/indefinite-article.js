@@ -29,7 +29,7 @@
  export default phrase => {
 
     // Getting the first word
-    var word = null
+    let word = null
     const match = /\w+/.exec(phrase)
     if (match) word = match[0]
     else return null

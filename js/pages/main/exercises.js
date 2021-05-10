@@ -36,8 +36,8 @@ export default {
   },
   mounted() {
     if (localStorage.getItem('help_exercises') == null) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Exercise Page',
           message: 'This page is for people that want to be active. You can perform one of four recommended exercises or chose one from our huge collection by yourself to collect points.',

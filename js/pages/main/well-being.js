@@ -13,7 +13,7 @@ export default {
   name: 'well-being',
   computed: {
     sleepProgress() {
-      var helper = new DayHelper()
+      const helper = new DayHelper()
       return (helper.progress.sleep * 100) / (ProgressCompanion.maxSleep)
     },
     meditationProgress() {
@@ -48,8 +48,8 @@ export default {
   },
   mounted() {
     if (localStorage.getItem('help_well_being') == null) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Well-Being Page',
           message: 'This page is for caring about yourself and helping you bring a healthy balance to your life.',

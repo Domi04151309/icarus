@@ -1,8 +1,8 @@
 ---
 layout: null
 ---
-var CACHE_NAME = 'icarus-{{ site.time | date: "%Y-%m-%d-%H:%M" }}';
-var urlsToCache = [
+const CACHE_NAME = 'icarus-{{ site.time | date: "%Y-%m-%d-%H:%M" }}';
+const urlsToCache = [
   {% for file in site.static_files %}'{{ site.baseurl }}{{ file.path }}',
   {% endfor %}
   '{{ site.baseurl }}/'
@@ -37,7 +37,7 @@ self.addEventListener('fetch', event => {
             return response;
           }
 
-          var responseToCache = response.clone();
+          const responseToCache = response.clone();
 
           caches.open(CACHE_NAME).then(cache => {
             if (event.request.url.indexOf('http') !== 0) return;
@@ -55,7 +55,7 @@ self.addEventListener('fetch', event => {
 
 self.addEventListener('activate', event => {
 
-  var cacheWhitelist = [CACHE_NAME];
+  const cacheWhitelist = [CACHE_NAME];
 
   event.waitUntil(
     caches.keys().then(cacheNames => {

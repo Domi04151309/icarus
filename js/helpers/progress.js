@@ -57,15 +57,15 @@ class WeekHelper {
     this.dateId = dateId
   }
   forDayInWeek(action) {
-    var date = Identifiers.dateIdToDate(this.dateId)
+    const date = Identifiers.dateIdToDate(this.dateId)
     date.setDate((date.getDate() - date.getDay()))
-    for (var i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
       action(date)
       date.setDate(date.getDate() + 1)
     }
   }
   getWeeksProgress(action) {
-    var progress = 0
+    let progress = 0
     this.forDayInWeek(date => {
       progress += action(new DayHelper(Identifiers.getDateId(date)))
     })
@@ -93,9 +93,9 @@ class MonthHelper {
     this.dateId = dateId
   }
   forDayInMonth(action) {
-    var days = 0
-    var date = Identifiers.dateIdToDate(this.dateId)
-    var month = date.getMonth()
+    const date = Identifiers.dateIdToDate(this.dateId)
+    const month = date.getMonth()
+    let days = 0
     date.setDate(1)
     while (date.getMonth() == month) {
       action(date)
@@ -105,8 +105,8 @@ class MonthHelper {
     return days
   }
   getMonthsProgress(action) {
-    var progress = 0
-    var days = this.forDayInMonth(date => {
+    let progress = 0
+    const days = this.forDayInMonth(date => {
       progress += action(new DayHelper(Identifiers.getDateId(date)))
     })
     return progress / days
@@ -132,10 +132,10 @@ const Achievement = {
   show(message = '') {
     navigator.vibrate(1)
 
-    var node = document.createElement('div')
+    const node = document.createElement('div')
     node.classList.add('card', 'achievement', 'normal')
 
-    var icon = document.createElement('span')
+    const icon = document.createElement('span')
     icon.classList.add('material-icons-round')
     icon.appendChild(document.createTextNode('emoji_events'))
 

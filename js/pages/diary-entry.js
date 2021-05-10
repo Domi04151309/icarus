@@ -42,7 +42,7 @@ export default {
       return Math.round(foodItem[key] / foodItem.portion * foodItem.serving)
     },
     async share() {
-      var date = new Date(this.item.time)
+      const date = new Date(this.item.time)
       const shareData = {
         title: 'Diary Entry',
         text: this.item.type.replace('You', 'I') + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' on ' + date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '. Take your personal health to the next level and start tracking your fitness today with Icarus.',
@@ -55,8 +55,8 @@ export default {
       }
     },
     deleteEntry() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Delete Entry',
           message: 'Are you sure you want to delete this entry? This cannot be undone.',
@@ -73,7 +73,7 @@ export default {
   },
   created() {
     if (this.$route.query.pos != null) {
-      var selectedItem = DiaryHelper.getItems()[parseInt(this.$route.query.pos, 10)]
+      const selectedItem = DiaryHelper.getItems()[parseInt(this.$route.query.pos, 10)]
       if (selectedItem.item != null) {
         selectedItem.title = selectedItem.item.title
         if (selectedItem.icon == 'directions_run') selectedItem.description = selectedItem.item.information[0]
@@ -89,8 +89,8 @@ export default {
         selectedItem.description = 'There is no descriptive text available for this item. You can add custom descriptive texts to food items on the nutrition page.'
       this.item = selectedItem
     } else {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Entry Not Found',
           message: 'Unfortunately, this entry does not exist.',

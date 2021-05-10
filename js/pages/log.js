@@ -1,3 +1,5 @@
+/*global Vue*/
+
 import Page from '../components/page.js'
 import Modal from '../components/modal.js'
 
@@ -28,8 +30,8 @@ export default {
   },
   methods: {
     onFabClicked() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Clear Error Log',
           message: 'Are you sure you want to clear the error log? This cannot be undone.',

@@ -77,8 +77,8 @@ export default {
   mounted() {
     setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
     if (localStorage.getItem('help_progress') == null) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Progress Page',
           message: 'On this page, you can track your personal progress of the current day, week, and month.',

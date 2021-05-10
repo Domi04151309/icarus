@@ -24,29 +24,29 @@ export default {
   },
   methods: {
     backup() {
-      var data = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localStorage))
-      var date = new Date();
-      var element = document.getElementById('download')
+      const data = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(localStorage))
+      const date = new Date()
+      const element = document.getElementById('download')
       element.setAttribute('href', data)
       element.setAttribute('download', 'icarus-' + date.toISOString() + '.json')
       element.click()
     },
     restore() {
-      var element = document.getElementById('file')
+      const element = document.getElementById('file')
       element.onchange = e => {
-        var file = e.target.files[0]
+        const file = e.target.files[0]
         if (file) {
-          var reader = new FileReader()
+          const reader = new FileReader()
           reader.readAsText(file, 'UTF-8')
           reader.onload = evt => {
-            var ComponentClass = Vue.extend(Modal)
-            var instance = new ComponentClass({
+            const ComponentClass = Vue.extend(Modal)
+            const instance = new ComponentClass({
               propsData: {
                 title: 'Restore Data',
                 message: 'Are you sure you want to restore from this file? This will delete all your existing data and cannot be undone.',
                 positiveText: 'Restore',
                 positiveFunction: () => {
-                  var data = JSON.parse(evt.target.result)
+                  const data = JSON.parse(evt.target.result)
                   localStorage.clear()
                   Object.keys(data).forEach(key => { localStorage.setItem(key, data[key])})
                   location.reload()
@@ -66,8 +66,8 @@ export default {
       element.click()
     },
     error() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Something Went Wrong',
           message: 'Please try again'

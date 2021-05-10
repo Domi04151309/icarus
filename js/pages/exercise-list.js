@@ -64,8 +64,8 @@ export default {
       ex.forEach((category, i) => {
         if (this.sorting == 'by_score') {
           category.exercises.sort((a, b) => {
-            var scoreA = ExercisesHelper.categoryScore(i, a.pos)
-            var scoreB = ExercisesHelper.categoryScore(i, b.pos)
+            const scoreA = ExercisesHelper.categoryScore(i, a.pos)
+            const scoreB = ExercisesHelper.categoryScore(i, b.pos)
             return scoreA > scoreB ? -1 : scoreA < scoreB ? 1 : 0
           })
         } else if (this.sorting == 'alphabetically') {

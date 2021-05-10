@@ -27,14 +27,14 @@ export default {
   },
   methods: {
     changeTheme() {
-      var ComponentClass = Vue.extend(ModalTheme)
-      var instance = new ComponentClass()
+      const ComponentClass = Vue.extend(ModalTheme)
+      const instance = new ComponentClass()
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },
     reset(key) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Reset Item',
           message: 'Are you sure you want to reset this item? This cannot be undone.',
@@ -51,8 +51,8 @@ export default {
       ['help_progress', 'help_exercises', 'help_nutrition'].forEach(key => {
         localStorage.removeItem(key)
       })
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Reset Tutorial Dialogs',
           message: 'The dialogs have been reset successfully.',
@@ -63,8 +63,8 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     clearCache() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Clear Cache',
           message: 'Are you sure you want to clear your cache? This cannot be undone.',

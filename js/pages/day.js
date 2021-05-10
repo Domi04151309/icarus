@@ -124,8 +124,8 @@ export default {
       }
     },
     addAmount(key) {
-      var ComponentClass = Vue.extend(ModalInput)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(ModalInput)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Add Amount',
           inputType: 'number',
@@ -143,8 +143,8 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     removeAmount(key) {
-      var ComponentClass = Vue.extend(ModalInput)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(ModalInput)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Remove Amount',
           inputType: 'number',
@@ -163,7 +163,7 @@ export default {
     }
   },
   created() {
-    var dateString = this.$route.query.date
+    const dateString = this.$route.query.date
     if (dateString == null) {
       this.helper = new DayHelper()
       this.readableDate = 'today'

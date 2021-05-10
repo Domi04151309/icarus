@@ -4,8 +4,8 @@ import IndefiniteArticle from '../helpers/indefinite-article.js'
 
 export default {
   getItems() {
-    var items = []
-    var food = FoodHelper.getFoodStatistics()
+    const food = FoodHelper.getFoodStatistics()
+    let items = []
     food.healthy.forEach(item => {
       if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
       else item.type = 'You consumed something healthy'
@@ -31,9 +31,9 @@ export default {
   },
   deleteItem(time) {
     const equalTime = item => item.time == time
-    var found = -1
+    let found = -1
 
-    var food = FoodHelper.getFoodStatistics()
+    const food = FoodHelper.getFoodStatistics()
     found = food.healthy.findIndex(equalTime)
     if (found != -1) {
       food.healthy.splice(found, 1)
@@ -47,7 +47,7 @@ export default {
       return
     }
 
-    var exercises = ExerciseHelper.getStatistics()
+    const exercises = ExerciseHelper.getStatistics()
     found = exercises.findIndex(equalTime)
     if (found != -1) {
       exercises.splice(found, 1)

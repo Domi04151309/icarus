@@ -21,7 +21,7 @@ export default {
   methods: {
     setTheme(theme) {
       localStorage.setItem('theme', theme)
-      var darkTheme = null
+      let darkTheme = null
       switch (theme) {
         case 'auto':
           darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches

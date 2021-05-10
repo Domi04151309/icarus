@@ -9,8 +9,8 @@ export default {
     return 1 << 31 - Math.clz32(n)
   },
   getLevelData() {
-    var exp = this.getExp()
-    var nearestPowerOf2 = this.getNearestPowerOf2(exp)
+    const exp = this.getExp()
+    const nearestPowerOf2 = this.getNearestPowerOf2(exp)
     return {
       level: Math.log2(nearestPowerOf2),
       sectionExp: exp - nearestPowerOf2,

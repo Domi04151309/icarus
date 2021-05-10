@@ -18,11 +18,11 @@ export default {
   },
   computed: {
     healthyProgress() {
-      var statistics = FoodHelper.getFoodStatistics()
+      const statistics = FoodHelper.getFoodStatistics()
       return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.casual.length)
     },
     casualProgress() {
-      var statistics = FoodHelper.getFoodStatistics()
+      const statistics = FoodHelper.getFoodStatistics()
       return (statistics.casual.length * 100) / (statistics.healthy.length + statistics.casual.length)
     }
   },
@@ -63,8 +63,8 @@ export default {
   },
   mounted() {
     if (localStorage.getItem('help_nutrition') == null) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Nutrition Page',
           message: 'Use this page to track your eating habits and for getting new recommendations every day. Collect points by eating something healthy.',

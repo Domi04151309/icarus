@@ -90,14 +90,14 @@ export default {
       this.$router.push('/nutrition/' + this.writtenType + '/food-item?item=' + this.$route.query.item)
     },
     onDeleteClicked() {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Delete Item',
           message: 'Are you sure you want to delete this item? This cannot be undone.',
           positiveText: 'Delete',
           positiveFunction: () => {
-            var foodArray = []
+            let foodArray = []
             if (this.healthy) foodArray = FoodHelper.getHealthyFood()
             else foodArray = FoodHelper.getCasualFood()
             if (this.$route.query.item != null) {
@@ -113,7 +113,7 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     onConsumeClicked() {
-      var dayHelper = new DayHelper()
+      const dayHelper = new DayHelper()
       FOOD_PARAMETERS.forEach(item => {
         dayHelper.progress[item] += this.getActualValue(this.foodItem[item])
       })

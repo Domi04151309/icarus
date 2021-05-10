@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    var stored = localStorage.getItem('nutrition')
+    const stored = localStorage.getItem('nutrition')
     if (stored != null) this.nutrition = JSON.parse(stored)
   }
 }

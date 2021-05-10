@@ -42,7 +42,7 @@ export default {
       else return FoodHelper.getCasualFood()
     },
     progress() {
-      var statistics = FoodHelper.getFoodStatistics()
+      const statistics = FoodHelper.getFoodStatistics()
       if (this.healthy)
         return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.casual.length)
       else

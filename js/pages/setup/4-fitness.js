@@ -63,7 +63,7 @@ export default {
     }
   },
   created() {
-    var stored = localStorage.getItem('fitness')
+    const stored = localStorage.getItem('fitness')
     if (stored != null) this.fitness = JSON.parse(stored)
   }
 }

@@ -27,8 +27,8 @@ export default {
   },
   methods: {
     deleteEntry(key) {
-      var ComponentClass = Vue.extend(Modal)
-      var instance = new ComponentClass({
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
         propsData: {
           title: 'Delete Entry',
           message: 'Are you sure you want to delete this entry? This cannot be undone.',
@@ -43,8 +43,8 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     loadEntries() {
-      var array = []
-      var keys = Object.keys(localStorage)
+      const array = []
+      const keys = Object.keys(localStorage)
 
       for (const key of keys) {
         array.push({'key': key, 'value': localStorage.getItem(key)})

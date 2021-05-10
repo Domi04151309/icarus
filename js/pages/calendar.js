@@ -65,7 +65,7 @@ export default {
       this.$router.push('/progress/month?date=' + this.year + String(this.month + 1).padStart(2, '0') + '01')
     },
     getDays() {
-      var pickerContainer, weekContainer, dayNode, weekButton, i, j
+      let pickerContainer, weekContainer, dayNode, weekButton, i, j
 
       pickerContainer = document.getElementById('picker-container')
       pickerContainer.innerHTML = ''
@@ -82,11 +82,11 @@ export default {
         pickerContainer.appendChild(dayNode)
       }
 
-      var firstDay = new Date(this.year, this.month, 1)
-      var today = new Date()
-      var lastDay = new Date(this.year, this.month + 1, 0)
-      var offset = firstDay.getDay()
-      var dayCount = 1
+      const firstDay = new Date(this.year, this.month, 1)
+      const today = new Date()
+      const lastDay = new Date(this.year, this.month + 1, 0)
+      let offset = firstDay.getDay()
+      let dayCount = 1
       for (i = 0; i < 6; i++) {
         for (j = 0; j < 7; j++) {
           if (offset == 0) {
@@ -127,7 +127,7 @@ export default {
     this.monthHelper = new MonthHelper()
   },
   mounted() {
-    var date = new Date()
+    const date = new Date()
     this.year = date.getFullYear()
     this.month = date.getMonth()
 

@@ -10,16 +10,16 @@ const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders'
 
 export default {
   getRecommended() {
-    var images = ['./images/exercises/hiking.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
-    var exercises = []
-    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())
-    var recents = JsonHelper.getData(RECENTS, () => [])
+    const images = ['./images/exercises/hiking.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
+    const scores = JsonHelper.getData(SCORES, () => this.generateNewScores())
+    const recents = JsonHelper.getData(RECENTS, () => [])
+    let exercises = []
     recents.forEach(item => {
       scores[item[0]][item[1]] = []
     })
     scores.forEach((category, i) => {
       category.forEach((exercise, j) => {
-        var k = exercise.indexOf(Math.max(...exercise))
+        let k = exercise.indexOf(Math.max(...exercise))
         if (k != -1) exercises.push({
           score: scores[i][j][k],
           posX: i,
@@ -37,7 +37,7 @@ export default {
     return exercises
   },
   addRecentExercise(position) {
-    var recents = JsonHelper.getData(RECENTS, () => [])
+    const recents = JsonHelper.getData(RECENTS, () => [])
     recents.unshift(position)
     localStorage.setItem(RECENTS, JSON.stringify(recents.slice(0, 8)))
   },
@@ -45,8 +45,8 @@ export default {
     return JsonHelper.getData(STATISTICS, () => [])
   },
   addExerciseToStatistic(item = null) {
-    var date = new Date()
-    var array = this.getStatistics()
+    const date = new Date()
+    const array = this.getStatistics()
     array.push({
       time: date.getTime(),
       item: item
@@ -61,13 +61,13 @@ export default {
     }
   },
   categoryScore(posX, posY) {
-    var scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY]
+    const scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY]
     return scores.reduce((acc, item) => acc + item) / scores.length
   },
   generateNewScores() {
-    var categoryArray = []
-    var exerciseArray = []
-    var variationArray = []
+    const categoryArray = []
+    let exerciseArray = []
+    let variationArray = []
     Exercises.forEach(category => {
       exerciseArray = []
       category.exercises.forEach(exercise => {
@@ -83,9 +83,9 @@ export default {
     return categoryArray
   },
   calculateScore(exercise) {
-    var parameters = JsonHelper.getData(PARAMETERS, () => 0)
+    const parameters = JsonHelper.getData(PARAMETERS, () => 0)
 
-    var score = 100 * PARAMETER_LIST.length
+    let score = 100 * PARAMETER_LIST.length
     score += PARAMETER_LIST.reduce((acc, item) => acc + parseInt(parameters[item], 10) * exercise[item], 0)
 
     return score / 100

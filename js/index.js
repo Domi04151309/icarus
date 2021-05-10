@@ -85,7 +85,7 @@ const routes = [
 ]
 
 window.addEventListener('error', e => {
-  var errors = JsonHelper.getData('errors', () => [])
+  const errors = JsonHelper.getData('errors', () => [])
   errors.push(e.message + ' at ' + e.filename.replace(/.*\/\/[^/]*/, '') + ':' + e.lineno)
   localStorage.setItem('errors', JSON.stringify(errors))
 })
@@ -163,7 +163,7 @@ new Vue({
     const loadingScreen = document.getElementById('loading_screen')
     loadingScreen.parentNode.removeChild(loadingScreen)
 
-    var darkTheme = null
+    let darkTheme = null
     switch (localStorage.getItem('theme') || 'auto') {
       case 'auto':
         darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -76,8 +76,8 @@ export default {
       ProgressSections
   },
   created() {
-    var dateString = this.$route.query.date
-    var dateId = null
+    const dateString = this.$route.query.date
+    let dateId = null
     if (dateString == null) {
       dateId = Identifiers.getDateId()
       this.readableDate = 'this month'
@@ -86,7 +86,7 @@ export default {
       this.readableDate = dateString.substring(4, 6) + '/' + dateString.substring(0, 4)
     }
 
-    var lastMonth = Identifiers.dateIdToDate(dateId)
+    const lastMonth = Identifiers.dateIdToDate(dateId)
     if (lastMonth.getMonth() == 0) {
       lastMonth.setYear(lastMonth.getYear() - 1)
       lastMonth.setMonth(11)
@@ -101,8 +101,8 @@ export default {
 
     this.helper = new MonthHelper(dateId)
 
-    var weekHelper = null
-    var i = 7
+    let weekHelper = null
+    let i = 7
     this.helper.forDayInMonth(date => {
       if (i == 7) {
         weekHelper = new WeekHelper(Identifiers.getDateId(date))
