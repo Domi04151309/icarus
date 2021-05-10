@@ -6,8 +6,8 @@ const STATISTICS = 'food_statistics'
 
 export default {
   getRecommended() {
-    var images = ['./images/food/breakfast.jpg', './images/food/lunch.jpg']
-    var food = JSON.parse(JSON.stringify(this.getHealthyFood()))
+    const images = ['./images/food/breakfast.jpg', './images/food/lunch.jpg']
+    let food = JSON.parse(JSON.stringify(this.getHealthyFood()))
     food.forEach((item, i) => {
       item.link = '/nutrition/healthy/food-details?item=' + i
     })
@@ -18,10 +18,17 @@ export default {
     return food
   },
   getHealthyFood() {
-    return JsonHelper.getData('healthy-food', () => Food.healthy)
+    return this.filterFood(JsonHelper.getData('healthy-food', () => Food.healthy))
   },
   getCasualFood() {
-    return JsonHelper.getData('casual-food', () => Food.casual)
+    return this.filterFood(JsonHelper.getData('casual-food', () => Food.casual))
+  },
+  filterFood(array) {
+    const nutrition = JsonHelper.getData('nutrition', () => null)
+    let items = array
+    if (nutrition?.vegetarian) items = items.filter(item => item.vegetarian == true)
+    if (nutrition?.vegan) items = items.filter(item => item.vegan == true)
+    return items
   },
   defaultFoodStatistics: {
     healthy: [],
@@ -31,8 +38,8 @@ export default {
     return JsonHelper.getData(STATISTICS, () => this.defaultFoodStatistics)
   },
   addHealthyFoodToStatistics(item = null) {
-    var date = new Date()
-    var object = {}
+    const date = new Date()
+    let object = {}
     try {
       object = this.getFoodStatistics()
       object.healthy.push({
@@ -45,8 +52,8 @@ export default {
     }
   },
   addCasualFoodToStatistics(item = null) {
-    var date = new Date()
-    var object = {}
+    const date = new Date()
+    let object = {}
     try {
       object = this.getFoodStatistics()
       object.casual.push({

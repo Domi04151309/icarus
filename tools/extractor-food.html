@@ -15,9 +15,9 @@
   /*const COLUMN_FAT_LOSS = 10
   const COLUMN_MUSCLE_GAIN = 11
   const COLUMN_LESS_SWEETS = 12
-  const COLUMN_MORE_WATER = 13
+  const COLUMN_MORE_WATER = 13*/
   const COLUMN_VEGETARIAN = 14
-  const COLUMN_VEGAN = 15*/
+  const COLUMN_VEGAN = 15
   const COLUMN_HEALTHY = 16
   const COLUMN_CASUAL = 17
 
@@ -33,6 +33,12 @@
     else return temp
   }
 
+  function getBooleanFromArray(array, index) {
+    var temp = parseInt(array[index], 10)
+    if (temp == 0 || temp == 1) return true
+    else return false
+  }
+
   function addItemToArray(array, line) {
     array.push({
       title: line[COLUMN_TITLE],
@@ -44,7 +50,9 @@
       alcohol: getIntFromArray(line, COLUMN_ALCOHOL),
       portion: getIntFromArray(line, COLUMN_PORTION),
       serving: getIntFromArray(line, COLUMN_SERVING),
-      unit: line[COLUMN_UNIT]
+      unit: line[COLUMN_UNIT],
+      vegetarian: getBooleanFromArray(line, COLUMN_VEGETARIAN),
+      vegan: getBooleanFromArray(line, COLUMN_VEGAN)
     })
   }
 
