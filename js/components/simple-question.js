@@ -1,19 +1,16 @@
 export default {
   name: 'simple-question',
   props: {
-    question: String
-  },
-  data() {
-    return {
-      value: null
-    }
+    question: String,
+    value: Boolean
   },
   watch: {
     value() {
       this.$refs.no.classList.remove('selected')
       this.$refs.yes.classList.remove('selected')
-      if (this.value === true) this.$refs.yes.classList.add('selected')
-      else if (this.value === false) this.$refs.no.classList.add('selected')
+      if (this.value == true) this.$refs.yes.classList.add('selected')
+      else if (this.value == false) this.$refs.no.classList.add('selected')
+      this.$emit('input', this.value)
     }
   },
   template:
