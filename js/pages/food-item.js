@@ -1,4 +1,5 @@
 import Page from '../components/page.js'
+import SimpleQuestion from '../components/simple-question.js'
 
 import FoodHelper from '../helpers/food.js'
 
@@ -10,7 +11,18 @@ export default {
   data() {
     return {
       foodItem: {
-        title: 'New Food Item'
+        title: 'New Food Item',
+        unit: 'g',
+        portion: 100,
+        serving: 100,
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        sugar: 0,
+        proteins: 0,
+        alcohol: 0,
+        vegetarian: false,
+        vegan: false
       }
     }
   },
@@ -18,16 +30,15 @@ export default {
     title: () => 'Food Item',
     parent() {
       if (this.$route.query.item) {
-        if (this.healthy) return '/nutrition/healthy/food-details?item=' + this.$route.query.item
-        else return '/nutrition/casual/food-details?item=' + this.$route.query.item
+        return this.healthy
+          ? '/nutrition/healthy/food-details?item=' + this.$route.query.item
+          : '/nutrition/casual/food-details?item=' + this.$route.query.item
       } else {
-        if (this.healthy) return '/nutrition/healthy'
-        else return '/nutrition/casual'
+        return this.healthy ? '/nutrition/healthy' : '/nutrition/casual'
       }
     },
     icon() {
-      if (this.healthy) return 'restaurant_menu'
-      else return 'fastfood'
+      return this.healthy ? 'restaurant_menu' : 'fastfood'
     }
   },
   template:
@@ -40,21 +51,31 @@ export default {
       Below you can see the values of this item.
       Use the button in the bottom right corner to save the item.
     </p>
-    <label for="foodTitle">Title</label>
-    <input id="foodTitle" v-model="foodItem.title" class="mb-16" type="text" autocomplete="off"></input>
-    <label for="foodDescription">Description</label>
-    <textarea id="foodDescription" v-model="foodItem.description" class="mb-16" autocomplete="off"></textarea>
-    <label for="foodPreparation">Preparation</label>
-    <textarea id="foodPreparation" v-model="foodItem.preparation" class="mb-16" autocomplete="off"></textarea>
-    <div class="grid-2 gap-16 mb-16">
+    <label for="title">Title</label>
+    <input id="title" v-model="foodItem.title" class="mb-16" type="text" autocomplete="off"></input>
+    <label for="description">Description</label>
+    <textarea id="description" v-model="foodItem.description" class="mb-16" autocomplete="off"></textarea>
+    <label for="preparation">Preparation</label>
+    <textarea id="preparation" v-model="foodItem.preparation" class="mb-16" autocomplete="off"></textarea>
+    <label for="unit">Unit <small>(for portion and serving)<small></label>
+    <input id="unit" v-model="foodItem.unit" class="mb-16" type="text" autocomplete="off"></input>
+    <div class="grid-2 gap-16 mb-48">
       <div>
-        <label for="calories">Calories (kcal)</label>
-        <input id="calories" v-model="foodItem.calories" type="number"></input>
+        <label for="portion">Portion ({{ foodItem.unit }})</label>
+        <input id="portion" v-model="foodItem.portion" type="number"></input>
       </div>
       <div>
-        <label for="fat">Fat (g)</label>
-        <input id="fat" v-model="foodItem.fat" type="number"></input>
+        <label for="serving">Serving ({{ foodItem.unit }})</label>
+        <input id="serving" v-model="foodItem.serving" type="number"></input>
       </div>
+        <div>
+          <label for="calories">Calories (kcal)</label>
+          <input id="calories" v-model="foodItem.calories" type="number"></input>
+        </div>
+        <div>
+          <label for="fat">Fat (g)</label>
+          <input id="fat" v-model="foodItem.fat" type="number"></input>
+        </div>
       <div>
         <label for="carbs">Carbs (g)</label>
         <input id="carbs" v-model="foodItem.carbs" type="number"></input>
@@ -71,11 +92,14 @@ export default {
         <label for="alcohol">Alcohol (vol)<label>
         <input id="alcohol" v-model="foodItem.alcohol" type="number"></input>
       </div>
+      <simple-question question="Vegetarian" class="text-center mt-16" v-model="foodItem.vegetarian"></simple-question>
+      <simple-question question="Vegan" class="text-center mt-16" v-model="foodItem.vegan"></simple-question>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
   components: {
-      Page
+      Page,
+      SimpleQuestion
   },
   methods: {
     onFabClicked() {

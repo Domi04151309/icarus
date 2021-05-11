@@ -48,7 +48,7 @@ export default {
       this.$root.$el.appendChild(instance.$el)
     },
     resetHelp() {
-      ['help_progress', 'help_exercises', 'help_nutrition'].forEach(key => {
+      ['help_progress', 'help_well_being', 'help_exercises', 'help_nutrition'].forEach(key => {
         localStorage.removeItem(key)
       })
       const ComponentClass = Vue.extend(Modal)

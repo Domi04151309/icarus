@@ -39,7 +39,7 @@ export default {
       this.$router.push('/setup/fitness')
     }
   },
-  mounted() {
+  created() {
     const stored = localStorage.getItem('nutrition')
     if (stored != null) this.nutrition = JSON.parse(stored)
   }

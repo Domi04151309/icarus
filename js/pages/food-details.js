@@ -8,8 +8,6 @@ import { DayHelper, Achievement } from '../helpers/progress.js'
 
 const FOOD_PARAMETERS = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
 
-//TODO: Add content
-
 export default {
   name: 'food-details',
   props: {
@@ -22,12 +20,10 @@ export default {
   },
   computed: {
     parent() {
-      if (this.healthy) return '/nutrition/healthy'
-      else return '/nutrition/casual'
+      return this.healthy ? '/nutrition/healthy' : '/nutrition/casual'
     },
     writtenType() {
-      if (this.healthy) return 'healthy'
-      else return 'casual'
+      return this.healthy ? 'healthy' : 'casual'
     }
   },
   template:
@@ -36,9 +32,16 @@ export default {
       <h2>Description</h2>
       <p>{{ foodItem.description || 'No description provided' }}</p>
     </div>
-    <div class="card mb-16-p-16">
+    <div v-if="foodItem.preparation" class="card mb-16-p-16">
       <h2>Preparation</h2>
-      <p>{{ foodItem.preparation || 'No instructions provided' }}</p>
+      <p>{{ foodItem.preparation }}</p>
+    </div>
+    <div class="card mb-16-p-16">
+      <h2>Information</h2>
+      <ul class="link-list ignore-page-padding mt-8">
+        <li><span><span :class="'material-icons-round ' + getColor('vegetarian')">{{ getIcon('vegetarian') }}</span>Vegetarian</span></li>
+        <li><span><span :class="'material-icons-round ' + getColor('vegan')">{{ getIcon('vegan') }}</span>Vegan</span></li>
+      </ul>
     </div>
     <div class="card mb-16-p-16">
       <h2>Portion <small class="p">({{ foodItem.unit }})</small></h2>
@@ -83,6 +86,12 @@ export default {
       Page
   },
   methods: {
+    getColor(key) {
+      return this.foodItem[key] ? 'green' : 'red'
+    },
+    getIcon(key) {
+      return this.foodItem[key] ? 'check_circle' : 'cancel'
+    },
     getActualValue(value) {
       return Math.round(value / this.foodItem.portion * this.foodItem.serving)
     },

@@ -22,31 +22,25 @@ export default {
   },
   computed: {
     writtenType() {
-      if (this.healthy) return 'healthy'
-      else return 'casual'
+      return this.healthy ? 'healthy' : 'casual'
     },
     title() {
-      if (this.healthy) return 'Healthy'
-      else return 'Casual'
+      return this.healthy ? 'Healthy' : 'Casual'
     },
     secondaryTitle() {
-      if (this.healthy) return 'Healthy Food'
-      else return 'Casual Food'
+      return this.healthy ? 'Healthy Food' : 'Casual Food'
     },
     icon() {
-      if (this.healthy) return 'restaurant_menu'
-      else return 'fastfood'
+      return this.healthy ? 'restaurant_menu' : 'fastfood'
     },
     defaultItems() {
-      if (this.healthy) return FoodHelper.getHealthyFood()
-      else return FoodHelper.getCasualFood()
+      return this.healthy ? FoodHelper.getHealthyFood() : FoodHelper.getCasualFood()
     },
     progress() {
       const statistics = FoodHelper.getFoodStatistics()
-      if (this.healthy)
-        return (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.casual.length)
-      else
-        return (statistics.casual.length * 100) / (statistics.healthy.length + statistics.casual.length)
+      return this.healthy
+        ? (statistics.healthy.length * 100) / (statistics.healthy.length + statistics.casual.length)
+        : (statistics.casual.length * 100) / (statistics.healthy.length + statistics.casual.length)
     }
   },
   template:
