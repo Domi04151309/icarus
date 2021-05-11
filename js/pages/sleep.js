@@ -72,8 +72,8 @@ export default {
       helper.progress.sleep += this.sleep + Math.round(this.hourPercent)
       helper.saveProgress()
 
-      this.reset()
       Achievement.show('Slept ' + this.getString())
+      this.reset()
       this.$router.push('/well-being')
     },
     getString() {
