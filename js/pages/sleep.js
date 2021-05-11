@@ -25,7 +25,7 @@ export default {
   `<page :title="title" parent="/well-being" class="deep-purple">
     <div class="flex space center mt-16 mb-32">
       <div class="relative p-16">
-        <h2 class="absolute m-0">{{ getString() }}</h2>
+        <h2 class="absolute m-0">{{ getString(sleep) }}</h2>
         <progress-ring radius="128" :progress="hourPercent * 100" stroke="8"></progress-ring>
       </div>
     </div>
@@ -69,15 +69,15 @@ export default {
     },
     addToTotal() {
       let helper = new DayHelper()
-      helper.progress.sleep += this.sleep + Math.round(this.hourPercent)
+      helper.progress.sleep += Math.round(this.hourPercent)
       helper.saveProgress()
 
-      Achievement.show('Slept ' + this.getString())
+      Achievement.show('Slept ' + this.getString(Math.round(this.hourPercent)))
       this.reset()
       this.$router.push('/well-being')
     },
-    getString() {
-      return this.sleep + (this.sleep == 1 ? ' hour' : ' hours')
+    getString(number) {
+      return number + (number == 1 ? ' hour' : ' hours')
     },
     loop() {
       this.end = new Date()
