@@ -159,6 +159,15 @@ export default {
       else this.repetitions++
       navigator.vibrate(1)
     },
+    intensityToExp() {
+      switch (this.intensity) {
+        case 'low': return 1
+        case 'medium': return 2
+        case 'high': return 3
+        case 'full': return 4
+        default: return 2
+      }
+    },
     onFinishClicked() {
       const dayHelper = new DayHelper()
       dayHelper.progress.exercises += 1
@@ -168,10 +177,11 @@ export default {
         parseInt(this.$route.query.posY, 10),
         parseInt(this.$route.query.posZ, 10)
       ])
-      const tempItem = {}
-      tempItem.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
-      tempItem.information = this.exerciseItem.information
-      ExerciseHelper.addExerciseToStatistic(tempItem)
+      const item = {}
+      item.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
+      item.information = this.exerciseItem.information
+      item.exp = this.intensityToExp()
+      ExerciseHelper.addExerciseToStatistic(item)
       Achievement.show('Completed an exercise')
       this.$router.push('/exercises')
     }
