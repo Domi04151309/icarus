@@ -13,8 +13,8 @@ export default {
   name: 'well-being',
   computed: {
     sleepProgress() {
-      const helper = new DayHelper()
-      return (helper.progress.sleep * 100) / (ProgressCompanion.maxSleep)
+      const progress = (new DayHelper().progress.sleep * 100) / (ProgressCompanion.maxSleep)
+      return progress > 100 ? 100 : progress
     },
     meditationProgress() {
       return 100

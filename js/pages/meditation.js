@@ -20,13 +20,13 @@ export default {
     </div>
     <div class="card flex space center text-center p-16 mb-32">
       <div>
-        <h2 class="m-0">0:00</h2>
+        <h2 class="m-0">1:00:00</h2>
         <p class="mb-0">Duration</p>
       </div>
     </div>
     <div class="grid-2 gap-8 mb-8">
       <button type="button" v-on:click="button()">Start</button>
-      <button type="button" v-on:click="button()">Stop</button>
+      <button type="button" v-on:click="button()">Reset</button>
     </div>
     <button class="w-100" type="button" v-on:click="button()">Finish</button>
   </page>`,
