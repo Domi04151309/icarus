@@ -76,7 +76,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="grid-2 gap-16 mb-16">
+    <div class="grid-2 gap-8 mb-8">
       <button type="button" v-on:click="onEditClicked()">Edit</button>
       <button type="button" v-on:click="onDeleteClicked()">Delete</button>
     </div>

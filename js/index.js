@@ -22,6 +22,9 @@ const Calendar = () => import('./pages/calendar.js')
 const Diary = () => import('./pages/diary.js')
 const DiaryEntry = () => import('./pages/diary-entry.js')
 
+const Sleep = () => import('./pages/sleep.js')
+const Meditation = () => import('./pages/meditation.js')
+
 const FoodSuggestions = () => import('./pages/food-suggestions.js')
 
 const Food = () => import('./pages/food.js')
@@ -61,6 +64,8 @@ const routes = [
   { path: '/progress/diary', component: Diary },
   { path: '/progress/diary/entry', component: DiaryEntry },
   { path: '/well-being', component: WellBeing },
+  { path: '/well-being/sleep', component: Sleep },
+  { path: '/well-being/meditation', component: Meditation },
   { path: '/exercises', component: Exercises },
   { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },
@@ -131,14 +136,16 @@ router.beforeEach((to, from, next) => {
     window.backButtonPress = false
     if (
       from.path == '/progress'
-      || from.path == '/exercises'
+      || from.path == '/well-being'
       || from.path == '/nutrition'
+      || from.path == '/exercises'
       || from.path == '/account'
     ) next(false)
     else if (
       from.path.includes('progress')
-      || from.path.includes('exercises')
+      || from.path.includes('well-being')
       || from.path.includes('nutrition')
+      || from.path.includes('exercises')
       || from.path.includes('account')
     ) next(from.path.substring(0, from.path.lastIndexOf('/')))
     else next()

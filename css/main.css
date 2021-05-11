@@ -482,6 +482,9 @@ h2 > .c-icon {
 .grid-7 {
   grid-template-columns: repeat(7, 7fr);
 }
+.gap-8 {
+  grid-gap: 8px;
+}
 .gap-16 {
   grid-gap: 16px;
 }

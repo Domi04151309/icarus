@@ -24,14 +24,14 @@ export default {
   `<page-tab-bar class="deep-purple">
     <h2 class="mt-16 mx-8 secondary-title">Feel Good</h2>
     <p class="mt-0 mb-48 mx-8">It's time to care about yourself!</p>
-    <router-link to="" class="card mb-16-p-16 flex center">
+    <router-link to="/well-being/sleep" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="sleepProgress" stroke="6"></progress-ring>
       <div>
         <h2 class="m-0">Sleep</h2>
         <p>Get your daily amount of sleep</p>
       </div>
     </router-link>
-    <router-link to="" class="card mb-16-p-16 flex center">
+    <router-link to="/well-being/meditation" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="meditationProgress" stroke="6"></progress-ring>
       <div>
         <h2 class="m-0">Meditation</h2>
