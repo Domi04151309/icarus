@@ -11,7 +11,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/well-being" class="deep-purple">
+  `<page :title="title" parent="/well-being" class="deep-purple"><div class="disabled">
     <div class="flex space center mt-16 mb-32">
       <div class="relative p-16">
         <h2 class="absolute m-0">1:00:00</h2>
@@ -25,18 +25,13 @@ export default {
       </div>
     </div>
     <div class="grid-2 gap-8 mb-8">
-      <button type="button" v-on:click="button()">Start</button>
-      <button type="button" v-on:click="button()">Reset</button>
+      <button type="button" v-on:click="">Start</button>
+      <button type="button" v-on:click="">Reset</button>
     </div>
-    <button class="w-100" type="button" v-on:click="button()">Finish</button>
-  </page>`,
+    <button class="w-100" type="button" v-on:click="">Finish</button>
+  </div></page>`,
   components: {
       Page,
       ProgressRing
-  },
-  methods: {
-    button() {
-      alert('Not yet implemented!')
-    }
   }
 }

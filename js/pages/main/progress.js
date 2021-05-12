@@ -32,7 +32,7 @@ export default {
         :s3="dayHelper.getFoodProgress()"
         :s4="dayHelper.getExerciseProgress()">
       </progress-sections>
-      <p>Your progress for today.</p>
+      <p>Your progress for today</p>
     </router-link>
     <div class="grid-2 gap-16">
       <router-link to="/progress/week" class="card mb-16-p-16">
@@ -43,7 +43,7 @@ export default {
           :s3="weekHelper.getFoodProgress()"
           :s4="weekHelper.getExerciseProgress()">
         </progress-sections>
-        <p>Your progress for this week.</p>
+        <p>Your progress for this week</p>
       </router-link>
       <router-link to="/progress/month" class="card mb-16-p-16">
         <h2>This Month</h2>
@@ -53,7 +53,7 @@ export default {
           :s3="monthHelper.getFoodProgress()"
           :s4="monthHelper.getExerciseProgress()">
         </progress-sections>
-        <p>Your progress for this month.</p>
+        <p>Your progress for this month</p>
       </router-link>
     </div>
     <router-link to="/progress/calendar" class="card mb-16-p-16 flex center">
@@ -63,6 +63,25 @@ export default {
         <p>View the progress of another day, week, or month</p>
       </div>
     </router-link>
+    <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
+    <div class="disabled">
+    <router-link to="" class="card mb-16-p-16">
+      <h2>Calories</h2>
+      <p>Track your calories</p>
+    </router-link>
+    <router-link to="" class="card mb-16-p-16">
+      <h2>Weight</h2>
+      <p>Track your weight</p>
+    </router-link>
+    <router-link to="" class="card mb-16-p-16">
+      <h2>Blood Pressure</h2>
+      <p>Track your blood pressure</p>
+    </router-link>
+    <router-link to="" class="card mb-16-p-16">
+      <h2>Blood Sugar</h2>
+      <p>Track your blood sugar</p>
+    </router-link>
+    </div>
     <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {

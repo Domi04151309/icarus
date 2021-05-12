@@ -16,8 +16,8 @@ export default {
   template:
   `<page :title="title" parent="/progress/diary">
     <div class="material-icons-round big">{{ item.icon }}</div>
-    <h2>{{ item.title }}</h2>
-    <h3>{{ new Date(item.time).toLocaleString() }}</h3>
+    <h2 class="mb-0">{{ item.title }}</h2>
+    <h3 class="mt-0">{{ new Date(item.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' }) }}</h3>
     <p>{{ item.description }}</p>
     <p v-if="item.details != null">{{ item.details }}</p>
     <table v-if="item.icon != 'directions_run'" class="mt-16">

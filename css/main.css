@@ -77,9 +77,9 @@
 
 /* major elements */
 * {
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 html, body {
   font: 16px arial, sans-serif;
@@ -137,6 +137,10 @@ main {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
+.h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
 img {
   max-width: 100%;
 }
@@ -160,14 +164,14 @@ td {
 tr:nth-child(even) {
   background: var(--hover-color);
 }
-.card, button, input, textarea {
+.card, button, select, input, textarea {
   background: var(--elevation-overlay);
   border-radius: var(--border-radius-4x);
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition-duration: .25s;
 }
-button, input, textarea {
+button, select, input, textarea {
   margin: 4px 0;
   outline: 0;
   border: 0;
@@ -186,14 +190,15 @@ button:hover, .fab:hover {
 button:active, .fab:active {
   filter: brightness(.8);
 }
-input, textarea {
+select, input, textarea {
+  -moz-appearance: textfield;
   display: block;
   width: 100%;
   margin: auto;
   color: var(--text-color);
   border-radius: var(--border-radius-1x);
 }
-.card input, .card textarea, .achievement {
+.card:not(.modal-content) select, .card:not(.modal-content) input, .card:not(.modal-content) textarea, .achievement {
   background: var(--elevation-overlay-2);
 }
 textarea {
@@ -203,11 +208,18 @@ textarea {
   resize: none;
 }
 input[type=range] {
+  -webkit-appearance: none;
   box-shadow: none;
   background: none;
-  -webkit-appearance: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--pressed-color);
+  border-radius: var(--border-radius-1x);
+  cursor: pointer;
+}
+input[type=range]::-moz-range-track {
   width: 100%;
   height: 4px;
   background: var(--pressed-color);
@@ -220,6 +232,14 @@ input[type=range]::-webkit-slider-thumb {
   width: 16px;
   background: var(--accent-color);
   border-radius: var(--border-radius-1x);
+  margin-top: -6px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background: var(--accent-color);
+  border-radius: var(--border-radius-1x);
+  border: 0;
   margin-top: -6px;
 }
 input[type=radio] {
@@ -243,13 +263,20 @@ progress, .progress {
   width: 100%;
   height: 12px;
   align-self: center;
+  background: var(--pressed-color);
   border-radius: var(--border-radius-1x);
+  border: 0;
   overflow: hidden;
 }
-progress::-webkit-progress-bar, .progress {
-  background: var(--pressed-color);
+progress::-webkit-progress-bar {
+  background: transparent;
 }
 progress::-webkit-progress-value {
+  background: var(--accent-color-gradient);
+  border-radius: var(--border-radius-1x);
+  transition: width .5s;
+}
+progress::-moz-progress-bar {
   background: var(--accent-color-gradient);
   border-radius: var(--border-radius-1x);
   transition: width .5s;
@@ -464,6 +491,9 @@ h2 > .c-icon {
   color: var(--text-color-secondary);
   text-align: center;
   content: 'There are currently no entries in your diary. Add entries by consuming food or doing exercises.'
+}
+.disabled {
+  opacity: .38;
 }
 
 /* alignment */

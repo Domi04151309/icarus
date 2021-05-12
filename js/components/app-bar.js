@@ -7,7 +7,7 @@ export default {
   template:
   `<header>
     <router-link :to="parent">
-      <span class="material-icons-round nav-icon" aria-label="Back">arrow_back</span>
+      <span class="material-icons-round nav-icon" role="button" aria-label="Back">arrow_back</span>
     </router-link>
     <h1 class="with-nav-icon">{{ title }}</h1>
   </header>`

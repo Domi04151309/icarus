@@ -14,7 +14,7 @@ export default {
   `<page :title="title" parent="/progress">
     <div class="diary">
       <div v-for="(date, index) in items" :key="index">
-        <h2 class="text-center">{{ date.title }}</h2>
+        <h2 class="h3 text-center">{{ date.title }}</h2>
         <ul class="card link-list m-0">
           <li v-for="item in date.items" :key="item.time">
             <router-link :to="'/progress/diary/entry?pos=' + item.pos">

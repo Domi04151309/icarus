@@ -58,7 +58,10 @@ export default {
     <label for="preparation">Preparation</label>
     <textarea id="preparation" v-model="foodItem.preparation" class="mb-16" autocomplete="off"></textarea>
     <label for="unit">Unit <small>(for portion and serving)<small></label>
-    <input id="unit" v-model="foodItem.unit" class="mb-16" type="text" autocomplete="off"></input>
+    <select id="unit" v-model="foodItem.unit" class="mb-16">
+      <option>g</option>
+      <option>ml</option>
+    </select>
     <div class="grid-2 gap-16 mb-48">
       <div>
         <label for="portion">Portion ({{ foodItem.unit }})</label>
