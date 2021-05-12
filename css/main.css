@@ -794,6 +794,10 @@ footer .router-link-active {
   text-align: center;
   border-radius: var(--border-radius-4x);
 }
+select.setup-input {
+  -webkit-appearance: none;
+  text-align-last: center;
+}
 
 /* calendar */
 #calendar button {

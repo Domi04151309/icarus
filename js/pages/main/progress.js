@@ -17,7 +17,10 @@ export default {
     }
   },
   computed: {
-    name: () => localStorage.getItem('info_name')
+    name() {
+      const stored = localStorage.getItem('info')
+      return stored ? JSON.parse(stored).name : null
+    }
   },
   template:
   `<page-tab-bar>
@@ -77,7 +80,7 @@ export default {
       <h2>Blood Pressure</h2>
       <p>Track your blood pressure</p>
     </router-link>
-    <router-link to="" class="card mb-16-p-16">
+    <router-link to="" class="card p-16">
       <h2>Blood Sugar</h2>
       <p>Track your blood sugar</p>
     </router-link>

@@ -4,10 +4,12 @@ import LevelHelper from '../../helpers/level.js'
 
 export default {
   name: 'account',
+  data() {
+    return {
+      info: { }
+    }
+  },
   computed: {
-    name: () => localStorage.getItem('info_name') || 'Guest',
-    age: () => localStorage.getItem('info_age') || '0',
-    weight: () => localStorage.getItem('info_weight') || '0',
     levelData: () => LevelHelper.getLevelData()
   },
   template:
@@ -17,13 +19,13 @@ export default {
       <div class="p w-100 ml-32 mr-16">
         <div class="flex">
           <div class="mr-16">
-            <small class="item-caption">Name</small>{{ name }}
+            <small class="item-caption">Name</small>{{ info.name || 'Guest' }}
           </div>
           <div class="mr-16">
-            <small class="item-caption">Age</small>{{ age }}
+            <small class="item-caption">Age</small>{{ info.age || 0 }}
           </div>
           <div>
-            <small class="item-caption">Weight</small>{{ weight }}
+            <small class="item-caption">Weight</small>{{ info.weight || 0 }}
           </div>
         </div>
         <progress :max="levelData.neededSectionExp" :value="levelData.sectionExp"></progress>
@@ -43,5 +45,9 @@ export default {
   </page-tab-bar>`,
   components: {
       PageTabBar
+  },
+  created() {
+    const stored = localStorage.getItem('info')
+    if (stored != null) this.info = JSON.parse(stored)
   }
 }

@@ -7,7 +7,7 @@ A simple fitness web app.
 - https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js
 - https://unpkg.com/vue-router@3.4.9/dist/vue-router.min.js
 - https://fonts.googleapis.com/icon?family=Material+Icons+Round
-- https://fonts.gstatic.com/s/materialiconsround/v26/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2
+- https://fonts.gstatic.com/s/materialiconsround/v55/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2
 - https://github.com/rigoneri/indefinite-article.js/blob/master/indefinite-article.js
 
 ## Images

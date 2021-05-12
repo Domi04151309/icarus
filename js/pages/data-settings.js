@@ -3,6 +3,9 @@
 import Page from '../components/page.js'
 import Modal from '../components/modal.js'
 import ModalInput from '../components/modal-input.js'
+import ModalGender from '../components/modal-gender.js'
+
+import JsonHelper from '../helpers/json.js'
 
 export default {
   name: 'data-settings',
@@ -14,9 +17,10 @@ export default {
   template:
   `<page :title="title" parent="/account">
     <ul class="link-list ignore-page-padding">
-      <li v-on:click="edit('Change Name', 'info_name', 'text')"><span><span class="material-icons-round">face</span>Change name</span></li>
-      <li v-on:click="edit('Change Age', 'info_age', 'number')"><span><span class="material-icons-round">edit</span>Change age</span></li>
-      <li v-on:click="edit('Change Weight', 'info_weight', 'number')"><span><span class="material-icons-round">edit</span>Change weight</span></li>
+      <li v-on:click="editInfo('Change Name', 'name', 'text')"><span><span class="material-icons-round">face</span>Change name</span></li>
+      <li v-on:click="editInfo('Change Age', 'age', 'number')"><span><span class="material-icons-round">edit_calendar</span>Change age</span></li>
+      <li v-on:click="changeGender()"><span><span class="material-icons-round">wc</span>Change gender</span></li>
+      <li v-on:click="editInfo('Change Weight', 'weight', 'number')"><span><span class="material-icons-round">monitor_weight</span>Change weight</span></li>
       <li><router-link to="/account/data/nutrition"><span class="material-icons-round">restaurant_menu</span>Nutrition Plan</router-link></li>
       <li><router-link to="/account/data/workout"><span class="material-icons-round">directions_run</span>Workout Plan</router-link></li>
       <li><router-link to="/account/data/raw"><span class="material-icons-round">storage</span>Raw Data</router-link></li>
@@ -27,18 +31,26 @@ export default {
       Page
   },
   methods: {
-    edit(modalTitle, storageKey, storageType) {
+    editInfo(modalTitle, storageKey, storageType) {
       const ComponentClass = Vue.extend(ModalInput)
       const instance = new ComponentClass({
         propsData: {
           title: modalTitle,
           inputType: storageType,
-          initialValue: localStorage.getItem(storageKey),
+          initialValue: JsonHelper.getData('info', () => {})[storageKey],
           positiveFunction: () => {
-            localStorage.setItem(storageKey, instance.$refs.input.value)
+            const stored = JsonHelper.getData('info', () => {})
+            stored[storageKey] = instance.$refs.input.value
+            localStorage.setItem('info', JSON.stringify(stored))
           }
         }
       })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    },
+    changeGender() {
+      const ComponentClass = Vue.extend(ModalGender)
+      const instance = new ComponentClass()
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },
