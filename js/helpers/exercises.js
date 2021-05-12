@@ -11,8 +11,8 @@ const PARAMETER_LIST = ['muscleGain', 'cardio', 'endurance', 'arms', 'shoulders'
 export default {
   getRecommended() {
     const images = ['./images/exercises/hiking.jpg', './images/setup/welcome.jpg', './images/setup/info.jpg', './images/setup/finish.jpg']
-    const scores = JsonHelper.getData(SCORES, () => this.generateNewScores())
-    const recents = JsonHelper.getData(RECENTS, () => [])
+    const scores = JsonHelper.get(SCORES, () => this.generateNewScores())
+    const recents = JsonHelper.get(RECENTS, () => [])
     let exercises = []
     recents.forEach(item => {
       scores[item[0]][item[1]] = []
@@ -37,12 +37,12 @@ export default {
     return exercises
   },
   addRecentExercise(position) {
-    const recents = JsonHelper.getData(RECENTS, () => [])
+    const recents = JsonHelper.get(RECENTS, () => [])
     recents.unshift(position)
-    localStorage.setItem(RECENTS, JSON.stringify(recents.slice(0, 8)))
+    JsonHelper.set(RECENTS, recents.slice(0, 8))
   },
   getStatistics() {
-    return JsonHelper.getData(STATISTICS, () => [])
+    return JsonHelper.get(STATISTICS, () => [])
   },
   addExerciseToStatistic(item = null) {
     const date = new Date()
@@ -51,17 +51,17 @@ export default {
       time: date.getTime(),
       item: item
     })
-    localStorage.setItem(STATISTICS, JSON.stringify(array))
+    JsonHelper.set(STATISTICS, array)
   },
   getScore(posX, posY, posZ) {
     try {
-      return JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY][posZ]
+      return JsonHelper.get(SCORES, () => this.generateNewScores())[posX][posY][posZ]
     } catch {
       return this.generateNewScores()[posX][posY][posZ]
     }
   },
   categoryScore(posX, posY) {
-    const scores = JsonHelper.getData(SCORES, () => this.generateNewScores())[posX][posY]
+    const scores = JsonHelper.get(SCORES, () => this.generateNewScores())[posX][posY]
     return scores.reduce((acc, item) => acc + item) / scores.length
   },
   generateNewScores() {
@@ -79,11 +79,11 @@ export default {
       })
       categoryArray.push(exerciseArray)
     })
-    localStorage.setItem(SCORES, JSON.stringify(categoryArray))
+    JsonHelper.set(SCORES, categoryArray)
     return categoryArray
   },
   calculateScore(exercise) {
-    const parameters = JsonHelper.getData(PARAMETERS, () => 0)
+    const parameters = JsonHelper.get(PARAMETERS, () => 0)
 
     let score = 100 * PARAMETER_LIST.length
     score += PARAMETER_LIST.reduce((acc, item) => acc + parseInt(parameters[item], 10) * exercise[item], 0)

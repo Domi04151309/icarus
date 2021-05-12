@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       title: 'Error Log',
-      items: JsonHelper.getData('errors', () => [])
+      items: JsonHelper.get('errors', () => [])
     }
   },
   template:

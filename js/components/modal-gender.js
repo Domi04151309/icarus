@@ -22,9 +22,9 @@ export default {
   </div>`,
   methods: {
     setGender(gender) {
-      const stored = JsonHelper.getData('info', () => {})
+      const stored = JsonHelper.get('info', () => {})
       stored.gender = gender
-      localStorage.setItem('info', JSON.stringify(stored))
+      JsonHelper.set('info', stored)
       this.close()
     },
     close() {

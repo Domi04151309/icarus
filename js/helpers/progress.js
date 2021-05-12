@@ -30,10 +30,10 @@ function getAverageProgress(progressObj, companionObj, keys) {
 class DayHelper {
   constructor(dateId = Identifiers.getDateId()) {
     this.dateId = dateId
-    this.progress = JsonHelper.getData(dateId, getDefaultObject)
+    this.progress = JsonHelper.get(dateId, getDefaultObject)
   }
   saveProgress() {
-    localStorage.setItem(this.dateId, JSON.stringify(this.progress))
+    JsonHelper.set(this.dateId, this.progress)
   }
   getWaterProgress() {
     return getAverageProgress(this.progress, ProgressCompanion, ['water'])

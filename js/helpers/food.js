@@ -18,13 +18,13 @@ export default {
     return food
   },
   getHealthyFood() {
-    return this.filterFood(JsonHelper.getData('healthy-food', () => Food.healthy))
+    return this.filterFood(JsonHelper.get('healthy-food', () => Food.healthy))
   },
   getCasualFood() {
-    return this.filterFood(JsonHelper.getData('casual-food', () => Food.casual))
+    return this.filterFood(JsonHelper.get('casual-food', () => Food.casual))
   },
   filterFood(array) {
-    const nutrition = JsonHelper.getData('nutrition', () => null)
+    const nutrition = JsonHelper.get('nutrition', () => null)
     let items = array
     if (nutrition?.vegetarian) items = items.filter(item => item.vegetarian == true)
     if (nutrition?.vegan) items = items.filter(item => item.vegan == true)
@@ -35,7 +35,7 @@ export default {
     casual: []
   },
   getFoodStatistics() {
-    return JsonHelper.getData(STATISTICS, () => this.defaultFoodStatistics)
+    return JsonHelper.get(STATISTICS, () => this.defaultFoodStatistics)
   },
   addHealthyFoodToStatistics(item = null) {
     const date = new Date()
@@ -46,7 +46,7 @@ export default {
         time: date.getTime(),
         item: item
       })
-      localStorage.setItem(STATISTICS, JSON.stringify(object))
+      JsonHelper.set(STATISTICS, object)
     } catch (e) {
       console.warn(e)
     }
@@ -60,7 +60,7 @@ export default {
         time: date.getTime(),
         item: item
       })
-      localStorage.setItem(STATISTICS, JSON.stringify(object))
+      JsonHelper.set(STATISTICS, object)
     } catch (e) {
       console.warn(e)
     }

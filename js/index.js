@@ -90,9 +90,9 @@ const routes = [
 ]
 
 window.addEventListener('error', e => {
-  const errors = JsonHelper.getData('errors', () => [])
+  const errors = JsonHelper.get('errors', () => [])
   errors.push(e.message + ' at ' + e.filename.replace(/.*\/\/[^/]*/, '') + ':' + e.lineno)
-  localStorage.setItem('errors', JSON.stringify(errors))
+  JsonHelper.set('errors', errors)
 })
 
 var headers, i

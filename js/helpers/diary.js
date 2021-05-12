@@ -1,6 +1,7 @@
 import ExerciseHelper from '../helpers/exercises.js'
 import FoodHelper from '../helpers/food.js'
 import IndefiniteArticle from '../helpers/indefinite-article.js'
+import JsonHelper from '../helpers/json.js'
 
 export default {
   getItems() {
@@ -37,13 +38,13 @@ export default {
     found = food.healthy.findIndex(equalTime)
     if (found != -1) {
       food.healthy.splice(found, 1)
-      localStorage.setItem('food_statistics', JSON.stringify(food))
+      JsonHelper.set('food_statistics', food)
       return
     }
     found = food.casual.findIndex(equalTime)
     if (found != -1) {
       food.casual.splice(found, 1)
-      localStorage.setItem('food_statistics', JSON.stringify(food))
+      JsonHelper.set('food_statistics', food)
       return
     }
 
@@ -51,7 +52,7 @@ export default {
     found = exercises.findIndex(equalTime)
     if (found != -1) {
       exercises.splice(found, 1)
-      localStorage.setItem('exercise_statistics', JSON.stringify(exercises))
+      JsonHelper.set('exercise_statistics', exercises)
       return
     }
   }
