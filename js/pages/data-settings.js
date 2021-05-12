@@ -37,9 +37,9 @@ export default {
         propsData: {
           title: modalTitle,
           inputType: storageType,
-          initialValue: JsonHelper.get('info', () => {})[storageKey],
+          initialValue: JsonHelper.get('info', () => { return {} })[storageKey],
           positiveFunction: () => {
-            const stored = JsonHelper.get('info', () => {})
+            const stored = JsonHelper.get('info', () => { return {} })
             stored[storageKey] = instance.$refs.input.value
             JsonHelper.set('info', stored)
           }

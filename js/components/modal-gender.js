@@ -22,7 +22,7 @@ export default {
   </div>`,
   methods: {
     setGender(gender) {
-      const stored = JsonHelper.get('info', () => {})
+      const stored = JsonHelper.get('info', () => { return {} })
       stored.gender = gender
       JsonHelper.set('info', stored)
       this.close()
