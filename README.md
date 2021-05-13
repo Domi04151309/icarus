@@ -9,6 +9,7 @@ A simple fitness web app.
 - https://fonts.googleapis.com/icon?family=Material+Icons+Round
 - https://fonts.gstatic.com/s/materialiconsround/v55/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2
 - https://github.com/rigoneri/indefinite-article.js/blob/master/indefinite-article.js
+- https://cdn.jsdelivr.net/npm/frappe-charts@1.6.1/dist/frappe-charts.min.esm.js
 
 ## Images
 Saved with the width set to 1920px and the quality set to 60%

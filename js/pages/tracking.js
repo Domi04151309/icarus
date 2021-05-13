@@ -79,7 +79,6 @@ export default {
       data.labels = reversedData.map(x => new Date(x.time).toLocaleDateString([], { dateStyle: 'short' }))
       data.datasets = []
       for(const i in this.fragments[this.fragment].values) {
-        console.log(i)
         data.datasets.push({
           name: this.fragments[this.fragment].values[i],
           values: reversedData.map(x => x.values[i])
