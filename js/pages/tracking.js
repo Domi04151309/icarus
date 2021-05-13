@@ -2,12 +2,13 @@
 
 import Page from '../components/page.js'
 import Modal from '../components/modal.js'
+import { Chart } from '../libs/frappe-charts.min.esm.js'
 
 import JsonHelper from '../helpers/json.js'
 
 import Fragments from '../data/tracking.js'
 
-//TODO: Add graph
+//TODO: Properly scale x axis
 //TODO: Filter by week, month, and year
 
 export default {
@@ -21,7 +22,7 @@ export default {
   },
   template:
   `<page :title="fragments[fragment].title" parent="/progress">
-    <div class="card mb-16-p-16 text-center">Graph Placeholder</div>
+    <div id="chart" class="ignore-page-padding"></div>
     <ul class="link-list card tracking">
       <li v-for="(item, index) in items" :key="index">
         <span v-on:click="onDeleteClicked(index)">
@@ -68,5 +69,31 @@ export default {
   },
   mounted() {
     setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
+
+    const data = {}
+    if (this.items.length == 0) {
+      data.labels = [0, 50]
+      data.datasets = [{ values: [0, 0] }]
+    } else {
+      const reversedData = JSON.parse(JSON.stringify(this.items)).reverse()
+      data.labels = reversedData.map(x => new Date(x.time).toLocaleDateString([], { dateStyle: 'short' }))
+      data.datasets = []
+      for(const i in this.fragments[this.fragment].values) {
+        console.log(i)
+        data.datasets.push({
+          name: this.fragments[this.fragment].values[i],
+          values: reversedData.map(x => x.values[i])
+        })
+      }
+    }
+    new Chart("#chart", {
+      data: data,
+      type: 'line',
+      lineOptions: {
+        hideDots: 1,
+        spline: 1
+      },
+      colors: ['#2979FF', '#00B0FF']
+    })
   }
 }

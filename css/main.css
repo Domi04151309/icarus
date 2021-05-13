@@ -868,6 +868,14 @@ main.large-app-bar {
   margin-bottom: -4px;
 }
 
+/* charts */
+.frappe-chart .x.axis .line-vertical {
+  display: none;
+}
+.frappe-chart .y.axis .line-horizontal {
+  display: none;
+}
+
 /* loading screen */
 #loading_screen {
   position: fixed;
