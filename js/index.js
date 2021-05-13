@@ -93,11 +93,18 @@ const routes = [
   { path: '/account/about', component: About }
 ]
 
-window.addEventListener('error', e => {
+function logError(e) {
   const errors = JsonHelper.get('errors', () => [])
-  errors.push(e.message + ' at ' + e.filename.replace(/.*\/\/[^/]*/, '') + ':' + e.lineno)
+  errors.push(e.message + ' at ' + e.filename?.replace(/.*\/\/[^/]*/, '') + ':' + e.lineno)
   JsonHelper.set('errors', errors)
+}
+window.addEventListener('error', e => {
+  logError(e)
 })
+Vue.config.errorHandler = e => {
+  console.error(e)
+  logError(e)
+}
 
 var headers, i
 document.addEventListener('scroll', () => {

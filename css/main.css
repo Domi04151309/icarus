@@ -321,7 +321,7 @@ svg {
   margin-bottom: 0;
 }
 .card > p:last-child {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 h2 > .c-icon {
   color: var(--text-color-secondary);
