@@ -39,7 +39,7 @@ export default {
     <div v-on:click="openMonth()" class="card mb-16-p-16">
       <h2>Whole Month</h2>
       <progress-sections
-        :s1="monthHelper?.getSleepProgress()"
+        :s1="monthHelper?.getWellBeingProgress()"
         :s2="monthHelper?.getWaterProgress()"
         :s3="monthHelper?.getFoodProgress()"
         :s4="monthHelper?.getExerciseProgress()">

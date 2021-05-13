@@ -26,7 +26,7 @@ export default {
     <router-link to="/progress/day" class="card mb-16-p-16">
       <h2>Today's Goals</h2>
       <progress-sections
-        :s1="dayHelper.getSleepProgress()"
+        :s1="dayHelper.getWellBeingProgress()"
         :s2="dayHelper.getWaterProgress()"
         :s3="dayHelper.getFoodProgress()"
         :s4="dayHelper.getExerciseProgress()">
@@ -37,7 +37,7 @@ export default {
       <router-link to="/progress/week" class="card mb-16-p-16">
         <h2>This Week</h2>
         <progress-sections
-          :s1="weekHelper.getSleepProgress()"
+          :s1="weekHelper.getWellBeingProgress()"
           :s2="weekHelper.getWaterProgress()"
           :s3="weekHelper.getFoodProgress()"
           :s4="weekHelper.getExerciseProgress()">
@@ -47,7 +47,7 @@ export default {
       <router-link to="/progress/month" class="card mb-16-p-16">
         <h2>This Month</h2>
         <progress-sections
-          :s1="monthHelper.getSleepProgress()"
+          :s1="monthHelper.getWellBeingProgress()"
           :s2="monthHelper.getWaterProgress()"
           :s3="monthHelper.getFoodProgress()"
           :s4="monthHelper.getExerciseProgress()">

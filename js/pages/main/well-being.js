@@ -11,13 +11,10 @@ import { ProgressCompanion, DayHelper } from '../../helpers/progress.js'
 
 export default {
   name: 'well-being',
-  computed: {
-    sleepProgress() {
-      const progress = (new DayHelper().progress.sleep * 100) / (ProgressCompanion.maxSleep)
-      return progress > 100 ? 100 : progress
-    },
-    meditationProgress() {
-      return 100
+  data() {
+    return {
+      sleep: 0,
+      meditation: 0
     }
   },
   template:
@@ -25,14 +22,14 @@ export default {
     <h2 class="mt-16 mx-8 secondary-title">Feel Good</h2>
     <p class="mt-0 mb-48 mx-8">It's time to care about yourself!</p>
     <router-link to="/well-being/sleep" class="card mb-16-p-16 flex center">
-      <progress-ring class="big-c-icon" radius="32" :progress="sleepProgress" stroke="6"></progress-ring>
+      <progress-ring class="big-c-icon" radius="32" :progress="sleep" stroke="6"></progress-ring>
       <div>
         <h2 class="m-0 mt-2">Sleep</h2>
         <p>Get your daily amount of sleep</p>
       </div>
     </router-link>
     <router-link to="/well-being/meditation" class="card mb-16-p-16 flex center">
-      <progress-ring class="big-c-icon" radius="32" :progress="meditationProgress" stroke="6"></progress-ring>
+      <progress-ring class="big-c-icon" radius="32" :progress="meditation" stroke="6"></progress-ring>
       <div>
         <h2 class="m-0 mt-2">Meditation</h2>
         <p>Time to find balance</p>
@@ -45,6 +42,13 @@ export default {
       PageTabBar,
       ProgressRing,
       ListItemImage
+  },
+  created() {
+    const helper = new DayHelper()
+    const sleep = (helper.progress.sleep * 100) / (ProgressCompanion.maxSleep)
+    const meditation = (helper.progress.meditation * 100) / (ProgressCompanion.maxMeditation)
+    this.sleep = sleep > 100 ? 100 : sleep
+    this. meditation = meditation > 100 ? 100 : meditation
   },
   mounted() {
     if (localStorage.getItem('help_well_being') == null) {

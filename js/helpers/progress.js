@@ -27,8 +27,8 @@ function getDefaultObject() {
   }
 }
 
-function getAverageProgress(progressObj, companionObj, keys) {
-  return keys.reduce((acc, key) => acc + (progressObj[key] || 0) / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
+function getAverageProgress(progressObj, keys) {
+  return keys.reduce((acc, key) => acc + (progressObj[key] || 0) / ProgressCompanion['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
 }
 
 class DayHelper {
@@ -39,20 +39,20 @@ class DayHelper {
   saveProgress() {
     JsonHelper.set(this.dateId, this.progress)
   }
-  getSleepProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['sleep'])
+  getWellBeingProgress() {
+    return getAverageProgress(this.progress, ['sleep']) + getAverageProgress(this.progress, ['meditation']) / 2
   }
   getWaterProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['water'])
+    return getAverageProgress(this.progress, ['water'])
   }
   getFoodProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['calories', 'fat', 'carbs', 'proteins'])
+    return getAverageProgress(this.progress, ['calories', 'fat', 'carbs', 'proteins'])
   }
   getExerciseProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['exercises', 'yoga']) * 2
+    return getAverageProgress(this.progress, ['exercises', 'yoga']) * 2
   }
   getProgress() {
-    return (2 * this.getSleepProgress() + 2 * this.getWaterProgress() + 2 * this.getFoodProgress() + this.getExerciseProgress()) / 7
+    return (2 * this.getWellBeingProgress() + 2 * this.getWaterProgress() + 2 * this.getFoodProgress() + this.getExerciseProgress()) / 7
   }
 }
 
@@ -78,8 +78,8 @@ class WeekHelper {
   getProgress() {
     return this.getWeeksProgress(helper => helper.getProgress())
   }
-  getSleepProgress() {
-    return this.getWeeksProgress(helper => helper.getSleepProgress())
+  getWellBeingProgress() {
+    return this.getWeeksProgress(helper => helper.getWellBeingProgress())
   }
   getWaterProgress() {
     return this.getWeeksProgress(helper => helper.getWaterProgress())
@@ -118,8 +118,8 @@ class MonthHelper {
   getProgress() {
     return this.getMonthsProgress(helper => helper.getProgress())
   }
-  getSleepProgress() {
-    return this.getMonthsProgress(helper => helper.getSleepProgress())
+  getWellBeingProgress() {
+    return this.getMonthsProgress(helper => helper.getWellBeingProgress())
   }
   getWaterProgress() {
     return this.getMonthsProgress(helper => helper.getWaterProgress())

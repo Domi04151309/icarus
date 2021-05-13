@@ -31,53 +31,47 @@ export default {
     }
   },
   template:
-    `<page :title="title" parent="/progress">
-      <div class="card mb-16-p-16">
-        <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
-        <progress-sections
-          :s1="helper.getSleepProgress()"
-          :s2="helper.getWaterProgress()"
-          :s3="helper.getFoodProgress()"
-          :s4="helper.getExerciseProgress()">
-        </progress-sections>
-        <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>
+  `<page :title="title" parent="/progress">
+    <div class="card mb-16-p-16">
+      <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
+      <progress-sections
+        :s1="helper.getWellBeingProgress()"
+        :s2="helper.getWaterProgress()"
+        :s3="helper.getFoodProgress()"
+        :s4="helper.getExerciseProgress()">
+      </progress-sections>
+      <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>
+    </div>
+    <div class="card mb-16-p-16">
+      <h2>Daily View <span class="material-icons-round c-icon">pending_actions</span></h2>
+      <div class="flex vertical-container">
+        <progress v-for="(item, index) in week" :key="index" class="vertical" max="100" :value="item"></progress>
       </div>
-      <div class="card mb-16-p-16">
-        <h2>Daily View <span class="material-icons-round c-icon">pending_actions</span></h2>
-        <div class="flex vertical-container">
-          <progress v-for="(item, index) in week" :key="index" class="vertical" max="100" :value="item"></progress>
-        </div>
-        <div class="flex space">
-          <p>S</p>
-          <p>M</p>
-          <p>T</p>
-          <p>W</p>
-          <p>T</p>
-          <p>F</p>
-          <p>S</p>
-        </div>
+      <div class="flex space">
+        <p>S</p><p>M</p><p>T</p><p>W</p><p>T</p><p>F</p><p>S</p>
       </div>
-      <div class="card mb-16-p-16">
-        <h2>Compared to Last Week <span class="material-icons-round c-icon">sync_alt</span></h2>
-        <div class="grid-3">
-          <p class="progress-text mt-8 mb-16">Last Week</p>
-          <span></span>
-          <p class="progress-text mt-8 mb-16">This Week</p>
-          <progress class="reverse mb-16 deep-purple" max="100" :value="lastSleep"></progress>
-          <p class="progress-text">Well-Being</p>
-          <progress class="mb-16 deep-purple" max="100" :value="sleep"></progress>
-          <progress class="reverse mb-16 indigo" max="100" :value="lastWater"></progress>
-          <p class="progress-text">Water</p>
-          <progress class="mb-16 indigo" max="100" :value="water"></progress>
-          <progress class="reverse mb-16 green" max="100" :value="lastFood"></progress>
-          <p class="progress-text">Food</p>
-          <progress class="mb-16 green" max="100" :value="food"></progress>
-          <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
-          <p class="progress-text">Active Time</p>
-          <progress class="mb-16 red" max="100" :value="exercises"></progress>
-        </div>
+    </div>
+    <div class="card mb-16-p-16">
+      <h2>Compared to Last Week <span class="material-icons-round c-icon">sync_alt</span></h2>
+      <div class="grid-3">
+        <p class="progress-text mt-8 mb-16">Last Week</p>
+        <span></span>
+        <p class="progress-text mt-8 mb-16">This Week</p>
+        <progress class="reverse mb-16 deep-purple" max="100" :value="lastSleep"></progress>
+        <p class="progress-text">Well-Being</p>
+        <progress class="mb-16 deep-purple" max="100" :value="sleep"></progress>
+        <progress class="reverse mb-16 indigo" max="100" :value="lastWater"></progress>
+        <p class="progress-text">Water</p>
+        <progress class="mb-16 indigo" max="100" :value="water"></progress>
+        <progress class="reverse mb-16 green" max="100" :value="lastFood"></progress>
+        <p class="progress-text">Food</p>
+        <progress class="mb-16 green" max="100" :value="food"></progress>
+        <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
+        <p class="progress-text">Active Time</p>
+        <progress class="mb-16 red" max="100" :value="exercises"></progress>
       </div>
-    </page>`,
+    </div>
+  </page>`,
   components: {
     Page,
     ProgressSections
@@ -100,7 +94,7 @@ export default {
     this.lastWater = this.helper.getWaterProgress() * 100
     this.lastFood = this.helper.getFoodProgress() * 100
     this.lastExercises = this.helper.getExerciseProgress() * 100
-    this.lastSleep = this.helper.getSleepProgress() * 100
+    this.lastSleep = this.helper.getWellBeingProgress() * 100
 
     this.helper = new WeekHelper(dateId)
 
@@ -115,6 +109,6 @@ export default {
     this.water = this.helper.getWaterProgress() * 100
     this.food = this.helper.getFoodProgress() * 100
     this.exercises = this.helper.getExerciseProgress() * 100
-    this.sleep = this.helper.getSleepProgress() * 100
+    this.sleep = this.helper.getWellBeingProgress() * 100
   }
 }

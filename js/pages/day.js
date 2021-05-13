@@ -28,7 +28,7 @@ export default {
       <div class="card mb-16-p-16">
         <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
         <progress-sections
-          :s1="helper.getSleepProgress()"
+          :s1="helper.getWellBeingProgress()"
           :s2="helper.getWaterProgress()"
           :s3="helper.getFoodProgress()"
           :s4="helper.getExerciseProgress()">

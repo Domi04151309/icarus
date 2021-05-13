@@ -170,7 +170,8 @@ export default {
     },
     onFinishClicked() {
       const dayHelper = new DayHelper()
-      dayHelper.progress.exercises += 1
+      if (parseInt(this.$route.query.posX, 10) == 1) dayHelper.progress.yoga += 1
+      else dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
       ExerciseHelper.addRecentExercise([
         parseInt(this.$route.query.posX, 10),

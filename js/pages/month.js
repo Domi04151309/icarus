@@ -34,7 +34,7 @@ export default {
     <div class="card mb-16-p-16">
       <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
       <progress-sections
-        :s1="helper.getSleepProgress()"
+        :s1="helper.getWellBeingProgress()"
         :s2="helper.getWaterProgress()"
         :s3="helper.getFoodProgress()"
         :s4="helper.getExerciseProgress()">
@@ -97,7 +97,7 @@ export default {
     this.lastWater = this.helper.getWaterProgress() * 100
     this.lastFood = this.helper.getFoodProgress() * 100
     this.lastExercises = this.helper.getExerciseProgress() * 100
-    this.lastSleep = this.helper.getSleepProgress() * 100
+    this.lastSleep = this.helper.getWellBeingProgress() * 100
 
     this.helper = new MonthHelper(dateId)
 
@@ -115,6 +115,6 @@ export default {
     this.water = this.helper.getWaterProgress() * 100
     this.food = this.helper.getFoodProgress() * 100
     this.exercises = this.helper.getExerciseProgress() * 100
-    this.sleep = this.helper.getSleepProgress() * 100
+    this.sleep = this.helper.getWellBeingProgress() * 100
   }
 }
