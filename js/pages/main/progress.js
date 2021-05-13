@@ -67,24 +67,18 @@ export default {
       </div>
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
-    <div class="disabled">
-    <router-link to="" class="card mb-16-p-16">
-      <h2>Calories</h2>
-      <p>Track your calories</p>
-    </router-link>
-    <router-link to="" class="card mb-16-p-16">
+    <router-link to="/progress/tracking?i=weight" class="card mb-16-p-16">
       <h2>Weight</h2>
       <p>Track your weight</p>
     </router-link>
-    <router-link to="" class="card mb-16-p-16">
+    <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16-p-16">
       <h2>Blood Pressure</h2>
       <p>Track your blood pressure</p>
     </router-link>
-    <router-link to="" class="card p-16">
+    <router-link to="/progress/tracking?i=bloodsugar" class="card p-16">
       <h2>Blood Sugar</h2>
       <p>Track your blood sugar</p>
     </router-link>
-    </div>
     <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {
