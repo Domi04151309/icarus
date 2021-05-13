@@ -23,8 +23,9 @@ export default {
   },
   methods: {
     async handleClick() {
-      if (await window.checkVerification(this.$refs.code.value)) {
-        localStorage.setItem('verification', this.$refs.code.value)
+      let input = await window.encrypt(this.$refs.code.value)
+      if (await window.checkVerification(input)) {
+        localStorage.setItem('verification', input)
         if (localStorage.getItem('setup_complete')) this.$router.push('/progress')
         else this.$router.push('/setup/welcome')
       } else {

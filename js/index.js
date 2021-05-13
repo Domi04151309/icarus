@@ -116,14 +116,15 @@ window.addEventListener('popstate', () => {
   window.backButtonPress = true
 })
 
-window.checkVerification = async code => {
+window.encrypt = async input => {
   return Array.from(
     new Uint8Array(
-      await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code))
+      await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input))
     )
-  ).map(
-    b => b.toString(16).padStart(2, '0')
-  ).join('') == '86a23973ebb571680483f592b7b87325cba446ee35e9dcd4b1459a56964e6835'
+  ).map(b => b.toString(16).padStart(2, '0')).join('')
+}
+window.checkVerification = async code => {
+  return await window.encrypt(code) == '6bed48070d152496ee432522d738fa1fbf5e933a52f6ddbe2cf56a55aaace01d'
 }
 
 router.beforeEach((to, from, next) => {

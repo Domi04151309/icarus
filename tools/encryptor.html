@@ -1,19 +1,27 @@
+<link rel="stylesheet" type="text/css" href="./main.css" />
 <h1>Encryptor</h1>
+<p>This tool is for generating access keys.</p>
 <h2>Input</h2>
 <input id="input" type="text" autocomplete="off">
-<button type="button" onclick="encrypt()">Encrypt</button>
+<button type="button" onclick="calc()">Encrypt</button>
 <h2>Output</h2>
-<p id="result"></p>
+<samp id="result">Input something first.</samp><br>
+<samp id="result2"></samp>
 <script>
   const inputElement = document.getElementById('input')
   const resultElement = document.getElementById('result')
-  async function encrypt() {
-    resultElement.innerHTML = Array.from(
+  const result2Element = document.getElementById('result2')
+
+  async function calc() {
+    resultElement.innerHTML = await encrypt(inputElement.value)
+    result2Element.innerHTML = await encrypt(await encrypt(inputElement.value))
+  }
+
+  async function encrypt(input) {
+    return Array.from(
       new Uint8Array(
-        await crypto.subtle.digest('SHA-256',new TextEncoder().encode(inputElement.value))
+        await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input))
       )
-    ).map(
-      b => b.toString(16).padStart(2, '0')
-    ).join('')
+    ).map(b => b.toString(16).padStart(2, '0')).join('')
   }
 </script>
