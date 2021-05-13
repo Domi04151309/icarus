@@ -27,14 +27,14 @@ export default {
     <router-link to="/well-being/sleep" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="sleepProgress" stroke="6"></progress-ring>
       <div>
-        <h2 class="m-0">Sleep</h2>
+        <h2 class="m-0 mt-2">Sleep</h2>
         <p>Get your daily amount of sleep</p>
       </div>
     </router-link>
     <router-link to="/well-being/meditation" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="meditationProgress" stroke="6"></progress-ring>
       <div>
-        <h2 class="m-0">Meditation</h2>
+        <h2 class="m-0 mt-2">Meditation</h2>
         <p>Time to find balance</p>
       </div>
     </router-link>

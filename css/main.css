@@ -314,11 +314,14 @@ svg {
   font-size: 32px;
   margin: 0 32px 0 16px;
 }
-.card:not(.intro) > h2:first-child {
+.card > h2:first-child {
   margin: 0 0 8px;
 }
 .card > h3:last-child {
   margin-bottom: 0;
+}
+.card > p:last-child {
+  margin-bottom: 4px;
 }
 h2 > .c-icon {
   color: var(--text-color-secondary);
@@ -563,6 +566,9 @@ h2 > .c-icon {
 }
 .mt-0 {
   margin-top: 0;
+}
+.mt-2 {
+  margin-top: 2px;
 }
 .mt-16 {
   margin-top: 16px;

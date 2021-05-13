@@ -33,14 +33,14 @@ export default {
     <router-link to="/nutrition/healthy" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="healthyProgress" stroke="6"></progress-ring>
       <div>
-        <h2 class="m-0">Healthy Food</h2>
+        <h2 class="m-0 mt-2">Healthy Food</h2>
         <p>Food that's good for you</p>
       </div>
     </router-link>
     <router-link to="/nutrition/casual" class="card mb-16-p-16 flex center">
       <progress-ring class="big-c-icon" radius="32" :progress="casualProgress" stroke="6"></progress-ring>
       <div>
-        <h2 class="m-0">Casual Food</h2>
+        <h2 class="m-0 mt-2">Casual Food</h2>
         <p>Food that's delicious</p>
       </div>
     </router-link>
