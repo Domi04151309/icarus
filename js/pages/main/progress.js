@@ -77,7 +77,7 @@ export default {
       </div>
       <div class="big mr-16">{{ info?.bloodpressure || 0 }}</div>
     </router-link>
-    <router-link to="/progress/tracking?i=bloodsugar" class="card p-16 flex center between">
+    <router-link to="/progress/tracking?i=bloodsugar" class="card mb-48 p-16 flex center between">
       <div>
         <h2 class="m-0">Blood Sugar</h2>
         <p>Track your blood sugar</p>
