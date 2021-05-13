@@ -382,7 +382,7 @@ h2 > .c-icon {
   color: var(--accent-color);
   vertical-align: top;
 }
-.material-icons-round.big {
+.big {
   font-size: 32px;
 }
 .material-icons-round.accent {
@@ -425,22 +425,6 @@ h2 > .c-icon {
 }
 .question button.selected {
   border: 2px solid var(--accent-color);
-}
-
-/* accent cards */
-.card.intro {
-  background: var(--accent-color-gradient);
-}
-.card.intro > * {
-  margin: 1em 0;
-  color: var(--text-color-dark);
-}
-.card.intro.big > * {
-  margin: 1.5em 0;
-}
-.card.intro .c-icon {
-  vertical-align: top;
-  margin-right: 16px;
 }
 
 /* image cards */
@@ -497,7 +481,7 @@ h2 > .c-icon {
   padding: 16px;
   color: var(--text-color-secondary);
   text-align: center;
-  content: 'There are currently no entries. Press the button in the bottom right to add entries.'
+  content: 'There are currently no entries. Press the button on the bottom right to add entries.'
 }
 .disabled {
   opacity: .38;

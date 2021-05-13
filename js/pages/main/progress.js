@@ -4,6 +4,7 @@ import PageTabBar from '../../components/page-tab-bar.js'
 import ProgressSections from '../../components/progress-sections.js'
 import Modal from '../../components/modal.js'
 
+import JsonHelper from '../../helpers/json.js'
 import Identifiers from '../../helpers/identifiers.js'
 import { DayHelper, WeekHelper, MonthHelper } from '../../helpers/progress.js'
 
@@ -13,19 +14,14 @@ export default {
     return {
       dayHelper: new DayHelper(),
       weekHelper: new WeekHelper(Identifiers.getDateId()),
-      monthHelper: new MonthHelper(Identifiers.getDateId())
-    }
-  },
-  computed: {
-    name() {
-      const stored = localStorage.getItem('info')
-      return stored ? JSON.parse(stored).name : null
+      monthHelper: new MonthHelper(Identifiers.getDateId()),
+      info: JsonHelper.get('info', () => { return {} })
     }
   },
   template:
   `<page-tab-bar>
     <div class="mt-16 mx-8 material-icons-round big accent">waves</div>
-    <h2 class="mx-8 secondary-title">Welcome Back {{ name }}</h2>
+    <h2 class="mx-8 secondary-title">Welcome Back {{ info?.name }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <router-link to="/progress/day" class="card mb-16-p-16">
       <h2>Today's Goals</h2>
@@ -67,17 +63,26 @@ export default {
       </div>
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
-    <router-link to="/progress/tracking?i=weight" class="card mb-16-p-16">
-      <h2>Weight</h2>
-      <p>Track your weight</p>
+    <router-link to="/progress/tracking?i=weight" class="card mb-16-p-16 flex center between">
+      <div>
+        <h2 class="m-0">Weight</h2>
+        <p>Track your weight</p>
+      </div>
+      <div class="big mr-16">{{ info?.weight || 0 }}</div>
     </router-link>
-    <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16-p-16">
-      <h2>Blood Pressure</h2>
-      <p>Track your blood pressure</p>
+    <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16-p-16 flex center between">
+      <div>
+        <h2 class="m-0">Blood Pressure</h2>
+        <p>Track your blood pressure</p>
+      </div>
+      <div class="big mr-16">{{ info?.bloodpressure || 0 }}</div>
     </router-link>
-    <router-link to="/progress/tracking?i=bloodsugar" class="card p-16">
-      <h2>Blood Sugar</h2>
-      <p>Track your blood sugar</p>
+    <router-link to="/progress/tracking?i=bloodsugar" class="card p-16 flex center between">
+      <div>
+        <h2 class="m-0">Blood Sugar</h2>
+        <p>Track your blood sugar</p>
+      </div>
+      <div class="big mr-16">{{ info?.bloodsugar || 0 }}</div>
     </router-link>
     <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,

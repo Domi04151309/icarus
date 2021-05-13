@@ -26,7 +26,7 @@ export default {
       <li v-for="(item, index) in items" :key="index">
         <span v-on:click="onDeleteClicked(index)">
           <small class="p">{{ new Date(item.time).toLocaleDateString([], { dateStyle: 'medium' }) }}</small><br>
-          {{ item.value }} {{ fragments[fragment].unit }}
+          {{ item.values.join('/') }} {{ fragments[fragment].unit }}
         </span>
       </li>
     </ul>

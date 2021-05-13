@@ -1,18 +1,22 @@
 export default {
   default: {
     title: 'Tracking',
-    unit: ''
+    unit: '',
+    values: []
   },
   weight: {
     title: 'Weight',
-    unit: 'kg'
+    unit: 'kg',
+    values: ['Weight']
   },
   bloodpressure: {
     title: 'Blood Pressure',
-    unit: 'mmHg'
+    unit: 'mm Hg',
+    values: ['Systolic (upper)', 'Diastolic (lower)']
   },
   bloodsugar: {
     title: 'Blood Sugar',
-    unit: 'mg/dL'
+    unit: 'mg/dL',
+    values: ['Blood Sugar']
   }
 }

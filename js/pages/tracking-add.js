@@ -10,15 +10,17 @@ export default {
     return {
       fragments: Fragments,
       fragment: 'default',
-      value: 0,
+      values: [],
       date: '',
       time: ''
     }
   },
   template:
   `<page :title="'Add ' + fragments[fragment].title" :parent="'/progress/tracking?i=' + fragment">
-    <label for="value">Value ({{ fragments[fragment].unit }})</label>
-    <input id="value" v-model="value" type="number" class="mb-16"></input>
+    <div v-for="(item, index) in fragments[fragment].values" :key="index">
+      <label :for="'value' + index">{{ item }} ({{ fragments[fragment].unit }})</label>
+      <input :id="'value' + index" v-model="values[index]" type="number" class="mb-16"></input>
+    </div>
     <label for="date">Date</label>
     <input id="date" v-model="date" type="date" class="mb-16"></input>
     <label for="time">Time</label>
@@ -30,17 +32,21 @@ export default {
   },
   methods: {
     onFabClicked() {
-      const stored = JsonHelper.get(this.fragment, () => [])
-      stored.unshift({
-        time: new Date(this.date + 'T' + this.time).getTime(),
-        value: this.value
-      })
-      JsonHelper.set(this.fragment, stored)
+      if (this.values.length != 0) {
+        const stored = JsonHelper.get(this.fragment, () => [])
+        const millis = new Date(this.date + 'T' + this.time).getTime()
+        stored.unshift({
+          time: millis,
+          values: this.values
+        })
+        JsonHelper.set(this.fragment, stored)
 
-      const info = JsonHelper.get('info', () => { return {} })
-      info[this.fragment] = this.value
-      JsonHelper.set('info', info)
-
+        if (stored.sort((a, b) => b.time - a.time)[0].time == millis) {
+          const info = JsonHelper.get('info', () => { return {} })
+          info[this.fragment] = this.values.join('/')
+          JsonHelper.set('info', info)
+        }
+      }
       this.$router.push('/progress/tracking?i=' + this.fragment)
     }
   },
@@ -52,7 +58,7 @@ export default {
 
     const date = new Date()
     this.date = `${date.getUTCFullYear()}-${String(date.getUTCMonth()).padStart(2, '0')}-${String(date.getUTCDate()).padStart(2, '0')}`
-    this.time = `${date.getUTCHours()}:${date.getUTCMinutes()}`
+    this.time = `${String(date.getUTCHours()).padStart(2, '0')}:${String(date.getUTCMinutes()).padStart(2, '0')}`
   },
   mounted() {
     setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
