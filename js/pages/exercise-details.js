@@ -180,6 +180,7 @@ export default {
       ])
       const item = {}
       item.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
+      item.category = parseInt(this.$route.query.posX, 10)
       item.information = this.exerciseItem.information
       item.exp = this.intensityToExp()
       ExerciseHelper.addExerciseToStatistic(item)

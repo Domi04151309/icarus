@@ -10,20 +10,32 @@ export default {
     food.healthy.forEach(item => {
       if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
       else item.type = 'You consumed something healthy'
-      item.icon = 'restaurant_menu'
+      if (item.item.unit == 'ml') item.icon = 'emoji_food_beverage'
+      else item.icon = 'restaurant_menu'
       item.details = 'You earned 2 exp for this item!'
       items.push(item)
     })
     food.casual.forEach(item => {
       if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
       else item.type = 'You consumed something casual'
-      item.icon = 'fastfood'
+      if (item.item.unit == 'ml') item.icon = 'local_bar'
+      else item.icon = 'fastfood'
       items.push(item)
     })
     ExerciseHelper.getStatistics().forEach(item => {
       if (item.item != null) item.type = item.item.title
       else item.type = 'You did an exercise'
-      item.icon = 'directions_run'
+      console.log(item.item)
+      switch (item.item.category) {
+        case 1:
+          item.icon = 'self_improvement'
+          break
+        case 2:
+          item.icon = 'fitness_center'
+          break
+        default:
+          item.icon = 'directions_run'
+      }
       item.details = 'You earned ' + item.item.exp + ' exp for this item!'
       items.push(item)
     })
