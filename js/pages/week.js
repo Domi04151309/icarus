@@ -64,7 +64,7 @@ export default {
           <span></span>
           <p class="progress-text mt-8 mb-16">This Week</p>
           <progress class="reverse mb-16 deep-purple" max="100" :value="lastSleep"></progress>
-          <p class="progress-text">Sleep</p>
+          <p class="progress-text">Well-Being</p>
           <progress class="mb-16 deep-purple" max="100" :value="sleep"></progress>
           <progress class="reverse mb-16 indigo" max="100" :value="lastWater"></progress>
           <p class="progress-text">Water</p>
@@ -73,7 +73,7 @@ export default {
           <p class="progress-text">Food</p>
           <progress class="mb-16 green" max="100" :value="food"></progress>
           <progress class="reverse mb-16 red" max="100" :value="lastExercises"></progress>
-          <p class="progress-text">Exercices</p>
+          <p class="progress-text">Active Time</p>
           <progress class="mb-16 red" max="100" :value="exercises"></progress>
         </div>
       </div>

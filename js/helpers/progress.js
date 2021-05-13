@@ -8,7 +8,9 @@ const ProgressCompanion = {
   maxCarbs: 325,
   maxProteins: 56,
   maxExercises: 1,
-  maxSleep: 9
+  maxYoga: 1,
+  maxSleep: 9,
+  maxMeditation: 1
 }
 
 function getDefaultObject() {
@@ -19,12 +21,14 @@ function getDefaultObject() {
     carbs: 0,
     proteins: 0,
     exercises: 0,
-    sleep: 0
+    yoga: 0,
+    sleep: 0,
+    meditation: 0
   }
 }
 
 function getAverageProgress(progressObj, companionObj, keys) {
-  return keys.reduce((acc, key) => acc + progressObj[key] / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
+  return keys.reduce((acc, key) => acc + (progressObj[key] || 0) / companionObj['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
 }
 
 class DayHelper {
@@ -35,6 +39,9 @@ class DayHelper {
   saveProgress() {
     JsonHelper.set(this.dateId, this.progress)
   }
+  getSleepProgress() {
+    return getAverageProgress(this.progress, ProgressCompanion, ['sleep'])
+  }
   getWaterProgress() {
     return getAverageProgress(this.progress, ProgressCompanion, ['water'])
   }
@@ -42,13 +49,10 @@ class DayHelper {
     return getAverageProgress(this.progress, ProgressCompanion, ['calories', 'fat', 'carbs', 'proteins'])
   }
   getExerciseProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['exercises'])
-  }
-  getSleepProgress() {
-    return getAverageProgress(this.progress, ProgressCompanion, ['sleep'])
+    return getAverageProgress(this.progress, ProgressCompanion, ['exercises', 'yoga']) * 2
   }
   getProgress() {
-    return (this.getWaterProgress() + this.getFoodProgress() + this.getExerciseProgress() + this.getSleepProgress()) / 4
+    return (2 * this.getSleepProgress() + 2 * this.getWaterProgress() + 2 * this.getFoodProgress() + this.getExerciseProgress()) / 7
   }
 }
 
@@ -74,6 +78,9 @@ class WeekHelper {
   getProgress() {
     return this.getWeeksProgress(helper => helper.getProgress())
   }
+  getSleepProgress() {
+    return this.getWeeksProgress(helper => helper.getSleepProgress())
+  }
   getWaterProgress() {
     return this.getWeeksProgress(helper => helper.getWaterProgress())
   }
@@ -82,9 +89,6 @@ class WeekHelper {
   }
   getExerciseProgress() {
     return this.getWeeksProgress(helper => helper.getExerciseProgress())
-  }
-  getSleepProgress() {
-    return this.getWeeksProgress(helper => helper.getSleepProgress())
   }
 }
 
@@ -114,6 +118,9 @@ class MonthHelper {
   getProgress() {
     return this.getMonthsProgress(helper => helper.getProgress())
   }
+  getSleepProgress() {
+    return this.getMonthsProgress(helper => helper.getSleepProgress())
+  }
   getWaterProgress() {
     return this.getMonthsProgress(helper => helper.getWaterProgress())
   }
@@ -122,9 +129,6 @@ class MonthHelper {
   }
   getExerciseProgress() {
     return this.getMonthsProgress(helper => helper.getExerciseProgress())
-  }
-  getSleepProgress() {
-    return this.getMonthsProgress(helper => helper.getSleepProgress())
   }
 }
 

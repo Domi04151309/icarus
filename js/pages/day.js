@@ -46,6 +46,15 @@ export default {
         <p>
           Getting enough quality sleep at the right times can improve your mental and physical health.
         </p>
+        <h3>Meditation <span class="p">{{ helper.progress.meditation }}/{{ ProgressCompanion.maxMeditation }}</span></h3>
+        <div class="flex my-24 deep-purple">
+          <button class="progress-control left" type="button" v-on:click="removeOne('meditation')">&minus;</button>
+          <progress :max="ProgressCompanion.maxMeditation" :value="helper.progress.meditation"></progress>
+          <button class="progress-control right" type="button" v-on:click="addOne('meditation')">+</button>
+        </div>
+        <p>
+          Meditation can help you get into a deeper state of relaxation and awareness.
+        </p>
       </div>
       <div class="card mb-16-p-16">
         <h2>Nutrition <span class="material-icons-round c-icon">restaurant_menu</span></h2>
@@ -105,6 +114,15 @@ export default {
         </div>
         <p>
           Exercises are great for testing and improving your abilites and performance.
+        </p>
+        <h3>Yoga <span class="p">{{ helper.progress.yoga }}/{{ ProgressCompanion.maxYoga }}</span></h3>
+        <div class="flex my-24 red">
+          <button class="progress-control left" type="button" v-on:click="removeOne('yoga')">&minus;</button>
+          <progress :max="ProgressCompanion.maxYoga" :value="helper.progress.yoga"></progress>
+          <button class="progress-control right" type="button" v-on:click="addOne('yoga')">+</button>
+        </div>
+        <p>
+          Yoga can help you free your body from pains and problems.
         </p>
       </div>
     </page>`,
