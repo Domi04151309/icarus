@@ -10,32 +10,44 @@ export default {
       title: 'Calendar',
       month: 0,
       year: 0,
+      days: [],
+      weeks: [],
       monthHelper: { }
     }
   },
   computed: {
     months: () => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novemeber', 'Decemeber'],
-    days: () => ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']
+    weekDays: () => ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']
   },
   template:
   `<page :title="title" parent="/progress" id="calendar">
     <div class="card mb-16-p-16">
       <h2>
-        <span id="month-title"></span>
+        <span>{{ months[month] }}</span>
         <div class="controls">
-          <button type="button" id="prev-month">Previous</button>
-          <button type="button" id="next-month">Next</button>
+          <button type="button" v-on:click="prevMonth()">Previous</button>
+          <button type="button" v-on:click="nextMonth()">Next</button>
         </div>
       </h2>
       <h3>
-        <span id="year"></span>
+        <span>{{ year }}</span>
         <div class="controls">
-          <button type="button" id="prev-y">Previous</button>
-          <button type="button" id="next-y">Next</button>
+          <button type="button" v-on:click="prevYear()">Previous</button>
+          <button type="button" v-on:click="nextYear()">Next</button>
         </div>
       </h3>
     </div>
-    <div id="picker-container" class="card mb-16-p-16 text-center grid-7"></div>
+    <div class="card mb-16-p-16 text-center grid-7">
+      <div v-for="(item, i) in weekDays" :key="i + 200">{{ item }}</div>
+      <button
+        v-for="(item, i) in days"
+        :key="i"
+        :class="{ today: item.highlighted }"
+        type="button"
+        v-on:click="if (item.clickable) openDay(item.day)">
+          {{ item.title }}
+        </button>
+    </div>
     <div v-on:click="openMonth()" class="card mb-16-p-16">
       <h2>Whole Month</h2>
       <progress-sections
@@ -47,7 +59,9 @@ export default {
       <p>Click too see the whole month.</p>
     </div>
     <div class="card mb-16-p-16">
-      <div id="weeks" class="flex space"></div>
+      <div id="weeks" class="flex space">
+        <button v-for="(item, i) in weeks" :key="i + 100" type="button" v-on:click="openWeek(item.day)">{{ item.title }}</button>
+      </div>
     </div>
   </page>`,
   components: {
@@ -65,22 +79,11 @@ export default {
       this.$router.push('/progress/month?date=' + this.year + String(this.month + 1).padStart(2, '0') + '01')
     },
     getDays() {
-      let pickerContainer, weekContainer, dayNode, weekButton, i, j
-
-      pickerContainer = document.getElementById('picker-container')
-      pickerContainer.innerHTML = ''
-      weekContainer = document.getElementById('weeks')
-      weekContainer.innerHTML = ''
-      document.getElementById('month-title').innerHTML = this.months[this.month]
-      document.getElementById('year').innerHTML = this.year
+      let i, j
+      const days = []
+      const weeks = []
 
       this.monthHelper = new MonthHelper(this.year + String(this.month + 1).padStart(2, '0') + '01')
-
-      for (i = 0; i < 7; i++) {
-        dayNode = document.createElement('div')
-        dayNode.appendChild(document.createTextNode(this.days[i]))
-        pickerContainer.appendChild(dayNode)
-      }
 
       const firstDay = new Date(this.year, this.month, 1)
       const today = new Date()
@@ -91,73 +94,62 @@ export default {
         for (j = 0; j < 7; j++) {
           if (offset == 0) {
             if (dayCount > lastDay.getDate()) break
-            dayNode = document.createElement('button')
-            dayNode.type = 'button'
-            dayNode.addEventListener('click', event => {
-              this.openDay(event.target.innerHTML)
+            days.push({
+              title: dayCount,
+              clickable: true,
+              day: dayCount,
+              highlighted: dayCount == today.getDate()
+                && this.month == today.getMonth()
+                && this.year == today.getFullYear()
             })
-            dayNode.appendChild(document.createTextNode(dayCount))
-            if (
-              dayCount == today.getDate()
-              && this.month == today.getMonth()
-              && this.year == today.getFullYear()
-            ) dayNode.classList.add('today')
-            pickerContainer.appendChild(dayNode)
             dayCount++
           } else {
-            dayNode = document.createElement('div')
-            pickerContainer.appendChild(dayNode)
+            days.push({
+              title: '',
+              clickable: false
+            })
             offset--
           }
           if (j == 0) {
-            weekButton = document.createElement('button')
-            weekButton.type = 'button'
-            weekButton.dataset.day = dayCount
-            weekButton.addEventListener('click', event => {
-              this.openWeek(event.target.dataset.day)
+            weeks.push({
+              title: i + 1,
+              day: dayCount
             })
-            weekButton.appendChild(document.createTextNode(i + 1))
-            weekContainer.append(weekButton)
           }
         }
       }
-    }
-  },
-  created() {
-    this.monthHelper = new MonthHelper()
-  },
-  mounted() {
-    const date = new Date()
-    this.year = date.getFullYear()
-    this.month = date.getMonth()
-
-    document.getElementById('next-month').addEventListener('click', () => {
-      if (this.month < 11) this.month++
-      else {
-        this.year++
-        this.month = 0
-      }
-      this.getDays()
-    })
-
-    document.getElementById('prev-month').addEventListener('click', () => {
+      this.days = days
+      this.weeks = weeks
+    },
+    prevMonth() {
       if (this.month > 0) this.month--
       else {
         this.year--
         this.month = 11
       }
       this.getDays()
-    })
-
-    document.getElementById('next-y').addEventListener('click', () => {
-      this.year++
+    },
+    nextMonth() {
+      if (this.month < 11) this.month++
+      else {
+        this.year++
+        this.month = 0
+      }
       this.getDays()
-    })
-
-    document.getElementById('prev-y').addEventListener('click', () => {
+    },
+    prevYear() {
       this.year--
       this.getDays()
-    })
+    },
+    nextYear() {
+      this.year++
+      this.getDays()
+    }
+  },
+  created() {
+    const date = new Date()
+    this.year = date.getFullYear()
+    this.month = date.getMonth()
 
     this.getDays()
   }
