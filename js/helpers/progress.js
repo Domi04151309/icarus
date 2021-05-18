@@ -52,7 +52,7 @@ class DayHelper {
     return getAverageProgress(this.progress, ['exercises', 'yoga']) * 2
   }
   getProgress() {
-    return (2 * this.getWellBeingProgress() + 2 * this.getWaterProgress() + 2 * this.getFoodProgress() + this.getExerciseProgress()) / 7
+    return (2 * this.getWellBeingProgress() + 2 * this.getWaterProgress() + 2 * this.getFoodProgress() + this.getExerciseProgress()) / 6
   }
 }
 
