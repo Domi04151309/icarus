@@ -1,7 +1,8 @@
 import Page from '../components/page.js'
 import ProgressSections from '../components/progress-sections.js'
+import ProgressRing from '../components/progress-ring-responsive.js'
 
-import { MonthHelper } from '../helpers/progress.js'
+import { WeekHelper, MonthHelper } from '../helpers/progress.js'
 
 export default {
   name: 'calendar',
@@ -12,7 +13,8 @@ export default {
       year: 0,
       days: [],
       weeks: [],
-      monthHelper: { }
+      monthHelper: { },
+      circleRadius: 2
     }
   },
   computed: {
@@ -60,23 +62,27 @@ export default {
     </div>
     <div class="card mb-16-p-16">
       <div id="weeks" class="flex space">
-        <button v-for="(item, i) in weeks" :key="i + 100" type="button" v-on:click="openWeek(item.day)">{{ item.title }}</button>
+        <button v-for="(item, i) in weeks" :key="i + 100" class="relative p-2" type="button" v-on:click="openWeek(item.day)">
+          <span class="absolute">{{ item.title }}</span>
+          <progress-ring :radius="circleRadius" :progress="item.progress" stroke="4"></progress-ring>
+        </button>
       </div>
     </div>
   </page>`,
   components: {
       Page,
-      ProgressSections
+      ProgressSections,
+      ProgressRing
   },
   methods: {
     openDay(day) {
-      this.$router.push('/progress/day?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
+      this.$router.push(`/progress/day?date=${this.year}${String(this.month + 1).padStart(2, '0')}${String(day).padStart(2, '0')}`)
     },
     openWeek(day) {
-      this.$router.push('/progress/week?date=' + this.year + String(this.month + 1).padStart(2, '0') + String(day).padStart(2, '0'))
+      this.$router.push(`/progress/week?date=${this.year}${String(this.month + 1).padStart(2, '0')}${String(day).padStart(2, '0')}`)
     },
     openMonth() {
-      this.$router.push('/progress/month?date=' + this.year + String(this.month + 1).padStart(2, '0') + '01')
+      this.$router.push(`/progress/month?date=${this.year}${String(this.month + 1).padStart(2, '0')}01`)
     },
     getDays() {
       let i, j
@@ -111,9 +117,11 @@ export default {
             offset--
           }
           if (j == 0) {
+            const progress = new WeekHelper(`${this.year}${String(this.month + 1).padStart(2, '0')}${String(dayCount).padStart(2, '0')}`).getProgress() * 100
             weeks.push({
               title: i + 1,
-              day: dayCount
+              day: dayCount,
+              progress: progress > 100 ? 100 : progress
             })
           }
         }
@@ -152,5 +160,17 @@ export default {
     this.month = date.getMonth()
 
     this.getDays()
+
+    this.circleRadius = Math.min(window.innerWidth / 20, 24)
+    window.addEventListener('resize', () => {
+      this.circleRadius = Math.min(window.innerWidth / 20, 24)
+      document.querySelectorAll('circle').forEach(item => {
+        //Needed for correct svg position
+        item.style.transformOrigin = '0 0'
+        setTimeout(() => {
+          item.style.transformOrigin = '50% 50%'
+        }, 100)
+      })
+    })
   }
 }
