@@ -10,6 +10,7 @@ import Fragments from '../data/tracking.js'
 
 //TODO: Properly scale x axis
 //TODO: Filter by week, month, and year
+//TODO: Redraw graph on item delete
 
 export default {
   name: 'tracking',

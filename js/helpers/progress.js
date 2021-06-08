@@ -1,17 +1,6 @@
 import Identifiers from './identifiers.js'
+import MaxProgress from './progress-companion.js'
 import JsonHelper from './json.js'
-
-const MaxProgress = {
-  water: 16,
-  calories: 2500,
-  fat: 77,
-  carbs: 325,
-  proteins: 56,
-  exercises: 1,
-  yoga: 1,
-  sleep: 9,
-  meditation: 1
-}
 
 function getDefaultObject() {
   return {
