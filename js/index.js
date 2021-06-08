@@ -134,6 +134,11 @@ window.encrypt = async input => {
     )
   ).map(b => b.toString(16).padStart(2, '0')).join('')
 }
+window.checkHostname = async () => {
+  const hostname = await window.encrypt(location.hostname)
+  return hostname == '49960de5880e8c687434170f6476605b8fe4aeb9a28632c7995cf3ba831d9763'
+    || hostname == '61f46ecc76756e9e83de8c18b7ead29f2afdb64e512aacd5ad3a11daee79992a'
+}
 window.checkVerification = async code => {
   return await window.encrypt(code) == '6bed48070d152496ee432522d738fa1fbf5e933a52f6ddbe2cf56a55aaace01d'
 }
@@ -180,7 +185,9 @@ new Vue({
   },
   mounted() {
     const loadingScreen = document.getElementById('loading_screen')
-    loadingScreen.parentNode.removeChild(loadingScreen)
+    window.checkHostname().then(result => {
+      if (result) loadingScreen.parentNode.removeChild(loadingScreen)
+    })
 
     let darkTheme = null
     switch (localStorage.getItem('theme') || 'auto') {
