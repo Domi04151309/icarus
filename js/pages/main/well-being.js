@@ -5,7 +5,7 @@ import ProgressRing from '../../components/progress-ring.js'
 import ListItemImage from '../../components/list-item-image.js'
 import Modal from '../../components/modal.js'
 
-import { ProgressCompanion, DayHelper } from '../../helpers/progress.js'
+import { MaxProgress, DayHelper } from '../../helpers/progress.js'
 
 //TODO: Dynamically generate content
 
@@ -45,8 +45,8 @@ export default {
   },
   created() {
     const helper = new DayHelper()
-    const sleep = (helper.progress.sleep * 100) / (ProgressCompanion.maxSleep)
-    const meditation = (helper.progress.meditation * 100) / (ProgressCompanion.maxMeditation)
+    const sleep = (helper.progress.sleep * 100) / (MaxProgress.sleep)
+    const meditation = (helper.progress.meditation * 100) / (MaxProgress.meditation)
     this.sleep = sleep > 100 ? 100 : sleep
     this. meditation = meditation > 100 ? 100 : meditation
   },

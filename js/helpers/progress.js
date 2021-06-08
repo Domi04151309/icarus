@@ -1,16 +1,16 @@
 import Identifiers from './identifiers.js'
 import JsonHelper from './json.js'
 
-const ProgressCompanion = {
-  maxWater: 16,
-  maxCalories: 2500,
-  maxFat: 77,
-  maxCarbs: 325,
-  maxProteins: 56,
-  maxExercises: 1,
-  maxYoga: 1,
-  maxSleep: 9,
-  maxMeditation: 1
+const MaxProgress = {
+  water: 16,
+  calories: 2500,
+  fat: 77,
+  carbs: 325,
+  proteins: 56,
+  exercises: 1,
+  yoga: 1,
+  sleep: 9,
+  meditation: 1
 }
 
 function getDefaultObject() {
@@ -28,7 +28,7 @@ function getDefaultObject() {
 }
 
 function getAverageProgress(progressObj, keys) {
-  return keys.reduce((acc, key) => acc + (progressObj[key] || 0) / ProgressCompanion['max' + key.charAt(0).toUpperCase() + key.slice(1)], 0) / keys.length
+  return keys.reduce((acc, key) => acc + (progressObj[key] || 0) / MaxProgress[key], 0) / keys.length
 }
 
 class DayHelper {
@@ -160,5 +160,5 @@ const Achievement = {
 }
 
 export {
-  ProgressCompanion, DayHelper, WeekHelper, MonthHelper, Achievement
+  MaxProgress, DayHelper, WeekHelper, MonthHelper, Achievement
 }

@@ -4,7 +4,7 @@ import Page from '../components/page.js'
 import ProgressSections from '../components/progress-sections.js'
 import ModalInput from '../components/modal-input.js'
 
-import { ProgressCompanion, DayHelper } from '../helpers/progress.js'
+import { MaxProgress, DayHelper } from '../helpers/progress.js'
 
 export default {
   name: 'day',
@@ -21,7 +21,7 @@ export default {
       else
         return 'Progress of ' + this.readableDate
     },
-    ProgressCompanion: () => ProgressCompanion
+    MaxProgress: () => MaxProgress
   },
   template:
     `<page :title="title" parent="/progress">
@@ -37,19 +37,19 @@ export default {
       </div>
       <div class="card mb-16-p-16">
         <h2>Well-Being <span class="material-icons-round c-icon">hotel</span></h2>
-        <h3>Sleep <span class="p">{{ helper.progress.sleep }}/{{ ProgressCompanion.maxSleep }} hours</span></h3>
+        <h3>Sleep <span class="p">{{ helper.progress.sleep }}/{{ MaxProgress.sleep }} hours</span></h3>
         <div class="flex my-24 deep-purple">
           <button class="progress-control left" type="button" v-on:click="removeOne('sleep')">&minus;</button>
-          <progress :max="ProgressCompanion.maxSleep" :value="helper.progress.sleep"></progress>
+          <progress :max="MaxProgress.sleep" :value="helper.progress.sleep"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('sleep')">+</button>
         </div>
         <p>
           Getting enough quality sleep at the right times can improve your mental and physical health.
         </p>
-        <h3>Meditation <span class="p">{{ helper.progress.meditation }}/{{ ProgressCompanion.maxMeditation }}</span></h3>
+        <h3>Meditation <span class="p">{{ helper.progress.meditation }}/{{ MaxProgress.meditation }}</span></h3>
         <div class="flex my-24 deep-purple">
           <button class="progress-control left" type="button" v-on:click="removeOne('meditation')">&minus;</button>
-          <progress :max="ProgressCompanion.maxMeditation" :value="helper.progress.meditation"></progress>
+          <progress :max="MaxProgress.meditation" :value="helper.progress.meditation"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('meditation')">+</button>
         </div>
         <p>
@@ -58,46 +58,46 @@ export default {
       </div>
       <div class="card mb-16-p-16">
         <h2>Nutrition <span class="material-icons-round c-icon">restaurant_menu</span></h2>
-        <h3>Water <span class="p">{{ helper.progress.water }}/{{ ProgressCompanion.maxWater }} cups</span></h3>
+        <h3>Water <span class="p">{{ helper.progress.water }}/{{ MaxProgress.water }} cups</span></h3>
         <div class="flex my-24 indigo">
           <button class="progress-control left" type="button" v-on:click="removeOne('water')">&minus;</button>
-          <progress :max="ProgressCompanion.maxWater" :value="helper.progress.water"></progress>
+          <progress :max="MaxProgress.water" :value="helper.progress.water"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('water')">+</button>
         </div>
         <p>
           It's healthy to drink about 3.7 litres per day. Thats about 15 and a half cups of water.
         </p>
-        <h3>Calories <span class="p">{{ helper.progress.calories }}/{{ ProgressCompanion.maxCalories }} kcal</span></h3>
+        <h3>Calories <span class="p">{{ helper.progress.calories }}/{{ MaxProgress.calories }} kcal</span></h3>
         <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('calories')">&minus;</button>
-          <progress :max="ProgressCompanion.maxCalories" :value="helper.progress.calories"></progress>
+          <progress :max="MaxProgress.calories" :value="helper.progress.calories"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('calories')">+</button>
         </div>
         <p>
           Calories tell you about the general energy in your food.
         </p>
-        <h3>Fat <span class="p">{{ helper.progress.fat }}/{{ ProgressCompanion.maxFat }} g</span></h3>
+        <h3>Fat <span class="p">{{ helper.progress.fat }}/{{ MaxProgress.fat }} g</span></h3>
         <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('fat')">&minus;</button>
-          <progress :max="ProgressCompanion.maxFat" :value="helper.progress.fat"></progress>
+          <progress :max="MaxProgress.fat" :value="helper.progress.fat"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('fat')">+</button>
         </div>
         <p>
           Your body needs fats to use vitamins and keep your skin healthy. They are the main energy storage of your body.
         </p>
-        <h3>Carbs <span class="p">{{ helper.progress.carbs }}/{{ ProgressCompanion.maxCarbs }} g</span></h3>
+        <h3>Carbs <span class="p">{{ helper.progress.carbs }}/{{ MaxProgress.carbs }} g</span></h3>
         <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('carbs')">&minus;</button>
-          <progress :max="ProgressCompanion.maxCarbs" :value="helper.progress.carbs"></progress>
+          <progress :max="MaxProgress.carbs" :value="helper.progress.carbs"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('carbs')">+</button>
         </div>
         <p>
           Carbohydrates are the main source of energy for your body.
         </p>
-        <h3>Protein <span class="p">{{ helper.progress.proteins }}/{{ ProgressCompanion.maxProteins }} g</span></h3>
+        <h3>Protein <span class="p">{{ helper.progress.proteins }}/{{ MaxProgress.proteins }} g</span></h3>
         <div class="flex my-24 green">
           <button class="progress-control left" type="button" v-on:click="removeAmount('proteins')">&minus;</button>
-          <progress :max="ProgressCompanion.maxProteins" :value="helper.progress.proteins"></progress>
+          <progress :max="MaxProgress.proteins" :value="helper.progress.proteins"></progress>
           <button class="progress-control right" type="button" v-on:click="addAmount('proteins')">+</button>
         </div>
         <p>
@@ -106,19 +106,19 @@ export default {
       </div>
       <div class="card mb-16-p-16">
         <h2>Active Time <span class="material-icons-round c-icon">directions_run</span></h2>
-        <h3>Exercises <span class="p">{{ helper.progress.exercises }}/{{ ProgressCompanion.maxExercises }}</span></h3>
+        <h3>Exercises <span class="p">{{ helper.progress.exercises }}/{{ MaxProgress.exercises }}</span></h3>
         <div class="flex my-24 red">
           <button class="progress-control left" type="button" v-on:click="removeOne('exercises')">&minus;</button>
-          <progress :max="ProgressCompanion.maxExercises" :value="helper.progress.exercises"></progress>
+          <progress :max="MaxProgress.exercises" :value="helper.progress.exercises"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('exercises')">+</button>
         </div>
         <p>
           Exercises are great for testing and improving your abilites and performance.
         </p>
-        <h3>Yoga <span class="p">{{ helper.progress.yoga }}/{{ ProgressCompanion.maxYoga }}</span></h3>
+        <h3>Yoga <span class="p">{{ helper.progress.yoga }}/{{ MaxProgress.yoga }}</span></h3>
         <div class="flex my-24 red">
           <button class="progress-control left" type="button" v-on:click="removeOne('yoga')">&minus;</button>
-          <progress :max="ProgressCompanion.maxYoga" :value="helper.progress.yoga"></progress>
+          <progress :max="MaxProgress.yoga" :value="helper.progress.yoga"></progress>
           <button class="progress-control right" type="button" v-on:click="addOne('yoga')">+</button>
         </div>
         <p>
