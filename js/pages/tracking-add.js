@@ -1,6 +1,6 @@
 import Page from '../components/page.js'
 
-import JsonHelper from '../helpers/json.js'
+import InfoHelper from '../helpers/info.js'
 
 import Fragments from '../data/tracking.js'
 
@@ -32,21 +32,7 @@ export default {
   },
   methods: {
     onFabClicked() {
-      if (this.values.length != 0) {
-        const stored = JsonHelper.get(this.fragment, () => [])
-        const millis = new Date(this.date + 'T' + this.time).getTime()
-        stored.unshift({
-          time: millis,
-          values: this.values
-        })
-        JsonHelper.set(this.fragment, stored)
-
-        if (stored.sort((a, b) => b.time - a.time)[0].time == millis) {
-          const info = JsonHelper.get('info', () => { return {} })
-          info[this.fragment] = this.values.join('/')
-          JsonHelper.set('info', info)
-        }
-      }
+      InfoHelper.addEntry(this.fragment, new Date(this.date + 'T' + this.time).getTime(), this.values)
       this.$router.push('/progress/tracking?i=' + this.fragment)
     }
   },

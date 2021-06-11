@@ -1,4 +1,5 @@
 import JsonHelper from './json.js'
+import InfoHelper from './info.js'
 
 //TODO: Recalc values on preference change
 
@@ -19,7 +20,7 @@ function emptyObject() {
 }
 
 const info = JsonHelper.get('info', emptyObject)
-info.weight = parseInt(info?.weight || 62, 10)
+const weight = parseInt(InfoHelper.getLatestEntry('weight') || "62", 10)
 
 const nutrition = JsonHelper.get('nutrition', emptyObject)
 const fitness = JsonHelper.get('fitness', emptyObject)
@@ -40,38 +41,38 @@ if (info.gender == "f") {
   else MaxProgress.water = 11
 
   MaxProgress.calories = 2000
-  MaxProgress.fat = 1 * info.weight
-  MaxProgress.carbs = 3 * info.weight
-  MaxProgress.proteins = 1 * info.weight
+  MaxProgress.fat = 1 * weight
+  MaxProgress.carbs = 3 * weight
+  MaxProgress.proteins = 1 * weight
 
   switch (calcSwitchValue(nutrition.fatLoss)) {
     case 1:
       MaxProgress.calories = 1500
       MaxProgress.fat = 50
       MaxProgress.carbs = 100
-      MaxProgress.proteins = 1.8 * info.weight
+      MaxProgress.proteins = 1.8 * weight
       break
     case -1:
       MaxProgress.calories = 2100
-      MaxProgress.fat = 1 * info.weight
-      MaxProgress.carbs = 3 * info.weight
-      MaxProgress.proteins = 1.5 * info.weight
+      MaxProgress.fat = 1 * weight
+      MaxProgress.carbs = 3 * weight
+      MaxProgress.proteins = 1.5 * weight
       break
   }
 
   switch (calcSwitchValue(fitness.muscleGain)) {
     case 1:
-      MaxProgress.calories += 44 * info.weight
-      MaxProgress.fat += 2 * info.weight
-      MaxProgress.carbs += 6 * info.weight
-      MaxProgress.proteins += 2 * info.weight
+      MaxProgress.calories += 44 * weight
+      MaxProgress.fat += 2 * weight
+      MaxProgress.carbs += 6 * weight
+      MaxProgress.proteins += 2 * weight
       divideNutritionByTwo()
       break
     case -1:
       MaxProgress.calories += 1800
-      MaxProgress.fat += 0.5 * info.weight
-      MaxProgress.carbs += 3 * info.weight
-      MaxProgress.proteins += 0.81 * info.weight
+      MaxProgress.fat += 0.5 * weight
+      MaxProgress.carbs += 3 * weight
+      MaxProgress.proteins += 0.81 * weight
       divideNutritionByTwo()
       break
   }
@@ -81,38 +82,38 @@ if (info.gender == "f") {
   else MaxProgress.water = 13
 
   MaxProgress.calories = 2500
-  MaxProgress.fat = 1 * info.weight
-  MaxProgress.carbs = 3 * info.weight
-  MaxProgress.proteins = 1 * info.weight
+  MaxProgress.fat = 1 * weight
+  MaxProgress.carbs = 3 * weight
+  MaxProgress.proteins = 1 * weight
 
   switch (calcSwitchValue(nutrition.fatLoss)) {
     case 1:
       MaxProgress.calories = 2000
       MaxProgress.fat = 50
       MaxProgress.carbs = 100
-      MaxProgress.proteins = 1.8 * info.weight
+      MaxProgress.proteins = 1.8 * weight
       break
     case -1:
       MaxProgress.calories = 2600
-      MaxProgress.fat = 1 * info.weight
-      MaxProgress.carbs = 3 * info.weight
-      MaxProgress.proteins = 1.5 * info.weight
+      MaxProgress.fat = 1 * weight
+      MaxProgress.carbs = 3 * weight
+      MaxProgress.proteins = 1.5 * weight
       break
   }
 
   switch (calcSwitchValue(fitness.muscleGain)) {
     case 1:
-      MaxProgress.calories += 44 * info.weight
-      MaxProgress.fat += 2 * info.weight
-      MaxProgress.carbs += 6 * info.weight
-      MaxProgress.proteins += 2 * info.weight
+      MaxProgress.calories += 44 * weight
+      MaxProgress.fat += 2 * weight
+      MaxProgress.carbs += 6 * weight
+      MaxProgress.proteins += 2 * weight
       divideNutritionByTwo()
       break
     case -1:
       MaxProgress.calories += 2400
-      MaxProgress.fat += 0.5 * info.weight
-      MaxProgress.carbs += 3 * info.weight
-      MaxProgress.proteins += 0.81 * info.weight
+      MaxProgress.fat += 0.5 * weight
+      MaxProgress.carbs += 3 * weight
+      MaxProgress.proteins += 0.81 * weight
       divideNutritionByTwo()
       break
   }

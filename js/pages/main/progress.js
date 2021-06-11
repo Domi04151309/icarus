@@ -5,6 +5,7 @@ import ProgressSections from '../../components/progress-sections.js'
 import Modal from '../../components/modal.js'
 
 import JsonHelper from '../../helpers/json.js'
+import InfoHelper from '../../helpers/info.js'
 import Identifiers from '../../helpers/identifiers.js'
 import { DayHelper, WeekHelper, MonthHelper } from '../../helpers/progress.js'
 
@@ -15,7 +16,10 @@ export default {
       dayHelper: new DayHelper(),
       weekHelper: new WeekHelper(Identifiers.getDateId()),
       monthHelper: new MonthHelper(Identifiers.getDateId()),
-      info: JsonHelper.get('info', () => { return {} })
+      info: JsonHelper.get('info'),
+      weight: InfoHelper.getLatestEntry('weight') || "0",
+      bloodpressure: InfoHelper.getLatestEntry('bloodpressure') || "0",
+      bloodsugar: InfoHelper.getLatestEntry('bloodsugar') || "0"
     }
   },
   template:
@@ -68,21 +72,21 @@ export default {
         <h2 class="m-0 mt-2">Weight</h2>
         <p>Track your weight</p>
       </div>
-      <div class="big mr-16 p">{{ info?.weight || 0 }}</div>
+      <div class="big mr-16 p">{{ weight }}</div>
     </router-link>
     <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16-p-16 flex center between">
       <div>
         <h2 class="m-0 mt-2">Blood Pressure</h2>
         <p>Track your blood pressure</p>
       </div>
-      <div class="big mr-16 p">{{ info?.bloodpressure || 0 }}</div>
+      <div class="big mr-16 p">{{ bloodpressure }}</div>
     </router-link>
     <router-link to="/progress/tracking?i=bloodsugar" class="card mb-48 p-16 flex center between">
       <div>
         <h2 class="m-0 mt-2">Blood Sugar</h2>
         <p>Track your blood sugar</p>
       </div>
-      <div class="big mr-16 p">{{ info?.bloodsugar || 0 }}</div>
+      <div class="big mr-16 p">{{ bloodsugar }}</div>
     </router-link>
     <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,

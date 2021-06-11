@@ -1,5 +1,7 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 
+import InfoHelper from '../../helpers/info.js'
+
 export default {
   name: 'setup-info',
   data() {
@@ -7,9 +9,9 @@ export default {
       info: {
         name: null,
         age: null,
-        gender: '',
-        weight: null
-      }
+        gender: ''
+      },
+      weight: null
     }
   },
   template:
@@ -26,7 +28,7 @@ export default {
         <option value="m">Male</option>
         <option value="o">Other</option>
       </select>
-      <input v-model="info.weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
+      <input v-model="weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
       <button type="button" v-on:click="handleClick()">Continue</button>
     </page-no-app-bar>
   </div>`,
@@ -36,11 +38,14 @@ export default {
   methods: {
     handleClick() {
       localStorage.setItem('info', JSON.stringify(this.info))
+      if (this.weight != null) InfoHelper.addEntry('weight', new Date().getTime(), [this.weight])
       this.$router.push('/setup/nutrition')
     }
   },
   created() {
     const stored = localStorage.getItem('info')
     if (stored != null) this.info = JSON.parse(stored)
+
+    this.weight = InfoHelper.getLatestEntry('weight')
   }
 }
