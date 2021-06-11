@@ -10,7 +10,6 @@ import Fragments from '../data/tracking.js'
 
 //TODO: Properly scale x axis
 //TODO: Filter by week, month, and year
-//TODO: Redraw graph on item delete
 
 export default {
   name: 'tracking',
@@ -18,6 +17,7 @@ export default {
     return {
       fragments: Fragments,
       fragment: 'default',
+      chart: {},
       items: []
     }
   },
@@ -51,6 +51,7 @@ export default {
           positiveFunction: () => {
             this.items.splice(index, 1)
             JsonHelper.set(this.fragment, this.items)
+            this.chart.removeDataPoint(index)
           }
         }
       })
@@ -86,7 +87,7 @@ export default {
         })
       }
     }
-    new Chart("#chart", {
+    this.chart = new Chart("#chart", {
       data: data,
       type: 'line',
       lineOptions: {
