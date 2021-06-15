@@ -7,8 +7,6 @@ import Modal from '../../components/modal.js'
 
 import FoodHelper from '../../helpers/food.js'
 
-//TODO: Dynamically generate content
-
 export default {
   name: 'nutrition',
   data() {
@@ -55,11 +53,46 @@ export default {
       </list-item-image>
       <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/suggestions"></list-item-image>
     </div>
+
+    <h2 class="mx-8 mt-48 mb-24">Local Nutrition List</h2>
+    <router-link to="/nutrition/update" class="card mb-16-p-16 flex center">
+      <div class="material-icons-round big-c-icon">sync</div>
+      <div>
+        <h2 class="m-0 mt-2">Updates</h2>
+        <p>Check for new items</p>
+      </div>
+    </router-link>
+    <div v-on:click="reset()" class="card mb-16-p-16 flex center">
+      <div class="material-icons-round big-c-icon">restart_alt</div>
+      <div>
+        <h2 class="m-0 mt-2">Reset Local List</h2>
+        <p>Reset your local edits to the list</p>
+      </div>
+    </div>
   </page-tab-bar>`,
   components: {
       PageTabBar,
       ProgressRing,
       ListItemImage
+  },
+  methods: {
+    reset() {
+      const ComponentClass = Vue.extend(Modal)
+      const instance = new ComponentClass({
+        propsData: {
+          title: 'Reset Local List',
+          message: 'Are you sure you want to reset your local edits to the list? This cannot be undone.',
+          positiveText: 'Reset',
+          positiveFunction: () => {
+            localStorage.removeItem('healthy-food')
+            localStorage.removeItem('casual-food')
+            FoodHelper.generateNewScores()
+          }
+        }
+      })
+      instance.$mount()
+      this.$root.$el.appendChild(instance.$el)
+    }
   },
   mounted() {
     if (localStorage.getItem('help_nutrition') == null) {

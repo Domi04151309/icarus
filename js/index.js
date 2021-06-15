@@ -30,10 +30,9 @@ const Meditation = () => import('./pages/meditation.js')
 const FoodSuggestions = () => import('./pages/food-suggestions.js')
 
 const Food = () => import('./pages/food.js')
-
 const FoodDetails = () => import('./pages/food-details.js')
-
 const FoodItem = () => import('./pages/food-item.js')
+const FoodUpdate = () => import('./pages/food-update.js')
 
 const ExerciseDetails = () => import('./pages/exercise-details.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
@@ -81,6 +80,7 @@ const routes = [
   { path: '/nutrition/casual/food-details', component: FoodDetails, props: { healthy: false } },
   { path: '/nutrition/healthy/food-item', component: FoodItem, props: { healthy: true } },
   { path: '/nutrition/casual/food-item', component: FoodItem, props: { healthy: false } },
+  { path: '/nutrition/update', component: FoodUpdate },
   { path: '/account', component: Account },
   { path: '/account/app', component: AppSettings },
   { path: '/account/app/log', component: ErrorLog },

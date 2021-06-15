@@ -4,8 +4,6 @@ import FoodListItem from '../components/food-list-item.js'
 
 import FoodHelper from '../helpers/food.js'
 
-//TODO: Add more content
-
 export default {
   name: 'food',
   props: {
