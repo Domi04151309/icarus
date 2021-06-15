@@ -113,6 +113,7 @@ export default {
               foodArray.splice(this.$route.query.item, 1)
               if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
               else localStorage.setItem('casual-food', JSON.stringify(foodArray))
+              FoodHelper.generateNewScores()
             }
             setTimeout(() => { this.$router.push(this.parent) }, 1000)
           }
@@ -128,7 +129,10 @@ export default {
       })
       dayHelper.saveProgress()
 
-      if (this.healthy) FoodHelper.addHealthyFoodToStatistics(this.foodItem)
+      if (this.healthy) {
+        FoodHelper.addRecent(this.$route.query.item)
+        FoodHelper.addHealthyFoodToStatistics(this.foodItem)
+      }
       else FoodHelper.addCasualFoodToStatistics(this.foodItem)
       Achievement.show('Consumed something')
       this.$router.push('/nutrition')

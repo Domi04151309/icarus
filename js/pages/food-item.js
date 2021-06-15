@@ -118,6 +118,7 @@ export default {
         if (this.healthy) localStorage.setItem('healthy-food', JSON.stringify(foodArray))
         else localStorage.setItem('casual-food', JSON.stringify(foodArray))
       }
+      FoodHelper.generateNewScores()
       this.$router.push(this.parent)
     }
   },

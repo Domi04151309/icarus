@@ -36,7 +36,7 @@ export default {
     })
     return exercises
   },
-  addRecentExercise(position) {
+  addRecent(position) {
     const recents = JsonHelper.get(RECENTS, () => [])
     recents.unshift(position)
     JsonHelper.set(RECENTS, recents.slice(0, 8))

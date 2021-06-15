@@ -173,7 +173,7 @@ export default {
       if (parseInt(this.$route.query.posX, 10) == 1) dayHelper.progress.yoga += 1
       else dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
-      ExerciseHelper.addRecentExercise([
+      ExerciseHelper.addRecent([
         parseInt(this.$route.query.posX, 10),
         parseInt(this.$route.query.posY, 10),
         parseInt(this.$route.query.posZ, 10)
