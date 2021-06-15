@@ -1,18 +1,20 @@
 import Page from '../components/page-large-app-bar.js'
 import FoodListItem from '../components/food-list-item.js'
 
-//TODO: Dynamically generate content
+import FoodHelper from '../helpers/food.js'
+
+//TODO: Improve this site
 
 export default {
   name: 'exercise-details',
   computed: {
     title: () => 'Our Suggestions',
-    suggestions: () => ['Sweet', 'Hearty', 'Vegi', 'Vegan', 'Fast', 'Light', 'Heavy', 'Warm', 'Cold']
+    suggestions: () => FoodHelper.getRecommended(9)
   },
   template:
   `<page :title="title" parent="/nutrition" class="healthy green">
     <div class="grid-2 gap-16 disabled">
-      <food-list-item v-for="item in suggestions" :key="item" :title="item" icon="restaurant_menu"></food-list-item>
+      <food-list-item v-for="(item, i) in suggestions" :key="i" :title="item.title" icon="restaurant_menu"></food-list-item>
     </div>
   </page>`,
   components: {

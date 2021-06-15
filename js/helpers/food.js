@@ -8,7 +8,7 @@ const STATISTICS = 'food_statistics'
 const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'proteins']
 
 export default {
-  getRecommended() {
+  getRecommended(length = 2) {
     const images = ['./images/food/breakfast.jpg', './images/food/lunch.jpg']
     const scores = JsonHelper.get(SCORES, () => this.generateNewScores())
     const recents = JsonHelper.get(RECENTS, () => [])
@@ -21,7 +21,7 @@ export default {
       item.i = i
     })
     food.sort((a, b) => scores[b.i] - scores[a.i])
-    food = food.slice(0, 2)
+    food = food.slice(0, length)
     food.forEach((item, i) => {
       item.image = images[i]
     })
