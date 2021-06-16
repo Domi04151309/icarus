@@ -1,6 +1,8 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 import SimpleQuestion from '../../components/simple-question.js'
 
+import FoodHelper from '../helpers/exercises.js'
+
 export default {
   name: 'setup-nutrition',
   data() {
@@ -36,6 +38,7 @@ export default {
   methods: {
     handleClick() {
       localStorage.setItem('nutrition', JSON.stringify(this.nutrition))
+      FoodHelper.generateNewScores()
       this.$router.push('/setup/fitness')
     }
   },

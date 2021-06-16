@@ -1,6 +1,8 @@
 import Page from '../components/page.js'
 import SimpleQuestion from '../components/simple-question.js'
 
+import FoodHelper from '../helpers/exercises.js'
+
 export default {
   name: 'nutrition-plan',
   data() {
@@ -32,6 +34,7 @@ export default {
   methods: {
     handleClick() {
       localStorage.setItem('nutrition', JSON.stringify(this.nutrition))
+      FoodHelper.generateNewScores()
       this.$router.push('/account/data')
     }
   },

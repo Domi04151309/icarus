@@ -5,7 +5,6 @@ import Food from '../data/food.js'
 const SCORES = 'food_scores'
 const RECENTS = 'food_recents'
 const STATISTICS = 'food_statistics'
-const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'proteins']
 
 export default {
   getRecommended(length = 2) {
@@ -92,9 +91,28 @@ export default {
     const fitness = JsonHelper.get('fitness')
     const nutrition = JsonHelper.get('nutrition')
 
+    const fatLoss = parseInt(nutrition.fatLoss, 10)
+    const muscleGain = parseInt(fitness.muscleGain, 10)
+    const lessSweets = nutrition.lessSweets ? 100 : 0
+    const endurance = parseInt(fitness.endurance, 10)
+    const moreWater = nutrition.moreWater ? 100 : 0
+
+    const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
+    const MODIFIERS_FAT_LOSS = [-1, -1, -1, 0, 1, -1]
+    const MODIFIERS_MUSCLE_GAIN = [1, 1, 1, 0, 1, -1]
+    const MODIFIERS_LESS_SWEETS = [0, 0, -1, -1, 0, 0]
+    const MODIFIERS_ENDURANCE = [0, 0, 1, 0, 1, -1]
+    const MODIFIERS_MORE_WATER = [0, 0, 0, 0, 0, -1]
+
     let score = 100 * PARAMETER_LIST.length
-    score += PARAMETER_LIST.reduce((acc, item) => acc + parseInt(fitness.muscleGain, 10) * parseInt(food[item], 10), 0)
-    score += PARAMETER_LIST.reduce((acc, item) => acc - parseInt(nutrition.fatLoss, 10) * parseInt(food[item], 10), 0)
+    score += PARAMETER_LIST.reduce((acc, item, i) => {
+      return acc
+        + fatLoss * parseInt(food[item], 10) * MODIFIERS_FAT_LOSS[i]
+        + muscleGain * parseInt(food[item], 10) * MODIFIERS_MUSCLE_GAIN[i]
+        + lessSweets * parseInt(food[item], 10) * MODIFIERS_LESS_SWEETS[i]
+        + endurance * parseInt(food[item], 10) * MODIFIERS_ENDURANCE[i]
+        + moreWater * parseInt(food[item], 10) * MODIFIERS_MORE_WATER[i]
+    }, 0)
 
     return score / 100
   }
