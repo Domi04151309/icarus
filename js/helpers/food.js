@@ -8,10 +8,10 @@ const STATISTICS = 'food_statistics'
 
 export default {
   getRecommended(length = 2) {
-    const images = ['./images/food/breakfast.jpg', './images/food/lunch.jpg']
+    const images = ['./images/food/breakfast.jpg', './images/food/lunch.jpg', './images/food/dinner.jpg', './images/food/healthy.jpg']
     const scores = JsonHelper.get(SCORES, () => this.generateNewScores())
     const recents = JsonHelper.get(RECENTS, () => [])
-    let food = JSON.parse(JSON.stringify(this.getHealthyFood()))
+    let food = this.getHealthyFood()
     recents.forEach(item => {
       scores[item] = 0
     })

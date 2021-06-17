@@ -23,5 +23,8 @@ Saved with the width set to 1920px and the quality set to 60%
 - https://unsplash.com/photos/jUPOXXRNdcA
 - https://unsplash.com/photos/Yizrl9N_eDA
 - https://unsplash.com/photos/Yui5vfKHuzs
+- https://unsplash.com/photos/6gbr24z3H5c
+- https://unsplash.com/photos/mjcJ0FFgdWI
+- https://unsplash.com/photos/QYa9pWGLajs
 
 Copyright 2020 Domi04151309 & Nils Döhring
