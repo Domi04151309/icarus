@@ -4,6 +4,7 @@ import ListItemImage from '../components/list-item-image.js'
 
 import JsonHelper from '../helpers/json.js'
 import FoodHelper from '../helpers/food.js'
+import { MaxProgress, DayHelper } from '../helpers/progress.js'
 
 export default {
   name: 'exercise-details',
@@ -46,8 +47,9 @@ export default {
       ListItemImage
   },
   created() {
-    const recents = JsonHelper.get('food_recents', () => [])
+    const progressHelper = new DayHelper()
     const food = FoodHelper.getHealthyFood()
+    const recents = JsonHelper.get('food_recents', () => [])
     food.forEach((item, i) => item.i = i)
     recents.forEach(item => {
       food[item].fat = 0
@@ -55,21 +57,31 @@ export default {
       food[item].proteins = 0
     })
 
-    const fat = food.reduce((a,b) => a.fat > b.fat ? a : b)
-    fat.image = './images/food/fat.jpg'
-    fat.summary = 'is great for getting more fat'
-    this.situationSuggestions.push(fat)
+    const data = [
+      {
+        key: 'fat',
+        image: './images/food/fat.jpg',
+        summary: 'is great for getting more fat'
+      },
+      {
+        key: 'carbs',
+        image: './images/food/carbs.jpg',
+        summary: 'is great for getting more carbs'
+      },
+      {
+        key: 'proteins',
+        image: './images/food/protein.jpg',
+        summary: 'is great for getting more protein'
+      }
+    ]
 
-    const carbs = food.reduce((a,b) => a.carbs > b.carbs ? a : b)
-    carbs.image = './images/food/carbs.jpg'
-    carbs.summary = 'is great for getting more carbs'
-    this.situationSuggestions.push(carbs)
-
-    const protein = food.reduce((a,b) => a.proteins > b.proteins ? a : b)
-    protein.image = './images/food/protein.jpg'
-    protein.summary = 'is great for getting more protein'
-    this.situationSuggestions.push(protein)
-
-    //TODO: Sort based on progress
+    data.forEach(item => {
+      const suggestion = JSON.parse(JSON.stringify(food.reduce((a, b) => a[item.key] > b[item.key] ? a : b)))
+      suggestion.image = item.image
+      suggestion.summary = item.summary
+      suggestion.percent = progressHelper.progress[item.key] / MaxProgress[item.key]
+      this.situationSuggestions.push(suggestion)
+    })
+    this.situationSuggestions.sort((a, b) => a.percent - b.percent)
   }
 }
