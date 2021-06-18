@@ -105,13 +105,14 @@ export default {
     const MODIFIERS_MORE_WATER = [0, 0, 0, 0, 0, -1]
 
     let score = 100 * PARAMETER_LIST.length
-    score += PARAMETER_LIST.reduce((acc, item, i) => {
+    score += PARAMETER_LIST.reduce((acc, key, i) => {
+      const normalizedPropertyValue = parseInt(food[key], 10) / parseInt(food.portion, 10) * 100
       return acc
-        + fatLoss * parseInt(food[item], 10) * MODIFIERS_FAT_LOSS[i]
-        + muscleGain * parseInt(food[item], 10) * MODIFIERS_MUSCLE_GAIN[i]
-        + lessSweets * parseInt(food[item], 10) * MODIFIERS_LESS_SWEETS[i]
-        + endurance * parseInt(food[item], 10) * MODIFIERS_ENDURANCE[i]
-        + moreWater * parseInt(food[item], 10) * MODIFIERS_MORE_WATER[i]
+        + fatLoss * normalizedPropertyValue * MODIFIERS_FAT_LOSS[i]
+        + muscleGain * normalizedPropertyValue * MODIFIERS_MUSCLE_GAIN[i]
+        + lessSweets * normalizedPropertyValue * MODIFIERS_LESS_SWEETS[i]
+        + endurance * normalizedPropertyValue * MODIFIERS_ENDURANCE[i]
+        + moreWater * normalizedPropertyValue * MODIFIERS_MORE_WATER[i]
     }, 0)
 
     return score / 100
