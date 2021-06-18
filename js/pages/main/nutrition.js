@@ -51,7 +51,7 @@ export default {
         :image="item.image"
         :link="item.link">
       </list-item-image>
-      <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/suggestions"></list-item-image>
+      <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/recommendations"></list-item-image>
     </div>
 
     <h2 class="mx-8 mt-48 mb-24">Local Nutrition List</h2>

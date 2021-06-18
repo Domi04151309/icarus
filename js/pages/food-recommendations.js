@@ -10,18 +10,18 @@ export default {
   name: 'exercise-details',
   data() {
     return {
-      situationSuggestions: []
+      situationRecommendations: []
     }
   },
   computed: {
-    title: () => 'Our Suggestions',
-    suggestions: () => FoodHelper.getRecommended(4)
+    title: () => 'Our Recommendations',
+    recommendations: () => FoodHelper.getRecommended(4)
   },
   template:
   `<page :title="title" parent="/nutrition" class="green">
     <h2 class="mx-8 mt-0 mb-24">Based On Your Progress</h2>
     <div class="grid-1-2 gap-16">
-      <div v-for="(item, i) in situationSuggestions" :key="i" class="card">
+      <div v-for="(item, i) in situationRecommendations" :key="i" class="card">
         <list-item-image
           :title="item.title"
           :image="item.image"
@@ -30,10 +30,10 @@ export default {
         <p class="m-0 p-16">{{ item.title }} {{ item.summary }}</p>
       </div>
     </div>
-    <h2 class="mx-8 mt-48 mb-24">General Suggestions</h2>
+    <h2 class="mx-8 mt-48 mb-24">General Recommendations</h2>
     <div class="grid-1-2 gap-16">
       <list-item-image
-        v-for="item in suggestions"
+        v-for="item in recommendations"
         :key="item.title"
         :title="item.title"
         :image="item.image"
@@ -76,12 +76,12 @@ export default {
     ]
 
     data.forEach(item => {
-      const suggestion = JSON.parse(JSON.stringify(food.reduce((a, b) => a[item.key] / a.portion * a.serving > b[item.key] / b.portion * b.serving ? a : b)))
-      suggestion.image = item.image
-      suggestion.summary = item.summary
-      suggestion.percent = progressHelper.progress[item.key] / MaxProgress[item.key]
-      this.situationSuggestions.push(suggestion)
+      const recommendation = JSON.parse(JSON.stringify(food.reduce((a, b) => a[item.key] / a.portion * a.serving > b[item.key] / b.portion * b.serving ? a : b)))
+      recommendation.image = item.image
+      recommendation.summary = item.summary
+      recommendation.percent = progressHelper.progress[item.key] / MaxProgress[item.key]
+      this.situationRecommendations.push(recommendation)
     })
-    this.situationSuggestions.sort((a, b) => a.percent - b.percent)
+    this.situationRecommendations.sort((a, b) => a.percent - b.percent)
   }
 }
