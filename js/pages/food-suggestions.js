@@ -76,7 +76,7 @@ export default {
     ]
 
     data.forEach(item => {
-      const suggestion = JSON.parse(JSON.stringify(food.reduce((a, b) => a[item.key] > b[item.key] ? a : b)))
+      const suggestion = JSON.parse(JSON.stringify(food.reduce((a, b) => a[item.key] / a.portion * a.serving > b[item.key] / b.portion * b.serving ? a : b)))
       suggestion.image = item.image
       suggestion.summary = item.summary
       suggestion.percent = progressHelper.progress[item.key] / MaxProgress[item.key]
