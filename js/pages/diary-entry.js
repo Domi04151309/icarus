@@ -26,7 +26,7 @@ export default {
       <tr><td>Fat</td><td>{{ getActualValue(item.item, 'fat') }} g</td></tr>
       <tr><td>Carbs</td><td>{{ getActualValue(item.item, 'carbs') }} g</td></tr>
       <tr><td>Sugar</td><td>{{ getActualValue(item.item, 'sugar') }} g</td></tr>
-      <tr><td>Protein</td><td>{{ getActualValue(item.item, 'proteins') }} g</td></tr>
+      <tr><td>Protein</td><td>{{ getActualValue(item.item, 'protein') }} g</td></tr>
       <tr><td>Alcohol</td><td>{{ getActualValue(item.item, 'alcohol') }} vol</td></tr>
     </table>
     <div class="flex end mt-32">

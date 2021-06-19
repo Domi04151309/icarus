@@ -97,7 +97,7 @@ export default {
     const endurance = parseInt(fitness.endurance, 10)
     const moreWater = nutrition.moreWater ? 100 : 0
 
-    const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
+    const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'sugar', 'protein', 'alcohol']
     const MODIFIERS_FAT_LOSS = [-1, -1, -1, 0, 1, -1]
     const MODIFIERS_MUSCLE_GAIN = [1, 1, 1, 0, 1, -1]
     const MODIFIERS_LESS_SWEETS = [0, 0, -1, -1, 0, 0]

@@ -19,7 +19,7 @@ export default {
         fat: 0,
         carbs: 0,
         sugar: 0,
-        proteins: 0,
+        protein: 0,
         alcohol: 0,
         vegetarian: false,
         vegan: false
@@ -88,8 +88,8 @@ export default {
         <input id="sugar" v-model="foodItem.sugar" type="number"></input>
       </div>
       <div>
-        <label for="proteins">Protein (g)</label>
-        <input id="proteins" v-model="foodItem.proteins" type="number"></input>
+        <label for="protein">Protein (g)</label>
+        <input id="protein" v-model="foodItem.protein" type="number"></input>
       </div>
       <div>
         <label for="alcohol">Alcohol (vol)<label>

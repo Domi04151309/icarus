@@ -94,11 +94,11 @@ export default {
         <p>
           Carbohydrates are the main source of energy for your body.
         </p>
-        <h3>Protein <span class="p">{{ helper.progress.proteins }}/{{ MaxProgress.proteins }} g</span></h3>
+        <h3>Protein <span class="p">{{ helper.progress.protein }}/{{ MaxProgress.protein }} g</span></h3>
         <div class="flex my-24 green">
-          <button class="progress-control left" type="button" v-on:click="removeAmount('proteins')">&minus;</button>
-          <progress :max="MaxProgress.proteins" :value="helper.progress.proteins"></progress>
-          <button class="progress-control right" type="button" v-on:click="addAmount('proteins')">+</button>
+          <button class="progress-control left" type="button" v-on:click="removeAmount('protein')">&minus;</button>
+          <progress :max="MaxProgress.protein" :value="helper.progress.protein"></progress>
+          <button class="progress-control right" type="button" v-on:click="addAmount('protein')">+</button>
         </div>
         <p>
           Protein is important for building muscle mass.

@@ -6,7 +6,7 @@ import Modal from '../components/modal.js'
 import FoodHelper from '../helpers/food.js'
 import { DayHelper, Achievement } from '../helpers/progress.js'
 
-const FOOD_PARAMETERS = ['calories', 'fat', 'carbs', 'sugar', 'proteins', 'alcohol']
+const FOOD_PARAMETERS = ['calories', 'fat', 'carbs', 'sugar', 'protein', 'alcohol']
 
 export default {
   name: 'food-details',
@@ -67,8 +67,8 @@ export default {
           <input readonly id="sugar" :value="getActualValue(foodItem.sugar)" type="number"></input>
         </div>
         <div>
-          <label for="proteins">Protein (g)</label>
-          <input readonly id="proteins" :value="getActualValue(foodItem.proteins)" type="number"></input>
+          <label for="protein">Protein (g)</label>
+          <input readonly id="protein" :value="getActualValue(foodItem.protein)" type="number"></input>
         </div>
         <div>
           <label for="alcohol">Alcohol (vol)<label>

@@ -8,7 +8,7 @@ function getDefaultObject() {
     calories: 0,
     fat: 0,
     carbs: 0,
-    proteins: 0,
+    protein: 0,
     exercises: 0,
     yoga: 0,
     sleep: 0,
@@ -35,7 +35,7 @@ class DayHelper {
     return getAverageProgress(this.progress, ['water'])
   }
   getFoodProgress() {
-    return getAverageProgress(this.progress, ['calories', 'fat', 'carbs', 'proteins'])
+    return getAverageProgress(this.progress, ['calories', 'fat', 'carbs', 'protein'])
   }
   getExerciseProgress() {
     return getAverageProgress(this.progress, ['exercises', 'yoga']) * 2

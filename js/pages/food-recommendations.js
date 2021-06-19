@@ -54,7 +54,7 @@ export default {
     recents.forEach(item => {
       food[item].fat = 0
       food[item].carbs = 0
-      food[item].proteins = 0
+      food[item].protein = 0
     })
 
     const data = [
@@ -69,7 +69,7 @@ export default {
         summary: 'is great for getting more carbs'
       },
       {
-        key: 'proteins',
+        key: 'protein',
         image: './images/food/protein.jpg',
         summary: 'is great for getting more protein'
       }
