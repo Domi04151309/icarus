@@ -53,8 +53,7 @@ export default {
       </list-item-image>
       <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/recommendations"></list-item-image>
     </div>
-
-    <h2 class="mx-8 mt-48 mb-24">Local Nutrition List</h2>
+    <h2 class="mx-8 mt-48 mb-24">Manage Your Menu</h2>
     <router-link to="/nutrition/update" class="card mb-16-p-16 flex center">
       <div class="material-icons-round big-c-icon">sync</div>
       <div>

@@ -30,7 +30,7 @@ export default {
         <p class="m-0 p-16">{{ item.title }} {{ item.summary }}</p>
       </div>
     </div>
-    <h2 class="mx-8 mt-48 mb-24">General Recommendations</h2>
+    <h2 class="mx-8 mt-48 mb-24">Our Top Picks For You</h2>
     <div class="grid-1-2 gap-16">
       <list-item-image
         v-for="item in recommendations"
