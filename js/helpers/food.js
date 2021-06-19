@@ -21,21 +21,25 @@ export default {
     })
     food.sort((a, b) => scores[b.i] - scores[a.i])
     food = food.slice(0, length)
-    food.forEach((item, i) => {
-      item.image = images[i]
+
+    let imageCounter = 0
+    food.forEach(item => {
+      item.image = images[imageCounter]
+      if (imageCounter < images.length - 1) imageCounter++
+      else imageCounter = 0
     })
     return food
   },
   addRecent(position) {
     const recents = JsonHelper.get(RECENTS, () => [])
     recents.unshift(position)
-    JsonHelper.set(RECENTS, recents.slice(0, 4))
+    JsonHelper.set(RECENTS, recents.slice(0, 8))
   },
   getHealthyFood() {
-    return this.filterFood(JsonHelper.get('healthy-food', () => Food.healthy))
+    return this.filterFood(JsonHelper.get('healthy-food', () => JSON.parse(JSON.stringify(Food.healthy))))
   },
   getCasualFood() {
-    return this.filterFood(JsonHelper.get('casual-food', () => Food.casual))
+    return this.filterFood(JsonHelper.get('casual-food', () => JSON.parse(JSON.stringify(Food.casual))))
   },
   filterFood(array) {
     const nutrition = JsonHelper.get('nutrition', () => null)
@@ -106,7 +110,7 @@ export default {
 
     let score = 100 * PARAMETER_LIST.length
     score += PARAMETER_LIST.reduce((acc, key, i) => {
-      const normalizedPropertyValue = parseInt(food[key], 10) / parseInt(food.portion, 10) * 100
+      const normalizedPropertyValue = parseInt(food[key], 10) / parseInt(food.portion, 10) * parseInt(food.serving, 10)
       return acc
         + fatLoss * normalizedPropertyValue * MODIFIERS_FAT_LOSS[i]
         + muscleGain * normalizedPropertyValue * MODIFIERS_MUSCLE_GAIN[i]

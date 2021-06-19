@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     title: () => 'Our Recommendations',
-    recommendations: () => FoodHelper.getRecommended(4)
+    recommendations: () => FoodHelper.getRecommended(6)
   },
   template:
   `<page :title="title" parent="/nutrition" class="green">
