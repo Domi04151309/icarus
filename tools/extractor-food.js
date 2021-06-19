@@ -4,24 +4,20 @@ const COLUMN_TITLE = 0
 const COLUMN_CALORIES = 1
 const COLUMN_FAT = 2
 const COLUMN_CARBS = 3
-const COLUMN_PROTEINS = 4
+const COLUMN_PROTEIN = 4
 const COLUMN_SUGAR = 5
 const COLUMN_ALCOHOL = 6
 const COLUMN_PORTION = 7
 const COLUMN_SERVING = 8
 const COLUMN_UNIT = 9
-/*const COLUMN_FAT_LOSS = 10
-const COLUMN_MUSCLE_GAIN = 11
-const COLUMN_LESS_SWEETS = 12
-const COLUMN_MORE_WATER = 13*/
-const COLUMN_VEGETARIAN = 14
-const COLUMN_VEGAN = 15
-const COLUMN_HEALTHY = 16
-const COLUMN_CASUAL = 17
+const COLUMN_VEGETARIAN = 10
+const COLUMN_VEGAN = 11
+const COLUMN_HEALTHY = 12
+const COLUMN_CASUAL = 13
 
 const FILE_PATH = './Icarus%20Data%20-%20Nutrition%20Data.csv'
-const IGNORE_LINES = [1, 2, 19, 20, 21, 36, 37, 38, 46, 47, 48, 61, 62, 63, 72, 73, 74, 81, 82, 83, 89, 90, 91, 95, 96, 97, 100, 101, 112, 121]
-const LAST_LINE = 128
+const IGNORE_LINES = []
+const LAST_LINE = 231
 
 let currentLine = 0
 const failingLines = []
@@ -33,7 +29,7 @@ function addItemToArray(array, line) {
     fat: Common.getIntFromArray(line, COLUMN_FAT),
     carbs: Common.getIntFromArray(line, COLUMN_CARBS),
     sugar: Common.getIntFromArray(line, COLUMN_SUGAR),
-    proteins: Common.getIntFromArray(line, COLUMN_PROTEINS),
+    protein: Common.getIntFromArray(line, COLUMN_PROTEIN),
     alcohol: Common.getIntFromArray(line, COLUMN_ALCOHOL),
     portion: Common.getIntFromArray(line, COLUMN_PORTION),
     serving: Common.getIntFromArray(line, COLUMN_SERVING),
