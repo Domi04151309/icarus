@@ -1,7 +1,7 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 import SimpleQuestion from '../../components/simple-question.js'
 
-import FoodHelper from '../helpers/exercises.js'
+import FoodHelper from '../../helpers/exercises.js'
 
 export default {
   name: 'setup-nutrition',

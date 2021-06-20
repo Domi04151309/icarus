@@ -1,6 +1,6 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 
-import FoodHelper from '../helpers/exercises.js'
+import FoodHelper from '../../helpers/exercises.js'
 import ExercisesHelper from '../../helpers/exercises.js'
 
 export default {
