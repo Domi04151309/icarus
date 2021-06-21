@@ -19,7 +19,7 @@ export default {
     })
     scores.forEach((category, i) => {
       category.forEach((exercise, j) => {
-        let k = exercise.indexOf(Math.max(...exercise))
+        let k = exercise.indexOf(exercise.reduce((a, b) => a >b ? a : b))
         if (k != -1) exercises.push({
           score: scores[i][j][k],
           posX: i,
