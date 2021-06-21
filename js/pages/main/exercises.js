@@ -38,7 +38,7 @@ export default {
       <div class="material-icons-round big-c-icon">self_improvement</div>
       <div>
         <h2 class="m-0 mt-2">Yoga</h2>
-        <p>Find inner balance</p>
+        <p>For calming down</p>
       </div>
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">Perfect Fits For You</h2>
