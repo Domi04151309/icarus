@@ -20,27 +20,16 @@ export default {
   `<page-tab-bar class="red">
     <h2 class="mt-16 mx-8 secondary-title">Exercises</h2>
     <p class="mt-0 mb-48 mx-8">An exercise a day keeps the doctor away!</p>
-    <router-link to="/exercises/exercise-list" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">directions_run</div>
-      <div>
-        <h2 class="m-0 mt-2">Without Equipment</h2>
-        <p>Things you can do right away</p>
+
+    <div class="card mb-16-p-16">
+      <h2>Categories</h2>
+      <p class="mb-16">Choose what you want to do</p>
+      <div class="flex between center">
+        <router-link to="/exercises/exercise-list" class="card p-16 big material-icons-round">directions_run</router-link>
+        <router-link to="/exercises/exercise-list" class="card p-16 big material-icons-round">fitness_center</router-link>
+        <router-link to="/exercises/exercise-list" class="card p-16 big material-icons-round">self_improvement</router-link>
       </div>
-    </router-link>
-    <router-link to="/exercises/exercise-list" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">fitness_center</div>
-      <div>
-        <h2 class="m-0 mt-2">With Equipment</h2>
-        <p>Things you need equipment for</p>
-      </div>
-    </router-link>
-    <router-link to="/exercises/exercise-list" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">self_improvement</div>
-      <div>
-        <h2 class="m-0 mt-2">Yoga</h2>
-        <p>For calming down</p>
-      </div>
-    </router-link>
+    </div>
     <h2 class="mx-8 mt-48 mb-24">Perfect Fits For You</h2>
     <div class="grid-2 gap-16 mb-16">
       <exercise-item

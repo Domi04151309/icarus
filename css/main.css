@@ -198,7 +198,7 @@ select, input, textarea {
   color: var(--text-color);
   border-radius: var(--border-radius-1x);
 }
-.card:not(.modal-content) select, .card:not(.modal-content) input, .card:not(.modal-content) textarea, .achievement {
+.card:not(.modal-content) .card:not(.modal-content), .card:not(.modal-content) select, .card:not(.modal-content) input, .card:not(.modal-content) textarea, .achievement {
   background: var(--elevation-overlay-2);
 }
 textarea {
