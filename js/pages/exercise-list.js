@@ -32,7 +32,7 @@ export default {
       <label for="alphabetically">Alphabetically</label>
     </div>
     <div v-for="(category, posX) in listItems" :key="posX + category.title">
-      <p class="text-center">{{ category.title }}</p>
+      <p v-if="$route.query.x == null" :id="posX" class="text-center">{{ category.title }}</p>
       <div class="category">
         <div class="card mb-16" v-for="(exercise, posY) in category.exercises" :key="posY + exercise.title">
           <h2 class="p-16 m-0">{{ exercise.title }}</h2>
@@ -74,7 +74,8 @@ export default {
            category.exercises.sort((a, b) => a.title.localeCompare(b.title))
         }
       })
-      this.listItems = ex
+      if (this.$route.query.x == null) this.listItems = ex
+      else this.listItems = [ex[this.$route.query.x]]
     }
   },
   created() {
