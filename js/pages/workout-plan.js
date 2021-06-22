@@ -1,6 +1,6 @@
 import Page from '../components/page.js'
 
-import FoodHelper from '../helpers/exercises.js'
+import FoodHelper from '../helpers/food.js'
 import ExercisesHelper from '../helpers/exercises.js'
 
 export default {

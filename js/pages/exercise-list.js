@@ -3,8 +3,6 @@ import Page from '../components/page.js'
 import Exercises from '../data/exercises.js'
 import ExercisesHelper from '../helpers/exercises.js'
 
-//TODO: Add category filtering
-
 export default {
   name: 'exercise-list',
   data() {

@@ -1,7 +1,7 @@
 import Page from '../components/page.js'
 import SimpleQuestion from '../components/simple-question.js'
 
-import FoodHelper from '../helpers/exercises.js'
+import FoodHelper from '../helpers/food.js'
 
 export default {
   name: 'nutrition-plan',
