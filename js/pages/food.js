@@ -68,7 +68,7 @@ export default {
         :icon="icon">
       </food-list-item>
     </div>
-    <div v-if="searchString.length > 2">
+    <div v-if="searchString.length > 2 && crossItems.length > 0">
       <h2 class="text-center">You Might Be Looking For</h2>
       <div class="grid-2 gap-16 search">
         <food-list-item
