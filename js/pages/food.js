@@ -12,27 +12,37 @@ export default {
   data() {
     return {
       searchString: '',
-      items: []
+      items: [],
+      crossItems: []
     }
   },
   watch: {
-    searchString() { this.sort() }
+    searchString() { this.filterList() }
   },
   computed: {
-    writtenType() {
-      return this.healthy ? 'healthy' : 'casual'
-    },
     title() {
       return this.healthy ? 'Healthy' : 'Casual'
     },
     secondaryTitle() {
       return this.healthy ? 'Healthy Food' : 'Casual Food'
     },
+    type() {
+      return this.healthy ? 'healthy' : 'casual'
+    },
+    crossType() {
+      return this.healthy ? 'casual' : 'healthy'
+    },
     icon() {
       return this.healthy ? 'restaurant_menu' : 'fastfood'
     },
-    defaultItems() {
+    crossIcon() {
+      return this.healthy ? 'fastfood' : 'restaurant_menu'
+    },
+    list() {
       return this.healthy ? FoodHelper.getHealthyFood() : FoodHelper.getCasualFood()
+    },
+    crossList() {
+      return this.healthy ? FoodHelper.getCasualFood() : FoodHelper.getHealthyFood()
     },
     progress() {
       const statistics = FoodHelper.getFoodStatistics()
@@ -51,7 +61,23 @@ export default {
     </div>
     <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
     <div class="grid-2 gap-16 search">
-      <food-list-item v-for="(item, index) in items" :key="index" :link="'/nutrition/' + writtenType + '/food-details?item=' + item.pos" :title="item.title" :icon="icon"></food-list-item>
+      <food-list-item
+        v-for="(item, index) in items"
+        :key="index" :link="'/nutrition/' + type + '/food-details?item=' + item.pos"
+        :title="item.title"
+        :icon="icon">
+      </food-list-item>
+    </div>
+    <div v-if="searchString.length > 2">
+      <h2 class="text-center">You Might Be Looking For</h2>
+      <div class="grid-2 gap-16 search">
+        <food-list-item
+          v-for="(item, index) in crossItems"
+          :key="item.title + index" :link="'/nutrition/' + crossType + '/food-details?item=' + item.pos"
+          :title="item.title"
+          :icon="crossIcon">
+        </food-list-item>
+      </div>
     </div>
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
@@ -61,19 +87,23 @@ export default {
       FoodListItem
   },
   methods: {
-    sort() {
-      let food = JSON.parse(JSON.stringify(this.defaultItems))
+    filterList() {
+      this.items = this.sort(this.list)
+      this.crossItems = this.sort(this.crossList).slice(0, 2)
+    },
+    sort(items) {
+      let food = JSON.parse(JSON.stringify(items))
       food.forEach((item, i) => { item.pos = i })
       food = food.filter(a => a.title.toUpperCase().includes(this.searchString.toUpperCase()))
       food.sort((a, b) => a.title.localeCompare(b.title))
-      this.items = food
+      return food
     },
     onFabClicked() {
-      this.$router.push('/nutrition/' + this.writtenType + '/food-item')
+      this.$router.push('/nutrition/' + this.type + '/food-item')
     }
   },
   created() {
-    this.sort()
+    this.filterList()
   },
   mounted() {
     setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
