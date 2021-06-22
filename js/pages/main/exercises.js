@@ -26,8 +26,8 @@ export default {
       <p class="mb-16">Choose what you want to do</p>
       <div class="flex between center">
         <router-link to="/exercises/exercise-list?x=0" class="card p-16 big material-icons-round">directions_run</router-link>
-        <router-link to="/exercises/exercise-list?x=2" class="card p-16 big material-icons-round">fitness_center</router-link>
-        <router-link to="/exercises/exercise-list?x=1" class="card p-16 big material-icons-round">self_improvement</router-link>
+        <router-link to="/exercises/exercise-list?x=1" class="card p-16 big material-icons-round">fitness_center</router-link>
+        <router-link to="/exercises/exercise-list?x=2" class="card p-16 big material-icons-round">self_improvement</router-link>
         <router-link to="/exercises/exercise-list" class="card p-16 big material-icons-round">format_list_bulleted</router-link>
       </div>
     </div>

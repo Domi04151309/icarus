@@ -30,8 +30,8 @@ const COLUMN_TUTORIAL = 30
 const COLUMN_INFORMATION = 31
 
 const FILE_PATH = './Icarus%20Data%20-%20Exercises.csv'
-const IGNORE_LINES = [1, 33, 44, 59]
-const LAST_LINE = 58
+const IGNORE_LINES = [1, 32, 48, 63]
+const LAST_LINE = 109
 
 let currentLine = 0
 const failingLines = []

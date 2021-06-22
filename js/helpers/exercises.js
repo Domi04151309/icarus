@@ -62,7 +62,10 @@ export default {
   },
   categoryScore(posX, posY) {
     const scores = JsonHelper.get(SCORES, () => this.generateNewScores())[posX][posY]
-    return scores.reduce((acc, item) => acc + item) / scores.length
+    if (scores == undefined) {
+      this.generateNewScores()
+      return this.categoryScore(posX, posY)
+    } else return scores.reduce((acc, item) => acc + item) / scores.length
   },
   generateNewScores() {
     const categoryArray = []
