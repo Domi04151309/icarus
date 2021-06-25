@@ -34,8 +34,9 @@ const FoodDetails = () => import('./pages/food-details.js')
 const FoodItem = () => import('./pages/food-item.js')
 const FoodUpdate = () => import('./pages/food-update.js')
 
-const ExerciseDetails = () => import('./pages/exercise-details.js')
 const ExerciseList = () => import('./pages/exercise-list.js')
+const ExerciseDetails = () => import('./pages/exercise-details.js')
+const WorkoutDetails = () => import('./pages/workout-details.js')
 
 const AppSettings = () => import('./pages/app-settings.js')
 const ErrorLog = () => import('./pages/log.js')
@@ -70,8 +71,9 @@ const routes = [
   { path: '/well-being/sleep', component: Sleep },
   { path: '/well-being/meditation', component: Meditation },
   { path: '/exercises', component: Exercises },
-  { path: '/exercises/exercise-details', component: ExerciseDetails },
   { path: '/exercises/exercise-list', component: ExerciseList },
+  { path: '/exercises/exercise-details', component: ExerciseDetails },
+  { path: '/exercises/workout-details', component: WorkoutDetails },
   { path: '/nutrition', component: Nutrition },
   { path: '/nutrition/recommendations', component: FoodRecommendations },
   { path: '/nutrition/healthy', component: Food, props: { healthy: true } },
