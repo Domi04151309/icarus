@@ -2,6 +2,8 @@
 
 import JsonHelper from './helpers/json.js'
 
+const Unknown = () => import('./pages/unknown.js')
+
 const SetupVerification = () => import('./pages/setup/0-verification.js')
 const SetupWelcome = () => import('./pages/setup/1-welcome.js')
 const SetupInfo = () => import('./pages/setup/2-info.js')
@@ -51,7 +53,8 @@ const About = () => import('./pages/about.js')
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
 const routes = [
-  { path: '*', redirect: '/progress' },
+  { path: '/', redirect: '/progress' },
+  { path: '*', component: Unknown },
   { path: '/setup/verification', component: SetupVerification },
   { path: '/setup/welcome', component: SetupWelcome },
   { path: '/setup/info', component: SetupInfo },
@@ -71,17 +74,17 @@ const routes = [
   { path: '/well-being/sleep', component: Sleep },
   { path: '/well-being/meditation', component: Meditation },
   { path: '/exercises', component: Exercises },
-  { path: '/exercises/exercise-list', component: ExerciseList },
-  { path: '/exercises/exercise-details', component: ExerciseDetails },
+  { path: '/exercises/list', component: ExerciseList },
+  { path: '/exercises/details', component: ExerciseDetails },
   { path: '/exercises/workout-details', component: WorkoutDetails },
   { path: '/nutrition', component: Nutrition },
   { path: '/nutrition/recommendations', component: FoodRecommendations },
   { path: '/nutrition/healthy', component: Food, props: { healthy: true } },
   { path: '/nutrition/casual', component: Food, props: { healthy: false } },
-  { path: '/nutrition/healthy/food-details', component: FoodDetails, props: { healthy: true } },
-  { path: '/nutrition/casual/food-details', component: FoodDetails, props: { healthy: false } },
-  { path: '/nutrition/healthy/food-item', component: FoodItem, props: { healthy: true } },
-  { path: '/nutrition/casual/food-item', component: FoodItem, props: { healthy: false } },
+  { path: '/nutrition/healthy/details', component: FoodDetails, props: { healthy: true } },
+  { path: '/nutrition/casual/details', component: FoodDetails, props: { healthy: false } },
+  { path: '/nutrition/healthy/item', component: FoodItem, props: { healthy: true } },
+  { path: '/nutrition/casual/item', component: FoodItem, props: { healthy: false } },
   { path: '/nutrition/update', component: FoodUpdate },
   { path: '/account', component: Account },
   { path: '/account/app', component: AppSettings },

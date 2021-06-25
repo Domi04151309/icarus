@@ -96,7 +96,7 @@ export default {
       return Math.round(value / this.foodItem.portion * this.foodItem.serving)
     },
     onEditClicked() {
-      this.$router.push('/nutrition/' + this.writtenType + '/food-item?item=' + this.$route.query.item)
+      this.$router.push('/nutrition/' + this.writtenType + '/item?item=' + this.$route.query.item)
     },
     onDeleteClicked() {
       const ComponentClass = Vue.extend(Modal)
@@ -148,7 +148,7 @@ export default {
   },
   mounted() {
     if (this.$route.query.item == null) {
-      this.$router.push('/nutrition/' + this.writtenType + '/food-item')
+      this.$router.push('/nutrition/' + this.writtenType + '/item')
     }
   }
 }

@@ -63,7 +63,7 @@ export default {
     <div class="grid-2 gap-16 search">
       <food-list-item
         v-for="(item, index) in items"
-        :key="index" :link="'/nutrition/' + type + '/food-details?item=' + item.pos"
+        :key="index" :link="'/nutrition/' + type + '/details?item=' + item.pos"
         :title="item.title"
         :icon="icon">
       </food-list-item>
@@ -73,7 +73,7 @@ export default {
       <div class="grid-2 gap-16 search">
         <food-list-item
           v-for="(item, index) in crossItems"
-          :key="item.title + index" :link="'/nutrition/' + crossType + '/food-details?item=' + item.pos"
+          :key="item.title + index" :link="'/nutrition/' + crossType + '/details?item=' + item.pos"
           :title="item.title"
           :icon="crossIcon">
         </food-list-item>
@@ -99,7 +99,7 @@ export default {
       return food
     },
     onFabClicked() {
-      this.$router.push('/nutrition/' + this.type + '/food-item')
+      this.$router.push('/nutrition/' + this.type + '/item')
     }
   },
   created() {

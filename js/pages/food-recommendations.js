@@ -7,7 +7,7 @@ import FoodHelper from '../helpers/food.js'
 import { MaxProgress, DayHelper } from '../helpers/progress.js'
 
 export default {
-  name: 'exercise-details',
+  name: 'food-recommendations',
   data() {
     return {
       situationRecommendations: []
@@ -25,7 +25,7 @@ export default {
         <list-item-image
           :title="item.title"
           :image="item.image"
-          :link="'/nutrition/healthy/food-details?item=' + item.i">
+          :link="'/nutrition/healthy/details?item=' + item.i">
         </list-item-image>
         <p class="m-0 p-16">{{ item.title }} {{ item.summary }}</p>
       </div>

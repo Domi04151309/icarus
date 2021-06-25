@@ -170,17 +170,17 @@ export default {
     },
     onFinishClicked() {
       const dayHelper = new DayHelper()
-      if (parseInt(this.$route.query.posX, 10) == 1) dayHelper.progress.yoga += 1
+      if (parseInt(this.$route.query.x, 10) == 1) dayHelper.progress.yoga += 1
       else dayHelper.progress.exercises += 1
       dayHelper.saveProgress()
       ExerciseHelper.addRecent([
-        parseInt(this.$route.query.posX, 10),
-        parseInt(this.$route.query.posY, 10),
-        parseInt(this.$route.query.posZ, 10)
+        parseInt(this.$route.query.x, 10),
+        parseInt(this.$route.query.y, 10),
+        parseInt(this.$route.query.z, 10)
       ])
       const item = {}
       item.title =  this.exerciseItem.title + ' ' + this.exerciseTitle
-      item.category = parseInt(this.$route.query.posX, 10)
+      item.category = parseInt(this.$route.query.x, 10)
       item.information = this.exerciseItem.information
       item.exp = this.intensityToExp()
       ExerciseHelper.addExerciseToStatistic(item)
@@ -189,9 +189,9 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.query.posX != null && this.$route.query.posY != null && this.$route.query.posZ != null) {
-      this.exerciseTitle = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].title
-      this.exerciseItem = Exercises[parseInt(this.$route.query.posX, 10)].exercises[parseInt(this.$route.query.posY, 10)].variations[parseInt(this.$route.query.posZ, 10)]
+    if (this.$route.query.x != null && this.$route.query.y != null && this.$route.query.z != null) {
+      this.exerciseTitle = Exercises[parseInt(this.$route.query.x, 10)].exercises[parseInt(this.$route.query.y, 10)].title
+      this.exerciseItem = Exercises[parseInt(this.$route.query.x, 10)].exercises[parseInt(this.$route.query.y, 10)].variations[parseInt(this.$route.query.z, 10)]
 
       this.computeTime()
     } else {

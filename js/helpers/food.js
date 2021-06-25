@@ -16,7 +16,7 @@ export default {
       scores[item] = 0
     })
     food.forEach((item, i) => {
-      item.link = '/nutrition/healthy/food-details?item=' + i
+      item.link = '/nutrition/healthy/details?item=' + i
       item.i = i
     })
     food.sort((a, b) => scores[b.i] - scores[a.i])

@@ -36,7 +36,7 @@ export default {
           <h2 class="p-16 m-0">{{ exercise.title }}</h2>
           <ul class="link-list m-0">
             <li v-for="(variation, posZ) in exercise.variations" :key="posY + variation.title">
-              <router-link :to="'/exercises/exercise-details?posX=' + ($route.query.x || posX) + '&posY=' + exercise.pos + '&posZ=' + posZ">
+              <router-link :to="'/exercises/details?x=' + ($route.query.x || posX) + '&y=' + exercise.pos + '&z=' + posZ">
                 {{ variation.title }}<br>
                 <span class="p">Score: {{ ExerciseHelper.getScore($route.query.x || posX, exercise.pos, posZ) }}</span>
               </router-link>

@@ -31,8 +31,8 @@ export default {
     parent() {
       if (this.$route.query.item) {
         return this.healthy
-          ? '/nutrition/healthy/food-details?item=' + this.$route.query.item
-          : '/nutrition/casual/food-details?item=' + this.$route.query.item
+          ? '/nutrition/healthy/details?item=' + this.$route.query.item
+          : '/nutrition/casual/details?item=' + this.$route.query.item
       } else {
         return this.healthy ? '/nutrition/healthy' : '/nutrition/casual'
       }
