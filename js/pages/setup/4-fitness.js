@@ -1,7 +1,7 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
 
 import FoodHelper from '../../helpers/food.js'
-import ExercisesHelper from '../../helpers/exercises.js'
+import ExerciseHelper from '../../helpers/exercises.js'
 
 export default {
   name: 'setup-fitness',
@@ -60,7 +60,7 @@ export default {
     handleClick() {
       localStorage.setItem('fitness', JSON.stringify(this.fitness))
       FoodHelper.generateNewScores()
-      ExercisesHelper.generateNewScores()
+      ExerciseHelper.generateNewScores()
       this.$router.push('/setup/finish')
     }
   },

@@ -4,7 +4,7 @@ import PageTabBar from '../../components/page-tab-bar.js'
 import ExerciseItem from '../../components/exercise-item.js'
 import Modal from '../../components/modal.js'
 
-import ExercisesHelper from '../../helpers/exercises.js'
+import ExerciseHelper from '../../helpers/exercises.js'
 
 //TODO: Full workouts
 
@@ -12,7 +12,7 @@ export default {
   name: 'exercises',
   data() {
     return {
-      recommended: ExercisesHelper.getRecommended(),
+      recommended: ExerciseHelper.getRecommended(),
       combinations: ['Full Body', 'Abs', 'Legs & Booty', 'Upper Body']
     }
   },

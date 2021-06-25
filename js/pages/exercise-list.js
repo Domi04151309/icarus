@@ -1,7 +1,7 @@
 import Page from '../components/page.js'
 
 import Exercises from '../data/exercises.js'
-import ExercisesHelper from '../helpers/exercises.js'
+import ExerciseHelper from '../helpers/exercises.js'
 
 export default {
   name: 'exercise-list',
@@ -14,7 +14,7 @@ export default {
     }
   },
   computed: {
-    ExercisesHelper: () => ExercisesHelper
+    ExerciseHelper: () => ExerciseHelper
   },
   watch: {
     searchString() { this.sort() },
@@ -38,7 +38,7 @@ export default {
             <li v-for="(variation, posZ) in exercise.variations" :key="posY + variation.title">
               <router-link :to="'/exercises/exercise-details?posX=' + ($route.query.x || posX) + '&posY=' + exercise.pos + '&posZ=' + posZ">
                 {{ variation.title }}<br>
-                <span class="p">Score: {{ ExercisesHelper.getScore($route.query.x || posX, exercise.pos, posZ) }}</span>
+                <span class="p">Score: {{ ExerciseHelper.getScore($route.query.x || posX, exercise.pos, posZ) }}</span>
               </router-link>
             </li>
           </ul>
@@ -64,8 +64,8 @@ export default {
       ex.forEach((category, i) => {
         if (this.sorting == 'by_score') {
           category.exercises.sort((a, b) => {
-            const scoreA = ExercisesHelper.categoryScore(i, a.pos)
-            const scoreB = ExercisesHelper.categoryScore(i, b.pos)
+            const scoreA = ExerciseHelper.categoryScore(i, a.pos)
+            const scoreB = ExerciseHelper.categoryScore(i, b.pos)
             return scoreA > scoreB ? -1 : scoreA < scoreB ? 1 : 0
           })
         } else if (this.sorting == 'alphabetically') {
