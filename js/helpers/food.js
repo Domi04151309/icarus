@@ -95,11 +95,11 @@ export default {
     const fitness = JsonHelper.get('fitness')
     const nutrition = JsonHelper.get('nutrition')
 
-    const fatLoss = parseInt(nutrition.fatLoss, 10)
-    const muscleGain = parseInt(fitness.muscleGain, 10)
-    const lessSweets = nutrition.lessSweets ? 100 : 0
-    const endurance = parseInt(fitness.endurance, 10)
-    const moreWater = nutrition.moreWater ? 100 : 0
+    const fatLoss = parseInt(nutrition?.fatLoss, 10)
+    const muscleGain = parseInt(fitness?.muscleGain, 10)
+    const lessSweets = nutrition?.lessSweets ? 100 : 0
+    const endurance = parseInt(fitness?.endurance, 10)
+    const moreWater = nutrition?.moreWater ? 100 : 0
 
     const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'sugar', 'protein', 'alcohol']
     const MODIFIERS_FAT_LOSS = [-1, -1, -1, 0, 1, -1]
