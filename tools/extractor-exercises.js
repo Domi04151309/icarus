@@ -26,11 +26,11 @@ const COLUMN_TIME_LOW = 25
 const COLUMN_TIME_MEDIUM = 26
 const COLUMN_TIME_HIGH = 27
 const COLUMN_TIME_FULL = 28
-const COLUMN_TUTORIAL = 30
-const COLUMN_INFORMATION = 31
+const COLUMN_TUTORIAL = 29
+const COLUMN_INFORMATION = 30
 
 const FILE_PATH = './Icarus%20Data%20-%20Exercises.csv'
-const IGNORE_LINES = [1, 32, 48, 63]
+const IGNORE_LINES = [1, 32, 48, 63, 77]
 const LAST_LINE = 109
 
 let currentLine = 0
@@ -125,7 +125,7 @@ async function run() {
       })
       console.log(data)
       document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
-      console.log('Failing lines: ' + failingLines.join())
+      if (failingLines.length > 0) console.warn('Failing lines: ' + failingLines.join())
     }).catch(() => {
       document.getElementById('result').innerHTML = 'An error occurred while trying to fetch the file. Check if the file exists and whether you are running this locally.'
     })

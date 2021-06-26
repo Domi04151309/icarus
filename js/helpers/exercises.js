@@ -61,11 +61,13 @@ export default {
     }
   },
   categoryScore(posX, posY) {
-    const scores = JsonHelper.get(SCORES, () => this.generateNewScores())[posX][posY]
-    if (scores == undefined) {
+    try {
+      const scores = JsonHelper.get(SCORES, () => this.generateNewScores())[posX][posY]
+      return scores.reduce((acc, item) => acc + item) / scores.length
+    } catch(e) {
       this.generateNewScores()
       return this.categoryScore(posX, posY)
-    } else return scores.reduce((acc, item) => acc + item) / scores.length
+    }
   },
   generateNewScores() {
     const categoryArray = []
@@ -76,7 +78,8 @@ export default {
       category.exercises.forEach(exercise => {
         variationArray = []
         exercise.variations.forEach(innerItem => {
-          variationArray.push(this.calculateScore(innerItem))
+          if (category.title == 'HIIT') variationArray.push(0)
+          else variationArray.push(this.calculateScore(innerItem))
         })
         exerciseArray.push(variationArray)
       })
