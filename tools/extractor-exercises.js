@@ -31,7 +31,7 @@ const COLUMN_INFORMATION = 30
 
 const FILE_PATH = './Icarus%20Data%20-%20Exercises.csv'
 const IGNORE_LINES = [1, 32, 48, 63, 77]
-const LAST_LINE = 109
+const LAST_LINE = Infinity
 
 let currentLine = 0
 const failingLines = []

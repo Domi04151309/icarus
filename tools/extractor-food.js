@@ -15,7 +15,7 @@ const COLUMN_VEGAN = 11
 const COLUMN_HEALTHY = 12
 const COLUMN_CASUAL = 13
 
-const FILE_PATH = './Icarus%20Data%20-%20Nutrition%20Data.csv'
+const FILE_PATH = './Icarus%20Data%20-%20Nutrition.csv'
 const IGNORE_LINES = []
 const LAST_LINE = 231
 
