@@ -42,7 +42,7 @@ layout: null
       "sizes": "512x512"
     }
   ],
-  "start_url": "{{ site.baseurl }}/",
+  "start_url": "{{ site.baseurl }}/#/progress",
   "background_color": "#121212",
   "display": "standalone",
   "orientation": "portrait",
@@ -55,13 +55,18 @@ layout: null
       "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
     },
     {
-      "name": "Exercises",
-      "url": "{{ site.baseurl }}/#/exercises",
+      "name": "Well-Being",
+      "url": "{{ site.baseurl }}/#/well-being",
       "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
     },
     {
       "name": "Nutrition",
       "url": "{{ site.baseurl }}/#/nutrition",
+      "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Exercises",
+      "url": "{{ site.baseurl }}/#/exercises",
       "icons": [{ "src": "{{ site.baseurl }}/pwa/mipmap-xxxhdpi/ic_launcher.png", "sizes": "192x192" }]
     },
     {
