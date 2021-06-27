@@ -30,10 +30,13 @@ export default {
       else item.text = 'You did an exercise'
       switch (item.item.category) {
         case 1:
-          item.icon = 'self_improvement'
+          item.icon = 'fitness_center'
           break
         case 2:
-          item.icon = 'fitness_center'
+          item.icon = 'self_improvement'
+          break
+        case 4:
+          item.icon = 'sports_tennis'
           break
         default:
           item.icon = 'directions_run'
