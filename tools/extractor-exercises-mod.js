@@ -30,7 +30,7 @@ const COLUMN_TUTORIAL = 29
 const COLUMN_INFORMATION = 30
 
 const FILE_PATH = './tools/Icarus%20Data%20-%20Exercises.csv'
-const IGNORE_LINES = [1, 32, 48, 63, 77]
+const IGNORE_LINES = []
 const LAST_LINE = Infinity
 
 let currentLine = 0
@@ -63,14 +63,14 @@ async function run() {
 
       lines.forEach((item, i) => {
         currentLine = i + 1
-        if (IGNORE_LINES.includes(i + 1)) return
-        if (i > LAST_LINE - 1) return
+        if (IGNORE_LINES.includes(i + 1) || i > LAST_LINE - 1) return
         lineArray = Common.CSVtoArray(item)
         if (lineArray == null) {
           console.error('Invalid Item at ' + (i + 1) + ': ' + item)
           failingLines.push(currentLine)
           return
         }
+        if (lineArray[COLUMN_CATEGORY_TITLE] == 'Category') return
         if (lineArray[COLUMN_CATEGORY_TITLE] != '') {
           categoryObj = new Object()
           data.push(categoryObj)

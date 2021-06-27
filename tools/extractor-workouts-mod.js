@@ -46,8 +46,7 @@ async function run() {
 
       lines.forEach((item, i) => {
         currentLine = i + 1
-        if (IGNORE_LINES.includes(i + 1)) return
-        if (i > LAST_LINE - 1) return
+        if (IGNORE_LINES.includes(i + 1) || i > LAST_LINE - 1) return
         lineArray = Common.CSVtoArray(item)
         if (lineArray == null) {
           console.error('Invalid Item at ' + (i + 1) + ': ' + item)
