@@ -190,6 +190,9 @@ button:hover, .fab:hover {
 button:active, .fab:active {
   filter: brightness(.8);
 }
+button.two {
+  border-radius: var(--border-radius-2x);
+}
 select, input, textarea {
   -moz-appearance: textfield;
   display: block;

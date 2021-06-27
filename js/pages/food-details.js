@@ -76,11 +76,11 @@ export default {
         </div>
       </div>
     </div>
-    <div class="grid-2 gap-8 mb-8">
-      <button type="button" v-on:click="onEditClicked()">Edit</button>
-      <button type="button" v-on:click="onDeleteClicked()">Delete</button>
+    <div class="grid-2 gap-16 mb-48">
+      <button type="button" class="two" v-on:click="onEditClicked()">Edit</button>
+      <button type="button" class="two" v-on:click="onDeleteClicked()">Delete</button>
     </div>
-    <button class="w-100" type="button" v-on:click="onConsumeClicked()">Consume</button>
+    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
   components: {
       Page
@@ -122,7 +122,7 @@ export default {
       instance.$mount()
       this.$root.$el.appendChild(instance.$el)
     },
-    onConsumeClicked() {
+    onFabClicked() {
       const dayHelper = new DayHelper()
       FOOD_PARAMETERS.forEach(item => {
         dayHelper.progress[item] += this.getActualValue(this.foodItem[item])
@@ -147,6 +147,7 @@ export default {
     }
   },
   mounted() {
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
     if (this.$route.query.item == null) {
       this.$router.push('/nutrition/' + this.writtenType + '/item')
     }

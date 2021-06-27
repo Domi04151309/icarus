@@ -88,13 +88,13 @@ export default {
       <h2>Sets <span class="p">{{ sets }}/{{ exerciseItem.intensities[intensity].sets }}</span></h2>
       <progress :max="exerciseItem.intensities[intensity].sets" :value="sets"></progress>
     </div>
-    <div v-if="(exerciseItem.information || []).length > 0" class="card mb-16-p-16">
+    <div v-if="(exerciseItem.information || []).length > 0" class="card mb-48 p-16">
       <h2>Information</h2>
       <p>
         {{ exerciseItem.information[0] }}
       </p>
     </div>
-    <button class="w-100" type="button" v-on:click="onFinishClicked()">Finish</button>
+    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
   components: {
       Page,
@@ -168,7 +168,7 @@ export default {
         default: return 2
       }
     },
-    onFinishClicked() {
+    onFabClicked() {
       const dayHelper = new DayHelper()
       if (parseInt(this.$route.query.x, 10) == 1) dayHelper.progress.yoga += 1
       else dayHelper.progress.exercises += 1
@@ -189,6 +189,7 @@ export default {
     }
   },
   mounted() {
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
     if (this.$route.query.x != null && this.$route.query.y != null && this.$route.query.z != null) {
       this.exerciseTitle = Exercises[parseInt(this.$route.query.x, 10)].exercises[parseInt(this.$route.query.y, 10)].title
       this.exerciseItem = Exercises[parseInt(this.$route.query.x, 10)].exercises[parseInt(this.$route.query.y, 10)].variations[parseInt(this.$route.query.z, 10)]

@@ -19,7 +19,6 @@ export default {
   },
   template:
   `<page :title="workout.title + ' Workout'" parent="/exercises" class="exercises red">
-
     <div class="card mb-16-p-16 flex center">
       <div class="material-icons-round big-c-icon">warning</div>
       <div>
@@ -33,12 +32,6 @@ export default {
         <li v-for="(item, i) in cardItems" :key="i">{{ item }}</li>
       </ol>
     </div>
-    <!--div v-for="(item, i) in exercises" :key="item.title" class="card mb-16-p-16">
-      <h2>{{ item.title }} <small class="p">{{ item.variation.title }}</small></h2>
-      <ol>
-        <li v-for="(step, j) in item.variation.tutorial" :key="10 + i">{{ step }}</li>
-      </ol>
-    </div-->
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">{{ buttonIcon }}</div>
   </page>`,
   components: {
