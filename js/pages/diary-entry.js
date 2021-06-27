@@ -20,7 +20,7 @@ export default {
     <h3 class="mt-0">{{ new Date(item.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' }) }}</h3>
     <p>{{ item.description }}</p>
     <p v-if="item.details != null">{{ item.details }}</p>
-    <table v-if="item.icon != 'directions_run'" class="mt-16">
+    <table v-if="item.type == 'nutrition'" class="mt-16">
       <tr><td>Portion</td><td>{{ item.item.serving }} {{ item.item.unit }}</td></tr>
       <tr><td>Calories</td><td>{{ getActualValue(item.item, 'calories') }} kcal</td></tr>
       <tr><td>Fat</td><td>{{ getActualValue(item.item, 'fat') }} g</td></tr>
@@ -45,7 +45,7 @@ export default {
       const date = new Date(this.item.time)
       const shareData = {
         title: 'Diary Entry',
-        text: this.item.type.replace('You', 'I') + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' on ' + date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '. Take your personal health to the next level and start tracking your fitness today with Icarus.',
+        text: this.item.text.replace('You', 'I') + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' on ' + date.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '. Take your personal health to the next level and start tracking your fitness today with Icarus.',
         url: 'https://domi04151309.github.io/icarus/'
       }
       try {

@@ -8,24 +8,26 @@ export default {
     const food = FoodHelper.getFoodStatistics()
     let items = []
     food.healthy.forEach(item => {
-      if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
-      else item.type = 'You consumed something healthy'
+      item.type = 'nutrition'
+      if (item.item != null) item.text = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
+      else item.text = 'You consumed something healthy'
       if (item.item.unit == 'ml') item.icon = 'emoji_food_beverage'
       else item.icon = 'restaurant_menu'
       item.details = 'You earned 2 exp for this item!'
       items.push(item)
     })
     food.casual.forEach(item => {
-      if (item.item != null) item.type = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
-      else item.type = 'You consumed something casual'
+      item.type = 'nutrition'
+      if (item.item != null) item.text = `You consumed ${IndefiniteArticle(item.item.title)} ${item.item.title.toLowerCase()}`
+      else item.text = 'You consumed something casual'
       if (item.item.unit == 'ml') item.icon = 'local_bar'
       else item.icon = 'fastfood'
       items.push(item)
     })
     ExerciseHelper.getStatistics().forEach(item => {
-      if (item.item != null) item.type = item.item.title
-      else item.type = 'You did an exercise'
-      console.log(item.item)
+      item.type = 'exercise'
+      if (item.item != null) item.text = item.item.title
+      else item.text = 'You did an exercise'
       switch (item.item.category) {
         case 1:
           item.icon = 'self_improvement'

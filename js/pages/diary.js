@@ -20,7 +20,7 @@ export default {
             <router-link :to="'/progress/diary/entry?pos=' + item.pos">
               <div class="flex between center">
                 <div>
-                  {{ item.type }}<br>
+                  {{ item.text }}<br>
                   <span class="p">{{ item.details }}</span>
                 </div>
                 <div class="material-icons-round big-c-icon">{{ item.icon }}</div>
