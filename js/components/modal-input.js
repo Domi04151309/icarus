@@ -29,7 +29,7 @@ export default {
     <div class="modal-background" v-on:click="negative()"></div>
     <div class="modal-content card">
       <h2>{{ title }}</h2>
-      <input ref="input" :type="inputType" :value="initialValue" autocomplete="off"></input>
+      <input ref="input" :type="inputType" :value="initialValue" autocomplete="off" v-on:keyup.enter="positive()"></input>
       <div class="button-bar">
         <button v-on:click="negative()" type="button">{{ negativeText }}</button>
         <button v-on:click="positive()" type="button">{{ positiveText }}</button>
