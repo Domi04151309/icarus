@@ -963,7 +963,7 @@ circle {
   }
   h2.large-app-bar {
     border-radius: var(--border-radius-2x);
-    margin: 16px auto;
+    margin: 16px auto 0;
     max-width: 684px;
   }
   main.large-app-bar {
