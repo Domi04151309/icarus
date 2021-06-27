@@ -45,12 +45,12 @@ const ErrorLog = () => import('./pages/log.js')
 const DataSettings = () => import('./pages/data-settings.js')
 const NutritionPlan = () => import('./pages/nutrition-plan.js')
 const WorkoutPlan = () => import('./pages/workout-plan.js')
-const Data = () => import('./pages/data.js')
 const BackupAndRestore = () => import('./pages/backup-and-restore.js')
 const Help = () => import('./pages/help.js')
 const About = () => import('./pages/about.js')
 
 const Tools = () => import('../tools/tools.js')
+const Data = () => import('../tools/data.js')
 const Encryptor = () => import('../tools/encryptor.js')
 const ExtractorExercises = () => import('../tools/extractor-exercises.js')
 const ExtractorFood = () => import('../tools/extractor-food.js')
@@ -104,6 +104,7 @@ const routes = [
   { path: '/account/about', component: About },
 
   { path: '/tools', component: Tools },
+  { path: '/tools/data', component: Data },
   { path: '/tools/encryptor', component: Encryptor },
   { path: '/tools/extractor-exercises', component: ExtractorExercises },
   { path: '/tools/extractor-food', component: ExtractorFood },

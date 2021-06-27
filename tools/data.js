@@ -1,7 +1,7 @@
 /*global Vue*/
 
-import Page from '../components/page.js'
-import Modal from '../components/modal.js'
+import Page from '../js/components/page.js'
+import Modal from '../js/components/modal.js'
 
 export default {
   name: 'data',
@@ -12,7 +12,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/account/data">
+  `<page :title="title" parent="/tools">
     <ul class="link-list ignore-page-padding">
       <li v-for="item in storage" :key="item.key">
         <span v-on:click="deleteEntry(item.key)">
