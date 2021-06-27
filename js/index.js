@@ -50,6 +50,12 @@ const BackupAndRestore = () => import('./pages/backup-and-restore.js')
 const Help = () => import('./pages/help.js')
 const About = () => import('./pages/about.js')
 
+const Tools = () => import('../tools/tools.js')
+const Encryptor = () => import('../tools/encryptor.js')
+const ExtractorExercises = () => import('../tools/extractor-exercises.js')
+const ExtractorFood = () => import('../tools/extractor-food.js')
+const ExtractorWorkouts = () => import('../tools/extractor-workouts.js')
+
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
 const routes = [
@@ -95,7 +101,13 @@ const routes = [
   { path: '/account/data/raw', component: Data },
   { path: '/account/backup-and-restore', component: BackupAndRestore },
   { path: '/account/help', component: Help },
-  { path: '/account/about', component: About }
+  { path: '/account/about', component: About },
+
+  { path: '/tools', component: Tools },
+  { path: '/tools/encryptor', component: Encryptor },
+  { path: '/tools/extractor-exercises', component: ExtractorExercises },
+  { path: '/tools/extractor-food', component: ExtractorFood },
+  { path: '/tools/extractor-workouts', component: ExtractorWorkouts }
 ]
 
 function logError(e) {
