@@ -59,7 +59,7 @@ async function run() {
           data.push(categoryObj)
           categoryObj.title = lineArray[COLUMN_CATEGORY_TITLE]
           categoryObj.types = []
-          console.log('New category ' + lineArray[COLUMN_CATEGORY_TITLE] + ' at ' + (i + 1))
+          Common.log('Category "' + lineArray[COLUMN_CATEGORY_TITLE] + '"')
         }
         if (lineArray[COLUMN_WORKOUT_TITLE] != '') {
           typeObj = new Object()
@@ -80,16 +80,17 @@ async function run() {
           typeObj.legs = Common.getIntFromArray(lineArray, COLUMN_LEGS)
           typeObj.intensities = null
           typeObj.exercises = []
+          Common.log('  Type "' + lineArray[COLUMN_WORKOUT_TITLE] + '"')
         } else {
           Exercises.forEach((itemX, x) => {
             itemX.exercises.forEach((itemY, y) => {
               if (itemY.title == lineArray[COLUMN_EXERCISE_TITLE]) typeObj.exercises.push([x, y])
             })
           })
+          Common.log('    Exercise "' + lineArray[COLUMN_EXERCISE_TITLE] + '"')
         }
       })
-      console.log(data)
-      document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
+      Common.printResult(data)
       if (failingLines.length > 0) console.warn('Failing lines: ' + failingLines.join())
     }).catch(() => {
       document.getElementById('result').innerHTML = 'An error occurred while trying to fetch the file. Check if the file exists and whether you are running this locally.'

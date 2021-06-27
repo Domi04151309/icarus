@@ -1,3 +1,5 @@
+const log = []
+
 export default {
   getIntFromArray(array, index) {
     const temp = parseInt(array[index], 10)
@@ -6,6 +8,16 @@ export default {
   getBooleanFromArray(array, index) {
     const temp = parseInt(array[index], 10)
     return temp == 0 || temp == 1
+  },
+  log(msg) {
+    log.push(msg)
+  },
+  printResult(data) {
+    console.log(data)
+    document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
+    document.getElementById('size').innerHTML = document.getElementById('result').innerHTML.length / 1000 + ' KB'
+    document.getElementById('log').innerHTML = log.join('\n')
+    log.length = 0
   },
   CSVtoArray(text) {
     const re_valid = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/

@@ -76,13 +76,14 @@ async function run() {
           data.push(categoryObj)
           categoryObj.title = lineArray[COLUMN_CATEGORY_TITLE]
           categoryObj.exercises = []
-          console.log('New category ' + lineArray[COLUMN_CATEGORY_TITLE] + ' at ' + (i + 1))
+          Common.log('Category "' + lineArray[COLUMN_CATEGORY_TITLE] + '"')
         }
         if (lineArray[COLUMN_EXERCISE_TITLE] != '') {
           exerciseObj = new Object()
           categoryObj.exercises.push(exerciseObj)
           exerciseObj.title = lineArray[COLUMN_EXERCISE_TITLE]
           exerciseObj.variations = []
+          Common.log('  Exercise "' + lineArray[COLUMN_EXERCISE_TITLE] + '"')
         }
         exerciseObj.variations.push({
           title: lineArray[COLUMN_VARIATION_TITLE],
@@ -122,9 +123,9 @@ async function run() {
             }
           }
         })
+        Common.log('    Variation "' + lineArray[COLUMN_VARIATION_TITLE] + '"')
       })
-      console.log(data)
-      document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
+      Common.printResult(data)
       if (failingLines.length > 0) console.warn('Failing lines: ' + failingLines.join())
     }).catch(() => {
       document.getElementById('result').innerHTML = 'An error occurred while trying to fetch the file. Check if the file exists and whether you are running this locally.'

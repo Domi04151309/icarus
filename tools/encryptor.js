@@ -15,8 +15,8 @@ export default {
     <input v-model="input" type="text" autocomplete="off" class="mb-16">
     <button type="button" v-on:click="calc()">Encrypt</button>
     <h2>Output</h2>
-    <samp ref="result">Input something first.</samp><br>
-    <samp ref="result2"></samp>
+    <pre ref="result">Input something first.</pre>
+    <pre ref="result2"></pre>
   </page>`,
   components: {
       Page

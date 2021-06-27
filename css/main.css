@@ -294,6 +294,10 @@ progress::-moz-progress-bar {
 svg {
   flex: none;
 }
+pre {
+  overflow-x: auto;
+  user-select: text;
+}
 
 /* general elements */
 .secondary-title {

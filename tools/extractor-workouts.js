@@ -1,4 +1,5 @@
 import Page from '../js/components/page.js'
+import Extractor from './extractor.js'
 import ModuleRun from './extractor-workouts-mod.js'
 
 export default {
@@ -10,11 +11,11 @@ export default {
   },
   template:
   `<page :title="title" parent="/tools">
-    <p>This tool converts CSV data to useful JSON data.</p>
-    <samp id="result"></samp>
+    <extractor></extractor>
   </page>`,
   components: {
-      Page
+      Page,
+      Extractor
   },
   mounted() {
     ModuleRun()

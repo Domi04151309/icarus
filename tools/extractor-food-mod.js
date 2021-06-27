@@ -61,11 +61,15 @@ async function run() {
           failingLines.push(currentLine)
           return
         }
-        if (lineArray[COLUMN_HEALTHY] == '1') addItemToArray(data.healthy, lineArray)
-        else if (lineArray[COLUMN_CASUAL] == '1') addItemToArray(data.casual, lineArray)
+        if (lineArray[COLUMN_HEALTHY] == '1') {
+          addItemToArray(data.healthy, lineArray)
+          Common.log('Healthy "' + lineArray[COLUMN_TITLE] + '"')
+        } else if (lineArray[COLUMN_CASUAL] == '1') {
+          addItemToArray(data.casual, lineArray)
+          Common.log('Casual "' + lineArray[COLUMN_TITLE] + '"')
+        }
       })
-      console.log(data)
-      document.getElementById('result').innerHTML = `const data = JSON.parse("${JSON.stringify(data).replaceAll('"', '\\"')}"); export default data;`
+      Common.printResult(data)
       if (failingLines.length > 0) console.warn('Failing lines: ' + failingLines.join())
     }).catch(() => {
       document.getElementById('result').innerHTML = 'An error occurred while trying to fetch the file. Check if the file exists and whether you are running this locally.'
