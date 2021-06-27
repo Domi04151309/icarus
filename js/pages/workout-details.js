@@ -10,7 +10,11 @@ export default {
   data() {
     return {
       workout: {},
-      exercises: []
+      exercises: [],
+      fragment: -1,
+      cardTitle: '',
+      cardItems: [],
+      buttonIcon: ''
     }
   },
   template:
@@ -24,20 +28,44 @@ export default {
       </div>
     </div>
     <div class="card mb-16-p-16">
-      <h2>Overview</h2>
+      <h2>{{ cardTitle }}</h2>
       <ol>
-        <li v-for="(item, i) in exercises" :key="i">{{ item.title }} ({{ item.variation.title }})</li>
+        <li v-for="(item, i) in cardItems" :key="i">{{ item }}</li>
       </ol>
     </div>
-    <div v-for="(item, i) in exercises" :key="item.title" class="card mb-16-p-16">
+    <!--div v-for="(item, i) in exercises" :key="item.title" class="card mb-16-p-16">
       <h2>{{ item.title }} <small class="p">{{ item.variation.title }}</small></h2>
       <ol>
         <li v-for="(step, j) in item.variation.tutorial" :key="10 + i">{{ step }}</li>
       </ol>
-    </div>
+    </div-->
+    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">{{ buttonIcon }}</div>
   </page>`,
   components: {
       Page
+  },
+  methods: {
+    render() {
+      if (this.fragment == -1) {
+        this.cardTitle = 'Overview'
+        this.cardItems = this.exercises.map(item => item.title + ' (' + item.variation.title + ')')
+        this.buttonIcon = 'play_arrow'
+      } else if (this.fragment == 10) {
+        this.cardTitle = 'Finished'
+        this.cardItems = this.exercises.map(item => item.title + ' (' + item.variation.title + ')')
+        this.buttonIcon = 'flag'
+      } else if (this.fragment > 10) {
+        this.$router.push('/exercises')
+      } else {
+        this.cardTitle = this.exercises[this.fragment].title
+        this.cardItems = this.exercises[this.fragment].variation.tutorial
+        this.buttonIcon = 'skip_next'
+      }
+    },
+    onFabClicked() {
+      this.fragment++
+      this.render()
+    }
   },
   created() {
     if (this.$route.query.y == null) this.$router.push('/exercises')
@@ -53,5 +81,10 @@ export default {
       item.variation = item.variations[Math.floor(Math.random() * item.variations.length)]
     })
     this.exercises = exercises
+
+    this.render()
+  },
+  mounted() {
+    setTimeout(() => { this.$refs.fab?.classList?.remove('hidden') }, 500)
   }
 }
