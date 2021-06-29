@@ -3,8 +3,8 @@ import ProgressRing from '../components/progress-ring.js'
 
 import Workouts from '../data/workouts.js'
 import Exercises from '../data/exercises.js'
-
-//TODO: Add experience points
+import ExerciseHelper from '../helpers/exercises.js'
+import { DayHelper, Achievement } from '../helpers/progress.js'
 
 export default {
   name: 'workout-details',
@@ -111,7 +111,20 @@ export default {
         this.cardSmall = ''
         this.cardItems = this.exercises.map(item => item.title + ' (' + item.variation.title + ')')
         this.buttonIcon = 'flag'
-      } else if (this.fragment > this.exercises.length) {
+      } else if (this.fragment == this.exercises.length + 1) {
+        const dayHelper = new DayHelper()
+        dayHelper.progress.exercises += this.exercises.length
+        dayHelper.saveProgress()
+
+        this.exercises.forEach(exercise => {
+          const item = {}
+          item.title =  exercise.variation.title + ' ' + exercise.title
+          item.category = 0
+          item.information = exercise.variation.information
+          item.exp = 2
+          ExerciseHelper.addExerciseToStatistic(item)
+        })
+        Achievement.show('Completed a workout')
         this.$router.push('/exercises')
       } else {
         this.cardTitle = this.exercises[this.fragment].title
