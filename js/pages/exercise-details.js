@@ -119,7 +119,7 @@ export default {
       } else {
         if (this.time == 0) this.time = this.timeMax
         this.$refs.play.innerHTML = 'pause'
-        this.doCountdown()
+        setTimeout(() => this.doCountdown(), 1000)
       }
       navigator.vibrate(1)
     },
