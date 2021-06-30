@@ -19,7 +19,7 @@ export default {
   `<page :title="'Add ' + fragments[fragment].title" :parent="'/progress/tracking?i=' + fragment">
     <div v-for="(item, index) in fragments[fragment].values" :key="index">
       <label :for="'value' + index">{{ item }} ({{ fragments[fragment].unit }})</label>
-      <input :id="'value' + index" v-model="values[index]" type="number" class="mb-16"></input>
+      <input :id="'value' + index" v-model.number="values[index]" type="number" class="mb-16"></input>
     </div>
     <label for="date">Date</label>
     <input id="date" v-model="date" type="date" class="mb-16"></input>

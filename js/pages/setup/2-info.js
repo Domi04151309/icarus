@@ -28,7 +28,7 @@ export default {
         <option value="m">Male</option>
         <option value="o">Other</option>
       </select>
-      <input v-model="weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
+      <input v-model.number="weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
       <button type="button" v-on:click="handleClick()">Continue</button>
     </page-no-app-bar>
   </div>`,

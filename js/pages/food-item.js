@@ -65,35 +65,35 @@ export default {
     <div class="grid-2 gap-16 mb-48">
       <div>
         <label for="portion">Portion ({{ foodItem.unit }})</label>
-        <input id="portion" v-model="foodItem.portion" type="number"></input>
+        <input id="portion" v-model.number="foodItem.portion" type="number"></input>
       </div>
       <div>
         <label for="serving">Serving ({{ foodItem.unit }})</label>
-        <input id="serving" v-model="foodItem.serving" type="number"></input>
+        <input id="serving" v-model.number="foodItem.serving" type="number"></input>
       </div>
         <div>
           <label for="calories">Calories (kcal)</label>
-          <input id="calories" v-model="foodItem.calories" type="number"></input>
+          <input id="calories" v-model.number="foodItem.calories" type="number"></input>
         </div>
         <div>
           <label for="fat">Fat (g)</label>
-          <input id="fat" v-model="foodItem.fat" type="number"></input>
+          <input id="fat" v-model.number="foodItem.fat" type="number"></input>
         </div>
       <div>
         <label for="carbs">Carbs (g)</label>
-        <input id="carbs" v-model="foodItem.carbs" type="number"></input>
+        <input id="carbs" v-model.number="foodItem.carbs" type="number"></input>
       </div>
       <div>
         <label for="sugar">Sugar (g)</label>
-        <input id="sugar" v-model="foodItem.sugar" type="number"></input>
+        <input id="sugar" v-model.number="foodItem.sugar" type="number"></input>
       </div>
       <div>
         <label for="protein">Protein (g)</label>
-        <input id="protein" v-model="foodItem.protein" type="number"></input>
+        <input id="protein" v-model.number="foodItem.protein" type="number"></input>
       </div>
       <div>
         <label for="alcohol">Alcohol (vol)<label>
-        <input id="alcohol" v-model="foodItem.alcohol" type="number"></input>
+        <input id="alcohol" v-model.number="foodItem.alcohol" type="number"></input>
       </div>
       <simple-question question="Vegetarian" class="text-center mt-16" v-model="foodItem.vegetarian"></simple-question>
       <simple-question question="Vegan" class="text-center mt-16" v-model="foodItem.vegan"></simple-question>

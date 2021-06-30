@@ -32,7 +32,7 @@ export default {
   },
   addRecent(position) {
     const recents = JsonHelper.get(RECENTS, () => [])
-    recents.unshift(position)
+    recents.unshift(parseInt(position, 10))
     JsonHelper.set(RECENTS, recents.slice(0, 8))
   },
   getHealthyFood() {
@@ -95,10 +95,10 @@ export default {
     const fitness = JsonHelper.get('fitness')
     const nutrition = JsonHelper.get('nutrition')
 
-    const fatLoss = parseInt(nutrition?.fatLoss, 10)
-    const muscleGain = parseInt(fitness?.muscleGain, 10)
+    const fatLoss = nutrition?.fatLoss || 50
+    const muscleGain = fitness?.muscleGain || 50
     const lessSweets = nutrition?.lessSweets ? 100 : 0
-    const endurance = parseInt(fitness?.endurance, 10)
+    const endurance = fitness?.endurance || 50
     const moreWater = nutrition?.moreWater ? 100 : 0
 
     const PARAMETER_LIST = ['calories', 'fat', 'carbs', 'sugar', 'protein', 'alcohol']

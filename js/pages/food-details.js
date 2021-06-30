@@ -45,7 +45,7 @@ export default {
     </div>
     <div class="card mb-16-p-16">
       <h2>Portion <small class="p">({{ foodItem.unit }})</small></h2>
-      <input v-model="foodItem.serving" aria-label="Portion" type="number"></input>
+      <input v-model.number="foodItem.serving" aria-label="Portion" type="number"></input>
     </div>
     <div class="card mb-16-p-16">
       <h2>Values</h2>

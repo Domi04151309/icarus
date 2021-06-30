@@ -26,7 +26,7 @@ const nutrition = JsonHelper.get('nutrition', emptyObject)
 const fitness = JsonHelper.get('fitness', emptyObject)
 
 function calcSwitchValue(item) {
-  return Math.round((parseInt(item, 10) * 2 - 100) / 100)
+  return Math.round((item * 2 - 100) / 100)
 }
 
 function divideNutritionByTwo() {

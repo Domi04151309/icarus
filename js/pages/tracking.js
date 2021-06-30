@@ -74,7 +74,7 @@ export default {
 
     const data = {}
     if (this.items.length == 0) {
-      data.labels = [0, 50]
+      data.labels = [0, 1]
       data.datasets = [{ values: [0, 0] }]
     } else {
       const reversedData = JSON.parse(JSON.stringify(this.items)).reverse()

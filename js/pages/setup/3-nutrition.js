@@ -23,7 +23,7 @@ export default {
       <h1>Nutrition</h1>
       <p class="mb-32">Please answer the questions below so that we know your goals.</p>
       <label for="fat_loss">Fat loss</label>
-      <input id="fat_loss" class="mb-16" type="range" max="100" v-model="nutrition.fatLoss">
+      <input id="fat_loss" class="mb-16" type="range" max="100" v-model.number="nutrition.fatLoss">
       <simple-question question="Do you want to eat less sweets?" class="mb-16" v-model="nutrition.lessSweets"></simple-question>
       <simple-question question="Do you want to drink more water?" class="mb-16" v-model="nutrition.moreWater"></simple-question>
       <simple-question question="Are you vegetarian?" class="mb-16" v-model="nutrition.vegetarian"></simple-question>

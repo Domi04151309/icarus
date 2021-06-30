@@ -2,7 +2,7 @@ import JsonHelper from './json.js'
 
 export default {
   addEntry(storageName, time, values) {
-    if (values.length != 0) {
+    if (values.length != 0 && values[0] != null && values[0] != '') {
       const stored = JsonHelper.get(storageName, () => [])
       stored.unshift({
         time: time,
