@@ -938,6 +938,10 @@ main.large-app-bar {
 .balls div:nth-of-type(3) {
   animation-delay: -0.2s;
 }
+main.wavy > div > *:not(.fab) {
+  animation: wave 2s ease-in-out alternate infinite;
+  animation-delay: -1s;
+}
 @keyframes wave {
   from {transform: translateY(-100%);}
   to {transform: translateY(100%);}

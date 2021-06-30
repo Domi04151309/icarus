@@ -19,12 +19,13 @@ export default {
       info: JsonHelper.get('info'),
       weight: InfoHelper.getLatestEntry('weight') || "0",
       bloodpressure: InfoHelper.getLatestEntry('bloodpressure') || "0",
-      bloodsugar: InfoHelper.getLatestEntry('bloodsugar') || "0"
+      bloodsugar: InfoHelper.getLatestEntry('bloodsugar') || "0",
+      clicks: 0,
     }
   },
   template:
   `<page-tab-bar>
-    <div class="mt-16 mx-8 material-icons-round big accent">waves</div>
+    <div class="mt-16 mx-8 material-icons-round big accent" v-on:click="easterEgg()">waves</div>
     <h2 class="mx-8 secondary-title">Welcome Back {{ info?.name }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <router-link to="/progress/day" class="card mb-16-p-16">
@@ -95,6 +96,10 @@ export default {
       ProgressSections
   },
   methods: {
+    easterEgg() {
+      if (this.clicks >= 4) document.querySelector('main').classList.toggle('wavy')
+      else this.clicks++
+    },
     onFabClicked() {
       this.$router.push('/progress/diary')
     }
