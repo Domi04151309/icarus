@@ -35,7 +35,9 @@ export default {
         <p>Time to find balance</p>
       </div>
     </router-link>
-    <h2 class="mx-8 mt-48 mb-24">Recommendations</h2>
+    <h2 class="mx-8 mt-48 mb-24">Better Sleep</h2>
+    <list-item-image title="Coming soon" image="./images/well-being/2.jpg"></list-item-image>
+    <h2 class="mx-8 mt-48 mb-24">Stress Management</h2>
     <list-item-image title="Coming soon" image="./images/well-being/1.jpg"></list-item-image>
   </page-tab-bar>`,
   components: {

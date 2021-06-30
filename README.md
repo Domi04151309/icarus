@@ -13,18 +13,12 @@ A simple fitness web app.
 
 ## Images
 Saved with the width set to 1920px and the quality set to 60%
-- https://unsplash.com/photos/F1oeYBKJsdw
-- https://unsplash.com/photos/duvq92-VCZ4
-- https://unsplash.com/photos/pHANr-CpbYM
-- https://unsplash.com/photos/HlNcigvUi4Q
-- https://unsplash.com/photos/dsT5LGzEuzE
-- https://unsplash.com/photos/N_Y88TWmGwA
-- https://unsplash.com/photos/MQUqbmszGGM
-- https://unsplash.com/photos/jUPOXXRNdcA
-- https://unsplash.com/photos/Yizrl9N_eDA
-- https://unsplash.com/photos/Yui5vfKHuzs
-- https://unsplash.com/photos/6gbr24z3H5c
-- https://unsplash.com/photos/mjcJ0FFgdWI
-- https://unsplash.com/photos/QYa9pWGLajs
+
+| ![Image](https://unsplash.com/photos/F1oeYBKJsdw/download) | ![Image](https://unsplash.com/photos/duvq92-VCZ4/download) | ![Image](https://unsplash.com/photos/pHANr-CpbYM/download) |
+| --- | --- | --- |
+| ![Image](https://unsplash.com/photos/HlNcigvUi4Q/download) | ![Image](https://unsplash.com/photos/dsT5LGzEuzE/download) | ![Image](https://unsplash.com/photos/N_Y88TWmGwA/download) |
+| ![Image](https://unsplash.com/photos/MQUqbmszGGM/download) | ![Image](https://unsplash.com/photos/jUPOXXRNdcA/download) | ![Image](https://unsplash.com/photos/Yizrl9N_eDA/download) |
+| ![Image](https://unsplash.com/photos/Yui5vfKHuzs/download) | ![Image](https://unsplash.com/photos/6gbr24z3H5c/download) | ![Image](https://unsplash.com/photos/mjcJ0FFgdWI/download) |
+| ![Image](https://unsplash.com/photos/QYa9pWGLajs/download) | ![Image](https://unsplash.com/photos/EerxztHCjM8/download) |
 
 Copyright 2020 Domi04151309 & Nils Döhring
