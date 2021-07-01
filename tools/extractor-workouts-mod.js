@@ -64,8 +64,8 @@ async function run() {
           typeObj = new Object()
           categoryObj.types.push(typeObj)
           typeObj.title = lineArray[COLUMN_WORKOUT_TITLE]
-          /*typeObj.tutorial = extractJSON(lineArray[COLUMN_TUTORIAL])
-          typeObj.information = extractJSON(lineArray[COLUMN_INFORMATION])*/
+          //typeObj.tutorial = extractJSON(lineArray[COLUMN_TUTORIAL])
+          //typeObj.information = extractJSON(lineArray[COLUMN_INFORMATION])
           typeObj.fatLoss = Common.getIntFromArray(lineArray, COLUMN_FAT_LOSS)
           typeObj.muscleGain = Common.getIntFromArray(lineArray, COLUMN_MUSCLE_GAIN)
           typeObj.cardio = Common.getIntFromArray(lineArray, COLUMN_CARDIO)
@@ -77,7 +77,7 @@ async function run() {
           typeObj.abs = Common.getIntFromArray(lineArray, COLUMN_ABS)
           typeObj.booty = Common.getIntFromArray(lineArray, COLUMN_BOOTY)
           typeObj.legs = Common.getIntFromArray(lineArray, COLUMN_LEGS)
-          typeObj.intensities = null
+          //typeObj.intensities = null
           typeObj.exercises = []
           Common.log('  Type "' + lineArray[COLUMN_WORKOUT_TITLE] + '"')
         } else {

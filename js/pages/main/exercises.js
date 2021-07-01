@@ -5,14 +5,14 @@ import ExerciseItem from '../../components/exercise-item.js'
 import Modal from '../../components/modal.js'
 
 import ExerciseHelper from '../../helpers/exercises.js'
-import Workouts from '../../data/workouts.js'
+import WorkoutHelper from '../../helpers/workouts.js'
 
 export default {
   name: 'exercises',
   data() {
     return {
       recommended: ExerciseHelper.getRecommended(),
-      workouts: Workouts[0].types
+      workouts: WorkoutHelper.getRecommended()[0].types
     }
   },
   template:
@@ -41,7 +41,7 @@ export default {
       </exercise-item>
     </div>
     <h2 class="mx-8 mt-48 mb-24">Full Workouts</h2>
-    <router-link v-for="(item, i) in workouts" :key="item.title" :to="'/exercises/workout-details?y=' + i" class="card mb-16-p-16 flex center">
+    <router-link v-for="item in workouts" :key="item.title" :to="'/exercises/workout-details?y=' + item.pos" class="card mb-16-p-16 flex center">
       <div class="material-icons-round big-c-icon">inventory</div>
       <div>
         <h2 class="m-0 mt-2">{{ item.title }} Workout</h2>

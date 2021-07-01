@@ -15,7 +15,7 @@ export default {
   template:
   `<page-tab-bar>
     <div class="flex mb-32">
-      <span id="profile-icon" class="material-icons-round">account_circle</span>
+      <span id="profile-icon" class="material-icons-round accent">account_circle</span>
       <div class="p w-100 ml-32 mr-16">
         <div class="flex">
           <div class="mr-16">

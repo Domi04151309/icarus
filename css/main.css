@@ -875,7 +875,6 @@ main.large-app-bar {
 
 /* account */
 #profile-icon {
-  color: var(--accent-color);
   font-size: 72px;
   align-self: center;
 }
@@ -983,7 +982,7 @@ circle {
 
 /* support queries */
 @supports (-webkit-background-clip: text) {
-  .link-list .material-icons-round, .material-icons-round.accent, footer .router-link-active, #profile-icon {
+  .link-list .material-icons-round, .material-icons-round.accent, footer .router-link-active {
     background: var(--accent-color-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
