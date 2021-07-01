@@ -982,7 +982,7 @@ circle {
 
 /* support queries */
 @supports (-webkit-background-clip: text) {
-  .link-list .material-icons-round, .material-icons-round.accent, footer .router-link-active {
+  .link-list .material-icons-round, .material-icons-round.accent, footer .router-link-active > span {
     background: var(--accent-color-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
