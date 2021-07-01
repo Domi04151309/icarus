@@ -308,7 +308,7 @@ pre {
   font-size: 32px;
 }
 .accent-text {
-  color: var(--accent-color)
+  color: var(--accent-color);
 }
 .card {
   display: block;
@@ -954,7 +954,7 @@ circle {
   transform-origin: 50% 50%;
 }
 
-/* media query */
+/* media queries */
 @media (min-width: 720px) {
   /* alignment */
   .grid-1-2 {
@@ -978,5 +978,14 @@ circle {
   }
   .nav-icon.transparent {
     color: var(--text-color-secondary);
+  }
+}
+
+/* support queries */
+@supports (-webkit-background-clip: text) {
+  .link-list .material-icons-round, .material-icons-round.accent, footer .router-link-active, #profile-icon {
+    background: var(--accent-color-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
