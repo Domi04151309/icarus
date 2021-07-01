@@ -1,4 +1,7 @@
+/*global Vue*/
+
 import Page from '../components/page.js'
+import Modal from '../components/modal.js'
 
 import InfoHelper from '../helpers/info.js'
 
@@ -32,8 +35,21 @@ export default {
   },
   methods: {
     onFabClicked() {
-      InfoHelper.addEntry(this.fragment, new Date(this.date + 'T' + this.time).getTime(), this.values)
-      this.$router.push('/progress/tracking?i=' + this.fragment)
+      if (InfoHelper.addEntry(this.fragment, new Date(this.date + 'T' + this.time).getTime(), this.values)) {
+        this.$router.push('/progress/tracking?i=' + this.fragment)
+      } else {
+        const ComponentClass = Vue.extend(Modal)
+        const instance = new ComponentClass({
+          propsData: {
+            title: 'Invalid Input',
+            message: 'The values you have entered are invalid.',
+            positiveText: 'Ok',
+            negativeButton: false
+          }
+        })
+        instance.$mount()
+        this.$root.$el.appendChild(instance.$el)
+      }
     }
   },
   created() {
