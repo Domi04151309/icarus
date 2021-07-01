@@ -51,7 +51,7 @@ export default {
           positiveFunction: () => {
             this.items.splice(index, 1)
             JsonHelper.set(this.fragment, this.items)
-            this.chart.removeDataPoint(index)
+            this.chart.removeDataPoint(this.items.length - index)
           }
         }
       })
