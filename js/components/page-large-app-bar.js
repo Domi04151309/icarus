@@ -8,6 +8,11 @@ export default {
       default: ''
     }
   },
+  computed: {
+    img() {
+      return 'https://source.unsplash.com/' + this.imgId
+    }
+  },
   template:
   `<div class="large-app-bar">
     <header>
@@ -20,7 +25,14 @@ export default {
       <slot></slot>
     </main>
   </div>`,
+  created() {
+    if (this.imgId != '') {
+      const img = new Image()
+      img.src = this.img
+    }
+  },
   mounted() {
-    if (this.imgId != '') this.$refs.largeTitle.style.background  = 'var(--background-dim), url(https://source.unsplash.com/' + this.imgId + ') no-repeat center'
+    if (this.imgId != '') this.$refs.largeTitle.style.background  = 'var(--background-dim), url(' + this.img + ') no-repeat center'
+    console.log(this.img)
   }
 }

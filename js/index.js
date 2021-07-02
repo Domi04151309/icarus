@@ -55,7 +55,7 @@ const Encryptor = () => import('../tools/encryptor.js')
 const ExtractorExercises = () => import('../tools/extractor-exercises.js')
 const ExtractorFood = () => import('../tools/extractor-food.js')
 const ExtractorWorkouts = () => import('../tools/extractor-workouts.js')
-const ImageGrabber = () => import('../tools/image-grabber.js')
+const ImageViewer = () => import('../tools/image-viewer.js')
 
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
@@ -110,7 +110,7 @@ const routes = [
   { path: '/tools/extractor-exercises', component: ExtractorExercises },
   { path: '/tools/extractor-food', component: ExtractorFood },
   { path: '/tools/extractor-workouts', component: ExtractorWorkouts },
-  { path: '/tools/image-grabber', component: ImageGrabber }
+  { path: '/tools/image-viewer', component: ImageViewer }
 ]
 
 function logError(e) {
