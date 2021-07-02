@@ -2,7 +2,11 @@ export default {
   name: 'page-large-app-bar',
   props: {
     title: String,
-    parent: String
+    parent: String,
+    imgId: {
+      type: String,
+      default: ''
+    }
   },
   template:
   `<div class="large-app-bar">
@@ -11,9 +15,12 @@ export default {
         <span class="material-icons-round transparent nav-icon" aria-label="Back">arrow_back</span>
       </router-link>
     </header>
-    <h2 class="large-app-bar">{{ title }}</h2>
+    <h2 ref="largeTitle" class="large-app-bar">{{ title }}</h2>
     <main class="large-app-bar zoom-in-animation">
       <slot></slot>
     </main>
-  </div>`
+  </div>`,
+  mounted() {
+    if (this.imgId != '') this.$refs.largeTitle.style.background  = 'var(--background-dim), url(https://source.unsplash.com/' + this.imgId + ') no-repeat center'
+  }
 }

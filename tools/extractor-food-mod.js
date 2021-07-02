@@ -14,6 +14,7 @@ const COLUMN_VEGETARIAN = 10
 const COLUMN_VEGAN = 11
 const COLUMN_HEALTHY = 12
 const COLUMN_CASUAL = 13
+const COLUMN_IMAGE = 21
 
 const FILE_PATH = './tools/Icarus%20Data%20-%20Nutrition.csv'
 const IGNORE_LINES = []
@@ -21,6 +22,11 @@ const LAST_LINE = Infinity
 
 let currentLine = 0
 const failingLines = []
+
+function getImageId(url) {
+  if (url.startsWith('https://unsplash.com/photos/')) return url.slice(28)
+  else return ''
+}
 
 function addItemToArray(array, line) {
   array.push({
@@ -35,7 +41,8 @@ function addItemToArray(array, line) {
     serving: Common.getIntFromArray(line, COLUMN_SERVING),
     unit: line[COLUMN_UNIT],
     vegetarian: Common.getBooleanFromArray(line, COLUMN_VEGETARIAN),
-    vegan: Common.getBooleanFromArray(line, COLUMN_VEGAN)
+    vegan: Common.getBooleanFromArray(line, COLUMN_VEGAN),
+    image: getImageId(line[COLUMN_IMAGE])
   })
 }
 
