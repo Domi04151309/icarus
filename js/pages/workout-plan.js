@@ -1,4 +1,5 @@
 import Page from '../components/page.js'
+import RangeInput from '../components/range-input.js'
 
 import FoodHelper from '../helpers/food.js'
 import ExerciseHelper from '../helpers/exercises.js'
@@ -24,30 +25,21 @@ export default {
   },
   template:
   `<page :title="title" parent="/account/data" class="text-center">
-    <label for="muscle_gain">Muscle gain</label>
-    <input id="muscle_gain" class="mb-16" type="range" max="100" v-model.number="fitness.muscleGain">
-    <label for="cardio">Cardio</label>
-    <input id="cardio" class="mb-16" type="range" max="100" v-model.number="fitness.cardio">
-    <label for="endurance">Endurance</label>
-    <input id="endurance" class="mb-16" type="range" max="100" v-model.number="fitness.endurance">
-    <label for="arms">Arms</label>
-    <input id="arms" class="mb-16" type="range" max="100" v-model.number="fitness.arms">
-    <label for="shoulders">Shoulders</label>
-    <input id="shoulders" class="mb-16" type="range" max="100" v-model.number="fitness.shoulders">
-    <label for="back">Back</label>
-    <input id="back" class="mb-16" type="range" max="100" v-model.number="fitness.back">
-    <label for="chest">Chest</label>
-    <input id="chest" class="mb-16" type="range" max="100" v-model.number="fitness.chest">
-    <label for="abs">Abs</label>
-    <input id="abs" class="mb-16" type="range" max="100" v-model.number="fitness.abs">
-    <label for="booty">Booty</label>
-    <input id="booty" class="mb-16" type="range" max="100" v-model.number="fitness.booty">
-    <label for="legs">Legs</label>
-    <input id="legs" class="mb-16" type="range" max="100" v-model.number="fitness.legs">
+  <range-input title="Muscle gain" class="mb-16" v-model.number="fitness.muscleGain"></range-input>
+  <range-input title="Cardio" class="mb-16" v-model.number="fitness.cardio"></range-input>
+  <range-input title="Endurance" class="mb-16" v-model.number="fitness.endurance"></range-input>
+  <range-input title="Arms" class="mb-16" v-model.number="fitness.arms"></range-input>
+  <range-input title="Shoulders" class="mb-16" v-model.number="fitness.shoulders"></range-input>
+  <range-input title="Back" class="mb-16" v-model.number="fitness.back"></range-input>
+  <range-input title="Chest" class="mb-16" v-model.number="fitness.chest"></range-input>
+  <range-input title="Abs" class="mb-16" v-model.number="fitness.abs"></range-input>
+  <range-input title="Booty" class="mb-16" v-model.number="fitness.booty"></range-input>
+  <range-input title="Legs" class="mb-16" v-model.number="fitness.legs"></range-input>
     <button type="button" v-on:click="handleClick()">Save</button>
   </page>`,
   components: {
-      Page
+      Page,
+      RangeInput
   },
   methods: {
     handleClick() {

@@ -1,4 +1,5 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
+import RangeInput from '../../components/range-input.js'
 import SimpleQuestion from '../../components/simple-question.js'
 
 import FoodHelper from '../../helpers/food.js'
@@ -22,8 +23,7 @@ export default {
     <page-no-app-bar class="setup-text">
       <h1>Nutrition</h1>
       <p class="mb-32">Please answer the questions below so that we know your goals.</p>
-      <label for="fat_loss">Fat loss</label>
-      <input id="fat_loss" class="mb-16" type="range" max="100" v-model.number="nutrition.fatLoss">
+      <range-input title="Fat loss" class="mb-16" v-model.number="nutrition.fatLoss"></range-input>
       <simple-question question="Do you want to eat less sweets?" class="mb-16" v-model="nutrition.lessSweets"></simple-question>
       <simple-question question="Do you want to drink more water?" class="mb-16" v-model="nutrition.moreWater"></simple-question>
       <simple-question question="Are you vegetarian?" class="mb-16" v-model="nutrition.vegetarian"></simple-question>
@@ -33,6 +33,7 @@ export default {
   </div>`,
   components: {
       PageNoAppBar,
+      RangeInput,
       SimpleQuestion
   },
   methods: {
