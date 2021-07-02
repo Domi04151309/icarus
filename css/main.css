@@ -849,16 +849,13 @@ h2.large-app-bar {
   z-index: 0;
 }
 div.large-app-bar.exercises > h2 {
-  background: var(--background-dim), url('../images/exercises/hiking.jpg') no-repeat center;
-  background-size: cover;
+  background: var(--background-dim), url('../images/exercises/hiking.jpg') no-repeat center/cover;
 }
 div.large-app-bar.healthy > h2 {
-  background: var(--background-dim), url('../images/food/healthy.jpg') no-repeat center;
-  background-size: cover;
+  background: var(--background-dim), url('../images/food/healthy.jpg') no-repeat center/cover;
 }
 div.large-app-bar.casual > h2 {
-  background: var(--background-dim), url('../images/food/casual.jpg') no-repeat center;
-  background-size: cover;
+  background: var(--background-dim), url('../images/food/casual.jpg') no-repeat center/cover;
 }
 main.large-app-bar {
   position: relative;

@@ -20,7 +20,7 @@ export default {
     </ul>
     <h2>Nutrition</h2>
     <div v-for="(item, i) in items" :key="i" class="ignore-page-padding">
-      <h2 ref="largeTitle" class="large-app-bar" :style="'background: var(--background-dim), url(' + item.image + ') no-repeat center'">{{ item.title }}</h2>
+      <h2 ref="largeTitle" class="large-app-bar" :style="'background: var(--background-dim), url(' + item.image + ') no-repeat center/cover'">{{ item.title }}</h2>
     </div>
   </page>`,
   components: {

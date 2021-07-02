@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    if (this.imgId != '') this.$refs.largeTitle.style.background  = 'var(--background-dim), url(' + this.img + ') no-repeat center'
+    if (this.imgId != '') this.$refs.largeTitle.style.background  = 'var(--background-dim), url(' + this.img + ') no-repeat center/cover'
     console.log(this.img)
   }
 }
