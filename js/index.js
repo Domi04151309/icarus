@@ -7,9 +7,10 @@ const Unknown = () => import('./pages/unknown.js')
 const SetupVerification = () => import('./pages/setup/0-verification.js')
 const SetupWelcome = () => import('./pages/setup/1-welcome.js')
 const SetupInfo = () => import('./pages/setup/2-info.js')
-const SetupNutrition = () => import('./pages/setup/3-nutrition.js')
-const SetupFitness = () => import('./pages/setup/4-fitness.js')
-const SetupFinish = () => import('./pages/setup/5-finish.js')
+const SetupWellBeing = () => import('./pages/setup/3-well-being.js')
+const SetupNutrition = () => import('./pages/setup/4-nutrition.js')
+const SetupFitness = () => import('./pages/setup/5-fitness.js')
+const SetupFinish = () => import('./pages/setup/6-finish.js')
 
 const Progress = () => import('./pages/main/progress.js')
 const WellBeing = () => import('./pages/main/well-being.js')
@@ -65,6 +66,7 @@ const routes = [
   { path: '/setup/verification', component: SetupVerification },
   { path: '/setup/welcome', component: SetupWelcome },
   { path: '/setup/info', component: SetupInfo },
+  { path: '/setup/well-being', component: SetupWellBeing },
   { path: '/setup/nutrition', component: SetupNutrition },
   { path: '/setup/fitness', component: SetupFitness },
   { path: '/setup/finish', component: SetupFinish },

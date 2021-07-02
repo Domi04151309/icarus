@@ -39,7 +39,7 @@ export default {
     handleClick() {
       localStorage.setItem('info', JSON.stringify(this.info))
       if (this.weight != null) InfoHelper.addEntry('weight', new Date().getTime(), [this.weight])
-      this.$router.push('/setup/nutrition')
+      this.$router.push('/setup/well-being')
     }
   },
   created() {
