@@ -1,4 +1,7 @@
 import PageNoAppBar from '../../components/page-no-app-bar.js'
+import IconItem from '../../components/icon-item.js'
+
+//TODO: Add functionality
 
 export default {
   name: 'setup-well-being',
@@ -7,13 +10,28 @@ export default {
     <div class="setup-image info"></div>
     <page-no-app-bar class="setup-text">
       <h1>Well-Being</h1>
-      <p class="mb-32">Choose the plan that describes your goals the best.</p>
-      <p class="mb-16">Coming soon</p>
+      <p class="mb-32">Choose the option that describes your goals the best.</p>
+      <div class="disabled"><icon-item
+        icon="emoji_people"
+        title="Less Anxiety"
+        summary="Coming soon">
+      </icon-item>
+      <icon-item
+        icon="king_bed"
+        title="Better Sleep"
+        summary="Coming soon">
+      </icon-item>
+      <icon-item
+        icon="emoji_nature"
+        title="Stress Management"
+        summary="Coming soon">
+      </icon-item></div>
       <button type="button" v-on:click="handleClick()">Continue</button>
     </page-no-app-bar>
   </div>`,
   components: {
-      PageNoAppBar
+      PageNoAppBar,
+      IconItem
   },
   methods: {
     handleClick() {

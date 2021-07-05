@@ -16,6 +16,7 @@ export default {
       <li><router-link to="/tools/extractor-food"><span class="material-icons-round">restaurant_menu</span>Food Extractor</router-link></li>
       <li><router-link to="/tools/extractor-exercises"><span class="material-icons-round">directions_run</span>Exercise Extractor</router-link></li>
       <li><router-link to="/tools/extractor-workouts"><span class="material-icons-round">directions_run</span>Workout Extractor</router-link></li>
+      <li><router-link to="/setup/welcome"><span class="material-icons-round">tune</span>Launch Setup</router-link></li>
     </ul>
   </page>`,
   components: {

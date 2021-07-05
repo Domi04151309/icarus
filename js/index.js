@@ -181,11 +181,12 @@ router.beforeEach((to, from, next) => {
       || from.path == '/account'
     ) next(false)
     else if (
-      from.path.includes('progress')
+      (from.path.includes('progress')
       || from.path.includes('well-being')
       || from.path.includes('nutrition')
       || from.path.includes('exercises')
-      || from.path.includes('account')
+      || from.path.includes('account'))
+      && !from.path.includes('setup')
     ) next(from.path.substring(0, from.path.lastIndexOf('/')))
     else next()
   }
