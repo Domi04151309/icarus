@@ -562,6 +562,9 @@ h2 > .c-icon {
 .hidden {
   display: none;
 }
+.text-start {
+  text-align: start;
+}
 .text-center {
   text-align: center;
 }

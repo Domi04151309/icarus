@@ -2,6 +2,7 @@
 
 import PageTabBar from '../../components/page-tab-bar.js'
 import ExerciseItem from '../../components/exercise-item.js'
+import IconItem from '../../components/icon-item.js'
 import Modal from '../../components/modal.js'
 
 import ExerciseHelper from '../../helpers/exercises.js'
@@ -41,16 +42,18 @@ export default {
       </exercise-item>
     </div>
     <h2 class="mx-8 mt-48 mb-24">Full Workouts</h2>
-    <router-link v-for="item in workouts" :key="item.title" :to="'/exercises/workout-details?y=' + item.pos" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">inventory</div>
-      <div>
-        <h2 class="m-0 mt-2">{{ item.title }} HIIT</h2>
-        <p>Train your {{ item.title.toLowerCase() }}</p>
-      </div>
-    </router-link>
+    <icon-item
+      v-for="item in workouts"
+      :key="item.title"
+      icon="inventory"
+      :title="item.title + ' HIIT'"
+      :summary="'Train your ' + item.title.toLowerCase()"
+      :link="'/exercises/workout-details?y=' + item.pos">
+    </icon-item>
   </page-tab-bar>`,
   components: {
       PageTabBar,
+      IconItem,
       ExerciseItem
   },
   mounted() {

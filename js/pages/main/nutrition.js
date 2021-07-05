@@ -3,6 +3,7 @@
 import PageTabBar from '../../components/page-tab-bar.js'
 import ProgressRing from '../../components/progress-ring.js'
 import ListItemImage from '../../components/list-item-image.js'
+import IconItem from '../../components/icon-item.js'
 import Modal from '../../components/modal.js'
 
 import FoodHelper from '../../helpers/food.js'
@@ -54,25 +55,24 @@ export default {
       <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/recommendations"></list-item-image>
     </div>
     <h2 class="mx-8 mt-48 mb-24">Manage Your Menu</h2>
-    <router-link to="/nutrition/update" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">sync</div>
-      <div>
-        <h2 class="m-0 mt-2">Updates</h2>
-        <p>Check for new items</p>
-      </div>
-    </router-link>
-    <div v-on:click="reset()" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">restart_alt</div>
-      <div>
-        <h2 class="m-0 mt-2">Reset Local List</h2>
-        <p>Reset your local edits to the list</p>
-      </div>
-    </div>
+    <icon-item
+      icon="sync"
+      title="Updates"
+      summary="Check for new items"
+      link="/nutrition/update">
+    </icon-item>
+    <icon-item
+      icon="restart_alt"
+      title="Reset Local List"
+      summary="Reset your local edits to the list"
+      v-on:click.native="reset()">
+    </icon-item>
   </page-tab-bar>`,
   components: {
       PageTabBar,
       ProgressRing,
-      ListItemImage
+      ListItemImage,
+      IconItem
   },
   methods: {
     reset() {

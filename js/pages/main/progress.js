@@ -2,6 +2,7 @@
 
 import PageTabBar from '../../components/page-tab-bar.js'
 import ProgressSections from '../../components/progress-sections.js'
+import IconItem from '../../components/icon-item.js'
 import Modal from '../../components/modal.js'
 
 import JsonHelper from '../../helpers/json.js'
@@ -60,13 +61,12 @@ export default {
         <p>Your progress for this month</p>
       </router-link>
     </div>
-    <router-link to="/progress/calendar" class="card mb-16-p-16 flex center">
-      <div class="material-icons-round big-c-icon">calendar_today</div>
-      <div>
-        <h2 class="m-0 mt-2">Calendar</h2>
-        <p>View the progress of another day, week, or month</p>
-      </div>
-    </router-link>
+    <icon-item
+      icon="calendar_today"
+      title="Calendar"
+      summary="View the progress of another day, week, or month"
+      link="/progress/calendar">
+    </icon-item>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
     <router-link to="/progress/tracking?i=weight" class="card mb-16-p-16 flex center between">
       <div>
@@ -93,7 +93,8 @@ export default {
   </page-tab-bar>`,
   components: {
       PageTabBar,
-      ProgressSections
+      ProgressSections,
+      IconItem
   },
   methods: {
     easterEgg() {
