@@ -14,9 +14,9 @@ export default {
   },
   template:
   `<page-tab-bar>
-    <div class="flex mb-32">
+    <div :class="'flex mb-32' + (window.unlocked ? '' : ' space')">
       <span id="profile-icon" class="material-icons-round accent">account_circle</span>
-      <div class="p w-100 ml-32 mr-16">
+      <div v-if="window.unlocked" class="p w-100 ml-32 mr-16">
         <div class="flex">
           <div class="mr-16">
             <small class="item-caption">Name</small>{{ info.name || 'Guest' }}

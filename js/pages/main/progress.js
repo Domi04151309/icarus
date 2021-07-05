@@ -27,9 +27,9 @@ export default {
   template:
   `<page-tab-bar>
     <div class="mt-16 mx-8 material-icons-round big accent" v-on:click="easterEgg()">waves</div>
-    <h2 class="mx-8 secondary-title">Welcome Back {{ info?.name }}</h2>
+    <h2 class="mx-8 secondary-title">{{ 'Welcome Back ' + (window.unlocked ? this.info?.name : '') }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
-    <div v-if="!window.liteMode">
+    <div v-if="window.unlocked">
       <router-link to="/progress/day" class="card mb-16 p-16">
         <h2>Today's Goals</h2>
         <progress-sections
@@ -74,7 +74,7 @@ export default {
     <icon-item
       icon="calendar_today"
       title="Calendar"
-      summary="View the progress of another day, week, or month"
+      :summary="'View the progress of another day' + (window.unlocked ? ', week, or month' : '')"
       link="/progress/calendar">
     </icon-item>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
@@ -99,7 +99,7 @@ export default {
       </div>
       <div class="big mr-16 p">{{ bloodsugar }}</div>
     </router-link>
-    <div ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
+    <div v-if="window.unlocked" ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {
       PageTabBar,

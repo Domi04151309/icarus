@@ -50,7 +50,7 @@ export default {
           {{ item.title }}
         </button>
     </div>
-    <div v-if="!window.liteMode">
+    <div v-if="window.unlocked">
       <div v-on:click="openMonth()" class="card mb-16 p-16">
         <h2>Whole Month</h2>
         <progress-sections

@@ -2,7 +2,6 @@ export default {
   name: 'page-tab-bar',
   data() {
     return {
-      title: 'Icarus',
       tabs: [
         {
           icon: 'insights',
@@ -35,12 +34,10 @@ export default {
   template:
   `<div>
     <header>
-      <h1>{{ title }}</h1>
+      <h1>{{ 'Icarus' + (window.unlocked ? '' : ' Lite') }}</h1>
     </header>
     <main class="with app-bar tab-bar fade-in-animation">
-      <div>
-        <slot></slot>
-      </div>
+      <slot></slot>
     </main>
     <footer>
       <router-link class="tab" v-for="tab in tabs" :key="tab.url" :to="tab.url">

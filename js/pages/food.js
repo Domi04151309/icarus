@@ -79,7 +79,7 @@ export default {
         </food-list-item>
       </div>
     </div>
-    <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
+    <div v-if="window.unlocked" ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
   components: {
       Page,

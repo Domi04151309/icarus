@@ -61,7 +61,7 @@ const ImageViewer = () => import('../tools/image-viewer.js')
 
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
-window.liteMode = localStorage.getItem('liteMode') == 'true'
+window.unlocked = localStorage.getItem('liteMode') != 'true'
 
 const routes = [
   { path: '/', redirect: '/progress' },
@@ -117,8 +117,8 @@ const routes = [
   { path: '/tools/image-viewer', component: ImageViewer }
 ]
 
-if (window.liteMode) routes.push({ path: '/progress/day', component: DayLite })
-else routes.push({ path: '/progress/day', component: Day })
+if (window.unlocked) routes.push({ path: '/progress/day', component: Day })
+else routes.push({ path: '/progress/day', component: DayLite })
 
 function logError(e) {
   const errors = JsonHelper.get('errors', () => [])
