@@ -28,7 +28,7 @@ export default {
       <simple-question question="Do you want to drink more water?" class="mb-16" v-model="nutrition.moreWater"></simple-question>
       <simple-question question="Are you vegetarian?" class="mb-16" v-model="nutrition.vegetarian"></simple-question>
       <simple-question question="Are you vegan?" class="mb-16" v-model="nutrition.vegan"></simple-question>
-      <button type="button" v-on:click="handleClick()">Continue</button>
+      <button type="button" v-on:click="handleClick()" class="mt-8">Continue</button>
     </page-no-app-bar>
   </div>`,
   components: {

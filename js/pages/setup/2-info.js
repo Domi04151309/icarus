@@ -29,7 +29,7 @@ export default {
         <option value="o">Other</option>
       </select>
       <input v-model.number="weight" class="setup-input mb-16" type="number" placeholder="Weight" autocomplete="off">
-      <button type="button" v-on:click="handleClick()">Continue</button>
+      <button type="button" v-on:click="handleClick()" class="mt-8">Continue</button>
     </page-no-app-bar>
   </div>`,
   components: {

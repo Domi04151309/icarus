@@ -15,7 +15,7 @@ export default {
       <p class="mb-32">Please enter your personal verification code below.</p>
       <input ref="code" class="setup-input mb-16" type="text" placeholder="Code" autocomplete="off" v-on:keyup.enter="handleClick()">
       <p v-show="wrongCode" class="mb-8 red accent-text">Invalid code!</p>
-      <button type="button" v-on:click="handleClick()">Verify</button>
+      <button type="button" v-on:click="handleClick()" class="mt-8">Verify</button>
     </page-no-app-bar>
   </div>`,
   components: {

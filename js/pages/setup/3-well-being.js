@@ -26,7 +26,7 @@ export default {
         title="Stress Management"
         summary="Coming soon">
       </icon-item></div>
-      <button type="button" v-on:click="handleClick()">Continue</button>
+      <button type="button" v-on:click="handleClick()" class="mt-8">Continue</button>
     </page-no-app-bar>
   </div>`,
   components: {

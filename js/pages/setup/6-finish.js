@@ -7,7 +7,7 @@ export default {
     <div class="setup-image finish"></div>
     <page-no-app-bar class="setup-text">
       <h1>That's it</h1>
-      <p>Thanks for entering your data. We will now generte a unique plan for you.</p>
+      <p class="mb-32">Thanks for entering your data. We will now generte a unique plan for you.</p>
       <button type="button" v-on:click="handleClick()">Finish</button>
     </page-no-app-bar>
   </div>`,

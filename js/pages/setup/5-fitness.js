@@ -41,7 +41,7 @@ export default {
       <range-input title="Abs" class="mb-16" v-model.number="fitness.abs"></range-input>
       <range-input title="Booty" class="mb-16" v-model.number="fitness.booty"></range-input>
       <range-input title="Legs" class="mb-16" v-model.number="fitness.legs"></range-input>
-      <button type="button" v-on:click="handleClick()">Continue</button>
+      <button type="button" v-on:click="handleClick()" class="mt-8">Continue</button>
     </page-no-app-bar>
   </div>`,
   components: {
