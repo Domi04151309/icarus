@@ -50,22 +50,24 @@ export default {
           {{ item.title }}
         </button>
     </div>
-    <div v-on:click="openMonth()" class="card mb-16 p-16">
-      <h2>Whole Month</h2>
-      <progress-sections
-        :s1="monthHelper?.getWellBeingProgress()"
-        :s2="monthHelper?.getWaterProgress()"
-        :s3="monthHelper?.getFoodProgress()"
-        :s4="monthHelper?.getExerciseProgress()">
-      </progress-sections>
-      <p>Click too see the whole month.</p>
-    </div>
-    <div class="card mb-16 p-16">
-      <div id="weeks" class="flex space">
-        <button v-for="(item, i) in weeks" :key="i + 100" class="relative p-2" type="button" v-on:click="openWeek(item.day)">
-          <span class="absolute">{{ item.title }}</span>
-          <progress-ring :radius="circleRadius" :progress="item.progress" stroke="4"></progress-ring>
-        </button>
+    <div v-if="!window.liteMode">
+      <div v-on:click="openMonth()" class="card mb-16 p-16">
+        <h2>Whole Month</h2>
+        <progress-sections
+          :s1="monthHelper?.getWellBeingProgress()"
+          :s2="monthHelper?.getWaterProgress()"
+          :s3="monthHelper?.getFoodProgress()"
+          :s4="monthHelper?.getExerciseProgress()">
+        </progress-sections>
+        <p>Click too see the whole month.</p>
+      </div>
+      <div class="card mb-16 p-16">
+        <div id="weeks" class="flex space">
+          <button v-for="(item, i) in weeks" :key="i + 100" class="relative p-2" type="button" v-on:click="openWeek(item.day)">
+            <span class="absolute">{{ item.title }}</span>
+            <progress-ring :radius="circleRadius" :progress="item.progress" stroke="4"></progress-ring>
+          </button>
+        </div>
       </div>
     </div>
   </page>`,

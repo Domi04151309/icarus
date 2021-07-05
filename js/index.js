@@ -19,6 +19,7 @@ const Nutrition = () => import('./pages/main/nutrition.js')
 const Account = () => import('./pages/main/account.js')
 
 const Day = () => import('./pages/day.js')
+const DayLite = () => import('./pages/day-lite.js')
 const Week = () => import('./pages/week.js')
 const Month = () => import('./pages/month.js')
 const Calendar = () => import('./pages/calendar.js')
@@ -60,6 +61,8 @@ const ImageViewer = () => import('../tools/image-viewer.js')
 
 Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
 
+window.liteMode = localStorage.getItem('liteMode') == 'true'
+
 const routes = [
   { path: '/', redirect: '/progress' },
   { path: '*', component: Unknown },
@@ -71,7 +74,6 @@ const routes = [
   { path: '/setup/fitness', component: SetupFitness },
   { path: '/setup/finish', component: SetupFinish },
   { path: '/progress', component: Progress },
-  { path: '/progress/day', component: Day },
   { path: '/progress/week', component: Week },
   { path: '/progress/month', component: Month },
   { path: '/progress/calendar', component: Calendar },
@@ -114,6 +116,9 @@ const routes = [
   { path: '/tools/extractor-workouts', component: ExtractorWorkouts },
   { path: '/tools/image-viewer', component: ImageViewer }
 ]
+
+if (window.liteMode) routes.push({ path: '/progress/day', component: DayLite })
+else routes.push({ path: '/progress/day', component: Day })
 
 function logError(e) {
   const errors = JsonHelper.get('errors', () => [])

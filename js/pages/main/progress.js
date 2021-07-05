@@ -21,7 +21,7 @@ export default {
       weight: InfoHelper.getLatestEntry('weight') || "0",
       bloodpressure: InfoHelper.getLatestEntry('bloodpressure') || "0",
       bloodsugar: InfoHelper.getLatestEntry('bloodsugar') || "0",
-      clicks: 0,
+      clicks: 0
     }
   },
   template:
@@ -29,37 +29,47 @@ export default {
     <div class="mt-16 mx-8 material-icons-round big accent" v-on:click="easterEgg()">waves</div>
     <h2 class="mx-8 secondary-title">Welcome Back {{ info?.name }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
-    <router-link to="/progress/day" class="card mb-16 p-16">
-      <h2>Today's Goals</h2>
-      <progress-sections
-        :s1="dayHelper.getWellBeingProgress()"
-        :s2="dayHelper.getWaterProgress()"
-        :s3="dayHelper.getFoodProgress()"
-        :s4="dayHelper.getExerciseProgress()">
-      </progress-sections>
-      <p>Your progress for today</p>
-    </router-link>
-    <div class="grid-2 gap-16">
-      <router-link to="/progress/week" class="card mb-16 p-16">
-        <h2>This Week</h2>
+    <div v-if="!window.liteMode">
+      <router-link to="/progress/day" class="card mb-16 p-16">
+        <h2>Today's Goals</h2>
         <progress-sections
-          :s1="weekHelper.getWellBeingProgress()"
-          :s2="weekHelper.getWaterProgress()"
-          :s3="weekHelper.getFoodProgress()"
-          :s4="weekHelper.getExerciseProgress()">
+          :s1="dayHelper.getWellBeingProgress()"
+          :s2="dayHelper.getWaterProgress()"
+          :s3="dayHelper.getFoodProgress()"
+          :s4="dayHelper.getExerciseProgress()">
         </progress-sections>
-        <p>Your progress for this week</p>
+        <p>Your progress for today</p>
       </router-link>
-      <router-link to="/progress/month" class="card mb-16 p-16">
-        <h2>This Month</h2>
-        <progress-sections
-          :s1="monthHelper.getWellBeingProgress()"
-          :s2="monthHelper.getWaterProgress()"
-          :s3="monthHelper.getFoodProgress()"
-          :s4="monthHelper.getExerciseProgress()">
-        </progress-sections>
-        <p>Your progress for this month</p>
-      </router-link>
+      <div class="grid-2 gap-16">
+        <router-link to="/progress/week" class="card mb-16 p-16">
+          <h2>This Week</h2>
+          <progress-sections
+            :s1="weekHelper.getWellBeingProgress()"
+            :s2="weekHelper.getWaterProgress()"
+            :s3="weekHelper.getFoodProgress()"
+            :s4="weekHelper.getExerciseProgress()">
+          </progress-sections>
+          <p>Your progress for this week</p>
+        </router-link>
+        <router-link to="/progress/month" class="card mb-16 p-16">
+          <h2>This Month</h2>
+          <progress-sections
+            :s1="monthHelper.getWellBeingProgress()"
+            :s2="monthHelper.getWaterProgress()"
+            :s3="monthHelper.getFoodProgress()"
+            :s4="monthHelper.getExerciseProgress()">
+          </progress-sections>
+          <p>Your progress for this month</p>
+        </router-link>
+      </div>
+    </div>
+    <div v-else>
+      <icon-item
+        icon="insights"
+        title="Today's Progress"
+        summary="View today's progress"
+        link="/progress/day">
+      </icon-item>
     </div>
     <icon-item
       icon="calendar_today"
