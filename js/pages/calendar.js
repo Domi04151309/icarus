@@ -39,7 +39,7 @@ export default {
         </div>
       </h3>
     </div>
-    <div v-if="!window.unlocked" class="card mb-16 lite general">
+    <div v-if="!window.unlocked" class="card mb-16 lite general small">
       View weekly and monthly progress with the full version of Icarus
     </div>
     <div class="card mb-16 p-16 text-center grid-7">

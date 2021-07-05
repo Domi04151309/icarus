@@ -882,10 +882,14 @@ main.large-app-bar {
 .lite {
   color: var(--text-color-dark);
   text-align: center;
+  border: 0;
   padding: 64px 24px;
   font-weight: bold;
   line-height: 2;
   letter-spacing: .5px;
+}
+.lite.small {
+  padding: 24px;
 }
 
 /* images */
@@ -962,7 +966,7 @@ div.large-app-bar.casual > h2 {
 .balls div:nth-of-type(3) {
   animation-delay: -0.2s;
 }
-main.wavy > div > *:not(.fab) {
+main.wavy > *:not(.fab) {
   animation: wave 2s ease-in-out alternate infinite;
   animation-delay: -1s;
 }
