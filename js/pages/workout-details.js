@@ -89,7 +89,7 @@ export default {
           setTimeout(() => this.doCountdown(thread), 1000)
         } else {
           this.thread++
-          this.nextFragment()
+          if (this.$route.path.includes(this.$options.name)) this.nextFragment()
         }
       }
     },
