@@ -23,7 +23,7 @@ export default {
   },
   template:
   `<page :title="title" parent="/progress" id="calendar">
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>
         <span>{{ months[month] }}</span>
         <div class="controls">
@@ -39,7 +39,7 @@ export default {
         </div>
       </h3>
     </div>
-    <div class="card mb-16-p-16 text-center grid-7">
+    <div class="card mb-16 p-16 text-center grid-7">
       <div v-for="(item, i) in weekDays" :key="i + 200">{{ item }}</div>
       <button
         v-for="(item, i) in days"
@@ -50,7 +50,7 @@ export default {
           {{ item.title }}
         </button>
     </div>
-    <div v-on:click="openMonth()" class="card mb-16-p-16">
+    <div v-on:click="openMonth()" class="card mb-16 p-16">
       <h2>Whole Month</h2>
       <progress-sections
         :s1="monthHelper?.getWellBeingProgress()"
@@ -60,7 +60,7 @@ export default {
       </progress-sections>
       <p>Click too see the whole month.</p>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <div id="weeks" class="flex space">
         <button v-for="(item, i) in weeks" :key="i + 100" class="relative p-2" type="button" v-on:click="openWeek(item.day)">
           <span class="absolute">{{ item.title }}</span>

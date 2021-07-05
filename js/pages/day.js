@@ -25,7 +25,7 @@ export default {
   },
   template:
     `<page :title="title" parent="/progress">
-      <div class="card mb-16-p-16">
+      <div class="card mb-16 p-16">
         <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
         <progress-sections
           :s1="helper.getWellBeingProgress()"
@@ -35,7 +35,7 @@ export default {
         </progress-sections>
         <p>This is your general progress for {{ readableDate }}. It combines your progress in the sections below.</p>
       </div>
-      <div class="card mb-16-p-16">
+      <div class="card mb-16 p-16">
         <h2>Well-Being <span class="material-icons-round c-icon">hotel</span></h2>
         <h3>Sleep <span class="p">{{ helper.progress.sleep }}/{{ MaxProgress.sleep }} hours</span></h3>
         <div class="flex my-24 deep-purple">
@@ -56,7 +56,7 @@ export default {
           Meditation can help you get into a deeper state of relaxation and awareness.
         </p>
       </div>
-      <div class="card mb-16-p-16">
+      <div class="card mb-16 p-16">
         <h2>Nutrition <span class="material-icons-round c-icon">restaurant_menu</span></h2>
         <h3>Water <span class="p">{{ helper.progress.water }}/{{ MaxProgress.water }} cups</span></h3>
         <div class="flex my-24 indigo">
@@ -104,7 +104,7 @@ export default {
           Protein is important for building muscle mass.
         </p>
       </div>
-      <div class="card mb-16-p-16">
+      <div class="card mb-16 p-16">
         <h2>Active Time <span class="material-icons-round c-icon">directions_run</span></h2>
         <h3>Exercises <span class="p">{{ helper.progress.exercises }}/{{ MaxProgress.exercises }}</span></h3>
         <div class="flex my-24 red">

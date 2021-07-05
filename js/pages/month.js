@@ -31,7 +31,7 @@ export default {
   },
   template:
   `<page :title="title" parent="/progress">
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>General Progress <span class="material-icons-round c-icon">table_view</span></h2>
       <progress-sections
         :s1="helper.getWellBeingProgress()"
@@ -41,7 +41,7 @@ export default {
       </progress-sections>
       <p>This is your general progress for {{ readableDate }}. It combines your progress of the sections below.</p>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Weekly View <span class="material-icons-round c-icon">pending_actions</span></h2>
       <div class="flex vertical-container">
         <progress v-for="(item, index) in month" :key="index" class="vertical" max="100" :value="item"></progress>
@@ -50,7 +50,7 @@ export default {
         <p v-for="(item, index) in month" :key="index">{{ index + 1 }}</p>
       </div>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Compared to Last Month <span class="material-icons-round c-icon">sync_alt</span></h2>
       <div class="grid-3">
         <p class="progress-text mt-8 mb-16">Last Month</p>

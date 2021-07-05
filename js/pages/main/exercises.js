@@ -20,7 +20,7 @@ export default {
     <h2 class="mt-16 mx-8 secondary-title">Exercises</h2>
     <p class="mt-0 mb-48 mx-8">An exercise a day keeps the doctor away!</p>
 
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Categories</h2>
       <p class="mb-16">Choose what you want to do</p>
       <div class="flex between center">

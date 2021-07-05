@@ -33,13 +33,13 @@ export default {
   },
   template:
   `<page :title="exerciseItem.title + ' ' + exerciseTitle" parent="/exercises" class="exercises red">
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Tutorial</h2>
       <ol>
         <li v-for="(item, i) in exerciseItem.tutorial" :key="i">{{ item }}</li>
       </ol>
     </div>
-    <div class="card mb-16-p-16 text-center">
+    <div class="card mb-16 p-16 text-center">
       <h2>Intensity</h2>
       <div class="question button-bar">
         <button ref="low" type="button" v-on:click="intensity = 'low'">Low</button>
@@ -48,7 +48,7 @@ export default {
         <button ref="full" type="button" v-on:click="intensity = 'full'">Full</button>
       </div>
     </div>
-    <div class="card flex space center text-center mb-16-p-16">
+    <div class="card flex space center text-center mb-16 p-16">
       <div>
         <h2 class="m-0">{{ exerciseItem.intensities[intensity].sets || 1 }}</h2>
         <p class="mb-0">Sets</p>
@@ -62,7 +62,7 @@ export default {
         <p class="mb-0">Time</p>
       </div>
     </div>
-    <div v-if="exerciseItem.intensities[intensity].time" class="card text-center mb-16-p-16">
+    <div v-if="exerciseItem.intensities[intensity].time" class="card text-center mb-16 p-16">
       <h2>Timer</h2>
       <div class="flex space center">
         <button ref="play" class="progress-control material-icons-round" type="button" v-on:click="playPauseTime()">play_arrow</button>
@@ -73,7 +73,7 @@ export default {
         <button class="progress-control material-icons-round" type="button" v-on:click="resetTime()">stop</button>
       </div>
     </div>
-    <div v-if="exerciseItem.intensities[intensity].repetitions" class="card text-center mb-16-p-16">
+    <div v-if="exerciseItem.intensities[intensity].repetitions" class="card text-center mb-16 p-16">
       <h2>Repetitions</h2>
       <div class="flex space center">
         <button class="progress-control" type="button" v-on:click="removeRepetition()">&minus;</button>
@@ -84,7 +84,7 @@ export default {
         <button class="progress-control" type="button" v-on:click="addRepetition()">+</button>
       </div>
     </div>
-    <div v-if="exerciseItem.intensities[intensity].sets" class="card mb-16-p-16">
+    <div v-if="exerciseItem.intensities[intensity].sets" class="card mb-16 p-16">
       <h2>Sets <span class="p">{{ sets }}/{{ exerciseItem.intensities[intensity].sets }}</span></h2>
       <progress :max="exerciseItem.intensities[intensity].sets" :value="sets"></progress>
     </div>

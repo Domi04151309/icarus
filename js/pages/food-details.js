@@ -28,26 +28,26 @@ export default {
   },
   template:
   `<page :title="foodItem.title" :parent="parent" :class="writtenType + ' green'" :imgId="foodItem.image">
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Description</h2>
       <p>{{ foodItem.description || 'No description provided' }}</p>
     </div>
-    <div v-if="foodItem.preparation" class="card mb-16-p-16">
+    <div v-if="foodItem.preparation" class="card mb-16 p-16">
       <h2>Preparation</h2>
       <p>{{ foodItem.preparation }}</p>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Information</h2>
       <ul class="link-list ignore-page-padding mt-8">
         <li><span><span :class="'material-icons-round ' + getColor('vegetarian')">{{ getIcon('vegetarian') }}</span>Vegetarian</span></li>
         <li><span><span :class="'material-icons-round ' + getColor('vegan')">{{ getIcon('vegan') }}</span>Vegan</span></li>
       </ul>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Portion <small class="p">({{ foodItem.unit }})</small></h2>
       <input v-model.number="foodItem.serving" aria-label="Portion" type="number"></input>
     </div>
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Values</h2>
       <div class="grid-2 gap-16 mb-16">
         <div>

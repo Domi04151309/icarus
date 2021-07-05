@@ -29,7 +29,7 @@ export default {
     <div class="mt-16 mx-8 material-icons-round big accent" v-on:click="easterEgg()">waves</div>
     <h2 class="mx-8 secondary-title">Welcome Back {{ info?.name }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
-    <router-link to="/progress/day" class="card mb-16-p-16">
+    <router-link to="/progress/day" class="card mb-16 p-16">
       <h2>Today's Goals</h2>
       <progress-sections
         :s1="dayHelper.getWellBeingProgress()"
@@ -40,7 +40,7 @@ export default {
       <p>Your progress for today</p>
     </router-link>
     <div class="grid-2 gap-16">
-      <router-link to="/progress/week" class="card mb-16-p-16">
+      <router-link to="/progress/week" class="card mb-16 p-16">
         <h2>This Week</h2>
         <progress-sections
           :s1="weekHelper.getWellBeingProgress()"
@@ -50,7 +50,7 @@ export default {
         </progress-sections>
         <p>Your progress for this week</p>
       </router-link>
-      <router-link to="/progress/month" class="card mb-16-p-16">
+      <router-link to="/progress/month" class="card mb-16 p-16">
         <h2>This Month</h2>
         <progress-sections
           :s1="monthHelper.getWellBeingProgress()"
@@ -68,14 +68,14 @@ export default {
       link="/progress/calendar">
     </icon-item>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>
-    <router-link to="/progress/tracking?i=weight" class="card mb-16-p-16 flex center between">
+    <router-link to="/progress/tracking?i=weight" class="card mb-16 p-16 flex center between">
       <div>
         <h2 class="m-0 mt-2">Weight</h2>
         <p>Track your weight</p>
       </div>
       <div class="big mr-16 p">{{ weight }}</div>
     </router-link>
-    <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16-p-16 flex center between">
+    <router-link to="/progress/tracking?i=bloodpressure" class="card mb-16 p-16 flex center between">
       <div>
         <h2 class="m-0 mt-2">Blood Pressure</h2>
         <p>Track your blood pressure</p>

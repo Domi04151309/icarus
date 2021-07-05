@@ -26,17 +26,17 @@ export default {
   },
   template:
   `<page :title="workout.title + ' HIIT'" parent="/exercises" class="exercises red">
-    <div class="card mb-16-p-16">
+    <div class="card mb-16 p-16">
       <h2>Progress <small class="p">{{ Math.min(fragment + 1, exercises.length) }}/{{ exercises.length }}</small></h2>
       <progress :max="exercises.length" :value="fragment + 1"></progress>
     </div>
-    <div v-if="fragment == -1" class="card mb-16-p-16">
+    <div v-if="fragment == -1" class="card mb-16 p-16">
       <h2>Timing</h2>
       <p>
         Use the first 15 seconds to read the tutorial and as a break before performing the exercise for the remaining 45 seconds.
       </p>
     </div>
-    <div v-if="fragment > -1 && fragment < exercises.length" class="card text-center mb-16-p-16">
+    <div v-if="fragment > -1 && fragment < exercises.length" class="card text-center mb-16 p-16">
       <h2>Timer</h2>
       <div class="flex space center">
         <button ref="play" class="progress-control material-icons-round" type="button" v-on:click="playPauseTime()">{{ playIcon }}</button>
