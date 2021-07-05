@@ -44,7 +44,7 @@ export default {
     <router-link v-for="item in workouts" :key="item.title" :to="'/exercises/workout-details?y=' + item.pos" class="card mb-16-p-16 flex center">
       <div class="material-icons-round big-c-icon">inventory</div>
       <div>
-        <h2 class="m-0 mt-2">{{ item.title }} Workout</h2>
+        <h2 class="m-0 mt-2">{{ item.title }} HIIT</h2>
         <p>Train your {{ item.title.toLowerCase() }}</p>
       </div>
     </router-link>

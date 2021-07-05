@@ -25,7 +25,7 @@ export default {
     }
   },
   template:
-  `<page :title="workout.title + ' Workout'" parent="/exercises" class="exercises red">
+  `<page :title="workout.title + ' HIIT'" parent="/exercises" class="exercises red">
     <div class="card mb-16-p-16">
       <h2>Progress <small class="p">{{ Math.min(fragment + 1, exercises.length) }}/{{ exercises.length }}</small></h2>
       <progress :max="exercises.length" :value="fragment + 1"></progress>
@@ -46,8 +46,8 @@ export default {
         </div>
         <button class="progress-control material-icons-round" type="button" v-on:click="resetTime()">stop</button>
       </div>
-      <p>
-        Use the first 15 seconds to read the tutorial and as a break before performing the exercise for the remaining 45 seconds.
+      <p class="m-0">
+        15s reading and resting - 45s performing
       </p>
     </div>
     <div class="card p-16">
