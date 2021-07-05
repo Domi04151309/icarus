@@ -5,16 +5,13 @@ export default {
     progress: Number,
     stroke: Number
   },
-  data() {
-    const normalizedRadius = this.radius - this.stroke / 2
-    const circumference = normalizedRadius * 2 * Math.PI
-
-    return {
-      normalizedRadius,
-      circumference
-    }
-  },
   computed: {
+    normalizedRadius() {
+      return this.radius - this.stroke / 2
+    },
+    circumference() {
+      return this.normalizedRadius * 2 * Math.PI
+    },
     strokeDashoffset() {
       return this.circumference - this.progress / 100 * this.circumference
     }

@@ -1,5 +1,3 @@
-import AppBar from './app-bar.js'
-
 export default {
   name: 'page',
   props: {
@@ -8,14 +6,14 @@ export default {
   },
   template:
   `<div>
-    <app-bar :title="title" :parent="parent"></app-bar>
+    <header>
+      <router-link :to="parent ? parent : '/progress'">
+        <span class="material-icons-round nav-icon" role="button" aria-label="Back">{{ parent ? 'arrow_back' : 'close' }}</span>
+      </router-link>
+      <h1 class="with-nav-icon">{{ title }}</h1>
+    </header>
     <main class="with app-bar zoom-in-animation">
-      <div>
-        <slot></slot>
-      </div>
+      <slot></slot>
     </main>
-  </div>`,
-  components: {
-    AppBar
-  }
+  </div>`
 }

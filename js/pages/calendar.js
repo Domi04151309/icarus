@@ -1,6 +1,6 @@
 import Page from '../components/page.js'
 import ProgressSections from '../components/progress-sections.js'
-import ProgressRing from '../components/progress-ring-responsive.js'
+import ProgressRing from '../components/progress-ring.js'
 
 import { WeekHelper, MonthHelper } from '../helpers/progress.js'
 

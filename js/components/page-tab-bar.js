@@ -1,6 +1,3 @@
-import AppBarNoParent from './app-bar-no-parent.js'
-import TabBar from './tab-bar.js'
-
 export default {
   name: 'page-tab-bar',
   data() {
@@ -37,16 +34,18 @@ export default {
   },
   template:
   `<div>
-    <app-bar-no-parent :title="title"></app-bar-no-parent>
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
     <main class="with app-bar tab-bar fade-in-animation">
       <div>
         <slot></slot>
       </div>
     </main>
-    <tab-bar :tabs="tabs"></tab-bar>
-  </div>`,
-  components: {
-    AppBarNoParent,
-    TabBar
-  }
+    <footer>
+      <router-link class="tab" v-for="tab in tabs" :key="tab.url" :to="tab.url">
+        <span class="material-icons-round" :aria-label="tab.title">{{ tab.icon }}</span>
+      </router-link>
+    </footer>
+  </div>`
 }
