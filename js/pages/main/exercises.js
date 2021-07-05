@@ -31,12 +31,15 @@ export default {
       </div>
     </div>
     <h2 class="mx-8 mt-48 mb-24">Perfect Fits For You</h2>
-    <div class="grid-2 gap-16 mb-16">
+    <div v-if="window.unlocked" class="grid-2 gap-16 mb-16">
       <router-link v-for="item in recommended" :key="item.title + item.posX + item.posZ" :to="'/exercises/details?x=' + item.posX + '&y=' + item.posY + '&z=' + item.posZ" class="card exercise img-card">
         <img :src="item.image" alt="Preview">
         <div class="overlay"></div>
         <h2 class="m-0 p-16">{{ item.title }}</h2>
       </router-link>
+    </div>
+    <div v-else class="card lite exercises">
+      Get custom exercise suggestions with the full version of Icarus
     </div>
     <h2 class="mx-8 mt-48 mb-24">Full Workouts</h2>
     <icon-item

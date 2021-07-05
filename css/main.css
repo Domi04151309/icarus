@@ -16,6 +16,7 @@
   --border-radius-4x: 32px;
   --card-shadow: 0 0 12px rgba(0, 0, 0, .2);
   --background-dim: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)) no-repeat center;
+  --background-dim-2: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)) no-repeat center;
 }
 .red {
   --accent-color: #ff1744;
@@ -854,15 +855,6 @@ h2.large-app-bar {
   text-align: center;
   z-index: 0;
 }
-div.large-app-bar.exercises > h2 {
-  background: var(--background-dim), url('../images/exercises/hiking.jpg') no-repeat center/cover;
-}
-div.large-app-bar.healthy > h2 {
-  background: var(--background-dim), url('../images/food/healthy.jpg') no-repeat center/cover;
-}
-div.large-app-bar.casual > h2 {
-  background: var(--background-dim), url('../images/food/casual.jpg') no-repeat center/cover;
-}
 main.large-app-bar {
   position: relative;
   margin-top: -32px;
@@ -884,6 +876,36 @@ main.large-app-bar {
 .item-caption {
   display: block;
   margin-bottom: -4px;
+}
+
+/* lite */
+.lite {
+  color: var(--text-color-dark);
+  text-align: center;
+  padding: 64px 24px;
+  font-weight: bold;
+  line-height: 2;
+  letter-spacing: .5px;
+}
+
+/* images */
+div.large-app-bar.exercises > h2 {
+  background: var(--background-dim), url('../images/exercises/hiking.jpg') no-repeat center/cover;
+}
+div.large-app-bar.healthy > h2 {
+  background: var(--background-dim), url('../images/food/healthy.jpg') no-repeat center/cover;
+}
+div.large-app-bar.casual > h2 {
+  background: var(--background-dim), url('../images/food/casual.jpg') no-repeat center/cover;
+}
+.lite.general {
+  background: var(--background-dim-2), url('../images/setup/welcome.jpg') no-repeat center/cover;
+}
+.lite.exercises {
+  background: var(--background-dim-2), url('../images/exercises/hiking.jpg') no-repeat center/cover;
+}
+.lite.nutrition {
+  background: var(--background-dim-2), url('../images/food/lunch.jpg') no-repeat center/cover;
 }
 
 /* charts */

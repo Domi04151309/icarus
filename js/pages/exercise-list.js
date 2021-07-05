@@ -10,7 +10,7 @@ export default {
       title: 'Exercises',
       listItems: [],
       searchString: '',
-      sorting: 'by_score'
+      sorting: window.unlocked ? 'by_score' : 'alphabetically'
     }
   },
   computed: {
@@ -23,7 +23,7 @@ export default {
   template:
   `<page :title="title" parent="/exercises">
     <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
-    <div class="mb-16">
+    <div v-if="window.unlocked" class="mb-16">
       <input type="radio" id="by_score" value="by_score" v-model="sorting">
       <label class="mr-8" for="by_score">By Score</label>
       <input type="radio" id="alphabetically" value="alphabetically" v-model="sorting">
@@ -38,7 +38,7 @@ export default {
             <li v-for="(variation, posZ) in exercise.variations" :key="posY + variation.title">
               <router-link :to="'/exercises/details?x=' + ($route.query.x || posX) + '&y=' + exercise.pos + '&z=' + posZ">
                 {{ variation.title }}<br>
-                <span class="p">Score: {{ ExerciseHelper.getScore($route.query.x || posX, exercise.pos, posZ) }}</span>
+                <span v-if="window.unlocked" class="p">Score: {{ ExerciseHelper.getScore($route.query.x || posX, exercise.pos, posZ) }}</span>
               </router-link>
             </li>
           </ul>

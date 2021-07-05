@@ -37,8 +37,9 @@ export default {
     </div>
     <ul class="link-list card">
       <li><router-link to="/account/app"><span class="material-icons-round">settings</span>App Settings</router-link></li>
-      <li><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Data Settings</router-link></li>
-      <li><router-link to="/account/backup-and-restore"><span class="material-icons-round">settings_backup_restore</span>Backup And Restore</router-link></li>
+      <li v-if="!window.unlocked"><router-link to="/setup/verification"><span class="material-icons-round">vpn_key</span>Unlock Paid Features</router-link></li>
+      <li v-if="window.unlocked"><router-link to="/account/data"><span class="material-icons-round">data_usage</span>Data Settings</router-link></li>
+      <li v-if="window.unlocked"><router-link to="/account/backup-and-restore"><span class="material-icons-round">settings_backup_restore</span>Backup And Restore</router-link></li>
       <li><router-link to="/tools"><span class="material-icons-round">api</span>Developer Tools</router-link></li>
       <li><router-link to="/account/help"><span class="material-icons-round">help</span>Help</router-link></li>
       <li><router-link to="/account/about"><span class="material-icons-round">info</span>About</router-link></li>

@@ -25,6 +25,9 @@ export default {
   },
   template:
     `<page :title="title" parent="/progress">
+      <div class="card mb-16 lite general">
+        Get custom daily goals with the full version of Icarus
+      </div>
       <div class="card p-16">
         <div class="grid-2">
           <h3>Sleep</h3>

@@ -44,7 +44,7 @@ export default {
       </div>
     </router-link>
     <h2 class="mx-8 mt-48 mb-24">What You Could Eat</h2>
-    <div class="grid-1-3 gap-16">
+    <div v-if="window.unlocked" class="grid-1-3 gap-16">
       <list-item-image
         v-for="item in recommended"
         :key="item.title"
@@ -53,6 +53,9 @@ export default {
         :link="item.link">
       </list-item-image>
       <list-item-image title="Show more" image="./images/food/dinner.jpg" link="/nutrition/recommendations"></list-item-image>
+    </div>
+    <div v-else class="card lite nutrition">
+      Get custom nutrition suggestions with the full version of Icarus
     </div>
     <h2 class="mx-8 mt-48 mb-24">Manage Your Menu</h2>
     <icon-item

@@ -27,7 +27,7 @@ export default {
   template:
   `<page-tab-bar>
     <div class="mt-16 mx-8 material-icons-round big accent" v-on:click="easterEgg()">waves</div>
-    <h2 class="mx-8 secondary-title">{{ 'Welcome Back ' + (window.unlocked ? this.info?.name : '') }}</h2>
+    <h2 class="mx-8 secondary-title">{{ 'Welcome Back ' + (window.unlocked ? (this.info?.name ? this.info?.name : '') : '') }}</h2>
     <p class="mt-0 mb-48 mx-8">Keep going! You're doing awesome!</p>
     <div v-if="window.unlocked">
       <router-link to="/progress/day" class="card mb-16 p-16">
