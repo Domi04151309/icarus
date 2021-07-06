@@ -3,6 +3,7 @@ import RangeInput from '../../components/range-input.js'
 
 import FoodHelper from '../../helpers/food.js'
 import ExerciseHelper from '../../helpers/exercises.js'
+import WorkoutHelper from '../../helpers/workouts.js'
 
 export default {
   name: 'setup-fitness',
@@ -53,6 +54,7 @@ export default {
       localStorage.setItem('fitness', JSON.stringify(this.fitness))
       FoodHelper.generateNewScores()
       ExerciseHelper.generateNewScores()
+      WorkoutHelper.generateNewScores()
       this.$router.push('/setup/finish')
     }
   },

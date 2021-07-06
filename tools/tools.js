@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     toggleLite() {
-      localStorage.setItem('liteMode', localStorage.getItem('liteMode') != 'true')
       if (window.unlocked) localStorage.setItem('liteMode', '1')
       else localStorage.removeItem('liteMode')
       location.reload()

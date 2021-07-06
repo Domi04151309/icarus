@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     handleClick() {
-      localStorage.setItem('setup_complete', true)
+      localStorage.setItem('setup_complete', '1')
       this.$router.push('/progress')
     }
   }
