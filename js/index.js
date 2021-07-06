@@ -59,9 +59,9 @@ const ExtractorFood = () => import('../tools/extractor-food.js')
 const ExtractorWorkouts = () => import('../tools/extractor-workouts.js')
 const ImageViewer = () => import('../tools/image-viewer.js')
 
-Vue.config.devtools = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+Vue.config.devtools = location.hostname == 'localhost'
 
-window.unlocked = localStorage.getItem('liteMode') != 'true'
+window.unlocked = !localStorage.getItem('liteMode')
 
 const routes = [
   { path: '/', redirect: '/progress' },
@@ -203,12 +203,10 @@ new Vue({
   el: '#app',
   methods: {
     async checkStartingRoute() {
-      if (
-        (!localStorage.getItem('setup_complete')
-        || !(await window.checkVerification(localStorage.getItem('verification'))))
-        && !this.$route.path.includes('setup')
-        && !navigator.userAgent.includes('Chrome-Lighthouse')
-      ) this.$router.push('/setup/verification')
+      if (!localStorage.getItem('liteMode') && !location.hash.includes('setup') && !navigator.userAgent.includes('Chrome-Lighthouse')) {
+        if (!(await window.checkVerification(localStorage.getItem('verification')))) this.$router.push('/setup/verification')
+        else if (!localStorage.getItem('setup_complete')) this.$router.push('/setup/welcome')
+      }
     }
   },
   mounted() {

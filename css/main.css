@@ -539,6 +539,10 @@ h2 > .c-icon {
 .grid-7 {
   grid-template-columns: repeat(7, 7fr);
 }
+.inline-grid-2 {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 2fr);
+}
 .gap-8 {
   grid-gap: 8px;
 }
