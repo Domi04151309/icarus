@@ -19,6 +19,7 @@ export default {
       <li v-on:click="editInfo('Change Name', 'name', 'text')"><span><span class="material-icons-round">face</span>Change name</span></li>
       <li v-on:click="editInfo('Change Age', 'age', 'number')"><span><span class="material-icons-round">edit_calendar</span>Change age</span></li>
       <li v-on:click="changeGender()"><span><span class="material-icons-round">wc</span>Change gender</span></li>
+      <li><router-link to="/account/data/well-being"><span class="material-icons-round">spa</span>Well-Being Plan</router-link></li>
       <li><router-link to="/account/data/nutrition"><span class="material-icons-round">restaurant_menu</span>Nutrition Plan</router-link></li>
       <li><router-link to="/account/data/workout"><span class="material-icons-round">directions_run</span>Workout Plan</router-link></li>
     </ul>

@@ -45,6 +45,7 @@ const WorkoutDetails = () => import('./pages/workout-details.js')
 const AppSettings = () => import('./pages/app-settings.js')
 const ErrorLog = () => import('./pages/log.js')
 const DataSettings = () => import('./pages/data-settings.js')
+const WellBeingPlan = () => import('./pages/well-being-plan.js')
 const NutritionPlan = () => import('./pages/nutrition-plan.js')
 const WorkoutPlan = () => import('./pages/workout-plan.js')
 const BackupAndRestore = () => import('./pages/backup-and-restore.js')
@@ -101,6 +102,7 @@ const routes = [
   { path: '/account/app', component: AppSettings },
   { path: '/account/app/log', component: ErrorLog },
   { path: '/account/data', component: DataSettings },
+  { path: '/account/data/well-being', component: WellBeingPlan },
   { path: '/account/data/nutrition', component: NutritionPlan },
   { path: '/account/data/workout', component: WorkoutPlan },
   { path: '/account/data/raw', component: Data },

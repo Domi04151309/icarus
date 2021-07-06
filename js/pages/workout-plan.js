@@ -25,16 +25,16 @@ export default {
   },
   template:
   `<page :title="title" parent="/account/data" class="text-center">
-  <range-input title="Muscle gain" class="mb-16" v-model.number="fitness.muscleGain"></range-input>
-  <range-input title="Cardio" class="mb-16" v-model.number="fitness.cardio"></range-input>
-  <range-input title="Endurance" class="mb-16" v-model.number="fitness.endurance"></range-input>
-  <range-input title="Arms" class="mb-16" v-model.number="fitness.arms"></range-input>
-  <range-input title="Shoulders" class="mb-16" v-model.number="fitness.shoulders"></range-input>
-  <range-input title="Back" class="mb-16" v-model.number="fitness.back"></range-input>
-  <range-input title="Chest" class="mb-16" v-model.number="fitness.chest"></range-input>
-  <range-input title="Abs" class="mb-16" v-model.number="fitness.abs"></range-input>
-  <range-input title="Booty" class="mb-16" v-model.number="fitness.booty"></range-input>
-  <range-input title="Legs" class="mb-16" v-model.number="fitness.legs"></range-input>
+    <range-input title="Muscle gain" class="mb-16" v-model.number="fitness.muscleGain"></range-input>
+    <range-input title="Cardio" class="mb-16" v-model.number="fitness.cardio"></range-input>
+    <range-input title="Endurance" class="mb-16" v-model.number="fitness.endurance"></range-input>
+    <range-input title="Arms" class="mb-16" v-model.number="fitness.arms"></range-input>
+    <range-input title="Shoulders" class="mb-16" v-model.number="fitness.shoulders"></range-input>
+    <range-input title="Back" class="mb-16" v-model.number="fitness.back"></range-input>
+    <range-input title="Chest" class="mb-16" v-model.number="fitness.chest"></range-input>
+    <range-input title="Abs" class="mb-16" v-model.number="fitness.abs"></range-input>
+    <range-input title="Booty" class="mb-16" v-model.number="fitness.booty"></range-input>
+    <range-input title="Legs" class="mb-16" v-model.number="fitness.legs"></range-input>
     <button type="button" v-on:click="handleClick()">Save</button>
   </page>`,
   components: {
