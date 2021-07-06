@@ -13,7 +13,7 @@ export default {
     <page-no-app-bar class="setup-text">
       <h1>Verification</h1>
       <p class="mb-32">Please enter your personal verification code below.</p>
-      <input ref="code" class="setup-input mb-16" type="text" placeholder="Code" autocomplete="off" v-on:keyup.enter="handleClick()">
+      <input ref="code" class="setup-input mb-16" type="text" placeholder="Code" autocomplete="off" v-on:keyup.enter="verify()">
       <p v-show="wrongCode" class="mb-8 red accent-text">Invalid code!</p>
       <div class="inline-grid-2 gap-8 mt-8">
         <button type="button" v-on:click="liteMode()">Lite Mode</button>

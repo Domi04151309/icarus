@@ -7,7 +7,7 @@ export default {
   name: 'setup-well-being',
   template:
   `<div>
-    <div class="setup-image info"></div>
+    <div class="setup-image well-being"></div>
     <page-no-app-bar class="setup-text">
       <h1>Well-Being</h1>
       <p class="mb-32">Choose the option that describes your goals the best.</p>

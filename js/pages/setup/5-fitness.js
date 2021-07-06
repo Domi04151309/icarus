@@ -24,7 +24,7 @@ export default {
   },
   template:
   `<div>
-    <div class="setup-image info"></div>
+    <div class="setup-image fitness"></div>
     <page-no-app-bar class="setup-text">
       <h1>Fitness Goals</h1>
       <p class="mb-32">

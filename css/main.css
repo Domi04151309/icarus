@@ -823,6 +823,15 @@ footer .router-link-active {
 .setup-image.info {
   background-image: url('../images/setup/info.jpg');
 }
+.setup-image.well-being {
+  background-image: url('../images/well-being/1.jpg');
+}
+.setup-image.nutrition {
+  background-image: url('../images/food/breakfast.jpg');
+}
+.setup-image.fitness {
+  background-image: url('../images/exercises/hiking.jpg');
+}
 .setup-image.finish {
   background-image: url('../images/setup/finish.jpg');
 }

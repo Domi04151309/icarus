@@ -19,7 +19,7 @@ export default {
   },
   template:
   `<div>
-    <div class="setup-image info"></div>
+    <div class="setup-image nutrition"></div>
     <page-no-app-bar class="setup-text">
       <h1>Nutrition</h1>
       <p class="mb-32">Please answer the questions below so that we know your goals.</p>
