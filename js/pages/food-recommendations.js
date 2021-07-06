@@ -14,11 +14,10 @@ export default {
     }
   },
   computed: {
-    title: () => 'Our Recommendations',
     recommendations: () => FoodHelper.getRecommended(6)
   },
   template:
-  `<page :title="title" parent="/nutrition" class="green">
+  `<page title="Our Recommendations" parent="/nutrition" class="green">
     <h2 class="mx-8 mt-0 mb-24">Based On Your Progress</h2>
     <div class="grid-1-2 gap-16">
       <div v-for="(item, i) in situationRecommendations" :key="i" class="card">
@@ -42,9 +41,9 @@ export default {
     </div>
   </page>`,
   components: {
-      Page,
-      FoodListItem,
-      ListItemImage
+    Page,
+    FoodListItem,
+    ListItemImage
   },
   created() {
     const progressHelper = new DayHelper()

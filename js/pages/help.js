@@ -2,13 +2,8 @@ import Page from '../components/page.js'
 
 export default {
   name: 'help',
-  data() {
-    return {
-      title: 'Help'
-    }
-  },
   template:
-  `<page :title="title" parent="/account">
+  `<page title="Help" parent="/account">
     <h2>Exercise Recommendations</h2>
     <p>
       Exercise recommendations are generated based on which muscles you want to train.
@@ -35,6 +30,6 @@ export default {
     </p>
   </page>`,
   components: {
-      Page
+    Page
   }
 }

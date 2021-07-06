@@ -4,7 +4,7 @@ export default {
   `<div>
     <p>This tool converts CSV data to useful JSON data.</p>
     <h2>Result</h2>
-    <p>Size: <span id="size">0</span></p>
+    <p>Size: <span id="size">0 KB</span></p>
     <h2>Raw Data</h2>
     <pre id="result"></pre>
     <h2>Output</h2>

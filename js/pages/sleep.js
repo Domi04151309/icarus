@@ -7,7 +7,6 @@ export default {
   name: 'sleep',
   data() {
     return {
-      title: 'Sleep',
       sleep: 0,
       hourPercent: 0,
       start: null,
@@ -22,7 +21,7 @@ export default {
     },
   },
   template:
-  `<page :title="title" parent="/well-being" class="deep-purple">
+  `<page title="Sleep" parent="/well-being" class="deep-purple">
     <div class="flex space center mt-16 mb-32">
       <div class="relative p-16">
         <h2 class="absolute m-0">{{ getString(sleep) }}</h2>
@@ -46,8 +45,8 @@ export default {
     <button class="w-100" type="button" v-on:click="addToTotal()">End and add to total</button>
   </page>`,
   components: {
-      Page,
-      ProgressRing
+    Page,
+    ProgressRing
   },
   methods: {
     setZeroDate() {

@@ -59,8 +59,8 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="nextFragment()">{{ buttonIcon }}</div>
   </page>`,
   components: {
-      Page,
-      ProgressRing
+    Page,
+    ProgressRing
   },
   methods: {
     playPauseTime() {

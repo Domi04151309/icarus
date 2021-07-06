@@ -3,13 +3,8 @@ import IconItem from '../components/icon-item.js'
 
 export default {
   name: 'well-being-plan',
-  data() {
-    return {
-      title: 'Well-Being Plan'
-    }
-  },
   template:
-  `<page :title="title" parent="/account/data" class="text-center">
+  `<page title="Well-Being Plan" parent="/account/data" class="text-center">
     <div class="disabled"><icon-item
       icon="emoji_people"
       title="Less Anxiety"
@@ -28,8 +23,8 @@ export default {
     <button type="button" v-on:click="handleClick()">Save</button>
   </page>`,
   components: {
-      Page,
-      IconItem
+    Page,
+    IconItem
   },
   methods: {
     handleClick() {

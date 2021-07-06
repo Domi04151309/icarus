@@ -32,9 +32,9 @@ export default {
     </page-no-app-bar>
   </div>`,
   components: {
-      PageNoAppBar,
-      RangeInput,
-      SimpleQuestion
+    PageNoAppBar,
+    RangeInput,
+    SimpleQuestion
   },
   methods: {
     handleClick() {

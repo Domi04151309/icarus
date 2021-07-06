@@ -52,8 +52,8 @@ export default {
     </icon-item>
   </page-tab-bar>`,
   components: {
-      PageTabBar,
-      IconItem
+    PageTabBar,
+    IconItem
   },
   mounted() {
     if (localStorage.getItem('help_exercises') == null) {

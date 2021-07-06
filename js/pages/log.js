@@ -9,12 +9,11 @@ export default {
   name: 'log',
   data() {
     return {
-      title: 'Error Log',
       items: JsonHelper.get('errors', () => [])
     }
   },
   template:
-  `<page :title="title" parent="/account/app">
+  `<page title="Error Log" parent="/account/app">
     <ul class="link-list ignore-page-padding">
       <li v-for="(item, i) in items" :key="i">
         <span>
@@ -26,7 +25,7 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">delete</div>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     onFabClicked() {

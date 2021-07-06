@@ -5,13 +5,8 @@ import Modal from '../components/modal.js'
 
 export default {
   name: 'backup-and-restore',
-  data() {
-    return {
-      title: 'Backup And Restore'
-    }
-  },
   template:
-  `<page :title="title" parent="/account">
+  `<page title="Backup And Restore" parent="/account">
     <ul class="link-list ignore-page-padding">
       <li v-on:click="backup()"><span><span class="material-icons-round">cloud_download</span>Backup</span></li>
       <li v-on:click="restore()"><span><span class="material-icons-round">cloud_upload</span>Restore</span></li>
@@ -20,7 +15,7 @@ export default {
     <input id="file" type="file" accept=".json" class="hidden" />
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     backup() {

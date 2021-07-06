@@ -9,6 +9,6 @@ export default {
     <button type="button" v-on:click="$router.push('/progress')">Back To Progress Page</button>
   </page>`,
   components: {
-      Page
+    Page
   }
 }

@@ -19,7 +19,7 @@ export default {
     <pre ref="result2"></pre>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     async calc() {

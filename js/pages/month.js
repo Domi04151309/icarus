@@ -23,10 +23,7 @@ export default {
   },
   computed: {
     title() {
-      if (this.readableDate == 'this month')
-        return 'This Month\'s Progress'
-      else
-        return 'Progress of ' + this.readableDate
+      return this.readableDate == 'this month' ? 'This Month\'s Progress' : 'Progress of ' + this.readableDate
     }
   },
   template:
@@ -72,8 +69,8 @@ export default {
     </div>
   </page>`,
   components: {
-      Page,
-      ProgressSections
+    Page,
+    ProgressSections
   },
   created() {
     const dateString = this.$route.query.date

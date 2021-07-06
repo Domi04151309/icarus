@@ -46,8 +46,8 @@ export default {
     </page-no-app-bar>
   </div>`,
   components: {
-      PageNoAppBar,
-      RangeInput
+    PageNoAppBar,
+    RangeInput
   },
   methods: {
     handleClick() {

@@ -72,10 +72,10 @@ export default {
     </icon-item>
   </page-tab-bar>`,
   components: {
-      PageTabBar,
-      ProgressRing,
-      ListItemImage,
-      IconItem
+    PageTabBar,
+    ProgressRing,
+    ListItemImage,
+    IconItem
   },
   methods: {
     reset() {

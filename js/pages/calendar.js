@@ -8,7 +8,6 @@ export default {
   name: 'calendar',
   data() {
     return {
-      title: 'Calendar',
       month: 0,
       year: 0,
       days: [],
@@ -22,7 +21,7 @@ export default {
     weekDays: () => ['Sun', 'Mon', 'Tue', 'Wed' , 'Thu', 'Fri', 'Sat']
   },
   template:
-  `<page :title="title" parent="/progress" id="calendar">
+  `<page title="Calendar" parent="/progress" id="calendar">
     <div class="card mb-16 p-16">
       <h2>
         <span>{{ months[month] }}</span>
@@ -75,9 +74,9 @@ export default {
     </div>
   </page>`,
   components: {
-      Page,
-      ProgressSections,
-      ProgressRing
+    Page,
+    ProgressSections,
+    ProgressRing
   },
   methods: {
     openDay(day) {

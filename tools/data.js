@@ -23,7 +23,7 @@ export default {
     </ul>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     deleteEntry(key) {

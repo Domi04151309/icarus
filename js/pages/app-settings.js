@@ -6,13 +6,8 @@ import ModalTheme from '../components/modal-theme.js'
 
 export default {
   name: 'app-settings',
-  data() {
-    return {
-      title: 'App Settings'
-    }
-  },
   template:
-  `<page :title="title" parent="/account">
+  `<page title="App Settings" parent="/account">
     <ul class="link-list ignore-page-padding">
       <li v-on:click="changeTheme()"><span><span class="material-icons-round">palette</span>Change theme</span></li>
       <li v-on:click="resetHelp()"><span><span class="material-icons-round">support</span>Reset tutorial dialogs</span></li>
@@ -22,7 +17,7 @@ export default {
     </ul>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     changeTheme() {

@@ -30,8 +30,8 @@ export default {
     </page-no-app-bar>
   </div>`,
   components: {
-      PageNoAppBar,
-      IconItem
+    PageNoAppBar,
+    IconItem
   },
   methods: {
     handleClick() {

@@ -24,10 +24,7 @@ export default {
   },
   computed: {
     title() {
-      if (this.readableDate == 'this week')
-        return 'This Week\'s Progress'
-      else
-        return 'Progress of ' + this.readableDate
+      return this.readableDate == 'this week' ? 'This Week\'s Progress' : 'Progress of ' + this.readableDate
     }
   },
   template:

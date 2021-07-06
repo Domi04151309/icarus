@@ -9,7 +9,6 @@ export default {
   name: 'workout-plan',
   data() {
     return {
-      title: 'Workout Plan',
       fitness: {
         muscleGain: 50,
         cardio: 50,
@@ -25,7 +24,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" parent="/account/data" class="text-center">
+  `<page title="Workout Plan" parent="/account/data" class="text-center">
     <range-input title="Muscle gain" class="mb-16" v-model.number="fitness.muscleGain"></range-input>
     <range-input title="Cardio" class="mb-16" v-model.number="fitness.cardio"></range-input>
     <range-input title="Endurance" class="mb-16" v-model.number="fitness.endurance"></range-input>
@@ -39,8 +38,8 @@ export default {
     <button type="button" v-on:click="handleClick()">Save</button>
   </page>`,
   components: {
-      Page,
-      RangeInput
+    Page,
+    RangeInput
   },
   methods: {
     handleClick() {

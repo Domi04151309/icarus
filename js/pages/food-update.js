@@ -15,14 +15,13 @@ export default {
   name: 'food-update',
   data() {
     return {
-      title: 'Nutrition Updates',
       items: [],
       localHealthy: JsonHelper.get('healthy-food', () => JSON.parse(JSON.stringify(Food.healthy))),
       localCasual: JsonHelper.get('casual-food', () => JSON.parse(JSON.stringify(Food.casual)))
     }
   },
   template:
-  `<page :title="title" parent="/nutrition" class="green">
+  `<page title="Nutrition Updates" parent="/nutrition" class="green">
     <p class="mb-24">
       Find new food items that we added and that are not yet present in your local database below.
     </p>
@@ -32,8 +31,8 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">sync</div>
   </page>`,
   components: {
-      Page,
-      FoodListItem
+    Page,
+    FoodListItem
   },
   methods: {
     addItem(item) {

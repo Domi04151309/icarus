@@ -14,8 +14,8 @@ export default {
     <extractor></extractor>
   </page>`,
   components: {
-      Page,
-      Extractor
+    Page,
+    Extractor
   },
   mounted() {
     ModuleRun()

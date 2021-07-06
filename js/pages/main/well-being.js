@@ -41,9 +41,9 @@ export default {
     <list-item-image title="Coming soon" image="./images/well-being/1.jpg"></list-item-image>
   </page-tab-bar>`,
   components: {
-      PageTabBar,
-      ProgressRing,
-      ListItemImage
+    PageTabBar,
+    ProgressRing,
+    ListItemImage
   },
   created() {
     const helper = new DayHelper()

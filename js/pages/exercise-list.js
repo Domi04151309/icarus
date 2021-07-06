@@ -7,7 +7,6 @@ export default {
   name: 'exercise-list',
   data() {
     return {
-      title: 'Exercises',
       listItems: [],
       searchString: '',
       sorting: window.unlocked ? 'by_score' : 'alphabetically'
@@ -21,7 +20,7 @@ export default {
     sorting() { this.sort() }
   },
   template:
-  `<page :title="title" parent="/exercises">
+  `<page title="Exercises" parent="/exercises">
     <input v-model="searchString" class="card mb-16" type="text" placeholder="Search" autocomplete="off">
     <div v-if="window.unlocked" class="mb-16">
       <input type="radio" id="by_score" value="by_score" v-model="sorting">
@@ -47,7 +46,7 @@ export default {
     </div>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     filtered() {

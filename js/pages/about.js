@@ -4,12 +4,11 @@ export default {
   name: 'about',
   data() {
     return {
-      title: 'About',
       version: 'unknown'
     }
   },
   template:
-  `<page :title="title" parent="/account" class="text-center">
+  `<page title="About" parent="/account" class="text-center">
     <img src="./images/about/logo.svg" alt="Icon">
     <h2>Icarus</h2>
     <p>{{ version }}</p>
@@ -19,7 +18,7 @@ export default {
     <p>Copyright 2020<br>Domi04151309 & Nils Döhring</p>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     async getVersion() {

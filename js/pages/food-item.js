@@ -27,7 +27,6 @@ export default {
     }
   },
   computed: {
-    title: () => 'Food Item',
     parent() {
       if (this.$route.query.item) {
         return this.healthy
@@ -42,7 +41,7 @@ export default {
     }
   },
   template:
-  `<page :title="title" :parent="parent" class="green">
+  `<page title="Food Item" :parent="parent" class="green">
     <h2 class="flex center mt-0">
       <div class="material-icons-round accent img">{{ icon }}</div>
       <div>{{ foodItem.title }}</div>
@@ -101,8 +100,8 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
   components: {
-      Page,
-      SimpleQuestion
+    Page,
+    SimpleQuestion
   },
   methods: {
     onFabClicked() {

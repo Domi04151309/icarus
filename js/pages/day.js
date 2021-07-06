@@ -16,10 +16,7 @@ export default {
   },
   computed: {
     title() {
-      if (this.readableDate == 'today')
-        return 'Today\'s Progress'
-      else
-        return 'Progress of ' + this.readableDate
+      return this.readableDate == 'today' ? 'Today\'s Progress' : 'Progress of ' + this.readableDate
     },
     MaxProgress: () => MaxProgress
   },

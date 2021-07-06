@@ -46,7 +46,7 @@ export default {
     </ul>
   </page-tab-bar>`,
   components: {
-      PageTabBar
+    PageTabBar
   },
   created() {
     const stored = localStorage.getItem('info')

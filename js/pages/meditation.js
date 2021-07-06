@@ -5,13 +5,8 @@ import ProgressRing from '../components/progress-ring.js'
 
 export default {
   name: 'meditation',
-  data() {
-    return {
-      title: 'Meditation'
-    }
-  },
   template:
-  `<page :title="title" parent="/well-being" class="deep-purple"><div class="disabled">
+  `<page title="Meditation" parent="/well-being" class="deep-purple"><div class="disabled">
     <div class="flex space center mt-16 mb-32">
       <div class="relative p-16">
         <h2 class="absolute m-0">1:00:00</h2>
@@ -31,7 +26,7 @@ export default {
     <button class="w-100" type="button" v-on:click="">Finish</button>
   </div></page>`,
   components: {
-      Page,
-      ProgressRing
+    Page,
+    ProgressRing
   }
 }

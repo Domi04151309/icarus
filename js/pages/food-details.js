@@ -83,7 +83,7 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">done</div>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     getColor(key) {

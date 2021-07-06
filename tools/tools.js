@@ -21,7 +21,7 @@ export default {
     </ul>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     toggleLite() {

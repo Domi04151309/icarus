@@ -102,9 +102,9 @@ export default {
     <div v-if="window.unlocked" ref="fab" class="material-icons-round raised fab hidden" v-on:click="onFabClicked()">book</div>
   </page-tab-bar>`,
   components: {
-      PageTabBar,
-      ProgressSections,
-      IconItem
+    PageTabBar,
+    ProgressSections,
+    IconItem
   },
   methods: {
     easterEgg() {

@@ -22,7 +22,7 @@ export default {
     </page-no-app-bar>
   </div>`,
   components: {
-      PageNoAppBar
+    PageNoAppBar
   },
   methods: {
     liteMode() {

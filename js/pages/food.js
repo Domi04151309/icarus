@@ -85,9 +85,9 @@ export default {
     <div v-if="window.unlocked" ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
   components: {
-      Page,
-      ProgressRing,
-      FoodListItem
+    Page,
+    ProgressRing,
+    FoodListItem
   },
   methods: {
     filterList() {

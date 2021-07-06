@@ -35,7 +35,7 @@ export default {
     <div ref="fab" class="material-icons-round fab hidden" v-on:click="onFabClicked()">add</div>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     onFabClicked() {

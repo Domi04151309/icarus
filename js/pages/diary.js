@@ -6,12 +6,11 @@ export default {
   name: 'diary',
   data() {
     return {
-      title: 'Diary',
       items: []
     }
   },
   template:
-  `<page :title="title" parent="/progress">
+  `<page title="Diary" parent="/progress">
     <div class="diary">
       <div v-for="(date, index) in items" :key="index">
         <h2 class="h3 text-center">{{ date.title }}</h2>
@@ -32,7 +31,7 @@ export default {
     </div>
   </page>`,
   components: {
-      Page
+    Page
   },
   created() {
     const items = DiaryHelper.getItems()

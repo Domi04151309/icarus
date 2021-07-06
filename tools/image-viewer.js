@@ -24,7 +24,7 @@ export default {
     </div>
   </page>`,
   components: {
-      Page
+    Page
   },
   created() {
     const items = []

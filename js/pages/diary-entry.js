@@ -9,12 +9,11 @@ export default {
   name: 'diary-entry',
   data() {
     return {
-      title: 'Diary Entry',
       item: {}
     }
   },
   template:
-  `<page :title="title" parent="/progress/diary">
+  `<page title="Diary Entry" parent="/progress/diary">
     <div class="material-icons-round big">{{ item.icon }}</div>
     <h2 class="mb-0">{{ item.title }}</h2>
     <h3 class="mt-0">{{ new Date(item.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' }) }}</h3>
@@ -35,7 +34,7 @@ export default {
     </div>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     getActualValue(foodItem, key) {

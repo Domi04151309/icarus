@@ -8,13 +8,8 @@ import JsonHelper from '../helpers/json.js'
 
 export default {
   name: 'data-settings',
-  data() {
-    return {
-      title: 'Data Settings'
-    }
-  },
   template:
-  `<page :title="title" parent="/account">
+  `<page title="Data Settings" parent="/account">
     <ul class="link-list ignore-page-padding">
       <li v-on:click="editInfo('Change Name', 'name', 'text')"><span><span class="material-icons-round">face</span>Change name</span></li>
       <li v-on:click="editInfo('Change Age', 'age', 'number')"><span><span class="material-icons-round">edit_calendar</span>Change age</span></li>
@@ -25,7 +20,7 @@ export default {
     </ul>
   </page>`,
   components: {
-      Page
+    Page
   },
   methods: {
     editInfo(modalTitle, storageKey, storageType) {
