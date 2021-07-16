@@ -49,7 +49,7 @@ export default {
       for (const key of keys) {
         array.push({'key': key, 'value': localStorage.getItem(key)})
       }
-      array.sort((a, b) => (a.key > b.key) ? 1 : ((b.key > a.key) ? -1 : 0))
+      array.sort((a, b) => a.key.localeCompare(b.key))
       this.storage = array
     }
   },

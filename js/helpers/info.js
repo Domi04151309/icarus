@@ -21,8 +21,7 @@ export default {
   },
   getLatestEntry(storageName) {
     const data = JsonHelper.get(storageName)
-    if (data == null) return null
-    data.sort((a, b) => b.time - a.time)
-    return data[0]?.values?.join('/') || null
+    if (data == null || data.length == 0) return null
+    return data.reduce((a, b) => a.time > b.time ? a : b, 0).values.join('/')
   }
 }
