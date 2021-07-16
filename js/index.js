@@ -218,18 +218,22 @@ new Vue({
     })
 
     let darkTheme = null
-    switch (localStorage.getItem('theme') || 'auto') {
-      case 'auto':
-        darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        break
+    switch (localStorage.getItem('theme')) {
       case 'light':
         darkTheme = false
         break
       case 'dark':
         darkTheme = true
         break
+      default:
+        darkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        break
     }
     document.documentElement.classList.toggle('dark-theme', darkTheme)
+
+    const metaColor = document.querySelector('meta[name=theme-color]')
+    if (darkTheme) metaColor.setAttribute('content', '#1e1e1e')
+    else metaColor.setAttribute('content', '#fff')
 
     this.checkStartingRoute()
   }
