@@ -74,7 +74,7 @@ export default {
     <icon-item
       icon="calendar_today"
       title="Calendar"
-      :summary="'View the progress of another day' + (window.unlocked ? ', week, or month' : '')"
+      :summary="window.unlocked ? 'View the progress of another day, week, or month' : 'Choose another day'"
       link="/progress/calendar">
     </icon-item>
     <h2 class="mx-8 mt-48 mb-24">Tracking</h2>

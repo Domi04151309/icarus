@@ -918,6 +918,9 @@ div.large-app-bar.casual > h2 {
 .lite.general {
   background: var(--background-dim-2), url('../images/setup/welcome.jpg') no-repeat center/cover;
 }
+.lite.well-being {
+  background: var(--background-dim-2), url('../images/well-being/1.jpg') no-repeat center/cover;
+}
 .lite.exercises {
   background: var(--background-dim-2), url('../images/exercises/hiking.jpg') no-repeat center/cover;
 }

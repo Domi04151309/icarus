@@ -19,6 +19,16 @@ export default {
       icon="emoji_nature"
       title="Stress Management"
       summary="Coming soon">
+    </icon-item>
+    <icon-item
+      icon="psychology"
+      title="Awareness"
+      summary="Coming soon">
+    </icon-item>
+    <icon-item
+      icon="self_improvement"
+      title="Inner Peace"
+      summary="Coming soon">
     </icon-item></div>
     <button type="button" v-on:click="handleClick()">Save</button>
   </page>`,

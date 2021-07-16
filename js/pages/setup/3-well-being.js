@@ -10,7 +10,7 @@ export default {
     <div class="setup-image well-being"></div>
     <page-no-app-bar class="setup-text">
       <h1>Well-Being</h1>
-      <p class="mb-32">Choose the option that describes your goals the best.</p>
+      <p class="mb-32">Choose the options that describe your goals the best.</p>
       <div class="disabled"><icon-item
         icon="emoji_people"
         title="Less Anxiety"
@@ -24,6 +24,16 @@ export default {
       <icon-item
         icon="emoji_nature"
         title="Stress Management"
+        summary="Coming soon">
+      </icon-item>
+      <icon-item
+        icon="psychology"
+        title="Awareness"
+        summary="Coming soon">
+      </icon-item>
+      <icon-item
+        icon="self_improvement"
+        title="Inner Peace"
         summary="Coming soon">
       </icon-item></div>
       <button type="button" v-on:click="handleClick()" class="mt-8">Continue</button>

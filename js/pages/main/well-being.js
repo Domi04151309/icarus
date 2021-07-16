@@ -25,7 +25,7 @@ export default {
       <progress-ring class="big-c-icon" radius="32" :progress="sleep" stroke="6"></progress-ring>
       <div>
         <h2 class="m-0 mt-2">Sleep</h2>
-        <p>Get your daily amount of sleep</p>
+        <p>Keep track of your sleep</p>
       </div>
     </router-link>
     <router-link to="/well-being/meditation" class="card mb-16 p-16 flex center">
@@ -35,10 +35,14 @@ export default {
         <p>Time to find balance</p>
       </div>
     </router-link>
-    <h2 class="mx-8 mt-48 mb-24">Better Sleep</h2>
-    <list-item-image title="Coming soon" image="./images/well-being/2.jpg"></list-item-image>
-    <h2 class="mx-8 mt-48 mb-24">Stress Management</h2>
-    <list-item-image title="Coming soon" image="./images/well-being/1.jpg"></list-item-image>
+    <h2 class="mx-8 mt-48 mb-24">Something Good For You</h2>
+    <div v-if="window.unlocked" class="grid-1-3 gap-16">
+      <list-item-image title="Coming soon" image="./images/well-being/2.jpg"></list-item-image>
+      <list-item-image title="Coming soon" image="./images/well-being/1.jpg"></list-item-image>
+    </div>
+    <div v-else class="card lite well-being">
+      Get custom well-being suggestions with the full version of Icarus
+    </div>
   </page-tab-bar>`,
   components: {
     PageTabBar,
